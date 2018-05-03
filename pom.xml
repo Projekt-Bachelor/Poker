@@ -2,7 +2,7 @@
          xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.tu-clausthal.in.mec.bachelorproject</groupId>
-    <artifactId>de.tu-clausthal.in.bachelorproject2018</artifactId>
+    <artifactId>poker</artifactId>
     <version>poker</version>
     <name>Poker</name>
     <description></description>
