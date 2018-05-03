@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.tu-clausthal.in.bachelorproject2018</groupId>
     <artifactId>poker</artifactId>
-    <version>poker</version>
+    <version>0.0.1-SNAPSHOT</version>
     <name>Poker</name>
     <description></description>
 
