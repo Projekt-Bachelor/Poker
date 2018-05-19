@@ -1,9 +1,0 @@
-language: java
-jdk:
-  - oraclejdk8
-  
-deploy:
-  provider: heroku
-  api-key: b9d7280c-9321-480d-a254-f2d11555f161
-  app: project-poker
-  
