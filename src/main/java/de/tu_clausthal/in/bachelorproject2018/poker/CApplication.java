@@ -4,6 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.ArrayList;
+
 /**
  * Applikation
  */
@@ -11,7 +13,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @EnableAutoConfiguration
 public class CApplication
 {
-
     /**
      * main
      *
@@ -22,9 +23,11 @@ public class CApplication
         //commented out, not sure what it does
         //SpringApplication.run( CApplication.class, p_args );
 
+
         //testing some stuff
         //create playerhand and deck
         Deck testDeck = new Deck();
+        ChipsHandling chipsHandler = new ChipsHandling();
         PlayerHand p1 = new PlayerHand();
         //fill deck with cards
         testDeck.initDeck();

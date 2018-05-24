@@ -12,6 +12,12 @@ public class PlayerHand {
 
 
     //give the player a card
+
+    /**
+     *
+     * @param c
+     * @return
+     */
     public boolean takeCard(Card c){
         if (handCards.size() > 2){
             //too many handcards
@@ -23,6 +29,11 @@ public class PlayerHand {
     }
 
     //player shows his hand
+
+    /**
+     *
+     * @return
+     */
     public String showHand(){
         String output;
         //no need for loop, because player only has 2 valid handcards
