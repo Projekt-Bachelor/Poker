@@ -27,7 +27,7 @@ public class CApplication
         //testing some stuff
         //create playerhand and deck
         Deck testDeck = new Deck();
-        ChipsHandling chipsHandler = new ChipsHandling();
+        //ChipsHandling chipsHandler = new ChipsHandling();
         PlayerHand p1 = new PlayerHand();
         //fill deck with cards
         testDeck.initDeck();

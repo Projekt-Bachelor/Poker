@@ -85,12 +85,12 @@ public class Player {
 
     //method for folding
     public void fold(){
+        chipsHandler.somebodyHasFolded();
         fold = true;
     }
 
     //chipshandling has to check if player folded
     public boolean checkFolded(){
-        chipsHandler.somebodyHasFolded();
         return fold;
     }
 

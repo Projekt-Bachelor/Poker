@@ -4,12 +4,20 @@ import java.util.ArrayList;
 
 public class PlayerHand {
     private ArrayList<Card> handCards;
+    private int[] handEvaluation;
 
     //Constructor
     public PlayerHand(){
         handCards = new ArrayList<Card>();
+        handEvaluation = new int[6];
     }
 
+    public ArrayList<Card> getHandCards(){
+        return handCards;
+    }
+    public int[] getHandEvaluation(){
+        return handEvaluation;
+    }
 
     //give the player a card
 

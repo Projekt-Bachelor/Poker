@@ -27,6 +27,11 @@ public class Deck {
             }
         }
     }
+
+    //clear Deck for new round
+    public void clearDeck(){
+        cards.clear();
+    }
     // simple algorithm to shuffle, maybe switch algorithm to more randomness
 
     /**
