@@ -6,6 +6,20 @@ public class PlayerHand {
     private ArrayList<Card> handCards;
     private int[] handEvaluation;
 
+    /**
+     * Handevaluation[0] indicates the kind of hand you have at the end:
+     * 8: Straightflush
+     * 7: four of a kind
+     * 6: Full House
+     * 5: Flush
+     * 4: Straight
+     * 3: Triple
+     * 2: two pair
+     * 1: pair
+     * 0: high card
+     * handEvaluation[1-5] are the other important cards to determine the winner (e.g. highcards, or the ranks of the pairs
+     */
+
     //Constructor
     public PlayerHand(){
         handCards = new ArrayList<Card>();
@@ -17,6 +31,9 @@ public class PlayerHand {
     }
     public int[] getHandEvaluation(){
         return handEvaluation;
+    }
+    public void setHandEvaluation(int index, int value){
+        handEvaluation[index] = value;
     }
 
     //give the player a card

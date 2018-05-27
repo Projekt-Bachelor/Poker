@@ -26,7 +26,14 @@ public class StartHub {
         return players;
     }
 
-    public static void main( final String[] p_args ){
+    public ChipsHandling getChipsHandler() {
+        return chipsHandler;
+    }
+    public CardDealer getCardDealer(){
+        return cardDealer;
+    }
+
+    public static void main(final String[] p_args ){
 
     }
     public void startGame(){
