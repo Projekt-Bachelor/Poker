@@ -23,8 +23,11 @@ public class Card {
      *
      * @return
      */
-    public String getSuit(){
-        return suit.getSuit();
+    public int getSuitIndex(){
+        return suit.getSuitIndex();
+    }
+    public String getStringSuit(){
+        return suit.getStringSuit();
     }
 
     /**
@@ -41,7 +44,7 @@ public class Card {
      * @return
      */
     public String toString(){
-        String output= value.getValue() + " of " + suit.getSuit();
+        String output= value.getValue() + " of " + suit.getStringSuit();
         return output;
     }
 }

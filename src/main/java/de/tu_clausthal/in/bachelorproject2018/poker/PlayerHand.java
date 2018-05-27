@@ -62,8 +62,8 @@ public class PlayerHand {
     public String showHand(){
         String output;
         //no need for loop, because player only has 2 valid handcards
-        output = "Dieser Spieler hat: " + handCards.get(0).getValue() + " of "+ handCards.get(0).getSuit() +
-                " und " + handCards.get(1).getValue() + " of "+ handCards.get(1).getSuit();
+        output = "Dieser Spieler hat: " + handCards.get(0).getValue() + " of "+ handCards.get(0).getStringSuit() +
+                " und " + handCards.get(1).getValue() + " of "+ handCards.get(1).getStringSuit();
         return output;
     }
 

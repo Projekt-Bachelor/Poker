@@ -28,6 +28,10 @@ public class Deck {
         }
     }
 
+    public ArrayList<Card> getCards(){
+        return cards;
+    }
+
     //clear Deck for new round
     public void clearDeck(){
         cards.clear();
