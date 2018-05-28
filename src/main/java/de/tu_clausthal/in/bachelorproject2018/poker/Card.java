@@ -41,10 +41,10 @@ public class Card {
 
     /**
      *
-     * @return
+     *
+     * @return String
      */
     public String toString(){
-        String output= value.getValue() + " of " + suit.getStringSuit();
-        return output;
+        return value.getValue() + " of " + suit.getStringSuit();
     }
 }

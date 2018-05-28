@@ -117,8 +117,8 @@ public class ChipsHandling {
 
     public Player declareWinnerByFolding(){
         int winnerIndex = 0;
-        for (int i= 0; i < gameHub.getPlayerList().size()-1; i++){
-            if (gameHub.getPlayerList().get(i).checkFolded()){
+        for (int i= 0; i < gameHub.getPlayerList().size(); i++){
+            if (!gameHub.getPlayerList().get(i).checkFolded()){
                 winnerIndex = i;
             }
         }
@@ -150,6 +150,9 @@ public class ChipsHandling {
         for (Player player: gameHub.getPlayerList()){
             player.resetAmountBetThisRound();
             player.resetHasChecked();
+            player.getPlayerhand().resetHandEvaluation();
+            player.getPlayerhand().resethandCards();
+            player.resetFolded();
         }
     }
 

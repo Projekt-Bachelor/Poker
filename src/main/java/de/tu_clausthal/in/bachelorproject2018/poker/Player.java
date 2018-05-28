@@ -83,7 +83,7 @@ public class Player {
         return hasCheckedThisRound;
     }
 
-    //method for folding
+    //method for folding; make sure you can only fold once, and you have to call the method when you do!
     public void fold(){
         chipsHandler.somebodyHasFolded();
         fold = true;
@@ -92,6 +92,10 @@ public class Player {
     //chipshandling has to check if player folded
     public boolean checkFolded(){
         return fold;
+    }
+
+    public void resetFolded(){
+        fold = false;
     }
 
 

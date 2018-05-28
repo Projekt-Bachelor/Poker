@@ -5,7 +5,6 @@ import java.util.Collections;
 
 public class WinEvaluation {
     private StartHub gameHub;
-    private Player winner;
     private int[] rankArray = new int[15];
     //rankarray is 0-14m but 0 and 1 will always be empty. easier to think about the array without subsctracting 2 all the time
 
@@ -30,8 +29,8 @@ public class WinEvaluation {
         return rankArray;
     }
 
-    public Player evaluateWinner(){
-        //start handevaluatio for every player
+    public void evaluateHands(){
+        //start handevaluation for every player
         int sameCards;
         int sameCards2;
         int largeGroupRank;
@@ -233,10 +232,20 @@ public class WinEvaluation {
             }
         }
         //all handEvaluations done
-
-        
-        //dummy
-        winner = gameHub.getPlayerList().get(0);
-        return winner;
     }
+
+    public Player evaluateWinner(){
+        Player potentialWinner = gameHub.getPlayerList().get(0);
+        for (int i = 1; i< gameHub.getPlayerList().size(); i++){
+            for (int j = 0; j < 6; j++){
+                if (potentialWinner.getPlayerhand().getHandEvaluation()[j]> gameHub.getPlayerList().get(i).getPlayerhand().getHandEvaluation()[j]){
+                    break;
+                } else if (potentialWinner.getPlayerhand().getHandEvaluation()[j]< gameHub.getPlayerList().get(i).getPlayerhand().getHandEvaluation()[j]) {
+                        potentialWinner = gameHub.getPlayerList().get(i);
+                    }
+                }
+        }
+        return potentialWinner;
+    }
+
 }

@@ -35,6 +35,15 @@ public class PlayerHand {
     public void setHandEvaluation(int index, int value){
         handEvaluation[index] = value;
     }
+    public void resetHandEvaluation(){
+        for (int i = 0; i< 6; i++){
+            handEvaluation[i]= 0;
+        }
+    }
+
+    public void resethandCards(){
+        handCards.clear();
+    }
 
     //give the player a card
 

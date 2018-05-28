@@ -52,8 +52,10 @@ public class StartHub {
 
     public void playRound(){
         Player winner = null;
+        chipsHandler.resetHand();
         chipsHandler.forceBlinds();
         for(Player player: players){
+            player.getPlayerhand().takeCard(cardDealer.getDeck().removeTopCard());
             player.getPlayerhand().takeCard(cardDealer.getDeck().removeTopCard());
         }
         chipsHandler.checkForBets();
@@ -67,6 +69,7 @@ public class StartHub {
                     cardDealer.layRiver();
                     chipsHandler.checkForBets();
                     if(chipsHandler.continuePlayingRound()){
+                        winEvaluation.evaluateHands();
                         winner = winEvaluation.evaluateWinner();
                     }
                 } else {
