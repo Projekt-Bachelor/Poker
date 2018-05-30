@@ -27,8 +27,8 @@ jobs: # a collection of steps
       - checkout
 
       # Download and cache dependencies
-      - restore_cache:
-          key: poker-{{ checksum "pom.xml" }}
+      #- restore_cache:
+      #    key: poker-{{ checksum "pom.xml" }}
 
       - run: git clean -xdf
       - run: mvn dependency:go-offline
