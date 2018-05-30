@@ -15,6 +15,10 @@ jobs: # a collection of steps
       #specify the version you desire here
       - image: circleci/openjdk:8-jdk-browsers
 
+    branches:
+        only:
+            - master
+
     environment:
       GIT_AUTHOR_NAME: CircleCI
       GIT_AUTHOR_EMAIL: nobody@email.com
