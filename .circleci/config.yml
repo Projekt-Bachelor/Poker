@@ -62,4 +62,4 @@ jobs: # a collection of steps
               echo -e '*.*\n!.gitignore\n!circle.yml\n!*.htm*\n!*.css\n!*.js\n!*.png\n!*.gif\n!*.svg\n!*.json\n!*.g4\n!org\.lightjason*\n' > .gitignore
               git add --all .
               git commit -m "current documentation"
-              git push -f gh-pages
+              git push ---force
