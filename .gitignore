@@ -8,6 +8,7 @@
 !*.java
 
 !src/main/resources/static/*.html
+!src/main/resources/templates/*.html
 
 !src/analysis/**/*.xml
 !src/analysis/**/*.txt
