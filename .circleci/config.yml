@@ -27,9 +27,10 @@ jobs: # a collection of steps
       - checkout
 
       # Download and cache dependencies
-      #- restore_cache:
-      #    key: poker-{{ checksum "pom.xml" }}
+      - restore_cache:
+          key: poker-{{ checksum "pom.xml" }}
 
+      - run: git clean -xdf
       - run: mvn dependency:go-offline
 
       - save_cache:
@@ -55,6 +56,7 @@ jobs: # a collection of steps
           command: |
               mv -f target/site /tmp
               rm -Rf *
+              rm -Rf .circleci
               git branch -D gh-pages || true
               git checkout --orphan gh-pages
               mv -f /tmp/site/* .
