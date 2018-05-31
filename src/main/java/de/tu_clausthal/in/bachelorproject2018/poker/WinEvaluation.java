@@ -90,8 +90,9 @@ public class WinEvaluation {
                         smallGroupRank = i;
                     }
                     //order every card not used in the part before
-                    if (rankArray[i] >= 1 && orderedRankcounter > 5 && i != largeGroupRank && i != smallGroupRank) {
+                    if (rankArray[i] >= 1 && orderedRankcounter < 5 && i != largeGroupRank && i != smallGroupRank) {
                         orderedRank[orderedRankcounter] = i;
+                        orderedRankcounter++;
                     }
                 }
                 if (sameCards == 3) {

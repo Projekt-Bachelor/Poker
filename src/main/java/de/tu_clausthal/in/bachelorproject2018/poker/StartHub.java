@@ -33,9 +33,7 @@ public class StartHub {
         return cardDealer;
     }
 
-    public static void main(final String[] p_args ){
 
-    }
     public void startGame(){
         StartHub gameHub = new StartHub();
         players = new ArrayList<Player>();
@@ -51,6 +49,7 @@ public class StartHub {
     }
 
     public void playRound(){
+        chipsHandler.resetHand();
         Player winner = null;
         chipsHandler.resetHand();
         chipsHandler.forceBlinds();
@@ -60,12 +59,15 @@ public class StartHub {
         }
         chipsHandler.checkForBets();
         if(chipsHandler.continuePlayingRound()){
+            chipsHandler.resetRound();
             cardDealer.layFlop();
             chipsHandler.checkForBets();
             if(chipsHandler.continuePlayingRound()){
+                chipsHandler.resetRound();
                 cardDealer.layTurn();
                 chipsHandler.checkForBets();
                 if(chipsHandler.continuePlayingRound()){
+                    chipsHandler.resetRound();
                     cardDealer.layRiver();
                     chipsHandler.checkForBets();
                     if(chipsHandler.continuePlayingRound()){

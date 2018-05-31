@@ -76,11 +76,11 @@ public class Deck {
      * @return
      */
     public String showDeck(){
-        String output = "";
-        for (Card c: cards){
-            output += c.toString() + ", ";
-        }
-        return output;
+            String output = "";
+            for (Card c: cards){
+                output += c.toString() + ", ";
+            }
+            return output;
     }
 
 }
