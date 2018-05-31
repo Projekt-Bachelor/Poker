@@ -47,6 +47,6 @@ public class Controller_Player {
      */
     @ModelAttribute("instance")
     public Hub refreshHub(){
-        return Hub.getInstance();
+        return Hub.getHubInstance();
     }
 }

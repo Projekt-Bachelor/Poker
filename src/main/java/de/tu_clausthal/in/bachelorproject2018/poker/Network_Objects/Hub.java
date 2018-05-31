@@ -14,7 +14,7 @@ public class Hub implements IHub {
     private Map<Number, String> playerMap = new HashMap<Number, String>();
     private final AtomicLong counter = new AtomicLong();
 
-    private static final Hub instance = new Hub();
+    private static final Hub hubInstance = new Hub();
 
     /**
      * Default Construktor
@@ -25,10 +25,10 @@ public class Hub implements IHub {
 
     /**
      * Method related to Singleton Pattern
-     * @return instance of Hub
+     * @return hubInstance of Hub
      */
-    public static Hub getInstance(){
-        return instance;
+    public static Hub getHubInstance(){
+        return hubInstance;
     }
 
     @Override
