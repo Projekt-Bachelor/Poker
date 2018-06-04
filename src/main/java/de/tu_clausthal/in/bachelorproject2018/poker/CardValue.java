@@ -7,9 +7,6 @@ public enum CardValue {
 
     private final int value;
 
-    /**
-     * @param value
-     */
     //Constructor
     CardValue(int value){
         this.value = value;

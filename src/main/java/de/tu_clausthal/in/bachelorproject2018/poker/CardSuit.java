@@ -1,27 +1,37 @@
 package de.tu_clausthal.in.bachelorproject2018.poker;
 
+/**CardSuit Class, to be able to identify the 4 different suits of cards
+ *
+ */
 public enum CardSuit {
     club(0),
     spade(1),
     heart(2),
     diamond(3);
 
-    //private final String suitText;
     private final int suitIndex;
 
-    //Constructor
-    /*private CardSuit(String suitText){
-        this.suitText = suitText;
-    }*/
-    private CardSuit (int suitIndex){
+    /**
+     * Constructor
+     * @param suitIndex
+     */
+    CardSuit (int suitIndex){
         this.suitIndex = suitIndex;
     }
+
+    /**
+     * Getter
+     * @return Index of suit as integer
+     */
     public int getSuitIndex(){
         return suitIndex;
 
     }
 
-    //to read suit
+    /**
+     * To be able to read the suits of the cards
+     * @return Suit of the card as String
+     */
     public String getStringSuit(){
         switch (suitIndex){
             case 0:

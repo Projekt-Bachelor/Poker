@@ -6,23 +6,44 @@ import java.util.Collections;
 public class WinEvaluation {
     private StartHub gameHub;
     private int[] rankArray = new int[15];
-    //rankarray is 0-14m but 0 and 1 will always be empty. easier to think about the array without subsctracting 2 all the time
-    //Singleton
+     /**
+     * Singleton
+     */
     private static final WinEvaluation winEvaluation = new WinEvaluation();
 
+    /**
+     * Constructor
+     */
     private WinEvaluation(){
         gameHub = StartHub.getInstance();
     }
+
+    /**
+     * get Instance of the Singleton
+     * @return WinEvaluation instance
+     */
     public static WinEvaluation getInstance(){
         return winEvaluation;
     }
 
-    //add tablecards to handcards of each player
+    /**
+     * to evaluate who won, we add the tablecards to each playerhand, so each playerhand has 7 cards available
+     * easier to process in the WinEvaluation process
+     * @param player
+     */
     public void combineCards(Player player){
         for (int i = 0; i<5; i++) {
             player.getPlayerhand().getHandCards().add(gameHub.getCardDealer().getTableCards().get(i));
         }
     }
+
+    /**
+     * Create the Rankarray
+     * Initialize the array with 0s
+     * count the occurences of each value in the playerhands
+     * @param player
+     * @return RankArray as int[] of the player
+     */
     public int[] createRankArray(Player player){
         //set rankArray to 0
         for(int i = 0; i< rankArray.length; i++ ){
@@ -34,6 +55,12 @@ public class WinEvaluation {
         return rankArray;
     }
 
+    /**
+     * For each player fill out the HandEvaluation
+     * first, combineCards and create rankarray for each player
+     * check through the Rankarray for any Pairs, Triples, FourOfAKinds, FullHouses or Straights
+     * check for flush
+     */
     public void evaluateHands(){
         //start handevaluation for every player
         int sameCards;
@@ -123,7 +150,7 @@ public class WinEvaluation {
                         player.getPlayerhand().setHandEvaluation(2, smallGroupRank);
                         player.getPlayerhand().setHandEvaluation(3, orderedRank[0]);
                     } else if (1 > player.getPlayerhand().getHandEvaluation()[0]) {
-                        //just one pair, asve pair and 3 highest cards
+                        //just one pair, save pair and 3 highest cards
                         player.getPlayerhand().setHandEvaluation(0, 1);
                         player.getPlayerhand().setHandEvaluation(1, largeGroupRank);
                         player.getPlayerhand().setHandEvaluation(2, orderedRank[0]);
@@ -183,6 +210,7 @@ public class WinEvaluation {
                         }
                     }
                 }
+                //get to know which flush it is
                 if (clubFlushCounter >= 5) {
                     flushIndex = 0;
                     normalFlush = true;
@@ -197,13 +225,14 @@ public class WinEvaluation {
                     normalFlush = true;
                 }
                 if (normalFlush) {
+                    //if we have a flush, get the highcards of the flushsuit
                     for (Card card : player.getPlayerhand().getHandCards()) {
                         if (card.getSuitIndex() == flushIndex) {
                         orderedFlushValues[orderedFlushValuesIndex] = card.getValue();
                         orderedFlushValuesIndex++;
                         }
                     }
-                    //orderflushvalues is in ascending order!
+                    //orderedflushvalues is in ascending order!
                     Arrays.sort(orderedFlushValues);
                     if(5 > player.getPlayerhand().getHandEvaluation()[0]){
                         //save the 5 highest cards in the flush suit
@@ -240,14 +269,22 @@ public class WinEvaluation {
         //all handEvaluations done
     }
 
+    /**
+     * compare the EvaluationArray of each player with each other
+     * save potential winner, and compare him with each other player,
+     * @return winner as Player
+     */
     public Player evaluateWinner(){
         Player potentialWinner = gameHub.getPlayerList().get(0);
         for (int i = 1; i< gameHub.getPlayerList().size(); i++){
             for (int j = 0; j < 6; j++){
                 if (potentialWinner.getPlayerhand().getHandEvaluation()[j]> gameHub.getPlayerList().get(i).getPlayerhand().getHandEvaluation()[j]){
+                    //potential Winner is better
                     break;
                 } else if (potentialWinner.getPlayerhand().getHandEvaluation()[j]< gameHub.getPlayerList().get(i).getPlayerhand().getHandEvaluation()[j]) {
+                        //potential Winner is worse
                         potentialWinner = gameHub.getPlayerList().get(i);
+                        break;
                     }
                 }
         }

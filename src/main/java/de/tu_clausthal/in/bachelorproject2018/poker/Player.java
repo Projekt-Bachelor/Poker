@@ -11,18 +11,29 @@ public class Player {
     private boolean hasCheckedThisRound= false;
 
 
-    //contructor
+    /**
+     * constructor
+     */
     public Player() {
         this.playerhand = new PlayerHand();
         fold = false;
         amountBetThisRound = 0;
         this.chipsHandler = ChipsHandling.getInstance();
     }
-    //to add chips
+
+    /**
+     * to add chips to the players chipscount
+     * @param add
+     */
     public void addChips(int add){
         chipsCount += add;
     }
-    //to substract chips for betting
+
+    /**
+     * check if the player has enough chips to bet, and then substract it from the chipscount
+     * @param substract
+     * @return boolean if the player had enough chips
+     */
     public boolean substractChips(int substract){
         if (chipsCount >= substract){
             chipsCount = chipsCount - substract;
@@ -33,67 +44,104 @@ public class Player {
         }
     }
 
-    //for ChipsHandler to reset amountBet after each round
+    /**
+     * reset the amount for the next round
+     */
     public void resetAmountBetThisRound(){
         amountBetThisRound = 0;
     }
 
-    //to get information about playerhand
+    /**
+     * getter to be able to access the cards of the player
+     * @return PlayerHand
+     */
     public PlayerHand getPlayerhand(){
         return playerhand;
     }
-    //to get chipsCount
+
+    /**
+     * getter for the chipsCount
+     * @return chipsCount as integer
+     */
     public int getChipsCount(){
         return chipsCount;
     }
-    //to get amountBetThisRound
+
+    /**
+     * getter for the amount bet this round
+     * @return amountBetThisRound as integer
+     */
     public int getAmountBetThisRound(){
         return amountBetThisRound;
     }
 
-    //method for calling
+    /**
+     * calculate the amount to call, then bet the chips
+     */
     public void call(){
         int remainingAmount;
         remainingAmount = chipsHandler.getHighestBidThisRound() - amountBetThisRound;
         if (substractChips(remainingAmount)){
             amountBetThisRound += remainingAmount;
-            chipsHandler.addToPot(remainingAmount);
+            chipsHandler.addToPot(remainingAmount, amountBetThisRound);
         }
     }
 
-    //method for raising, to call you have to give the argument of the whole raise sum
+    /**
+     * add the amount to the chips already bet this round, then bet the chips
+     * only works if the amount raised, is higher than the highestBidThisRound
+     * @param amount
+     */
     public void raise(int amount){
-        if (amount > chipsHandler.getHighestBidThisRound()){
+        if (amount+amountBetThisRound > chipsHandler.getHighestBidThisRound()){
             if (substractChips(amount)) {
                 amountBetThisRound += amount;
-                chipsHandler.addToPot(amount);
+                chipsHandler.addToPot(amount, amountBetThisRound);
             }
         }
     }
 
+    /**
+     * check this round
+     */
     public void check(){
         hasCheckedThisRound = true;
     }
 
+    /**
+     * reset hasChecked, to be able to check next round
+     */
     public void resetHasChecked(){
         hasCheckedThisRound = false;
     }
 
+    /**
+     * getter for hasChecked
+     * @return hasCheckedThisRound as boolean
+     */
     public boolean getHasCheckedThisRound(){
         return hasCheckedThisRound;
     }
 
-    //method for folding; make sure you can only fold once, and you have to call the method when you do!
+    /**
+     * fold this round, count down the counter of players still in this round
+     */
     public void fold(){
         chipsHandler.somebodyHasFolded();
         fold = true;
     }
 
-    //chipshandling has to check if player folded
+    /**
+     * check if the player has folded
+     * @return folded as boolean
+     */
     public boolean checkFolded(){
         return fold;
     }
 
+    /**
+     * reset folded for the next round
+     */
     public void resetFolded(){
         fold = false;
     }
