@@ -10,22 +10,11 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 
 @Controller
-//@SessionAttributes("GameStateInstance")
+/**
+ * This class is responsible for sending a Flux which contain GameInformation to the browser. The advantage of the Flux
+ * is that no player needs to refresh the page because the ad adapts dynamically.
+ */
 public class Controller_GameStream {
-
-    /*@Autowired
-    GameStateService gameStateService;
-
-    @RequestMapping(value = "/gamestate", method = RequestMethod.GET, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    @ResponseBody
-    public Flux<String> showGameState(@ModelAttribute("GameStateInstance") GameState gameState){
-        return gameStateService.getCurrentGameState(gameState.getList());
-    }
-
-    @ModelAttribute("GameStateInstance")
-    public GameState refreshGameState(){
-        return GameState.getGameStateInstance();
-    }*/
 
     @Autowired
     private GameStateService gameStateService;

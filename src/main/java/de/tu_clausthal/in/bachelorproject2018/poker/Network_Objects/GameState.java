@@ -3,14 +3,14 @@ package de.tu_clausthal.in.bachelorproject2018.poker.Network_Objects;
 import de.tu_clausthal.in.bachelorproject2018.poker.Interfaces.IGameState;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicLong;
 
+/**
+ * This singleton holds the complete GameState (list of GameInformations).
+ */
 public class GameState implements IGameState {
 
-    private List<String> gameInformationList = new ArrayList<>();
+    private List<GameInformation> gameInformationList = new ArrayList<>();
 
     private static final GameState gameStateInstance = new GameState();
 
@@ -24,12 +24,22 @@ public class GameState implements IGameState {
 
 
     @Override
-    public List<String> getList() {
+    public List<GameInformation> getList() {
         return gameInformationList;
     }
 
     @Override
     public void addGameInformation(GameInformation gameInformation) {
-        gameInformationList.add(gameInformation.getText());
+        gameInformationList.add(gameInformation);
+    }
+
+    @Override
+    public int getSize(){
+        return gameInformationList.size();
+    }
+
+    @Override
+    public GameInformation getElement(int index) {
+        return gameInformationList.get(index);
     }
 }

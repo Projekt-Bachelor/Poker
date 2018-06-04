@@ -7,7 +7,11 @@ import java.util.Map;
 
 public interface IGameState {
 
-    List<String> getList();
+    List<GameInformation> getList();
 
     void addGameInformation(GameInformation gameInformation);
+
+    GameInformation getElement(int index);
+
+    int getSize();
 }
