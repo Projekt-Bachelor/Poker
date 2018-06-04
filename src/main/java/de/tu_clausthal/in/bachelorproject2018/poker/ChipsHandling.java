@@ -6,14 +6,21 @@ public class ChipsHandling {
     private int smallBlindIndex = 0;
     private int bigBlindIndex = 1;
     private int bigBlindAmount = 100;
+    private int smallBlindAmount = 50;
     private int highestBidThisRound = 0;
     private boolean roundBettingFinished = false;
     private boolean newRound = false;
     private int playersInThisRound;
     private StartHub gameHub;
+    //singleton
+    private static final ChipsHandling chipsHandler = new ChipsHandling();
 
-    public ChipsHandling(StartHub gameHub){
-        this.gameHub = gameHub;
+    private ChipsHandling(){
+    gameHub = StartHub.getInstance();
+    }
+
+    public static ChipsHandling getInstance(){
+        return chipsHandler;
     }
 
     //method for the player to add to pot, newRound to be able to check, that nobody has set this round so far (for checking)
@@ -25,8 +32,8 @@ public class ChipsHandling {
     public int getBigBlindAmount(){
         return bigBlindAmount;
     }
-    public int getSmallBlindAmoutn(){
-        return (bigBlindAmount/2);
+    public int getSmallBlindAmount(){
+        return (smallBlindAmount);
     }
 
     public int getHighestBidThisRound(){
@@ -35,6 +42,8 @@ public class ChipsHandling {
 
     //keep changing blinds clockwise
     public void nextBlind(){
+        bigBlindAmount = 2* bigBlindAmount;
+        smallBlindAmount = bigBlindAmount/2;
         if (smallBlindIndex == gameHub.getPlayerList().size()-1){
             smallBlindIndex = 0;
         }
@@ -46,7 +55,6 @@ public class ChipsHandling {
         } else {
             bigBlindIndex++;
         }
-        notifyAllClients();
     }
 
     //method to help with the start of the betting. needed because bigBlindIndex +1 might go out of bounds
@@ -142,6 +150,7 @@ public class ChipsHandling {
     }
     //reset everything after each fully played hand
     public void resetHand(){
+        nextBlind();
         highestBidThisRound = 0;
         roundBettingFinished = false;
         newRound = false;

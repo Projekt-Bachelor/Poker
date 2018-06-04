@@ -8,13 +8,19 @@ public class StartHub {
     private CardDealer cardDealer;
     private WinEvaluation winEvaluation;
 
+    private static final StartHub gameHub = new StartHub();
+
     //Constructor
-    public StartHub(){
+    private StartHub(){
+    }
+
+    public static StartHub getInstance(){
+        return gameHub;
     }
 
     //create new Player
     public Player createPlayer(){
-        Player newPlayer = new Player(chipsHandler);
+        Player newPlayer = new Player();
         return newPlayer;
     }
     //method to add players at the start of the game
@@ -37,9 +43,9 @@ public class StartHub {
     public void startGame(){
         StartHub gameHub = new StartHub();
         players = new ArrayList<Player>();
-        ChipsHandling chipsHandler = new ChipsHandling(gameHub);
-        CardDealer cardDealer = new CardDealer(gameHub);
-        WinEvaluation winEvaluation = new WinEvaluation(gameHub);
+        ChipsHandling chipsHandler = ChipsHandling.getInstance();
+        CardDealer cardDealer = CardDealer.getInstance();
+        WinEvaluation winEvaluation = WinEvaluation.getInstance();
         addPlayer(createPlayer());
         addPlayer(createPlayer());
         addPlayer(createPlayer());
@@ -49,9 +55,9 @@ public class StartHub {
     }
 
     public void playRound(){
-        chipsHandler.resetHand();
         Player winner = null;
         chipsHandler.resetHand();
+        cardDealer.resetForNextRound();
         chipsHandler.forceBlinds();
         for(Player player: players){
             player.getPlayerhand().takeCard(cardDealer.getDeck().removeTopCard());

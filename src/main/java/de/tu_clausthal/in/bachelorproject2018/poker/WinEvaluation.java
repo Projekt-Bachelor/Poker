@@ -7,9 +7,14 @@ public class WinEvaluation {
     private StartHub gameHub;
     private int[] rankArray = new int[15];
     //rankarray is 0-14m but 0 and 1 will always be empty. easier to think about the array without subsctracting 2 all the time
+    //Singleton
+    private static final WinEvaluation winEvaluation = new WinEvaluation();
 
-    public WinEvaluation(StartHub gameHub){
-        this.gameHub = gameHub;
+    private WinEvaluation(){
+        gameHub = StartHub.getInstance();
+    }
+    public static WinEvaluation getInstance(){
+        return winEvaluation;
     }
 
     //add tablecards to handcards of each player

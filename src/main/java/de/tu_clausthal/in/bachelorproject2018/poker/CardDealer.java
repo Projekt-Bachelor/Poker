@@ -6,9 +6,14 @@ public class CardDealer {
     private Deck playDeck = new Deck();
     private StartHub gameHub;
     private ArrayList<Card> tableCards = new ArrayList<Card>();
+    private static final CardDealer cardDealer = new CardDealer();
 
-    public CardDealer(StartHub gameHub){
-        this.gameHub = gameHub;
+    private CardDealer(){
+        gameHub = gameHub.getInstance();
+    }
+
+    public static CardDealer getInstance(){
+        return cardDealer;
     }
 
     //reset deck for each round

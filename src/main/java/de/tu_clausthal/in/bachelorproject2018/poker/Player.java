@@ -12,11 +12,11 @@ public class Player {
 
 
     //contructor
-    public Player(ChipsHandling chipsHandler) {
+    public Player() {
         this.playerhand = new PlayerHand();
         fold = false;
         amountBetThisRound = 0;
-        this.chipsHandler = chipsHandler;
+        this.chipsHandler = ChipsHandling.getInstance();
     }
     //to add chips
     public void addChips(int add){
