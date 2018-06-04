@@ -1,7 +1,5 @@
 package de.tu_clausthal.in.bachelorproject2018.poker;
 
-import com.sun.xml.internal.bind.v2.TODO;
-
 public class Player {
     private PlayerHand playerhand;
     private int chipsCount;
