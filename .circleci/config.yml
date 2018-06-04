@@ -8,6 +8,10 @@ jobs: # a collection of steps
 
     working_directory: ~/poker # directory where steps will run
 
+    branches:
+        only:
+            - master
+
     # Specify service dependencies here if necessary
     # CircleCI maintains a library of pre-built images
     # documented at https://circleci.com/docs/2.0/circleci-images/

@@ -14,6 +14,10 @@ public class Deck {
     }
 
     //create deck
+
+    /**
+     *
+     */
     public void initDeck(){
         //double loop, run through suit and value to create every single card
         for (CardSuit suit: CardSuit.values()){
@@ -23,7 +27,20 @@ public class Deck {
             }
         }
     }
+
+    public ArrayList<Card> getCards(){
+        return cards;
+    }
+
+    //clear Deck for new round
+    public void clearDeck(){
+        cards.clear();
+    }
     // simple algorithm to shuffle, maybe switch algorithm to more randomness
+
+    /**
+     *
+     */
     public void shuffle(){
         //maybe repeat this a couple of times, to shuffle even more
         for (int i = cards.size()-1; i>0; i--){
@@ -40,6 +57,11 @@ public class Deck {
     }
 
     //deal the top card of the deck, and remove it from the deck. return card to give it to player/board
+
+    /**
+     *
+     * @return
+     */
     public Card removeTopCard(){
         Card dealtCard;
         dealtCard = cards.get(cards.size()-1);
@@ -48,12 +70,17 @@ public class Deck {
     }
 
     //show remaining content of deck for testing?
+
+    /**
+     *
+     * @return
+     */
     public String showDeck(){
-        String output = "";
-        for (Card c: cards){
-            output += c.toString() + ", ";
-        }
-        return output;
+            String output = "";
+            for (Card c: cards){
+                output += c.toString() + ", ";
+            }
+            return output;
     }
 
 }

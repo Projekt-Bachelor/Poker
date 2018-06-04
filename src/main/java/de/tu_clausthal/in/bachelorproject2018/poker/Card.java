@@ -5,22 +5,47 @@ public class Card {
     private CardSuit suit;
     private CardValue value;
 
-    //Constructor
+
+    /**
+     * Constructor for Cards
+     * @param suit
+     * @param value
+     */
     public Card(CardSuit suit, CardValue value){
         this.suit = suit;
         this.value = value;
     }
 
-    //read data of card
-    public String getSuit(){
-        return suit.getSuit();
+
+    /**
+     * Get Suit information of card
+     * @return integer of suit of card
+     */
+    public int getSuitIndex(){
+        return suit.getSuitIndex();
     }
+
+    /**
+     * Get Suit information of card
+     * @return string of suit of card
+     */
+    public String getStringSuit(){
+        return suit.getStringSuit();
+    }
+
+    /**
+     * Get Value information of card
+     * @return integer value of card
+     */
     public int getValue(){
         return value.getValue();
     }
-    //read data to test
+
+    /**
+     *
+     * @return String of card with all relevant information
+     */
     public String toString(){
-        String output= value.getValue() + " of " + suit.getSuit();
-        return output;
+        return value.getValue() + " of " + suit.getStringSuit();
     }
 }
