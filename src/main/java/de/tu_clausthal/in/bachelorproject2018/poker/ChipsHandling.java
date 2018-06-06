@@ -225,6 +225,7 @@ public class ChipsHandling {
     /**
      * reset everything after a fully played hand
      * resets the same variables as resetRound but furthermore resets pot, handcards, folded etc.
+     * switches the smallblind and bigblind players
      */
     public void resetHand(){
         nextBlind();

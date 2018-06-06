@@ -20,37 +20,59 @@ public class PlayerHand {
      * handEvaluation[1-5] are the other important cards to determine the winner (e.g. highcards, or the ranks of the pairs
      */
 
-    //Constructor
+    /**
+     * constructor
+     */
     public PlayerHand(){
         handCards = new ArrayList<Card>();
         handEvaluation = new int[6];
     }
 
+    /**
+     * getter for handcards
+     * @return handcards as ArrayList<Card>
+     */
     public ArrayList<Card> getHandCards(){
         return handCards;
     }
+
+    /**
+     * getter for handevaluation
+     * @return handevaluation as int[]
+     */
     public int[] getHandEvaluation(){
         return handEvaluation;
     }
+
+    /**
+     * set the handevaluation elements to a certain value, used by winevaluation
+     * @param index as int
+     * @param value as int
+     */
     public void setHandEvaluation(int index, int value){
         handEvaluation[index] = value;
     }
+
+    /**
+     * set the handevaluation to zeroes
+     */
     public void resetHandEvaluation(){
         for (int i = 0; i< 6; i++){
             handEvaluation[i]= 0;
         }
     }
 
+    /**
+     * clear the handcards at the end of the round
+     */
     public void resethandCards(){
         handCards.clear();
     }
 
-    //give the player a card
-
     /**
-     *
-     * @param c
-     * @return
+     * give the player a card
+     * @param c as card
+     * @return boolean if it worked
      */
     public boolean takeCard(Card c){
         if (handCards.size() > 2){
@@ -62,11 +84,10 @@ public class PlayerHand {
         return true;
     }
 
-    //player shows his hand
 
     /**
-     *
-     * @return
+     * show handcards of the players
+     * @return handcards as string
      */
     public String showHand(){
         String output;
