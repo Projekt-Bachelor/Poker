@@ -13,7 +13,7 @@ public class WinEvaluation {
 
     /**
      * Constructor
-     * .
+     * 
      */
     private WinEvaluation(){
         gameHub = StartHub.getInstance();
