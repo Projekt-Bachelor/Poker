@@ -12,7 +12,7 @@ public class CardDealer {
      * Constructor
      */
     private CardDealer(){
-        gameHub = gameHub.getInstance();
+        gameHub = StartHub.getInstance();
     }
 
     /**
