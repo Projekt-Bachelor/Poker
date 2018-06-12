@@ -1,6 +1,10 @@
 package de.tu_clausthal.in.bachelorproject2018.poker;
 
-public class Player {
+import de.tu_clausthal.in.bachelorproject2018.poker.action.IAction;
+
+
+public class Player implements IPlayer
+{
     private PlayerHand playerhand;
     private int chipsCount;
     private boolean fold;
@@ -17,6 +21,13 @@ public class Player {
         fold = false;
         amountBetThisRound = 0;
         this.chipsHandler = ChipsHandling.getInstance();
+    }
+
+    @Override
+    public IPlayer amount( int p_value )
+    {
+        amountBetThisRound = p_value;
+        return this;
     }
 
     /**
@@ -151,4 +162,9 @@ public class Player {
     }
 
 
+    @Override
+    public void accept( final IAction p_action )
+    {
+        p_action.accept( this );
+    }
 }

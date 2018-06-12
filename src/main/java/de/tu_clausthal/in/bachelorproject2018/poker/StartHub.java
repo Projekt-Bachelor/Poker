@@ -1,6 +1,10 @@
 package de.tu_clausthal.in.bachelorproject2018.poker;
 
+import de.tu_clausthal.in.bachelorproject2018.poker.roundaction.EOrder;
+
 import java.util.ArrayList;
+import java.util.Arrays;
+
 
 public class StartHub {
     private ArrayList<Player> players;
@@ -104,6 +108,18 @@ public class StartHub {
             player.getPlayerhand().takeCard(cardDealer.getDeck().removeTopCard());
             player.getPlayerhand().takeCard(cardDealer.getDeck().removeTopCard());
         }
+
+        Arrays.stream( EOrder.values() )
+              // hole aus dem enum das IRoundAction Object
+              .map( i -> i.get() )
+              // führe in dem IRoundAction Objectk get aus
+              .map( i -> i.get() )
+              // filtere IRoundAction Objekt, ob gestoppt werden muss
+              .filter( i -> i.stop() )
+              // wenn das erste IRoundAction Objekt stop == true sagt
+              .findFirst();
+
+        /*
         chipsHandler.checkForBets();
         if(chipsHandler.continuePlayingRound()){
             chipsHandler.resetRound();
@@ -131,6 +147,7 @@ public class StartHub {
             winner = chipsHandler.declareWinnerByFolding();
         }
         chipsHandler.distributePotToWinner(winner);
+        */
     }
 
 }
