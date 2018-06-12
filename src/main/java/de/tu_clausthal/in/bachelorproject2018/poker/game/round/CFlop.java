@@ -1,6 +1,11 @@
-package de.tu_clausthal.in.bachelorproject2018.poker.roundaction;
+package de.tu_clausthal.in.bachelorproject2018.poker.game.round;
 
-public class CFlop implements IRoundAction
+/**
+ * Flop Ausführung
+ *
+ * @todo Flop Logik implementieren
+ */
+public final class CFlop implements IRoundAction
 {
     @Override
     public boolean stop()

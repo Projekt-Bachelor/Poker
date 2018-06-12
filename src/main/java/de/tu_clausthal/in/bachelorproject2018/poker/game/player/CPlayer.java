@@ -1,9 +1,11 @@
-package de.tu_clausthal.in.bachelorproject2018.poker;
+package de.tu_clausthal.in.bachelorproject2018.poker.game.player;
 
-import de.tu_clausthal.in.bachelorproject2018.poker.action.IAction;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.ChipsHandling;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.PlayerHand;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.action.IAction;
 
 
-public class Player implements IPlayer
+public final class CPlayer implements IPlayer
 {
     private PlayerHand playerhand;
     private int chipsCount;
@@ -16,11 +18,17 @@ public class Player implements IPlayer
     /**
      * constructor
      */
-    public Player() {
+    public CPlayer() {
         this.playerhand = new PlayerHand();
         fold = false;
         amountBetThisRound = 0;
         this.chipsHandler = ChipsHandling.getInstance();
+    }
+
+    @Override
+    public int amount()
+    {
+        return amountBetThisRound;
     }
 
     @Override

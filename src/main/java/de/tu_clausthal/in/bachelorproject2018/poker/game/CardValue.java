@@ -1,4 +1,4 @@
-package de.tu_clausthal.in.bachelorproject2018.poker;
+package de.tu_clausthal.in.bachelorproject2018.poker.game;
 
 public enum CardValue {
     two(2), three(3), four(4), five(5), six(6),

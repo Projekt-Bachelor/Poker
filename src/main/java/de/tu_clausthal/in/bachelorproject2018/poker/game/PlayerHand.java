@@ -1,4 +1,4 @@
-package de.tu_clausthal.in.bachelorproject2018.poker;
+package de.tu_clausthal.in.bachelorproject2018.poker.game;
 
 import java.util.ArrayList;
 
