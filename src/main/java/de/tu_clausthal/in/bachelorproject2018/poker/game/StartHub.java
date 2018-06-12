@@ -33,9 +33,10 @@ public class StartHub {
     /**
      * create a new player object, return the player
      * @return a new player as Player
+     * @todo das kann hier raus
      */
     public IPlayer createPlayer(){
-        return new CPlayer();
+        return new CPlayer( "" );
     }
 
     /**

@@ -2,8 +2,6 @@ package de.tu_clausthal.in.bachelorproject2018.poker.game;
 
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.CPlayer;
 
-import java.util.Arrays;
-
 
 public class WinEvaluation {
     private StartHub gameHub;

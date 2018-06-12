@@ -1,12 +1,21 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.player;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.ChipsHandling;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.PlayerHand;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.action.IAction;
 
+import javax.annotation.Nonnull;
+
 
 public final class CPlayer implements IPlayer
 {
+    /**
+     * Name des Spielers, über die Annotation kann ich den Feldnamen im JSON Objekt verändern
+     */
+    @JsonProperty( "name" )
+    private final String m_name;
+
     private PlayerHand playerhand;
     private int chipsCount;
     private boolean fold;
@@ -17,12 +26,24 @@ public final class CPlayer implements IPlayer
 
     /**
      * constructor
+     * @param p_name Name des Spielers
      */
-    public CPlayer() {
+    public CPlayer( @Nonnull final String p_name ) {
+        m_name = p_name;
+
         this.playerhand = new PlayerHand();
+
+        // @todo diese Zeilen sind überflüssig, bitte mal nachlesen, wie Variablen in Java per Default initialisiert werden, ebenso muss man das Singleton nicht noch mal explizit in einer Variablen speichern.
         fold = false;
         amountBetThisRound = 0;
         this.chipsHandler = ChipsHandling.getInstance();
+    }
+
+    @Nonnull
+    @Override
+    public String name()
+    {
+        return m_name;
     }
 
     @Override

@@ -3,6 +3,7 @@ package de.tu_clausthal.in.bachelorproject2018.poker.game.table;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 
 import javax.annotation.Nonnull;
+import java.util.Collection;
 import java.util.Iterator;
 
 
@@ -21,6 +22,22 @@ public interface ITable extends Iterator<IPlayer>
     String name();
 
     /**
+     * flag ob das Spiel gestartet wurde
+     *
+     * @return Spiel läuft aktuell
+     */
+    boolean isplaying();
+
+    /**
+     * startet das Spiel
+     *
+     * @param p_owner Spieler, der das SPiel startet
+     * @return Objektreferenz
+     */
+    @Nonnull
+    ITable start( @Nonnull IPlayer p_owner );
+
+    /**
      * überprüft, ob der übergebene Spieler aktiv setzen kann
      *
      * @param p_player Spielerobjekt
@@ -29,17 +46,26 @@ public interface ITable extends Iterator<IPlayer>
     boolean isactive( @Nonnull final IPlayer p_player );
 
     /**
-     * liefert das Spielerobjekt, wer aktuell an der Reihe ist
-     *
-     * @return Spielerobjekt
-     */
-    IPlayer active();
-
-    /**
      * entfernt einen Spieler vom Tisch
      *
      * @param p_player Spielerobjekt das entfertn werden soll
      * @return Objektreferenz auf den Tisch
      */
-    ITable kick( @Nonnull final IPlayer p_player );
+    @Nonnull
+    ITable leave( @Nonnull final IPlayer p_player );
+
+    /**
+     * ein Spieler joint dem Spiel, wenn es noch nicht läuft
+     *
+     * @param p_player Player
+     * @return Objektreferenz
+     */
+    @Nonnull
+    ITable join( @Nonnull final IPlayer p_player );
+
+    /**
+     * liefert alle Spieler des Tisches
+     */
+    Collection<IPlayer> list();
+
 }
