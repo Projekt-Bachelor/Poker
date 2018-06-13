@@ -1,13 +1,20 @@
 <!DOCTYPE html>
-<html lang="de">
+<html xmlns:th="http://www.thymleaf.org">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bachelor-Projekt 2018 - Poker</title>  
+    <title>Bachelor-Projekt 2018 - Poker</title>
+
 </head>
 
 <body>
     <h1>Bachelor-Projekt 2018 - Poker</h1>
+
+    <div>
+        <form action="#" th:action="@{/player}" method="get">
+            <p><input type="submit" value="Submit"/></p>
+        </form>
+    </div>
 </body>
 </html>
