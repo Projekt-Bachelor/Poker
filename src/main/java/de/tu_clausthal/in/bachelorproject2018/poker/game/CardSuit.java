@@ -1,4 +1,4 @@
-package de.tu_clausthal.in.bachelorproject2018.poker;
+package de.tu_clausthal.in.bachelorproject2018.poker.game;
 
 /**CardSuit Class, to be able to identify the 4 different suits of cards
  *

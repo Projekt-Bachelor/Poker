@@ -1,10 +1,15 @@
-package de.tu_clausthal.in.bachelorproject2018.poker;
+package de.tu_clausthal.in.bachelorproject2018.poker.game;
+
+import de.tu_clausthal.in.bachelorproject2018.poker.game.player.CPlayer;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.round.ERound;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+
 
 public class StartHub {
-    private ArrayList<Player> players;
-    private ChipsHandling chipsHandler;
+    private final ArrayList<IPlayer> players = new ArrayList<>();
     private CardDealer cardDealer;
     private WinEvaluation winEvaluation;
     private int chipsStartAmount;
@@ -28,17 +33,17 @@ public class StartHub {
     /**
      * create a new player object, return the player
      * @return a new player as Player
+     * @todo das kann hier raus
      */
-    public Player createPlayer(){
-        Player newPlayer = new Player();
-        return newPlayer;
+    public IPlayer createPlayer(){
+        return new CPlayer( "" );
     }
 
     /**
      * add a player to the list of players
      * @param newPlayer as Player
      */
-    public void addPlayer(Player newPlayer){
+    public void addPlayer(CPlayer newPlayer){
         players.add(newPlayer);
     }
 
@@ -46,17 +51,10 @@ public class StartHub {
      * getter for the playerlist
      * @return playerlist as ArrayList<Player>
      */
-    public ArrayList<Player> getPlayerList(){
+    public ArrayList<IPlayer> getPlayerList(){
         return players;
     }
 
-    /**
-     * getter for the chipshandler
-     * @return chipshandler as ChipsHandling
-     */
-    public ChipsHandling getChipsHandler() {
-        return chipsHandler;
-    }
 
     /**
      * getter for the carddealer
@@ -70,7 +68,6 @@ public class StartHub {
      * start the programm, save the other important classes in the starthub
      */
     public void startProgram(){
-        players = new ArrayList<Player>();
         ChipsHandling chipsHandler = ChipsHandling.getInstance();
         CardDealer cardDealer = CardDealer.getInstance();
         WinEvaluation winEvaluation = WinEvaluation.getInstance();
@@ -81,9 +78,14 @@ public class StartHub {
      */
     public void startGame(){
         cardDealer.firstDeckOfTheGame();
-        for (Player player: players){
-            player.addChips(chipsStartAmount);
-        }
+
+        /*
+         * @todo IPlayer-Klasse muss das addChips bekommen
+         */
+        //players.forEach( i -> i.addChips( chipsStartAmount ) );
+        // for (CPlayer player: players){
+        //    player.addChips(chipsStartAmount);
+        //}
     }
 
     /**
@@ -96,14 +98,31 @@ public class StartHub {
      * if more than 1 player is in the final round, check who won and distribute pot to winner
      */
     public void playRound(){
-        Player winner = null;
-        chipsHandler.resetHand();
+        // @todo das sollte man niemals machen, dazu bitte ein Nullobjekt im IPlayer definieren
+        CPlayer winner = null;
+        ChipsHandling.getInstance().resetHand();
         cardDealer.resetForNextRound();
-        chipsHandler.forceBlinds();
-        for(Player player: players){
-            player.getPlayerhand().takeCard(cardDealer.getDeck().removeTopCard());
-            player.getPlayerhand().takeCard(cardDealer.getDeck().removeTopCard());
-        }
+        ChipsHandling.getInstance().forceBlinds();
+
+        /**
+         * @todo analog wie oben mittels Stream iterieren
+         */
+        //for(CPlayer player: players){
+        //    player.getPlayerhand().takeCard(cardDealer.getDeck().removeTopCard());
+        //    player.getPlayerhand().takeCard(cardDealer.getDeck().removeTopCard());
+        //}
+
+        Arrays.stream( ERound.values() )
+              // hole aus dem enum das IRoundAction Object
+              .map( i -> i.get() )
+              // führe in dem IRoundAction Objectk get aus
+              .map( i -> i.get() )
+              // filtere IRoundAction Objekt, ob gestoppt werden muss
+              .filter( i -> i.stop() )
+              // wenn das erste IRoundAction Objekt stop == true sagt
+              .findFirst();
+
+        /*
         chipsHandler.checkForBets();
         if(chipsHandler.continuePlayingRound()){
             chipsHandler.resetRound();
@@ -131,6 +150,7 @@ public class StartHub {
             winner = chipsHandler.declareWinnerByFolding();
         }
         chipsHandler.distributePotToWinner(winner);
+        */
     }
 
 }

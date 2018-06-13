@@ -1,5 +1,8 @@
-package de.tu_clausthal.in.bachelorproject2018.poker;
-import java.util.ArrayList;
+package de.tu_clausthal.in.bachelorproject2018.poker.game;
+
+
+import de.tu_clausthal.in.bachelorproject2018.poker.game.player.CPlayer;
+
 
 public class ChipsHandling {
     private int pot= 0;
@@ -116,9 +119,11 @@ public class ChipsHandling {
      * update the highestBidThisRound to the bigBlind
      */
     public void forceBlinds(){
+        /*
         gameHub.getPlayerList().get(bigBlindIndex).raise(bigBlindAmount);
         gameHub.getPlayerList().get(smallBlindIndex).raise(smallBlindAmount);
         highestBidThisRound = bigBlindAmount;
+        */
     }
 
     /**
@@ -154,6 +159,8 @@ public class ChipsHandling {
          * newRound is set to false, when the first players adds anything to the pot
          * newRound is there to enable checking, but only if nobody has bet anything this round
          */
+
+        /*
         while(!roundBettingFinished){
                 if (gameHub.getPlayerList().get(whoToAsk).getAmountBetThisRound() < highestBidThisRound || newRound) {
                     if (newRound && gameHub.getPlayerList().get(whoToAsk).getHasCheckedThisRound()) {
@@ -171,6 +178,7 @@ public class ChipsHandling {
                 }
             whoToAsk = updateWhoToAsk(whoToAsk);
         }
+        */
     }
 
     /**
@@ -189,7 +197,8 @@ public class ChipsHandling {
      * if everybody but one has folded, return the player who didnt fold
      * @return winner as Player
      */
-    public Player declareWinnerByFolding(){
+    public CPlayer declareWinnerByFolding(){
+        /*
         int winnerIndex = 0;
         for (int i= 0; i < gameHub.getPlayerList().size(); i++){
             if (!gameHub.getPlayerList().get(i).checkFolded()){
@@ -197,13 +206,15 @@ public class ChipsHandling {
             }
         }
         return gameHub.getPlayerList().get(winnerIndex);
+        */
+        return null;
     }
 
     /**
      * Add the chipsamount in the pot to the players chips
      * @param winner
      */
-    public void distributePotToWinner(Player winner){
+    public void distributePotToWinner(CPlayer winner){
         winner.addChips(pot);
     }
 
@@ -216,10 +227,12 @@ public class ChipsHandling {
         highestBidThisRound = 0;
         roundBettingFinished = false;
         newRound = true;
-        for (Player player: gameHub.getPlayerList()){
+        /*
+        for (CPlayer player: gameHub.getPlayerList()){
             player.resetAmountBetThisRound();
             player.resetHasChecked();
         }
+        */
     }
 
     /**
@@ -234,22 +247,16 @@ public class ChipsHandling {
         newRound = false;
         pot = 0;
         playersInThisRound = gameHub.getPlayerList().size();
-        for (Player player: gameHub.getPlayerList()){
+        /*
+        for (CPlayer player: gameHub.getPlayerList()){
             player.resetAmountBetThisRound();
             player.resetHasChecked();
             player.getPlayerhand().resetHandEvaluation();
             player.getPlayerhand().resethandCards();
             player.resetFolded();
         }
+        */
     }
-
-
-
-
-
-
-
-
 
 
     public void notifyAllClients(){
