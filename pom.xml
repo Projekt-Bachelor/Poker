@@ -7,10 +7,11 @@
     <name>Poker</name>
     <description></description>
 
+    <!-- Need to update to Version 2.0.2.RELEASE -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.10.RELEASE</version>
+        <version>2.0.2.RELEASE</version>
     </parent>
 
     <properties>
@@ -33,6 +34,19 @@
             <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
 
+        <!-- For using HTML-Forms -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
+        <!-- For using Spring Reactive Programming -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
+
+
         <!-- checking -->
         <dependency>
             <groupId>com.google.code.findbugs</groupId>
@@ -52,6 +66,13 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-test</artifactId>
+            <version>3.1.7.RELEASE</version>
             <scope>test</scope>
         </dependency>
 
