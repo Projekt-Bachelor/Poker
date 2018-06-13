@@ -9,6 +9,7 @@
         <menu ref="reports"/>
         <menu name="Poker">
             <item name="Documentation" href="sources/"/>
+            <item name="Heroku Application" href="https://project-poker.herokuapp.com/" target="_blank"/>
         </menu>
     </body>
 </project>

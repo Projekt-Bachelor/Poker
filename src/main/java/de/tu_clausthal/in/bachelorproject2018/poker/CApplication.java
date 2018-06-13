@@ -13,12 +13,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 public class CApplication
 {
-
-    /**
-     * main
-     *
-     * @param p_args arguments
-     */
     public static void main( final String[] p_args )
     {
         SpringApplication.run( CApplication.class, p_args );
