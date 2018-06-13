@@ -1,6 +1,5 @@
 package de.tu_clausthal.in.bachelorproject2018.poker;
 
-import de.tu_clausthal.in.bachelorproject2018.poker.Network_Objects.Hub;
 import de.tu_clausthal.in.bachelorproject2018.poker.Network_Objects.Player;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ETables;
 import org.springframework.stereotype.Controller;
@@ -27,7 +26,7 @@ public class Controller_Player {
      * @return HTML form with which the player can "register" with a username.
      */
     @RequestMapping(value = "/player", method = RequestMethod.GET)
-    public String userForm(Model model){
+    public String playerForm(Model model){
         model.addAttribute("player", new Player());
         return "player";
     }
@@ -38,19 +37,14 @@ public class Controller_Player {
      * @return HTML page showing the user name and all players currently in the game.
      */
     @RequestMapping(value = "/player", method = RequestMethod.POST)
-    public String userSubmit(@ModelAttribute Player player, @ModelAttribute("tables") Set<String> tables){
+    public String displayTables(@ModelAttribute Player player, @ModelAttribute("tables") Set<String> tables){
         return "tables";
     }
 
     /**
-     * This method updates the SessionAttribute(instance or rather Hub) each time the controller is invoked.
-     * @return instance of the Singleton Hub.
+     * This method updates the SessionAttribute tables each time the controller is invoked.
+     * @return List of all tables.
      */
-    /*@ModelAttribute("instance")
-    public Hub refreshHub(){
-        return Hub.getHubInstance();
-    }*/
-
     @ModelAttribute("tables")
     public Set<String> getTables(){
         return ETables.INSTANCE.get();

@@ -27,7 +27,6 @@
         </tr>
     </table>
     <div>
-
         <form th:action="@{/table/create/{roomName}/{owner}(roomName=${roomName}, owner=${player.getName()})}" method="get">
             <input type="text" th:value="${roomName}" id="roomName" name="roomName">
             <button type="submit">Raum erstellen</button>
