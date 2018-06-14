@@ -11,11 +11,12 @@ import javax.annotation.Nonnull;
  */
 public class CCall implements IAction
 {
-    int callAmount;
+
 
     @Override
     public void accept( @Nonnull final IPlayer p_player )
     {
+        int callAmount;
         // Überprüfung, ob der Spieler überhaupt callen kann
         if ( p_player.getAmountBetThisRound() - ChipsHandling.getInstance().getHighestBidThisRound() > 0 )
             throw new RuntimeException( "Spieler kannst nicht callen" );
