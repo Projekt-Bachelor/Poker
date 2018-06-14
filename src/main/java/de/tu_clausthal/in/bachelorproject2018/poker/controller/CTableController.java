@@ -29,8 +29,8 @@ public final class CTableController
      *
      * @param p_name Name des Tisches
      */
-    @RequestMapping( value = "/create/{name}/{owner}" )
-    public void create( @PathVariable( "name" ) final String p_name, @PathVariable( "owner" ) final String p_owner )
+    @RequestMapping( value = "/create/{getName}/{owner}" )
+    public void create( @PathVariable( "getName" ) final String p_name, @PathVariable( "owner" ) final String p_owner )
     {
         // in dem Singleton der Tables wird nun ein neuer Tisch mit einem Namen und einem Besitzer erzeugt
         ETables.INSTANCE.add( new CTable( p_name, new CPlayer( p_owner ) ) );

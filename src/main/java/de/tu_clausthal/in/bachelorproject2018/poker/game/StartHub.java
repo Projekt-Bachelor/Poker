@@ -74,7 +74,7 @@ public class StartHub {
     }
 
     /**
-     * start the game with initializing the deck and adding the start amount of chips to each players count
+     * start the game with initializing the deck and adding the start getAmountBetThisRound of chips to each players count
      */
     public void startGame(){
         cardDealer.firstDeckOfTheGame();

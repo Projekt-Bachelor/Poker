@@ -13,14 +13,13 @@ public final class CPlayer implements IPlayer
     /**
      * Name des Spielers, über die Annotation kann ich den Feldnamen im JSON Objekt verändern
      */
-    @JsonProperty( "name" )
+    @JsonProperty( "getName" )
     private final String m_name;
 
     private PlayerHand playerhand;
     private int chipsCount;
-    private boolean fold;
-    private int amountBetThisRound;
-    private ChipsHandling chipsHandler;
+    private boolean fold = false;
+    private int amountBetThisRound = 0;
     private boolean hasCheckedThisRound= false;
 
 
@@ -30,34 +29,35 @@ public final class CPlayer implements IPlayer
      */
     public CPlayer( @Nonnull final String p_name ) {
         m_name = p_name;
-
         this.playerhand = new PlayerHand();
-
-        // @todo diese Zeilen sind überflüssig, bitte mal nachlesen, wie Variablen in Java per Default initialisiert werden, ebenso muss man das Singleton nicht noch mal explizit in einer Variablen speichern.
-        fold = false;
-        amountBetThisRound = 0;
-        this.chipsHandler = ChipsHandling.getInstance();
     }
 
     @Nonnull
     @Override
-    public String name()
+    public String getName()
     {
         return m_name;
     }
 
     @Override
-    public int amount()
+    public int getAmountBetThisRound()
     {
         return amountBetThisRound;
     }
 
     @Override
-    public IPlayer amount( int p_value )
+    public void addToAmountBetThisRound(int amount) {
+        amountBetThisRound = amountBetThisRound + amount;
+    }
+
+    @Override
+    public IPlayer getAmountBetThisRound(int p_value )
     {
         amountBetThisRound = p_value;
         return this;
     }
+
+
 
     /**
      * to add chips to the players chipscount
@@ -72,6 +72,7 @@ public final class CPlayer implements IPlayer
      * @param substract
      * @return boolean if the player had enough chips
      */
+    @Override
     public boolean substractChips(int substract){
         if (chipsCount >= substract){
             chipsCount = chipsCount - substract;
@@ -83,7 +84,7 @@ public final class CPlayer implements IPlayer
     }
 
     /**
-     * reset the amount for the next round
+     * reset the getAmountBetThisRound for the next round
      */
     public void resetAmountBetThisRound(){
         amountBetThisRound = 0;
@@ -101,40 +102,35 @@ public final class CPlayer implements IPlayer
      * getter for the chipsCount
      * @return chipsCount as integer
      */
+    @Override
     public int getChipsCount(){
         return chipsCount;
     }
 
-    /**
-     * getter for the amount bet this round
-     * @return amountBetThisRound as integer
-     */
-    public int getAmountBetThisRound(){
-        return amountBetThisRound;
-    }
+
 
     /**
-     * calculate the amount to call, then bet the chips
+     * calculate the getAmountBetThisRound to call, then bet the chips
      */
     public void call(){
         int remainingAmount;
-        remainingAmount = chipsHandler.getHighestBidThisRound() - amountBetThisRound;
+        remainingAmount = ChipsHandling.getInstance().getHighestBidThisRound() - amountBetThisRound;
         if (substractChips(remainingAmount)){
             amountBetThisRound += remainingAmount;
-            chipsHandler.addToPot(remainingAmount, amountBetThisRound);
+            ChipsHandling.getInstance().addToPot(remainingAmount, amountBetThisRound);
         }
     }
 
     /**
-     * add the amount to the chips already bet this round, then bet the chips
-     * only works if the amount raised, is higher than the highestBidThisRound
+     * add the getAmountBetThisRound to the chips already bet this round, then bet the chips
+     * only works if the getAmountBetThisRound raised, is higher than the highestBidThisRound
      * @param amount
      */
     public void raise(int amount){
-        if (amount+amountBetThisRound > chipsHandler.getHighestBidThisRound()){
+        if (amount+amountBetThisRound > ChipsHandling.getInstance().getHighestBidThisRound()){
             if (substractChips(amount)) {
                 amountBetThisRound += amount;
-                chipsHandler.addToPot(amount, amountBetThisRound);
+                ChipsHandling.getInstance().addToPot(amount, amountBetThisRound);
             }
         }
     }
@@ -165,7 +161,7 @@ public final class CPlayer implements IPlayer
      * fold this round, count down the counter of players still in this round
      */
     public void fold(){
-        chipsHandler.somebodyHasFolded();
+        ChipsHandling.getInstance().somebodyHasFolded();
         fold = true;
     }
 
@@ -184,11 +180,6 @@ public final class CPlayer implements IPlayer
         fold = false;
     }
 
-
-    //Issue for Niklas to complete Method
-    public void checkAction(){
-
-    }
 
 
     @Override

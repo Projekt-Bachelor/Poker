@@ -15,7 +15,7 @@ public final class CAllIn implements IAction
     @Override
     public void accept( @Nonnull final IPlayer p_player )
     {
-        // ChipsHandling.getInstance().addToPot( p_player.amount() );
-        p_player.amount( 0 );
+        // ChipsHandling.getInstance().addToPot( p_player.getAmountBetThisRound() );
+        p_player.getAmountBetThisRound( 0 );
     }
 }

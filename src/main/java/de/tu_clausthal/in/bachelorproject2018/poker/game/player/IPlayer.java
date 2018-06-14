@@ -20,15 +20,22 @@ public interface IPlayer extends Consumer<IAction>
      * @return Spielername
      */
     @Nonnull
-    String name();
+    String getName();
 
     /**
-     * liefert den aktuellen Betrag des Spielers
+     * liefert den aktuellen Betrag des Spielers dieser Runde
      *
      * @return Betrag
      */
     @Nonnegative
-    int amount();
+    int getAmountBetThisRound();
+
+    boolean substractChips(int amount);
+
+    @Nonnegative
+    void addToAmountBetThisRound(int amount);
+
+    int getChipsCount();
 
     /**
      * setzt den aktuellen Betrag des Spielers
@@ -37,6 +44,6 @@ public interface IPlayer extends Consumer<IAction>
      * @return Objektreferenz
      */
     @NotNull
-    IPlayer amount( @Nonnegative final int p_amount );
+    IPlayer getAmountBetThisRound(@Nonnegative final int p_amount );
 
 }

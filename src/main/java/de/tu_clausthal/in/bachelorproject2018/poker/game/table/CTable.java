@@ -4,13 +4,7 @@ import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 
 import javax.annotation.Nonnull;
 import java.text.MessageFormat;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -54,7 +48,7 @@ public final class CTable implements ITable
     /**
      * Konstruktor
      *
-     * @param p_name name
+     * @param p_name getName
      */
     public CTable( @Nonnull final String p_name, @Nonnull final IPlayer p_owner)
     {

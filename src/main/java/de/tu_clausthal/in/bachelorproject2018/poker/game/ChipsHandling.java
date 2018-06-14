@@ -36,7 +36,7 @@ public class ChipsHandling {
     }
 
     /**
-     * add the amount to the pot
+     * add the getAmountBetThisRound to the pot
      * gets called when a player bets anything
      * newRound will be set false, because somebody hast bet something this bettinground
      * if the player is the one with the most bet this round (in the case of raising), update highestBidThisRound
@@ -93,7 +93,7 @@ public class ChipsHandling {
     }
 
     /**
-     * double the amount of the blinds
+     * double the getAmountBetThisRound of the blinds
      * do this every couple of rounds to speed up the game
      */
     public void doubleBlinds(){
@@ -150,7 +150,7 @@ public class ChipsHandling {
     /**
      * go through a whole round of betting
      * asks each player (if they have not folded alrady) what action they want to take
-     * continues until everybody has folded or bet the same amount
+     * continues until everybody has folded or bet the same getAmountBetThisRound
      */
     public void checkForBets(){
         int whoToAsk = getRoundStarter();
