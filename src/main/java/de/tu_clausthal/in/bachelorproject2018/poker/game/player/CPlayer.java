@@ -21,6 +21,7 @@ public final class CPlayer implements IPlayer
     private boolean fold = false;
     private int amountBetThisRound = 0;
     private boolean hasCheckedThisRound= false;
+    private boolean isAllIn = false;
 
 
     /**
@@ -56,6 +57,7 @@ public final class CPlayer implements IPlayer
         amountBetThisRound = p_value;
         return this;
     }
+
 
 
 
@@ -107,33 +109,21 @@ public final class CPlayer implements IPlayer
         return chipsCount;
     }
 
-
-
-    /**
-     * calculate the getAmountBetThisRound to call, then bet the chips
-     */
-    public void call(){
-        int remainingAmount;
-        remainingAmount = ChipsHandling.getInstance().getHighestBidThisRound() - amountBetThisRound;
-        if (substractChips(remainingAmount)){
-            amountBetThisRound += remainingAmount;
-            ChipsHandling.getInstance().addToPot(remainingAmount, amountBetThisRound);
-        }
+    @Override
+    public boolean getAllIn() {
+        return isAllIn;
     }
 
-    /**
-     * add the getAmountBetThisRound to the chips already bet this round, then bet the chips
-     * only works if the getAmountBetThisRound raised, is higher than the highestBidThisRound
-     * @param amount
-     */
-    public void raise(int amount){
-        if (amount+amountBetThisRound > ChipsHandling.getInstance().getHighestBidThisRound()){
-            if (substractChips(amount)) {
-                amountBetThisRound += amount;
-                ChipsHandling.getInstance().addToPot(amount, amountBetThisRound);
-            }
-        }
+    @Override
+    public void playerAllIn() {
+        isAllIn = true;
     }
+
+    @Override
+    public void resetAllIn() {
+        isAllIn = false;
+    }
+
 
     /**
      * check this round
@@ -160,6 +150,7 @@ public final class CPlayer implements IPlayer
     /**
      * fold this round, count down the counter of players still in this round
      */
+    @Override
     public void fold(){
         ChipsHandling.getInstance().somebodyHasFolded();
         fold = true;
