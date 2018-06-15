@@ -13,17 +13,14 @@ import java.util.function.Supplier;
  */
 public enum ERound implements Supplier<IRoundAction>
 {
-    // erste Runde ist ein "Flop" und über den Parameter wird das passende Rundenobjekt erzeugt
+    BETTINGROUND1( new CBetRound()),
     FLOP( new CFlop() ),
-    // zweite Runde ist eine Benachrichtungsrunde, wie der Tisch aussieht
-    TABLENOTIFY1( new CNotify() ),
-    // dritte Runde, ist die River-Runde
+    BETTINGROUND2( new CBetRound()),
     TRURN( new CRiver() ),
-    // vierte Runde ist werden wieder alle Spieler über die Änderung des Tisches benachrichtigt
-    TABLENOTIFY2( new CNotify() ),
-    // fünfte Runde ist die River-Runde
-    RIVER( new CRiver() );
-    // sechste ist die Gewinn Ausführung
+    BETTINGROUND3(new CBetRound()),
+    RIVER( new CRiver() ),
+    BETTINGROUND4(new CBetRound()),
+    WINEVALUATION(new CWinEvaluation());
 
     /**
      * Rundenaktions Objekt, das pro Enum-Item definiert ist

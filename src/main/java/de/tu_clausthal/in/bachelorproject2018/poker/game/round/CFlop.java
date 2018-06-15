@@ -1,5 +1,7 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.round;
 
+import de.tu_clausthal.in.bachelorproject2018.poker.game.CardDealer;
+
 /**
  * Flop Ausführung
  *
@@ -17,11 +19,11 @@ public final class CFlop implements IRoundAction
     public IRoundAction get()
     {
         // Logik Flop
-        /*
-        tableCards.add(playDeck.removeTopCard());
-        tableCards.add(playDeck.removeTopCard());
-        tableCards.add(playDeck.removeTopCard());
-        */
+
+        CardDealer.getInstance().getTableCards().add(CardDealer.getInstance().getDeck().removeTopCard());
+        CardDealer.getInstance().getTableCards().add(CardDealer.getInstance().getDeck().removeTopCard());
+        CardDealer.getInstance().getTableCards().add(CardDealer.getInstance().getDeck().removeTopCard());
+
         return this;
     }
 }
