@@ -45,6 +45,8 @@ public interface IPlayer extends Consumer<IAction>
 
     void fold();
 
+    void check();
+
     /**
      * setzt den aktuellen Betrag des Spielers
      *

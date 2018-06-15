@@ -128,6 +128,7 @@ public final class CPlayer implements IPlayer
     /**
      * check this round
      */
+    @Override
     public void check(){
         hasCheckedThisRound = true;
     }
