@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class PlayerHand {
     private ArrayList<Card> handCards;
     private int[] handEvaluation;
+    private int[] rankArray;
 
     /**
      * Handevaluation[0] indicates the kind of hand you have at the end:
@@ -26,6 +27,7 @@ public class PlayerHand {
     public PlayerHand(){
         handCards = new ArrayList<Card>();
         handEvaluation = new int[6];
+        rankArray = new int[15];
     }
 
     /**
@@ -54,6 +56,14 @@ public class PlayerHand {
     }
 
     /**
+     * adds 1 to the rankarray[index]
+     * @param index
+     */
+    public void addRankArray(int index){
+        rankArray[index]++;
+    }
+
+    /**
      * set the handevaluation to zeroes
      */
     public void resetHandEvaluation(){
@@ -62,6 +72,14 @@ public class PlayerHand {
         }
     }
 
+    /**
+     * set the rankArray to zeroes
+     */
+    public void resetRankArray(){
+        for (int i = 0; i<15; i++){
+            rankArray[i]= 0;
+        }
+    }
     /**
      * clear the handcards at the end of the round
      */
@@ -82,6 +100,14 @@ public class PlayerHand {
             handCards.add(c);
         }
         return true;
+    }
+
+    /**
+     * getter for Rankarray
+     * @return rankarray as int[]
+     */
+    public int[] getRankArray(){
+        return rankArray;
     }
 
 

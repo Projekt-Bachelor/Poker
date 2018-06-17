@@ -111,16 +111,32 @@ public class StartHub {
         //    player.getPlayerhand().takeCard(cardDealer.getDeck().removeTopCard());
         //    player.getPlayerhand().takeCard(cardDealer.getDeck().removeTopCard());
         //}
-
+        /**
+         * Durchlaufen einer ganzen Runde
+         */
         Arrays.stream( ERound.values() )
               // hole aus dem enum das IRoundAction Object
               .map( i -> i.get() )
-              // führe in dem IRoundAction Objectk get aus
+              // führe in dem IRoundAction Objekt get aus
               .map( i -> i.get() )
               // filtere IRoundAction Objekt, ob gestoppt werden muss
               .filter( i -> i.stop() )
               // wenn das erste IRoundAction Objekt stop == true sagt
               .findFirst();
+
+        /**
+         * Durchlaufen einer Winevaluation ohne Vergleiche
+         */
+        /*for (IPlayer player : players){
+            if (!player.checkfolded()){
+                Arrays.stream(EWinCheck.values() )
+                        .map (i -> i.get())
+                        .map (i-> i.get(player.getPlayerhand()));
+            }
+
+        }
+        */
+
 
         /*
         chipsHandler.checkForBets();

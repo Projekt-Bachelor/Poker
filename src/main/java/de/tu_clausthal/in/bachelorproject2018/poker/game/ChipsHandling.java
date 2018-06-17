@@ -259,9 +259,5 @@ public class ChipsHandling {
     }
 
 
-    public void notifyAllClients(){
-        //completed by Niklas
-    }
-
 
 }

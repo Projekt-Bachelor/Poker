@@ -96,6 +96,7 @@ public final class CPlayer implements IPlayer
      * getter to be able to access the cards of the player
      * @return PlayerHand
      */
+    @Override
     public PlayerHand getPlayerhand(){
         return playerhand;
     }
@@ -134,6 +135,15 @@ public final class CPlayer implements IPlayer
     }
 
     /**
+     * check if the player has folded
+     * @return folded as boolean
+     */
+    @Override
+    public boolean checkfolded() {
+        return fold;
+    }
+
+    /**
      * reset hasChecked, to be able to check next round
      */
     public void resetHasChecked(){
@@ -157,13 +167,7 @@ public final class CPlayer implements IPlayer
         fold = true;
     }
 
-    /**
-     * check if the player has folded
-     * @return folded as boolean
-     */
-    public boolean checkFolded(){
-        return fold;
-    }
+
 
     /**
      * reset folded for the next round
