@@ -26,4 +26,7 @@ public final class CRaise implements IAction
         //ChipsHandling.getInstance().addToPot( value );
     }
 
+    public int getValue() {
+        return value;
+    }
 }

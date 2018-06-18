@@ -1,4 +1,4 @@
-package de.tu_clausthal.in.bachelorproject2018.poker.Network_Objects;
+package de.tu_clausthal.in.bachelorproject2018.poker.Network_Objects.BasicTestFiles;
 
 public class Network_BaseResponse {
 
