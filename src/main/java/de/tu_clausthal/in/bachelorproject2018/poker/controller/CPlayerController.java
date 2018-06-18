@@ -15,5 +15,4 @@ public class CPlayerController {
     public void createPlayer(Player player) throws Exception {
         CPlayer newPlayer = new CPlayer(player.getName());
     }
-
 }
