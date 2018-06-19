@@ -1,15 +1,26 @@
-var stompClient = null;
+let stompClient = null;
+
+let successResponse = 100;
+
 
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
     $("#disconnect").prop("disabled", !connected);
     if (connected) {
-        $("#conversation").show();
+        $("#tableContainer").show();
     }
     else {
-        $("#conversation").hide();
+        $("#tableContainer").hide();
     }
     $("#greetings").html("");
+}
+
+function requestJSON(url, callback) {
+    fetch(url)
+        .then(response => response.json())
+        .then(function (data) {
+            callback(data)
+        }).catch(error => console.error('Could not fetch url: ', error))
 }
 
 function connect() {
@@ -18,8 +29,8 @@ function connect() {
     stompClient.connect({}, function (frame) {
         setConnected(true);
         console.log('Connected: ' + frame);
-        stompClient.subscribe('/topic/tables', function (greeting) {
-            showGreeting(JSON.parse(greeting.body).content);
+        stompClient.subscribe('/topic/tables', function (response) {
+            validateResponse(JSON.parse(response.body));
         });
     });
 }
@@ -37,8 +48,21 @@ function sendName() {
         JSON.stringify({'name': $("#name").val()}));
 }
 
-function showGreeting(message) {
-    $("#greetings").append("<tr><td>" + message + "</td></tr>");
+function getTables() {
+    requestJSON("/tables/list", showTables())
+}
+
+function showTables(tables) {
+    tables.forEach(display)
+}
+
+function showTable(tableName) {
+    $("#tables").append("<tr><td>" + tableName + "</td></tr>");
+}
+
+function validateResponse(response){
+    //TODO - Abfrage auf Success-Meldung implementieren
+    getTables();
 }
 
 $(function () {

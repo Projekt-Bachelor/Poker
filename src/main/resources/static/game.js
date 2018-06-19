@@ -18,7 +18,7 @@ function connect() {
         setConnected(true);
         console.log('Connected: ' + frame);
         stompClient.subscribe('/topic/game', function (gameinformation) {
-            showGameInformation(JSON.parse(gameinformation.body).content);
+            showGameInformation(JSON.parse(gameinformation.body));
         });
     });
 }
