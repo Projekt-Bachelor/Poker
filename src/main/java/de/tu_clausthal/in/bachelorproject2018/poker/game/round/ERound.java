@@ -1,11 +1,12 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.round;
 
+import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
+
 import javax.annotation.Nonnull;
+import java.text.MessageFormat;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Supplier;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 
@@ -16,46 +17,58 @@ import java.util.stream.Stream;
  *
  * @todo Gewinn-Ausführung muss noch implementiert werden
  */
-public enum ERound implements Supplier<List<IRoundAction>>
+public enum ERound
 {
-    BETTINGROUND1(),
-    FLOP( new CFlop() ),
-    BETTINGROUND2( new CBetRound()),
-    TRURN( new CRiver() ),
-    BETTINGROUND3(new CBetRound()),
-    RIVER( new CRiver() ),
-    BETTINGROUND4(new CBetRound()),
-    WINEVALUATION(new CWinEvaluation());
+    BETTINGROUND1,
+    FLOP,
+    BETTINGROUND2,
+    TRURN,
+    BETTINGROUND3,
+    RIVER,
+    BETTINGROUND4,
+    WINEVALUATION;
 
 
-
-    private Stream<IRoundAction> generate( int tischsize )
+    /**
+     * factory round objects
+     *
+     * @param p_player player list
+     * @return stream of objects
+     */
+    private Stream<IRoundAction> factory( @Nonnull final List<IPlayer> p_player )
     {
         switch ( this )
         {
-            case BETTINGROUND4:
-            case BETTINGROUND3:
-            case BETTINGROUND2:
             case BETTINGROUND1:
-                return IntStream.range( 0, tischsize ).boxed().map( i -> new CBetRound() );
+            case BETTINGROUND2:
+            case BETTINGROUND3:
+            case BETTINGROUND4:
+                return p_player.stream().map( CBetRound::new );
 
             case FLOP:
                 return Stream.of( new CFlop() );
 
+            case RIVER:
+                return Stream.of( new CRiver() );
+
+            case WINEVALUATION:
+                return Stream.of( new CWinEvaluation() );
+
+            default:
+                throw new RuntimeException( MessageFormat.format( "Runde [{0}] nicht bekannt", this ) );
         }
     }
 
     /**
-     * liefert zu dem aktuellen Enum-Item das Rundenobjekt
+     * liefert anhand aller Spieler alle Runden-Objekte
      *
+     * @param p_player player list
      * @return Rundenobjekt
      */
     @Nonnull
-    @Override
-    public List<IRoundAction> get( int tischsize )
+    public static Stream<IRoundAction> generate( @Nonnull final List<IPlayer> p_player )
     {
-        return Arrays.stream( ERound.values() )
-              .flatMap( i -> i.generate( tischsize ) ).collect( Collectors.toList() );
+        return Arrays.stream( ERound.values() ).flatMap( i -> i.factory( p_player ) );
 
     }
 }

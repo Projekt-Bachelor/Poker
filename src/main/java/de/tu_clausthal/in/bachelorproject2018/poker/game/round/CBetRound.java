@@ -1,8 +1,19 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.round;
 
-public final class CBetRound implements IRoundAction {
+import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 
-    boolean stop = false;
+
+public final class CBetRound implements IRoundAction {
+    /**
+     * Spielerobjekt, für den der Bet ausgeführt wird
+     */
+    private final IPlayer m_player;
+    private boolean stop = false;
+
+    public CBetRound( final IPlayer p_player )
+    {
+        m_player = p_player;
+    }
 
     @Override
     public boolean stop() {
@@ -11,7 +22,7 @@ public final class CBetRound implements IRoundAction {
 
     @Override
     public IRoundAction get() {
-
+        // @todo hier wird der Bet nur für den Spieler m_player ausgeführt
         stop = true;
         return null;
     }

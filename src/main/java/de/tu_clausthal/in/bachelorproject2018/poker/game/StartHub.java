@@ -3,10 +3,13 @@ package de.tu_clausthal.in.bachelorproject2018.poker.game;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.CPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.round.ERound;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.round.IRoundAction;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.EWinCheck;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.function.Supplier;
 
 
 public class StartHub {
@@ -113,15 +116,13 @@ public class StartHub {
         //    player.getPlayerhand().takeCard(cardDealer.getDeck().removeTopCard());
         //}
         /**
-         * Durchlaufen einer ganzen Runde
+         * Durchlaufen einer ganzen Runde, übergebe aus dem Tisch die Spielerliste
          */
-        Arrays.stream( ERound.values() )
-              // hole aus dem enum das IRoundAction Object
-              .map( i -> i.get() )
+        ERound.generate( players )
               // führe in dem IRoundAction Objekt get aus
-              .map( i -> i.get() )
+              .map( Supplier::get )
               // filtere IRoundAction Objekt, ob gestoppt werden muss
-              .filter( i -> i.stop() )
+              .filter( IRoundAction::stop )
               // wenn das erste IRoundAction Objekt stop == true sagt
               .findFirst();
 
