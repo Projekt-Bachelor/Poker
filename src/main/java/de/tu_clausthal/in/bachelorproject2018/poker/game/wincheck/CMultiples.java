@@ -1,14 +1,20 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck;
 
+import de.tu_clausthal.in.bachelorproject2018.poker.game.CardValue;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.PlayerHand;
 
-public class CMultiples implements IWinCheckAction {
-    @Override
-    public IWinCheckAction get() {
-        return this;
-    }
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
-    public  IWinCheckAction get(PlayerHand playerHand){
+
+public class CMultiples implements IWinCheckAction {
+
+    @Override
+    public IWinCheckAction apply( final PlayerHand playerHand )
+    {
         //define the needed variables
         int sameCards = 1;
         int sameCards2 = 1;
@@ -16,6 +22,15 @@ public class CMultiples implements IWinCheckAction {
         int smallGroupRank = 0;
         int[] orderedRank = new int[5];
         int orderedRankcounter = 0;
+
+        /*
+        final Map<CardValue,  Integer> l_counts = Arrays.stream(CardValue.values() ).collect( Collectors.toMap( i -> i, i -> playerHand.getCount( i ) ) );
+
+        IntStream.range( 4, 1 )
+                 .flatMap( i -> l_counts.entrySet().stream().filter( n -> n.getValue() == i ) )
+
+        */
+
         for (int i = 14; i > 1; i--) {
             if (playerHand.getRankArray()[i] > sameCards) {
                 //if we found a triple after we already found a pair, we save the pair before overwriting the triple
@@ -83,8 +98,6 @@ public class CMultiples implements IWinCheckAction {
                 playerHand.setHandEvaluation(i, orderedRank[i - 1]);
             }
         }
-
-
 
         return this;
     }

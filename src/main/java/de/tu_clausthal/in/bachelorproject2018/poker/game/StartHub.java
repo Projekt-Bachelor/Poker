@@ -3,6 +3,7 @@ package de.tu_clausthal.in.bachelorproject2018.poker.game;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.CPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.round.ERound;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.EWinCheck;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -127,15 +128,15 @@ public class StartHub {
         /**
          * Durchlaufen einer Winevaluation ohne Vergleiche
          */
-        /*for (IPlayer player : players){
+        for (IPlayer player : players){
             if (!player.checkfolded()){
-                Arrays.stream(EWinCheck.values() )
+                Arrays.stream( EWinCheck.values() )
                         .map (i -> i.get())
-                        .map (i-> i.get(player.getPlayerhand()));
+                        .map (i-> i.apply( player.getPlayerhand()));
             }
 
         }
-        */
+
 
 
         /*
