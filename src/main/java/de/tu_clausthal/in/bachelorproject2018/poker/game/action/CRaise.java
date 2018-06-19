@@ -1,6 +1,7 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.action;
 
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ETables;
 
 import javax.annotation.Nonnull;
 
@@ -14,6 +15,10 @@ public final class CRaise implements IAction
      * Wert für einen Raise
      */
     private int value;
+
+    private String player;
+
+    private String table;
 
     @Override
     public void accept( @Nonnull final IPlayer p_player )

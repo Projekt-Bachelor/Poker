@@ -10,7 +10,15 @@ public class CGameActionController {
 
     @MessageMapping("/gameAction/raise")
     @SendTo("/topic/game")
-    public void raiseAction(CRaise raise) throws Exception {
+    public void raiseAction(final CRaise raise) throws Exception {
+
+        // http://www.sergialmar.com/2014/03/detect-websocket-connects-and-disconnects-in-spring-4/
+
+        /*
+          bei Server-Session Disconnect, Session holen (Map<Session, Map.Entry<String, String>> - Map mit Sessions und Table und Spieler)
+          und über ETables.apply( tablename ).kick( player ) dann Spieler entfernen
+         */
+
         //raise.accept();
         System.out.println("Spieler x hat geraiset!");
         //TODO - GameInformation erstellen
