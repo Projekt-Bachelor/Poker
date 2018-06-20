@@ -4,9 +4,8 @@ import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 
 import javax.annotation.Nonnull;
 import java.text.MessageFormat;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.stream.Stream;
 
 
@@ -17,7 +16,7 @@ import java.util.stream.Stream;
  *
  * @todo Gewinn-Ausführung muss noch implementiert werden
  */
-public enum ERound
+public enum ERound implements Iterator<ERound>
 {
     BETTINGROUND1,
     FLOP,
@@ -35,7 +34,7 @@ public enum ERound
      * @param p_player player list
      * @return stream of objects
      */
-    private Stream<IRoundAction> factory( @Nonnull final List<IPlayer> p_player )
+    public Stream<IRoundAction> factory( @Nonnull final Collection<IPlayer> p_player )
     {
         switch ( this )
         {
@@ -59,16 +58,16 @@ public enum ERound
         }
     }
 
-    /**
-     * liefert anhand aller Spieler alle Runden-Objekte
-     *
-     * @param p_player player list
-     * @return Rundenobjekt
-     */
-    @Nonnull
-    public static Stream<IRoundAction> generate( @Nonnull final List<IPlayer> p_player )
-    {
-        return Arrays.stream( ERound.values() ).flatMap( i -> i.factory( p_player ) );
 
+    @Override
+    public boolean hasNext()
+    {
+        return this.ordinal() < ERound.values().length;
+    }
+
+    @Override
+    public ERound next()
+    {
+        return ERound.values()[ this.ordinal() + 1 ];
     }
 }

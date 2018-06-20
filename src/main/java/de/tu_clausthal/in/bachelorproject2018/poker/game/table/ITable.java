@@ -4,15 +4,14 @@ import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 
 import javax.annotation.Nonnull;
 import java.util.Collection;
-import java.util.Iterator;
+import java.util.function.Consumer;
 
 
 /**
  * Interface um einen Spieletisch darzustellen.
  * Der Tisch ist ein Iterator, der immer rund herum läuft, bis nur noch ein Spieler da ist
- * @todo Nachrichten Einsprungspunkte
  */
-public interface ITable extends Iterator<IPlayer>
+public interface ITable extends Consumer<IMessage>
 {
     /**
      * Name des Tisches
@@ -37,14 +36,6 @@ public interface ITable extends Iterator<IPlayer>
      */
     @Nonnull
     ITable start( @Nonnull IPlayer p_owner );
-
-    /**
-     * überprüft, ob der übergebene Spieler aktiv setzen kann
-     *
-     * @param p_player Spielerobjekt
-     * @return aktiv Flag
-     */
-    boolean isactive( @Nonnull final IPlayer p_player );
 
     /**
      * entfernt einen Spieler vom Tisch

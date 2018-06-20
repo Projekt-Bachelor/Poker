@@ -1,13 +1,6 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck;
 
-import de.tu_clausthal.in.bachelorproject2018.poker.game.CardValue;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.PlayerHand;
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 
 public class CMultiples implements IWinCheckAction {

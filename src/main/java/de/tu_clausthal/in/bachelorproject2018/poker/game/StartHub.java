@@ -2,15 +2,10 @@ package de.tu_clausthal.in.bachelorproject2018.poker.game;
 
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.CPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
-import de.tu_clausthal.in.bachelorproject2018.poker.game.round.ERound;
-import de.tu_clausthal.in.bachelorproject2018.poker.game.round.IRoundAction;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.EWinCheck;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
 
 
 public class StartHub {
@@ -118,7 +113,8 @@ public class StartHub {
         //}
         /**
          * Durchlaufen einer ganzen Runde, übergebe aus dem Tisch die Spielerliste
-         */
+         *
+         * das ist alles im Table drin
         ERound.generate( players )  //.collect( Collectors.toCollection( new Stack ) )
               // führe in dem IRoundAction Objekt get aus
               .map( Supplier::get ) // äquivalent i -> i.get()
@@ -126,7 +122,7 @@ public class StartHub {
               .filter( IRoundAction::stop )
               // wenn das erste IRoundAction Objekt stop == true sagt
               .findFirst();
-
+        */
         /**
          * Durchlaufen einer Winevaluation ohne Vergleiche
          */
