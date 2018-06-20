@@ -16,6 +16,7 @@ public class CApplication
     public static void main( final String[] p_args )
     {
         SpringApplication.run( CApplication.class, p_args );
+
     }
 
 }

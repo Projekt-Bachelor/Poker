@@ -1,6 +1,8 @@
 // erzwingnt sauberen JavaScript Code
 "use strict";
 
+let stompClient = null;
+
 // wenn HTML Dokument komplett geladen wurde
 $(function() {
 
@@ -54,16 +56,6 @@ $(function() {
 
 });
 
-
-
-
-
-
-let stompClient = null;
-
-let successResponse = 100;
-
-
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
     $("#disconnect").prop("disabled", !connected);
@@ -75,15 +67,7 @@ function setConnected(connected) {
     }
     $("#greetings").html("");
 }
-/*
-function requestJSON(url, callback) {
-    fetch(url)
-        .then(response => response.json())
-        .then(function (data) {
-            callback(data)
-        }).catch(error => console.error('Could not fetch url: ', error))
-}
-*/
+
 function connect() {
     var socket = new SockJS('/poker');
     stompClient = Stomp.over(socket);
@@ -108,12 +92,6 @@ function sendName() {
     stompClient.send("/app/createPlayer", {},
         JSON.stringify({'name': $("#name").val()}));
 }
-
-
-function showTables(tables) {
-    tables.forEach(display)
-}
-
 
 function validateResponse(response){
     //TODO - Abfrage auf Success-Meldung implementieren
