@@ -23,6 +23,13 @@ public final class CBetRound implements IRoundAction {
     @Override
     public IRoundAction get() {
         // @todo hier wird der Bet nur für den Spieler m_player ausgeführt
+
+        /*
+        if (nachricht noch nicht geschickt)
+            schicke nachricht
+            this -> neues betround object auf warte stack legen
+        */
+
         stop = true;
         return null;
     }

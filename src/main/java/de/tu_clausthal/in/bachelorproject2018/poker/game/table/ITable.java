@@ -10,6 +10,7 @@ import java.util.Iterator;
 /**
  * Interface um einen Spieletisch darzustellen.
  * Der Tisch ist ein Iterator, der immer rund herum läuft, bis nur noch ein Spieler da ist
+ * @todo Nachrichten Einsprungspunkte
  */
 public interface ITable extends Iterator<IPlayer>
 {

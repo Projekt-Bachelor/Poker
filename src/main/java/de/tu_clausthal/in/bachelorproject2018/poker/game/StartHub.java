@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 
 public class StartHub {
@@ -118,9 +119,9 @@ public class StartHub {
         /**
          * Durchlaufen einer ganzen Runde, übergebe aus dem Tisch die Spielerliste
          */
-        ERound.generate( players )
+        ERound.generate( players )  //.collect( Collectors.toCollection( new Stack ) )
               // führe in dem IRoundAction Objekt get aus
-              .map( Supplier::get )
+              .map( Supplier::get ) // äquivalent i -> i.get()
               // filtere IRoundAction Objekt, ob gestoppt werden muss
               .filter( IRoundAction::stop )
               // wenn das erste IRoundAction Objekt stop == true sagt
