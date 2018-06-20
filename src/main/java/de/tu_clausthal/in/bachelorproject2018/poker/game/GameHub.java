@@ -127,9 +127,12 @@ public class GameHub {
         /**
          * Durchlaufen einer Winevaluation ohne Vergleiche
          * es wird für jeden Spieler eine Handstatistic erstellt und übergeben
+         * die Handstatistic wird für jeden Spieler befüllt und kann am Ende verglichen werden
          */
+        ArrayList<HandStatistic> handStatisticList = new ArrayList<HandStatistic>();
         for (IPlayer player : players){
             HandStatistic handStatistic = new HandStatistic(player);
+            handStatisticList.add(handStatistic);
             if (!player.checkfolded()){
                 Arrays.stream( EWinCheck.values() )
                         .map (i -> i.get())
