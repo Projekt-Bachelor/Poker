@@ -135,6 +135,18 @@ public final class CTable implements ITable
     }
 
     /**
+     * führe ein Element aus der
+     * @param p_message Eingangsnachricht
+     */
+    @Override
+    public void accept( final IMessage p_message )
+    {
+        // holen den Kopf der Queue and gebe die Nachricht mit der aktuellen Ausführungsqueue weiter
+        m_execution.remove().accept( m_execution, p_message );
+        this.postaction();
+    }
+
+    /**
      * Methode um eine neue Runde zu bauen
      */
     private void generateround()
@@ -160,7 +172,14 @@ public final class CTable implements ITable
 
         // ... wenn true geliefert wird entfernen
         m_execution.remove();
+        this.postaction();
+    }
 
+    /**
+     * Methode, die nach jeder Ausführung einer Round-Action durchlaufen wird, um das Spiel ggf fortzusetzen
+     */
+    private void postaction()
+    {
         // wenn Queue nicht leer ist, dann nächste Action ausführen
         if ( !m_execution.isEmpty() )
         {
@@ -173,14 +192,5 @@ public final class CTable implements ITable
             this.generateround();
     }
 
-    /**
-     * führe ein Element aus der
-     * @param p_message Eingangsnachricht
-     */
-    @Override
-    public void accept( final IMessage p_message )
-    {
-        // holen den Kopf der Queue and gebe die Nachricht mit der aktuellen Ausführungsqueue weiter
-        m_execution.remove().accept( m_execution, p_message );
-    }
+
 }
