@@ -2,7 +2,8 @@ package de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck;
 
 import java.util.ArrayList;
 
-public class determineWinner {
+public class DetermineWinner {
+
 
     /**
      * Compare the handstatistics and find the best

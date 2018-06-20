@@ -6,21 +6,9 @@ public class CardDealer {
     private Deck playDeck = new Deck();
     private GameHub gameHub;
     private ArrayList<Card> tableCards = new ArrayList<Card>();
-    private static final CardDealer cardDealer = new CardDealer();
 
-    /**
-     * Constructor
-     */
-    private CardDealer(){
-        gameHub = GameHub.getInstance();
-    }
-
-    /**
-     * get Instance of Singleton
-     * @return Instance of cardDealer
-     */
-    public static CardDealer getInstance(){
-        return cardDealer;
+    public CardDealer(GameHub gameHub){
+        this.gameHub = gameHub;
     }
 
     /**

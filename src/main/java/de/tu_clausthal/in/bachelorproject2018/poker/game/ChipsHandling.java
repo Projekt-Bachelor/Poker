@@ -15,26 +15,11 @@ public class ChipsHandling {
     private boolean newRound = false;
     private int playersInThisRound;
     private GameHub gameHub;
-    /**
-     * Singleton
-     */
-    private static final ChipsHandling chipsHandler = new ChipsHandling();
 
-    /**
-     * Constructor
-     */
-    private ChipsHandling(){
-    gameHub = GameHub.getInstance();
+
+    public ChipsHandling(GameHub gameHub){
+        this.gameHub = gameHub;
     }
-
-    /**
-     * get Instance of Singleton
-     * @return Instance of Singleton
-     */
-    public static ChipsHandling getInstance(){
-        return chipsHandler;
-    }
-
     /**
      * add the getAmountBetThisRound to the pot
      * gets called when a player bets anything

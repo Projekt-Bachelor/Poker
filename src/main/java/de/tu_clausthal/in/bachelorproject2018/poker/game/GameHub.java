@@ -2,6 +2,7 @@ package de.tu_clausthal.in.bachelorproject2018.poker.game;
 
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.CPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.DetermineWinner;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.EWinCheck;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.HandStatistic;
 
@@ -13,32 +14,17 @@ public class GameHub {
     private final ArrayList<IPlayer> players = new ArrayList<>();
     private CardDealer cardDealer;
     private WinEvaluation winEvaluation;
+    private ChipsHandling chipsHandler;
     private int chipsStartAmount;
+    private DetermineWinner findWinner;
 
-    private static final GameHub gameHub = new GameHub();
-
-    /**
-     * constructor
-     */
-    private GameHub(){
+    public GameHub(){
+        cardDealer = new CardDealer(this);
+        chipsHandler = new ChipsHandling(this);
+        findWinner = new DetermineWinner();
     }
 
-    /**
-     * getInstance
-     * @return Instance of the Starthub
-     */
-    public static GameHub getInstance(){
-        return gameHub;
-    }
 
-    /**
-     * create a new player object, return the player
-     * @return a new player as Player
-     * @todo das kann hier raus
-     */
-    public IPlayer createPlayer(){
-        return new CPlayer( "" );
-    }
 
     /**
      * add a player to the list of players
@@ -65,14 +51,6 @@ public class GameHub {
         return cardDealer;
     }
 
-    /**
-     * start the programm, save the other important classes in the starthub
-     */
-    public void startProgram(){
-        ChipsHandling chipsHandler = ChipsHandling.getInstance();
-        CardDealer cardDealer = CardDealer.getInstance();
-        WinEvaluation winEvaluation = WinEvaluation.getInstance();
-    }
 
     /**
      * start the game with initializing the deck and adding the start getAmountBetThisRound of chips to each players count
@@ -101,9 +79,9 @@ public class GameHub {
     public void playRound(){
         // @todo das sollte man niemals machen, dazu bitte ein Nullobjekt im IPlayer definieren
         CPlayer winner = null;
-        ChipsHandling.getInstance().resetHand();
+        chipsHandler.resetHand();
         cardDealer.resetForNextRound();
-        ChipsHandling.getInstance().forceBlinds();
+        chipsHandler.forceBlinds();
 
         /**
          * @todo analog wie oben mittels Stream iterieren
@@ -128,6 +106,7 @@ public class GameHub {
          * Durchlaufen einer Winevaluation ohne Vergleiche
          * es wird für jeden Spieler eine Handstatistic erstellt und übergeben
          * die Handstatistic wird für jeden Spieler befüllt und kann am Ende verglichen werden
+         * findWinner vergleicht die Handstatistics
          */
         ArrayList<HandStatistic> handStatisticList = new ArrayList<HandStatistic>();
         for (IPlayer player : players){
@@ -140,6 +119,8 @@ public class GameHub {
             }
 
         }
+        findWinner.findWinner(handStatisticList);
+
 
 
         /*
