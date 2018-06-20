@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class CardDealer {
     private Deck playDeck = new Deck();
-    private StartHub gameHub;
+    private GameHub gameHub;
     private ArrayList<Card> tableCards = new ArrayList<Card>();
     private static final CardDealer cardDealer = new CardDealer();
 
@@ -12,7 +12,7 @@ public class CardDealer {
      * Constructor
      */
     private CardDealer(){
-        gameHub = StartHub.getInstance();
+        gameHub = GameHub.getInstance();
     }
 
     /**

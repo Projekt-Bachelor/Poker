@@ -8,25 +8,25 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 
-public class StartHub {
+public class GameHub {
     private final ArrayList<IPlayer> players = new ArrayList<>();
     private CardDealer cardDealer;
     private WinEvaluation winEvaluation;
     private int chipsStartAmount;
 
-    private static final StartHub gameHub = new StartHub();
+    private static final GameHub gameHub = new GameHub();
 
     /**
      * constructor
      */
-    private StartHub(){
+    private GameHub(){
     }
 
     /**
      * getInstance
      * @return Instance of the Starthub
      */
-    public static StartHub getInstance(){
+    public static GameHub getInstance(){
         return gameHub;
     }
 
@@ -125,7 +125,7 @@ public class StartHub {
         */
         /**
          * Durchlaufen einer Winevaluation ohne Vergleiche
-         */
+         *
         for (IPlayer player : players){
             if (!player.checkfolded()){
                 Arrays.stream( EWinCheck.values() )
@@ -134,7 +134,7 @@ public class StartHub {
             }
 
         }
-
+        */
 
 
         /*

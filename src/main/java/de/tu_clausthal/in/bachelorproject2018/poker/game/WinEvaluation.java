@@ -4,7 +4,7 @@ import de.tu_clausthal.in.bachelorproject2018.poker.game.player.CPlayer;
 
 
 public class WinEvaluation {
-    private StartHub gameHub;
+    private GameHub gameHub;
     private int[] rankArray = new int[15];
      /**
      * Singleton
@@ -16,7 +16,7 @@ public class WinEvaluation {
      * 
      */
     private WinEvaluation(){
-        gameHub = StartHub.getInstance();
+        gameHub = GameHub.getInstance();
     }
 
     /**

@@ -14,7 +14,7 @@ public class ChipsHandling {
     private boolean roundBettingFinished = false;
     private boolean newRound = false;
     private int playersInThisRound;
-    private StartHub gameHub;
+    private GameHub gameHub;
     /**
      * Singleton
      */
@@ -24,7 +24,7 @@ public class ChipsHandling {
      * Constructor
      */
     private ChipsHandling(){
-    gameHub = StartHub.getInstance();
+    gameHub = GameHub.getInstance();
     }
 
     /**
