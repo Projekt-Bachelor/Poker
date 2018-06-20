@@ -8,30 +8,28 @@ import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.EWinCheck;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 
 
-public class StartHub {
+public class GameHub {
     private final ArrayList<IPlayer> players = new ArrayList<>();
     private CardDealer cardDealer;
     private WinEvaluation winEvaluation;
     private int chipsStartAmount;
 
-    private static final StartHub gameHub = new StartHub();
+    private static final GameHub gameHub = new GameHub();
 
     /**
      * constructor
      */
-    private StartHub(){
+    private GameHub(){
     }
 
     /**
      * getInstance
      * @return Instance of the Starthub
      */
-    public static StartHub getInstance(){
+    public static GameHub getInstance(){
         return gameHub;
     }
 
