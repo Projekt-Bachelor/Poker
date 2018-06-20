@@ -7,6 +7,9 @@ public class HandStatistic {
     private IPlayer player;
     private int[] handEvaluation;
     private int[] rankArray;
+    private boolean flush;
+    private boolean straight;
+    private int flushIndex;
 
     /**
      * Handevaluation[0] indicates the kind of hand you have at the end:
@@ -85,4 +88,27 @@ public class HandStatistic {
         return rankArray;
     }
 
+    public boolean isFlush() {
+        return flush;
+    }
+
+    public void flushFound() {
+        this.flush = true;
+    }
+
+    public boolean isStraight() {
+        return straight;
+    }
+
+    public void straightFound() {
+        this.straight = true;
+    }
+
+    public int getFlushIndex() {
+        return flushIndex;
+    }
+
+    public void setFlushIndex(int flushIndex) {
+        this.flushIndex = flushIndex;
+    }
 }

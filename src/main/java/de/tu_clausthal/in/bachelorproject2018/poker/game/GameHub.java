@@ -3,6 +3,7 @@ package de.tu_clausthal.in.bachelorproject2018.poker.game;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.CPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.EWinCheck;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.HandStatistic;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -125,16 +126,17 @@ public class GameHub {
         */
         /**
          * Durchlaufen einer Winevaluation ohne Vergleiche
-         *
+         * es wird für jeden Spieler eine Handstatistic erstellt und übergeben
+         */
         for (IPlayer player : players){
+            HandStatistic handStatistic = new HandStatistic(player);
             if (!player.checkfolded()){
                 Arrays.stream( EWinCheck.values() )
                         .map (i -> i.get())
-                        .map (i-> i.apply( player.getPlayerhand()));
+                        .map (i-> i.apply( handStatistic));
             }
 
         }
-        */
 
 
         /*
