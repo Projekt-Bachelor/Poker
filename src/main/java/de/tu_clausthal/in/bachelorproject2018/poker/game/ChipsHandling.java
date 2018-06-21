@@ -2,6 +2,7 @@ package de.tu_clausthal.in.bachelorproject2018.poker.game;
 
 
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.CPlayer;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.HandStatistic;
 
 import java.util.ArrayList;
@@ -239,15 +240,14 @@ public class ChipsHandling {
         newRound = false;
         pot = 0;
         playersInThisRound = gameHub.getPlayerList().size();
-        /*
-        for (CPlayer player: gameHub.getPlayerList()){
+
+        for (IPlayer player: gameHub.getPlayerList()){
             player.resetAmountBetThisRound();
             player.resetHasChecked();
-            player.getPlayerhand().resetHandEvaluation();
             player.getPlayerhand().resethandCards();
             player.resetFolded();
         }
-        */
+
     }
 
 

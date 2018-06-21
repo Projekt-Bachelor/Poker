@@ -162,7 +162,7 @@ public final class CTable implements ITable
         final ERound l_round = m_currentround.updateAndGet( i -> Objects.isNull( i ) ? ERound.values()[0] : i );
 
         // Runden-Daten erzeugen
-        l_round.factory( m_players.values() ).forEach( m_execution::add );
+        l_round.factory( m_players.values(), this ).forEach( m_execution::add );
 
         // Ausführung der Runde beginnen
         this.executestep();

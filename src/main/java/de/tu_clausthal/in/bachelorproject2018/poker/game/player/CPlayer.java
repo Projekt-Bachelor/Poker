@@ -146,6 +146,11 @@ public final class CPlayer implements IPlayer
         return fold;
     }
 
+    @Override
+    public ITable getTable() {
+        return table;
+    }
+
     /**
      * reset hasChecked, to be able to check next round
      */

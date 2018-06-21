@@ -1,6 +1,7 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.round;
 
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.table.CTable;
 
 import javax.annotation.Nonnull;
 import java.text.MessageFormat;
@@ -34,7 +35,7 @@ public enum ERound implements Iterator<ERound>
      * @param p_player player list
      * @return stream of objects
      */
-    public Stream<IRoundAction> factory( @Nonnull final Collection<IPlayer> p_player )
+    public Stream<IRoundAction> factory( @Nonnull final Collection<IPlayer> p_player, CTable table )
     {
         switch ( this )
         {
@@ -45,10 +46,10 @@ public enum ERound implements Iterator<ERound>
                 return p_player.stream().map( CBetRound::new );
 
             case FLOP:
-                return Stream.of( new CFlop() );
+                return Stream.of( new CFlop(table) );
 
             case RIVER:
-                return Stream.of( new CRiver() );
+                return Stream.of( new CRiver(table) );
 
             case WINEVALUATION:
                 return Stream.of( new CWinEvaluation() );
