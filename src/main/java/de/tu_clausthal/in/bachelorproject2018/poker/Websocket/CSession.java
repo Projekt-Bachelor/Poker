@@ -1,5 +1,7 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.Websocket;
 
+import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
+
 import javax.annotation.Nonnull;
 
 /**
@@ -13,14 +15,14 @@ public class CSession {
     private final String table;
 
     //TODO - change this to IPlayer Object
-    private final String player;
+    private final IPlayer player;
     /**
      * Konstruktor
      * @param sessionId
      * @param table
      * @param player
      */
-    public CSession(@Nonnull String sessionId, @Nonnull String table, @Nonnull String player){
+    public CSession(@Nonnull String sessionId, @Nonnull String table, @Nonnull IPlayer player){
         this.sessionId = sessionId;
         this.table = table;
         this.player = player;
@@ -34,7 +36,7 @@ public class CSession {
         return table;
     }
 
-    public String getPlayerName() {
+    public IPlayer getPlayer() {
         return player;
     }
 }

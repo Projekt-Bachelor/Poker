@@ -1,7 +1,6 @@
 package de.tu_clausthal.in.bachelorproject2018.poker;
 
 import de.tu_clausthal.in.bachelorproject2018.poker.Network_Objects.GameInformation;
-import de.tu_clausthal.in.bachelorproject2018.poker.Network_Objects.GameState;
 import org.springframework.http.codec.ServerSentEvent;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -33,13 +32,7 @@ public class GameStateService {
     @Scheduled(fixedRate = 1000)
     void handler(){
         try{
-            if (currentListElement < GameState.getGameStateInstance().getSize() - 1){
-                emitter.onNext(
-                        ServerSentEvent.<GameInformation>builder(GameState.getGameStateInstance().getElement(currentListElement + 1)
-                        ).build()
-                );
-                currentListElement++;
-            }
+            currentListElement++;
         } catch (Exception e){
             emitter.onError(e);
         }

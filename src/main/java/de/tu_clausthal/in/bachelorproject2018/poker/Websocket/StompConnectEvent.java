@@ -21,7 +21,12 @@ public class StompConnectEvent implements ApplicationListener<SessionConnectedEv
     public void onApplicationEvent(SessionConnectedEvent sessionConnectedEvent){
         StompHeaderAccessor sha = StompHeaderAccessor.wrap(sessionConnectedEvent.getMessage());
 
+        //TODO - Access Stomp Headers
+
         logger.debug("Connect event [sessiopnId: " + sha.getSessionId() + "]");
-        //CSessionManagement.INSTANCE.add(new CSession());
+        //CSessionManagement.INSTANCE.add(new CSession(
+                //sha.getSessionId(), table, ETables.INSTANCE.apply(table).apply()
+
+        //));
     }
 }

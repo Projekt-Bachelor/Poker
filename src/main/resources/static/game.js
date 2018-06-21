@@ -14,7 +14,7 @@ function setConnected(connected){
 function connect() {
     var socket = new SockJS('/poker');
     stompClient = Stomp.over(socket);
-    stompClient.connect({}, function (frame) {
+    stompClient.connect({table: "foo", player: "test"}, function (frame) {
         setConnected(true);
         console.log('Connected: ' + frame);
         stompClient.subscribe('/topic/game', function (gameinformation) {
