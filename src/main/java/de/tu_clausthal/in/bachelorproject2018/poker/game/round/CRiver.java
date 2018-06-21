@@ -1,7 +1,7 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.round;
 
-import de.tu_clausthal.in.bachelorproject2018.poker.game.CardDealer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.IMessage;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
 
 import java.util.Queue;
 
@@ -11,8 +11,12 @@ import java.util.Queue;
  *
  * @todo River-Logik implementieren
  */
-public final class CRiver implements IRoundAction
+public final class CRiver extends IBaseRoundAction
 {
+    protected CRiver(ITable p_table) {
+        super(p_table);
+    }
+
     @Override
     public void accept( final Queue<IRoundAction> p_roundactions, final IMessage p_message )
     {
@@ -21,7 +25,8 @@ public final class CRiver implements IRoundAction
     @Override
     public Boolean apply( final Queue<IRoundAction> p_p_roundactions )
     {
-        CardDealer.getInstance().getTableCards().add(CardDealer.getInstance().getDeck().removeTopCard());
+        m_table.getGameHub().getCardDealer().getTableCards().add(
+                m_table.getGameHub().getCardDealer().getDeck().removeTopCard());
         return false;
     }
 }
