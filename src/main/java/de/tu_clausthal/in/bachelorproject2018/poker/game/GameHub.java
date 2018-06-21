@@ -2,6 +2,7 @@ package de.tu_clausthal.in.bachelorproject2018.poker.game;
 
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.CPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.DetermineWinner;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.EWinCheck;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.HandStatistic;
@@ -12,18 +13,27 @@ import java.util.Arrays;
 
 public class GameHub {
     private final ArrayList<IPlayer> players = new ArrayList<>();
-    private CardDealer cardDealer;
-    private WinEvaluation winEvaluation;
-    private ChipsHandling chipsHandler;
+    private final CardDealer cardDealer;
+    //private WinEvaluation winEvaluation;
+    private final ChipsHandling chipsHandler;
     private int chipsStartAmount;
-    private DetermineWinner findWinner;
+    private final DetermineWinner findWinner;
+    private final ITable table;
 
-    public GameHub(){
+    public GameHub( ITable Tisch){
         cardDealer = new CardDealer(this);
         chipsHandler = new ChipsHandling(this);
         findWinner = new DetermineWinner();
+        this.table = Tisch;
     }
 
+    /**
+     * getter for table
+     * @return table as ITable
+     */
+    public ITable getTable(){
+        return table;
+    }
 
 
     /**
@@ -51,6 +61,13 @@ public class GameHub {
         return cardDealer;
     }
 
+    /**
+     * getter for the chipsHandler
+     * @return chipsHandler as ChipsHandling
+     */
+    public ChipsHandling getChipsHandler(){
+        return chipsHandler;
+    }
 
     /**
      * start the game with initializing the deck and adding the start getAmountBetThisRound of chips to each players count
@@ -78,7 +95,6 @@ public class GameHub {
      */
     public void playRound(){
         // @todo das sollte man niemals machen, dazu bitte ein Nullobjekt im IPlayer definieren
-        CPlayer winner = null;
         chipsHandler.resetHand();
         cardDealer.resetForNextRound();
         chipsHandler.forceBlinds();

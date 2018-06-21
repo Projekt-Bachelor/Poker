@@ -1,5 +1,6 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.table;
 
+import de.tu_clausthal.in.bachelorproject2018.poker.game.GameHub;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 
 import javax.annotation.Nonnull;
@@ -59,5 +60,7 @@ public interface ITable extends Consumer<IMessage>
      * liefert alle Spieler des Tisches
      */
     Collection<IPlayer> list();
+
+    GameHub getGameHub();
 
 }

@@ -1,17 +1,13 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.table;
 
+import de.tu_clausthal.in.bachelorproject2018.poker.game.GameHub;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.round.ERound;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.round.IRoundAction;
 
 import javax.annotation.Nonnull;
 import java.text.MessageFormat;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Queue;
+import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -23,6 +19,10 @@ import java.util.concurrent.atomic.AtomicReference;
  */
 public final class CTable implements ITable
 {
+    /**
+     * Zuordnung des Gamehubs
+     */
+    private final GameHub gameHub;
     /**
      * Name des Tisches
      */
@@ -56,6 +56,8 @@ public final class CTable implements ITable
         m_name = p_name;
         m_owner = p_owner;
         m_players.put( p_owner.getName(), p_owner );
+        gameHub = new GameHub(this);
+
     }
 
     @Override
@@ -132,6 +134,11 @@ public final class CTable implements ITable
     public Collection<IPlayer> list()
     {
         return m_players.values();
+    }
+
+    @Override
+    public GameHub getGameHub() {
+        return gameHub;
     }
 
     /**
