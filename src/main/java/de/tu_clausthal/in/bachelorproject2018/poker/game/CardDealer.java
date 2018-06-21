@@ -48,27 +48,4 @@ public class CardDealer {
         return playDeck;
     }
 
-    /**
-     * take the 3 topcards of the deck and add them to the tablecards
-     * Flop/Turn/River can be dealt with in a single method, but for clarification purposes are different methods
-     */
-    public void layFlop(){
-        tableCards.add(playDeck.removeTopCard());
-        tableCards.add(playDeck.removeTopCard());
-        tableCards.add(playDeck.removeTopCard());
-    }
-
-    /**
-     * take the topcard of the deck and add it to the tablecard
-     */
-    public void layTurn(){
-        tableCards.add(playDeck.removeTopCard());
-    }
-
-    /**
-     * take the topcard of the deck and add it to the tablecard
-     */
-    public void layRiver(){
-        tableCards.add(playDeck.removeTopCard());
-    }
 }

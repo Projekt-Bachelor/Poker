@@ -87,7 +87,7 @@ public final class CPlayer implements IPlayer
             return false;
         }
     }
-    
+
 
     /**
      * getter to be able to access the cards of the player

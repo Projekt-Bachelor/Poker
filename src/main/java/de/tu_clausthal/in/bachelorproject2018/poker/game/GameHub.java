@@ -83,6 +83,29 @@ public class GameHub {
         //    player.addChips(chipsStartAmount);
         //}
     }
+    /**
+     * Durchlaufen einer Winevaluation ohne Vergleiche
+     * es wird für jeden Spieler eine Handstatistic erstellt und übergeben
+     * die Handstatistic wird für jeden Spieler befüllt und kann am Ende verglichen werden
+     * findWinner vergleicht die Handstatistics
+     */
+    public void handleWinEvaluation(){
+
+        ArrayList<HandStatistic> handStatisticList = new ArrayList<HandStatistic>();
+        for (IPlayer player : players){
+            HandStatistic handStatistic = new HandStatistic(player);
+            handStatisticList.add(handStatistic);
+            if (!player.checkfolded()){
+                Arrays.stream( EWinCheck.values() )
+                        .map (i -> i.get())
+                        .map (i-> i.apply( handStatistic));
+            }
+
+        }
+        //gibt eine ArrayList von den Gewinnern wieder
+
+        chipsHandler.distributePotToWinner(findWinner.findWinner(handStatisticList));
+    }
 
     /**
      * play a hand of poker, this includes:
@@ -95,10 +118,11 @@ public class GameHub {
      */
     public void playRound(){
         // @todo das sollte man niemals machen, dazu bitte ein Nullobjekt im IPlayer definieren
+        /*
         chipsHandler.resetHand();
         cardDealer.resetForNextRound();
         chipsHandler.forceBlinds();
-
+        */
         /**
          * @todo analog wie oben mittels Stream iterieren
          */
@@ -118,29 +142,6 @@ public class GameHub {
               // wenn das erste IRoundAction Objekt stop == true sagt
               .findFirst();
         */
-        /**
-         * Durchlaufen einer Winevaluation ohne Vergleiche
-         * es wird für jeden Spieler eine Handstatistic erstellt und übergeben
-         * die Handstatistic wird für jeden Spieler befüllt und kann am Ende verglichen werden
-         * findWinner vergleicht die Handstatistics
-         */
-        ArrayList<HandStatistic> handStatisticList = new ArrayList<HandStatistic>();
-        for (IPlayer player : players){
-            HandStatistic handStatistic = new HandStatistic(player);
-            handStatisticList.add(handStatistic);
-            if (!player.checkfolded()){
-                Arrays.stream( EWinCheck.values() )
-                        .map (i -> i.get())
-                        .map (i-> i.apply( handStatistic));
-            }
-
-        }
-        //gibt eine ArrayList von den Gewinnern wieder
-
-        chipsHandler.distributePotToWinner(findWinner.findWinner(handStatisticList));
-
-
-
         /*
         chipsHandler.checkForBets();
         if(chipsHandler.continuePlayingRound()){
