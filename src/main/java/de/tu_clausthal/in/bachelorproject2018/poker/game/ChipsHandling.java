@@ -3,6 +3,8 @@ package de.tu_clausthal.in.bachelorproject2018.poker.game;
 
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.CPlayer;
 
+import java.util.ArrayList;
+
 
 public class ChipsHandling {
     private int pot= 0;
@@ -196,11 +198,15 @@ public class ChipsHandling {
     }
 
     /**
-     * Add the chipsamount in the pot to the players chips
-     * @param winner
+     * divide pot by winners, and add the amount to the winners
+     * @param winners as ArrayList<CPlayer>
      */
-    public void distributePotToWinner(CPlayer winner){
-        winner.addChips(pot);
+    public void distributePotToWinner(ArrayList<CPlayer> winners)
+    {
+        for (CPlayer player : winners){
+            player.addChips(pot/winners.size());
+        }
+        pot = 0;
     }
 
 
