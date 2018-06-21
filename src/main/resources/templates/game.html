@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymleaf.org">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Game</title>
@@ -30,9 +30,20 @@
         <div class="col-md-6">
             <div class="form-inline">
                 <div class="form-group">
-                    <label for="raise"></label>
                     <button id="raise" class="btn btn-default" type="submit">Raise</button>
-                    <input type="text" id="raise-amount" class="form-control" placeholder="Raise - Amount">Raise</input>
+                    <input type="text" id="raise-amount" class="form-control" placeholder="Raise - Amount"/>
+                </div>
+                <div class="button">
+                    <button id="call" class="btn btn-default" type="submit">Call</button>
+                </div>
+                <div class="button">
+                    <button id="check" class="btn btn-default" type="submit">Check</button>
+                </div>
+                <div class="button">
+                    <button id="fold" class="btn btn-default" type="submit">Fold</button>
+                </div>
+                <div class="button">
+                    <button id="allin" class="btn btn-default" type="submit">All-In</button>
                 </div>
             </div>
         </div>

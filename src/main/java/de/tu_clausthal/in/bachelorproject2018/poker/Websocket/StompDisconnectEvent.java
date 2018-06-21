@@ -21,6 +21,6 @@ public class StompDisconnectEvent implements ApplicationListener<SessionDisconne
         StompHeaderAccessor sha = StompHeaderAccessor.wrap(sessionDisconnectEvent.getMessage());
 
         logger.debug("Disconnect event [sessionId: " + sha.getSessionId() + "]");
-        CSessionManagement.INSTANCE.remove(sha.getSessionId());
+        ESessionManagement.INSTANCE.remove(sha.getSessionId());
     }
 }

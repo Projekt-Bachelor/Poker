@@ -1,9 +1,10 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.controller;
 
-import de.tu_clausthal.in.bachelorproject2018.poker.Websocket.CSessionManagement;
+import de.tu_clausthal.in.bachelorproject2018.poker.Network_Objects.EActions;
+import de.tu_clausthal.in.bachelorproject2018.poker.Websocket.ESessionManagement;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.action.CRaise;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.stereotype.Controller;
 
@@ -11,10 +12,7 @@ import org.springframework.stereotype.Controller;
 public class CGameActionController {
 
     @MessageMapping("/gameAction/raise")
-    @SendTo("/topic/game")
-    public void raiseAction(final CRaise raise, SimpMessageHeaderAccessor headerAccessor) throws Exception {
-
-        String sessionId = headerAccessor.getSessionId();
+    public void raiseAction(final CRaise raise, SimpMessageHeaderAccessor headerAccessor) {
 
         // http://www.sergialmar.com/2014/03/detect-websocket-connects-and-disconnects-in-spring-4/
 
@@ -23,8 +21,16 @@ public class CGameActionController {
           und über ETables.apply( tablename ).kick( player ) dann Spieler entfernen
          */
 
-        raise.accept(CSessionManagement.INSTANCE.apply(sessionId).getPlayer());
+        raise.accept(ESessionManagement.INSTANCE.apply(headerAccessor.getSessionId()).getPlayer());
         System.out.println("Spieler x hat geraiset!");
         //TODO - GameInformation erstellen
+    }
+
+    @MessageMapping("/gameAction/action")
+    public void action(final EActions action, SimpMessageHeaderAccessor headerAccessor) {
+
+        IPlayer player = ESessionManagement.INSTANCE.apply(headerAccessor.getSessionId()).getPlayer();
+
+        action.actionFactory().accept(player);
     }
 }

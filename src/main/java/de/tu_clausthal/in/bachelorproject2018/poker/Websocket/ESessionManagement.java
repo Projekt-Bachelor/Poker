@@ -10,7 +10,7 @@ import java.util.function.Function;
 /**
  * Singleton to manage all websocket sessions.
  */
-public enum CSessionManagement implements ISessions, Function<String, CSession> {
+public enum ESessionManagement implements ISessions, Function<String, CSession> {
 
     INSTANCE;
 

@@ -2,7 +2,7 @@ var stompClient = null;
 
 function setConnected(connected){
     $("#connect").prop("disabled", connected);
-    $("disconnect").prop("disabled", !connected);
+    $("#disconnect").prop("disabled", !connected);
     if (connected) {
         $("#gamestate").show();
     } else {
@@ -36,6 +36,10 @@ function sendRaise() {
         JSON.stringify({'value': $("#raise-amount").val()}));
 }
 
+function sendAction() {
+
+}
+
 function showGameInformation(gameinformation){
     $("#gamestate").append("<tr><td>" + gameinformation + "</td></tr>");
 }
@@ -47,4 +51,9 @@ $(function () {
     $( "#raise" ).click(function () { sendRaise(); });
     $( "#connect").click(function () { connect(); });
     $( "#disconnect").click(function () { disconnect(); });
+
+    $( "#call").click(function () { sendAction(); });
+    $( "#check").click(function () { sendAction(); });
+    $( "#fold").click(function () { sendAction(); });
+    $( "#allin").click(function () { sendAction(); });
 });
