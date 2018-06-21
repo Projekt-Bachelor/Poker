@@ -57,6 +57,12 @@ public interface IPlayer extends Consumer<IAction>
 
     ITable getTable();
 
+    void resetAmountBetThisRound();
+
+    void resetHasChecked();
+
+    void resetFolded();
+
 
     /**
      * setzt den aktuellen Betrag des Spielers

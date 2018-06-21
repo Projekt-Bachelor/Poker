@@ -87,13 +87,7 @@ public final class CPlayer implements IPlayer
             return false;
         }
     }
-
-    /**
-     * reset the getAmountBetThisRound for the next round
-     */
-    public void resetAmountBetThisRound(){
-        amountBetThisRound = 0;
-    }
+    
 
     /**
      * getter to be able to access the cards of the player
@@ -151,11 +145,22 @@ public final class CPlayer implements IPlayer
         return table;
     }
 
+    @Override
+    public void resetAmountBetThisRound() {
+        amountBetThisRound = 0;
+    }
+
     /**
      * reset hasChecked, to be able to check next round
      */
+    @Override
     public void resetHasChecked(){
         hasCheckedThisRound = false;
+    }
+
+    @Override
+    public void resetFolded() {
+        fold = false;
     }
 
     /**
@@ -177,12 +182,6 @@ public final class CPlayer implements IPlayer
 
 
 
-    /**
-     * reset folded for the next round
-     */
-    public void resetFolded(){
-        fold = false;
-    }
 
 
 
