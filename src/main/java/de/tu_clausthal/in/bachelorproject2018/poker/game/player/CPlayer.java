@@ -1,9 +1,9 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.player;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import de.tu_clausthal.in.bachelorproject2018.poker.game.ChipsHandling;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.PlayerHand;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.action.IAction;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
 
 import javax.annotation.Nonnull;
 
@@ -22,15 +22,17 @@ public final class CPlayer implements IPlayer
     private int amountBetThisRound = 0;
     private boolean hasCheckedThisRound= false;
     private boolean isAllIn = false;
+    private ITable table;
 
 
     /**
      * constructor
      * @param p_name Name des Spielers
      */
-    public CPlayer( @Nonnull final String p_name ) {
+    public CPlayer( @Nonnull final String p_name, ITable tisch ) {
         m_name = p_name;
         this.playerhand = new PlayerHand();
+        this.table = tisch;
     }
 
     @Nonnull
@@ -65,6 +67,7 @@ public final class CPlayer implements IPlayer
      * to add chips to the players chipscount
      * @param add
      */
+    @Override
     public void addChips(int add){
         chipsCount += add;
     }
@@ -163,7 +166,7 @@ public final class CPlayer implements IPlayer
      */
     @Override
     public void fold(){
-        ChipsHandling.getInstance().somebodyHasFolded();
+        table.getGameHub().getChipsHandler().somebodyHasFolded();
         fold = true;
     }
 

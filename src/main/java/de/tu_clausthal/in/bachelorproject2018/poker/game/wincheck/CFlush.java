@@ -83,7 +83,7 @@ public class CFlush implements IWinCheckAction {
 
         }
 
-        //STRAIGHFLUSH
+        //STRAIGHTFLUSH
         if (normalFlush && handStatistic.isStraight()){
             //check for straight flush
             for (int i = 0; i<3; i++){

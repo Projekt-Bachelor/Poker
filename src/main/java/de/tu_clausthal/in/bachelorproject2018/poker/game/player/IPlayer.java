@@ -38,6 +38,7 @@ public interface IPlayer extends Consumer<IAction>
 
     PlayerHand getPlayerhand();
 
+    void addChips(int amount);
 
     int getChipsCount();
 

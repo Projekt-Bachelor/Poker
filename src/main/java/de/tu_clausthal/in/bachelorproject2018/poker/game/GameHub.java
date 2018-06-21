@@ -136,7 +136,8 @@ public class GameHub {
 
         }
         //gibt eine ArrayList von den Gewinnern wieder
-        findWinner.findWinner(handStatisticList);
+
+        chipsHandler.distributePotToWinner(findWinner.findWinner(handStatisticList));
 
 
 

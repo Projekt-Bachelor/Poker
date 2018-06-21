@@ -2,6 +2,7 @@ package de.tu_clausthal.in.bachelorproject2018.poker.game;
 
 
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.CPlayer;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.HandStatistic;
 
 import java.util.ArrayList;
 
@@ -201,10 +202,10 @@ public class ChipsHandling {
      * divide pot by winners, and add the amount to the winners
      * @param winners as ArrayList<CPlayer>
      */
-    public void distributePotToWinner(ArrayList<CPlayer> winners)
+    public void distributePotToWinner(ArrayList<HandStatistic> winners)
     {
-        for (CPlayer player : winners){
-            player.addChips(pot/winners.size());
+        for (HandStatistic handStatistic : winners){
+            handStatistic.getPlayer().addChips(pot/winners.size());
         }
         pot = 0;
     }
