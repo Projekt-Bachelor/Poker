@@ -18,6 +18,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
  *
  * @todo leave implementieren, aber darauf achten, dass nur der Spieler sich selbst entfernen kann
  * @todo start des Spiels implementieren
+ * @todo add return values to all this functions
  */
 @RestController
 @RequestMapping( "/table" )

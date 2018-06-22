@@ -14,8 +14,9 @@ function setConnected(connected){
 function connect() {
     var socket = new SockJS('/poker');
     stompClient = Stomp.over(socket);
-    stompClient.connect({table: "foo", player: "test"}, function (frame) {
+    stompClient.connect({}, function (frame) {
         setConnected(true);
+        sendRegistration();
         console.log('Connected: ' + frame);
         stompClient.subscribe('/topic/game', function (gameinformation) {
             showGameInformation(JSON.parse(gameinformation.body));
@@ -38,6 +39,11 @@ function sendRaise() {
 
 function sendAction() {
 
+}
+
+function sendRegistration() {
+    stompClient.send("/app/sessionConnect", {},
+        JSON.stringify({'table': "foo", 'player': "test"}));
 }
 
 function showGameInformation(gameinformation){

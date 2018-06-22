@@ -1,6 +1,6 @@
 package de.tu_clausthal.in.bachelorproject2018.poker;
 
-import de.tu_clausthal.in.bachelorproject2018.poker.Network_Objects.Player;
+import de.tu_clausthal.in.bachelorproject2018.poker.Network_Objects.CSessionRegistration;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ETables;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,14 +20,14 @@ public class Controller_Player {
 
     /**
      * This method takes care of sending the HTML form and assigns the form fields to the corresponding variables
-     * of the Model class (Player)!
+     * of the Model class (CSessionRegistration)!
      *
      * @param model
      * @return HTML form with which the player can "register" with a username.
      */
     @RequestMapping(value = "/player", method = RequestMethod.GET)
     public String playerForm(Model model){
-        model.addAttribute("player", new Player());
+        model.addAttribute("player", new CSessionRegistration());
         return "player";
     }
 
@@ -37,7 +37,7 @@ public class Controller_Player {
      * @return HTML page showing the user name and all players currently in the game.
      */
     @RequestMapping(value = "/player", method = RequestMethod.POST)
-    public String displayTables(@ModelAttribute Player player, @ModelAttribute("tables") Set<String> tables){
+    public String displayTables(@ModelAttribute CSessionRegistration player, @ModelAttribute("tables") Set<String> tables){
         return "tables";
     }
 

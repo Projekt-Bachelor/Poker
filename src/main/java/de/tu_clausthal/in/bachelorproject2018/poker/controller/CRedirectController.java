@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class CRedirectController {
 
+    //TODO - return the parameter from CTable
+
     @RequestMapping(value = "/game", method = RequestMethod.GET)
     public String sendGameHtml(){
         return "game";

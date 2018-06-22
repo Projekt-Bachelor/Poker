@@ -57,7 +57,7 @@ public interface ITable extends Iterator<IPlayer>
     /**
      * ein Spieler joint dem Spiel, wenn es noch nicht läuft
      *
-     * @param p_player Player
+     * @param p_player Spieler
      * @return Objektreferenz
      */
     @Nonnull

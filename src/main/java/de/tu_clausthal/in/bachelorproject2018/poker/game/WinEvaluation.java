@@ -278,7 +278,7 @@ public class WinEvaluation {
     /**
      * compare the EvaluationArray of each player with each other
      * save potential winner, and compare him with each other player,
-     * @return winner as Player
+     * @return winner as CSessionRegistration
      */
     public CPlayer evaluateWinner(){
         /*

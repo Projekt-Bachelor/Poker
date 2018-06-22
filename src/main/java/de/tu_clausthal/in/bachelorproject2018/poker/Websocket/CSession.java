@@ -14,7 +14,6 @@ public class CSession {
 
     private final String table;
 
-    //TODO - change this to IPlayer Object
     private final IPlayer player;
     /**
      * Konstruktor

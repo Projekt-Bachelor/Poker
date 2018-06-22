@@ -32,7 +32,7 @@ public class StartHub {
 
     /**
      * create a new player object, return the player
-     * @return a new player as Player
+     * @return a new player as CSessionRegistration
      * @todo das kann hier raus
      */
     public IPlayer createPlayer(){
@@ -41,7 +41,7 @@ public class StartHub {
 
     /**
      * add a player to the list of players
-     * @param newPlayer as Player
+     * @param newPlayer as CSessionRegistration
      */
     public void addPlayer(CPlayer newPlayer){
         players.add(newPlayer);
@@ -49,7 +49,7 @@ public class StartHub {
 
     /**
      * getter for the playerlist
-     * @return playerlist as ArrayList<Player>
+     * @return playerlist as ArrayList<CSessionRegistration>
      */
     public ArrayList<IPlayer> getPlayerList(){
         return players;

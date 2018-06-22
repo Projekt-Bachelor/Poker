@@ -195,7 +195,7 @@ public class ChipsHandling {
 
     /**
      * if everybody but one has folded, return the player who didnt fold
-     * @return winner as Player
+     * @return winner as CSessionRegistration
      */
     public CPlayer declareWinnerByFolding(){
         /*
