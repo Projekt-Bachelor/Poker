@@ -17,18 +17,16 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class CGameActionController {
 
+    /**
+     * Erhält das Raise-Objekt vom Client und ruft die .accept Funktion mit dem anhand der SessionId abstrahierten
+     * Spiers auf
+     * @param raise Raise Objekt mit dem Raise amount
+     * @param headerAccessor
+     */
     @MessageMapping("/gameAction/raise")
     public void raiseAction(final CRaise raise, SimpMessageHeaderAccessor headerAccessor) {
 
-        // http://www.sergialmar.com/2014/03/detect-websocket-connects-and-disconnects-in-spring-4/
-
-        /*
-          bei Server-Session Disconnect, Session holen (Map<Session, Map.Entry<String, String>> - Map mit Sessions und Table und Spieler)
-          und über ETables.apply( tablename ).kick( player ) dann Spieler entfernen
-         */
-
         raise.accept(ESessionManagement.INSTANCE.apply(headerAccessor.getSessionId()).getPlayer());
-        System.out.println("Spieler x hat geraiset!");
         //TODO - GameInformation erstellen
     }
 
@@ -38,8 +36,14 @@ public class CGameActionController {
         IPlayer player = ESessionManagement.INSTANCE.apply(headerAccessor.getSessionId()).getPlayer();
 
         action.actionFactory().accept(player);
+        //TODO - Passende GameInformation erstellen
     }
 
+    /**
+     * Diese Funktion verbindet die SessionId mit dem Spieler und Tisch
+     * @param registration Enthält Tisch und Spieler
+     * @param headerAccessor
+     */
     @MessageMapping("/sessionConnect")
     public void createUser(final CSessionRegistration registration, SimpMessageHeaderAccessor headerAccessor) {
 

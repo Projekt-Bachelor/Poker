@@ -10,11 +10,21 @@ import javax.annotation.Nonnull;
  */
 public class CSession {
 
+    /**
+     * SessionId
+     */
     private final String sessionId;
 
+    /**
+     * Tisch den der Spieler mit der jeweiligen SessionId bespielt
+     */
     private final String table;
 
+    /**
+     * Der zur SessionId gehöhrende Spieler
+     */
     private final IPlayer player;
+
     /**
      * Konstruktor
      * @param sessionId
