@@ -23,6 +23,9 @@ public final class CRiver extends IBaseRoundAction
     }
 
     @Override
+    /**
+     * legt eine Karte vom Deck auf den Tisch
+     */
     public Boolean apply( final Queue<IRoundAction> p_p_roundactions )
     {
         m_table.getGameHub().getCardDealer().getTableCards().add(

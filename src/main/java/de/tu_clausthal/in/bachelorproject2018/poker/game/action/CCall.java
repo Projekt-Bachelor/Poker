@@ -18,6 +18,11 @@ public class CCall extends IBaseAction
     }
 
     @Override
+    /**
+     * Überprüft ob der Spieler callen kann
+     * Berechnet den Wert, der fürs Callen benötigt wird
+     * Setzt den Wert
+     */
     public void accept( @Nonnull final IPlayer p_player )
     {
         int callAmount;

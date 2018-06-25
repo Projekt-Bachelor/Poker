@@ -17,6 +17,11 @@ public class CPreFlop extends IBaseRoundAction {
     }
 
     @Override
+    /**
+     * resetet alle wichtigen Methoden im CardDealer und ChipsHandler
+     * forciert Blinds der Spieler
+     * Teilt Karten an die Spieler aus
+     */
     public Boolean apply(Queue<IRoundAction> iRoundActions) {
         //reset for round
         m_table.getGameHub().getChipsHandler().resetHand();

@@ -3,7 +3,7 @@ package de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck;
 import javax.annotation.Nonnull;
 import java.util.function.Supplier;
 
-public enum EWinCheck implements Supplier<IWinCheckAction> {
+public enum EWinCheck implements Supplier<IBaseWinCheckAction> {
     PREPAREFORWINCHECK (new CPrepareForWinCheck()),
     MULTIPLES (new CMultiples()),
     STRAIGTH (new CStraight()),

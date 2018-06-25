@@ -52,7 +52,7 @@ public enum ERound implements Iterator<ERound>
                 return Stream.of( new CRiver(table) );
 
             case WINEVALUATION:
-                return Stream.of( new CWinEvaluation() );
+                return Stream.of( new CWinEvaluation(table) );
 
             default:
                 throw new RuntimeException( MessageFormat.format( "Runde [{0}] nicht bekannt", this ) );

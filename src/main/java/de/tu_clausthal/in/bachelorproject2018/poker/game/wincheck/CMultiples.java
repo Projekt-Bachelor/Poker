@@ -1,8 +1,18 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck;
 
-public class CMultiples implements IWinCheckAction {
+import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
+
+public class CMultiples extends IBaseWinCheckAction {
+
+    protected CMultiples(ITable p_table) {
+        super(p_table);
+    }
 
     @Override
+    /**
+     * kontrolliert auf Einzelkarten, Paare, Drillinge, Doppelpaare, Fullhouse, Vierling
+     * trägt dies möglicherweise ein
+     */
     public IWinCheckAction apply( final HandStatistic handStatistic )
     {
         //define the needed variables

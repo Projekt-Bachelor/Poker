@@ -23,6 +23,9 @@ public final class CFlop extends IBaseRoundAction
     }
 
     @Override
+    /**
+     * legt 3 Karten vom Deck auf den Tisch
+     */
     public Boolean apply( final Queue<IRoundAction> p_p_roundactions )
     {
 

@@ -11,6 +11,9 @@ public class CFold extends IBaseAction{
     }
 
     @Override
+    /**
+     * setzt den Spieler auf fold
+     */
     public void accept(IPlayer p_player) {
         p_player.fold();
     }

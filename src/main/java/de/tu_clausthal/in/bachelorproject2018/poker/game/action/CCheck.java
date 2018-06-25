@@ -9,6 +9,10 @@ public class CCheck extends IBaseAction {
     }
 
     @Override
+    /**
+     * überprüft ob der Spieler checken kann
+     * setzt, dass der Spieler gecheckt hat
+     */
     public void accept(IPlayer p_player) {
         if (m_table.getGameHub().getChipsHandler().getHighestBidThisRound() > 0){
             throw new RuntimeException( "Du kannst nicht checken, da schon was gesetzt wurde" );

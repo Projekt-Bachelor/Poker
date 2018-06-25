@@ -24,6 +24,13 @@ public final class CWinEvaluation extends IBaseRoundAction {
     }
 
     @Override
+    /**
+     * erstellt eine HandStatisticList
+     * Erstellt für jeden Spieler, der noch im Spiel ist, eine Handstatistic
+     * Ruft das Enum Wincheck für jede Handstatistsic auf
+     * Vergleicht die Handstatistiken, und erklärt die Sieger
+     * Teilt die Chips an die Gewinner auf
+     */
     public Boolean apply( final Queue<IRoundAction> p_p_roundactions )
     {
         ArrayList<HandStatistic> handStatisticList = new ArrayList<HandStatistic>();
@@ -35,7 +42,6 @@ public final class CWinEvaluation extends IBaseRoundAction {
                         .map (i -> i.get())
                         .map (i-> i.apply( handStatistic));
             }
-            m_table.getGameHub().getPlayerList();
 
         }
         //gibt eine ArrayList von den Gewinnern wieder

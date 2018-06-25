@@ -1,8 +1,18 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck;
 
-public class CStraight implements IWinCheckAction {
+import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
+
+public class CStraight extends IBaseWinCheckAction {
+
+    protected CStraight(ITable p_table) {
+        super(p_table);
+    }
 
     @Override
+    /**
+     * Kontrolliert auf Straßen
+     * trägt die möglicherweise ein
+     */
     public IWinCheckAction apply(final HandStatistic handStatistic) {
         //have to initialize with values
         boolean straight = false;

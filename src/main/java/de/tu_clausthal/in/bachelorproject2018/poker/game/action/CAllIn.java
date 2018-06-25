@@ -17,6 +17,10 @@ public final class CAllIn extends IBaseAction
     }
 
     @Override
+    /**
+     * setzt den Spieler AllIn
+     * setzt die Chips in den Pot
+     */
     public void accept( @Nonnull final IPlayer p_player )
     {
         int allInAmount = p_player.getChipsCount();

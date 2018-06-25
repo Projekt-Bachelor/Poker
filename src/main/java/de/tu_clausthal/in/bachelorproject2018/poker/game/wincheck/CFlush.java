@@ -1,12 +1,21 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck;
 
 import de.tu_clausthal.in.bachelorproject2018.poker.game.Card;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
 
 import java.util.Arrays;
 
-public class CFlush implements IWinCheckAction {
+public class CFlush extends IBaseWinCheckAction {
+    protected CFlush(ITable p_table) {
+        super(p_table);
+    }
+
     //check for flush and straighflush
     @Override
+    /**
+     * kontrolliert auf Flush und Straightflush
+     * trägt dies möglicherweise in die Handstatistic ein
+     */
     public IWinCheckAction apply( final HandStatistic handStatistic )
     {
         //counts the cards of the suit
