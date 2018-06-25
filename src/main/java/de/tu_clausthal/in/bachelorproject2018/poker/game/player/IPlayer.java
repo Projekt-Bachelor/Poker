@@ -63,6 +63,8 @@ public interface IPlayer extends Consumer<IAction>
 
     void resetFolded();
 
+    //int getChipsCount();
+
 
     /**
      * setzt den aktuellen Betrag des Spielers
