@@ -24,7 +24,7 @@ public final class CBetRound implements IRoundAction {
     }
 
     @Override
-    public Boolean apply( final Queue<IRoundAction> p_p_roundactions )
+    public Boolean apply( final Queue<IRoundAction> p_roundactions )
     {
         // wenn true, dann bleibt das Objekt liegen und wartet aus eine Nachricht, bei false wird es nach der Ausführung aus der Queue genommen
         return true;

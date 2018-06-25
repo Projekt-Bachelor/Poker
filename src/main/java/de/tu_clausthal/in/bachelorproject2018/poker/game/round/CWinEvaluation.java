@@ -1,21 +1,49 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.round;
 
+import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.IMessage;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.EWinCheck;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.HandStatistic;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Queue;
 
 
-public final class CWinEvaluation implements IRoundAction {
+public final class CWinEvaluation extends IBaseRoundAction {
+
+    protected CWinEvaluation(ITable p_table) {
+        super(p_table);
+    }
 
     @Override
     public void accept( final Queue<IRoundAction> p_roundactions, final IMessage p_message )
     {
+
     }
 
     @Override
     public Boolean apply( final Queue<IRoundAction> p_p_roundactions )
     {
+        ArrayList<HandStatistic> handStatisticList = new ArrayList<HandStatistic>();
+        for (IPlayer player : m_table.getGameHub().getPlayerList()){
+            HandStatistic handStatistic = new HandStatistic(player);
+            handStatisticList.add(handStatistic);
+            if (!player.checkfolded()){
+                Arrays.stream( EWinCheck.values() )
+                        .map (i -> i.get())
+                        .map (i-> i.apply( handStatistic));
+            }
+            m_table.getGameHub().getPlayerList();
+
+        }
+        //gibt eine ArrayList von den Gewinnern wieder
+        //verteilt die chips an all gewinner
+        m_table.getGameHub().getChipsHandler().distributePotToWinner(
+                m_table.getGameHub().getDetermineWinner().findWinner(handStatisticList));
         return false;
     }
+
 
 }

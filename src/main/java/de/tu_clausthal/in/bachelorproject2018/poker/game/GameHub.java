@@ -14,7 +14,6 @@ import java.util.Arrays;
 public class GameHub {
     private final ArrayList<IPlayer> players = new ArrayList<>();
     private final CardDealer cardDealer;
-    //private WinEvaluation winEvaluation;
     private final ChipsHandling chipsHandler;
     private int chipsStartAmount;
     private final DetermineWinner findWinner;
@@ -35,6 +34,13 @@ public class GameHub {
         return table;
     }
 
+    /**
+     * getter für findwinner
+     * @return findwinner as determineWinner
+     */
+    public DetermineWinner getDetermineWinner(){
+        return findWinner;
+    }
 
     /**
      * add a player to the list of players

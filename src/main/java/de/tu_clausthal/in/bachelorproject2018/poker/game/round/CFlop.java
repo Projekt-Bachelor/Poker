@@ -9,7 +9,7 @@ import java.util.Queue;
 /**
  * Flop Ausführung
  *
- * @todo Flop Logik implementieren
+ *
  */
 public final class CFlop extends IBaseRoundAction
 {
