@@ -64,6 +64,8 @@ public interface IPlayer extends Consumer<IAction>
 
     //int getChipsCount();
 
+    boolean getChecked();
+
 
     /**
      * setzt den aktuellen Betrag des Spielers

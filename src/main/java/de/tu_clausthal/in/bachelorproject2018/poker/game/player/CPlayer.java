@@ -162,13 +162,17 @@ public final class CPlayer implements IPlayer
         fold = false;
     }
 
+
     /**
      * getter for hasChecked
      * @return hasCheckedThisRound as boolean
      */
-    public boolean getHasCheckedThisRound(){
+    @Override
+    public boolean getChecked() {
         return hasCheckedThisRound;
     }
+
+
 
     /**
      * fold this round, count down the counter of players still in this round

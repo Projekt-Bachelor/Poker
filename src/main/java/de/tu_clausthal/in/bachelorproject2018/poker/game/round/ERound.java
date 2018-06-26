@@ -43,7 +43,10 @@ public enum ERound implements Iterator<ERound>
             case BETTINGROUND2:
             case BETTINGROUND3:
             case BETTINGROUND4:
-               // return p_player.stream().map( CBetRound::new );
+                //erstelle das BetRoundObjekt für den Roundstarter
+                return Stream.of( new CBetRound(table, table.getGameHub().getPlayerList().get(
+                        table.getGameHub().getChipsHandler().getRoundStarter()
+                )));
 
             case FLOP:
                 return Stream.of( new CFlop(table) );

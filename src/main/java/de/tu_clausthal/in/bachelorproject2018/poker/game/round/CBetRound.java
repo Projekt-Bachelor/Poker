@@ -35,7 +35,11 @@ public final class CBetRound extends IBaseRoundAction {
         if (p_roundactions.isEmpty()){
             //wenn der nachfolgende Spieler weniger gesetzt hat, als das maximum, muss ein neues BetRoundObjekt erzeugt werden
             if (m_table.getGameHub().getChipsHandler().updateWhoToAsk(m_player).getAmountBetThisRound() <
-                    m_table.getGameHub().getChipsHandler().getHighestBidThisRound()){
+                    m_table.getGameHub().getChipsHandler().getHighestBidThisRound()
+                    //oder wenn bisher nur gecheckt wurde, aber noch nicht alle gecheckt haben
+                    || ( m_table.getGameHub().getChipsHandler().getNewRound() &&
+                        !m_table.getGameHub().getChipsHandler().updateWhoToAsk(m_player).getChecked())
+                    ){
                 new CBetRound(m_table, m_table.getGameHub().getChipsHandler().updateWhoToAsk(m_player));
             }
         }
@@ -44,7 +48,7 @@ public final class CBetRound extends IBaseRoundAction {
     @Override
     public Boolean apply( final Queue<IRoundAction> p_roundactions )
     {
-        // wenn true, dann bleibt das Objekt liegen und wartet aus eine Nachricht, bei false wird es nach der Ausführung aus der Queue genommen
+        //wenn true, dann bleibt das Objekt liegen und wartet aus eine Nachricht, bei false wird es nach der Ausführung aus der Queue genommen
         //wenn der Spieler nicht gefoldet hat, frag ihn und warte auf eine Antwort
         if (!m_player.checkfolded()){
             //send message to player

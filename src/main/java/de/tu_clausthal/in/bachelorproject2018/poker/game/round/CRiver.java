@@ -1,7 +1,7 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.round;
 
-import de.tu_clausthal.in.bachelorproject2018.poker.network.IMessage;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.IMessage;
 
 import java.util.Queue;
 
@@ -30,6 +30,7 @@ public final class CRiver extends IBaseRoundAction
     {
         m_table.getGameHub().getCardDealer().getTableCards().add(
                 m_table.getGameHub().getCardDealer().getDeck().removeTopCard());
+        m_table.getGameHub().getChipsHandler().resetRound();
         return false;
     }
 }
