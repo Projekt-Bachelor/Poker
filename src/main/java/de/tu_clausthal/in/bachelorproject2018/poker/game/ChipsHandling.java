@@ -2,6 +2,10 @@ package de.tu_clausthal.in.bachelorproject2018.poker.game;
 
 
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.CPlayer;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.HandStatistic;
+
+import java.util.ArrayList;
 
 
 public class ChipsHandling {
@@ -14,29 +18,14 @@ public class ChipsHandling {
     private boolean roundBettingFinished = false;
     private boolean newRound = false;
     private int playersInThisRound;
-    private StartHub gameHub;
-    /**
-     * Singleton
-     */
-    private static final ChipsHandling chipsHandler = new ChipsHandling();
+    private GameHub gameHub;
 
-    /**
-     * Constructor
-     */
-    private ChipsHandling(){
-    gameHub = StartHub.getInstance();
+
+    public ChipsHandling(GameHub gameHub){
+        this.gameHub = gameHub;
     }
-
     /**
-     * get Instance of Singleton
-     * @return Instance of Singleton
-     */
-    public static ChipsHandling getInstance(){
-        return chipsHandler;
-    }
-
-    /**
-     * add the amount to the pot
+     * add the getAmountBetThisRound to the pot
      * gets called when a player bets anything
      * newRound will be set false, because somebody hast bet something this bettinground
      * if the player is the one with the most bet this round (in the case of raising), update highestBidThisRound
@@ -93,7 +82,7 @@ public class ChipsHandling {
     }
 
     /**
-     * double the amount of the blinds
+     * double the getAmountBetThisRound of the blinds
      * do this every couple of rounds to speed up the game
      */
     public void doubleBlinds(){
@@ -150,7 +139,7 @@ public class ChipsHandling {
     /**
      * go through a whole round of betting
      * asks each player (if they have not folded alrady) what action they want to take
-     * continues until everybody has folded or bet the same amount
+     * continues until everybody has folded or bet the same getAmountBetThisRound
      */
     public void checkForBets(){
         int whoToAsk = getRoundStarter();
@@ -211,11 +200,15 @@ public class ChipsHandling {
     }
 
     /**
-     * Add the chipsamount in the pot to the players chips
-     * @param winner
+     * divide pot by winners, and add the amount to the winners
+     * @param winners as ArrayList<CPlayer>
      */
-    public void distributePotToWinner(CPlayer winner){
-        winner.addChips(pot);
+    public void distributePotToWinner(ArrayList<HandStatistic> winners)
+    {
+        for (HandStatistic handStatistic : winners){
+            handStatistic.getPlayer().addChips(pot/winners.size());
+        }
+        pot = 0;
     }
 
 
@@ -247,21 +240,16 @@ public class ChipsHandling {
         newRound = false;
         pot = 0;
         playersInThisRound = gameHub.getPlayerList().size();
-        /*
-        for (CPlayer player: gameHub.getPlayerList()){
+
+        for (IPlayer player: gameHub.getPlayerList()){
             player.resetAmountBetThisRound();
             player.resetHasChecked();
-            player.getPlayerhand().resetHandEvaluation();
             player.getPlayerhand().resethandCards();
             player.resetFolded();
         }
-        */
+
     }
 
-
-    public void notifyAllClients(){
-        //completed by Niklas
-    }
 
 
 }

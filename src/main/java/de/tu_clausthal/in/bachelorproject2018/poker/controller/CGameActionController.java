@@ -35,7 +35,7 @@ public class CGameActionController {
 
         IPlayer player = ESessionManagement.INSTANCE.apply(headerAccessor.getSessionId()).getPlayer();
 
-        action.actionFactory().accept(player);
+        //action.actionFactory().accept(player);
         //TODO - Passende GameInformation erstellen
     }
 
@@ -52,7 +52,7 @@ public class CGameActionController {
         + " and player " + registration.getPlayer());
 
         IPlayer player = ETables.INSTANCE.apply(registration.getTable()).list()
-                .stream().filter(i -> i.name().equals(registration.getPlayer())).findFirst().get();
+                .stream().filter(i -> i.getName().equalsIgnoreCase(registration.getPlayer())).findFirst().get();
 
         ESessionManagement.INSTANCE.add(new CSession(
                 headerAccessor.getSessionId(),

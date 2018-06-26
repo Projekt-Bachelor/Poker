@@ -1,6 +1,8 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.player;
 
+import de.tu_clausthal.in.bachelorproject2018.poker.game.PlayerHand;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.action.IAction;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
 
 import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
@@ -20,15 +22,49 @@ public interface IPlayer extends Consumer<IAction>
      * @return Spielername
      */
     @Nonnull
-    String name();
+    String getName();
 
     /**
-     * liefert den aktuellen Betrag des Spielers
+     * liefert den aktuellen Betrag des Spielers dieser Runde
      *
      * @return Betrag
      */
     @Nonnegative
-    int amount();
+    int getAmountBetThisRound();
+
+    boolean substractChips(int amount);
+
+    @Nonnegative
+    void addToAmountBetThisRound(int amount);
+
+    PlayerHand getPlayerhand();
+
+    void addChips(int amount);
+
+    int getChipsCount();
+
+    boolean getAllIn();
+
+    void playerAllIn();
+
+    void resetAllIn();
+
+    void fold();
+
+    void check();
+
+    boolean checkfolded();
+
+    ITable getTable();
+
+    void resetAmountBetThisRound();
+
+    void resetHasChecked();
+
+    void resetFolded();
+
+    //int getChipsCount();
+
 
     /**
      * setzt den aktuellen Betrag des Spielers
@@ -37,6 +73,6 @@ public interface IPlayer extends Consumer<IAction>
      * @return Objektreferenz
      */
     @NotNull
-    IPlayer amount( @Nonnegative final int p_amount );
+    IPlayer getAmountBetThisRound(@Nonnegative final int p_amount );
 
 }

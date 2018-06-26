@@ -4,20 +4,13 @@ import de.tu_clausthal.in.bachelorproject2018.poker.game.player.CPlayer;
 
 
 public class WinEvaluation {
-    private StartHub gameHub;
+    private GameHub gameHub;
     private int[] rankArray = new int[15];
      /**
      * Singleton
      */
     private static final WinEvaluation winEvaluation = new WinEvaluation();
 
-    /**
-     * Constructor
-     * 
-     */
-    private WinEvaluation(){
-        gameHub = StartHub.getInstance();
-    }
 
     /**
      * get Instance of the Singleton
@@ -64,6 +57,7 @@ public class WinEvaluation {
      */
     public void evaluateHands(){
         //start handevaluation for every player
+        /*
         int sameCards;
         int sameCards2;
         int largeGroupRank;
@@ -83,7 +77,7 @@ public class WinEvaluation {
         boolean straightFlush;
         int straightFlushHighIndex;
 
-        /*
+
             @todo viel zu lange loop
 
         for (CPlayer player : gameHub.getPlayerList()) {

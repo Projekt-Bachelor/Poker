@@ -30,11 +30,11 @@ public final class CTableController
      *
      * @param p_name Name des Tisches
      */
-    @RequestMapping( value = "/create/{name}/{owner}" )
-    public void create( @PathVariable( "name" ) final String p_name, @PathVariable( "owner" ) final String p_owner )
+    @RequestMapping( value = "/create/{getName}/{owner}" )
+    public void create( @PathVariable( "getName" ) final String p_name, @PathVariable( "owner" ) final String p_owner )
     {
         // in dem Singleton der Tables wird nun ein neuer Tisch mit einem Namen und einem Besitzer erzeugt
-        ETables.INSTANCE.add( new CTable( p_name, new CPlayer( p_owner ) ) );
+        ETables.INSTANCE.add( new CTable( p_name, p_owner ) );
     }
 
     /**
@@ -58,7 +58,7 @@ public final class CTableController
     @RequestMapping( value = "/join/{table}/{player}" )
     public void join( @PathVariable( "table" ) final String p_table, @PathVariable( "player" ) final String p_player )
     {
-        ETables.INSTANCE.apply( p_table ).join( new CPlayer( p_player ) );
+        ETables.INSTANCE.apply( p_table ).join( p_player );
     }
 
 }

@@ -4,28 +4,13 @@ import java.util.ArrayList;
 
 public class PlayerHand {
     private ArrayList<Card> handCards;
-    private int[] handEvaluation;
 
-    /**
-     * Handevaluation[0] indicates the kind of hand you have at the end:
-     * 8: Straightflush
-     * 7: four of a kind
-     * 6: Full House
-     * 5: Flush
-     * 4: Straight
-     * 3: Triple
-     * 2: two pair
-     * 1: pair
-     * 0: high card
-     * handEvaluation[1-5] are the other important cards to determine the winner (e.g. highcards, or the ranks of the pairs
-     */
 
     /**
      * constructor
      */
     public PlayerHand(){
         handCards = new ArrayList<Card>();
-        handEvaluation = new int[6];
     }
 
     /**
@@ -36,31 +21,6 @@ public class PlayerHand {
         return handCards;
     }
 
-    /**
-     * getter for handevaluation
-     * @return handevaluation as int[]
-     */
-    public int[] getHandEvaluation(){
-        return handEvaluation;
-    }
-
-    /**
-     * set the handevaluation elements to a certain value, used by winevaluation
-     * @param index as int
-     * @param value as int
-     */
-    public void setHandEvaluation(int index, int value){
-        handEvaluation[index] = value;
-    }
-
-    /**
-     * set the handevaluation to zeroes
-     */
-    public void resetHandEvaluation(){
-        for (int i = 0; i< 6; i++){
-            handEvaluation[i]= 0;
-        }
-    }
 
     /**
      * clear the handcards at the end of the round
@@ -83,6 +43,7 @@ public class PlayerHand {
         }
         return true;
     }
+
 
 
     /**

@@ -12,16 +12,17 @@ public enum EActions {
     FOLD,
     ALLIN;
 
+    /*
     public IAction actionFactory(){
         switch ( this ){
             case CALL:
                 return new CCall();
 
-            /*case FOLD:
+            case FOLD:
                 return new
 
             case CHECK:
-                return new */
+                return new
 
             case ALLIN:
                 return new CAllIn();
@@ -30,4 +31,5 @@ public enum EActions {
                     throw new RuntimeException(MessageFormat.format("Aktion [{0}] nicht bekannt", this));
         }
     }
+    */
 }

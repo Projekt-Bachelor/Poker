@@ -2,41 +2,44 @@ package de.tu_clausthal.in.bachelorproject2018.poker.game;
 
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.CPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
-import de.tu_clausthal.in.bachelorproject2018.poker.game.round.ERound;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.DetermineWinner;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.EWinCheck;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.HandStatistic;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 
-public class StartHub {
+public class GameHub {
     private final ArrayList<IPlayer> players = new ArrayList<>();
-    private CardDealer cardDealer;
-    private WinEvaluation winEvaluation;
+    private final CardDealer cardDealer;
+    private final ChipsHandling chipsHandler;
     private int chipsStartAmount;
+    private final DetermineWinner findWinner;
+    private final ITable table;
 
-    private static final StartHub gameHub = new StartHub();
-
-    /**
-     * constructor
-     */
-    private StartHub(){
+    public GameHub( ITable Tisch){
+        cardDealer = new CardDealer(this);
+        chipsHandler = new ChipsHandling(this);
+        findWinner = new DetermineWinner();
+        this.table = Tisch;
     }
 
     /**
-     * getInstance
-     * @return Instance of the Starthub
+     * getter for table
+     * @return table as ITable
      */
-    public static StartHub getInstance(){
-        return gameHub;
+    public ITable getTable(){
+        return table;
     }
 
     /**
-     * create a new player object, return the player
-     * @return a new player as CSessionRegistration
-     * @todo das kann hier raus
+     * getter für findwinner
+     * @return findwinner as determineWinner
      */
-    public IPlayer createPlayer(){
-        return new CPlayer( "" );
+    public DetermineWinner getDetermineWinner(){
+        return findWinner;
     }
 
     /**
@@ -65,16 +68,15 @@ public class StartHub {
     }
 
     /**
-     * start the programm, save the other important classes in the starthub
+     * getter for the chipsHandler
+     * @return chipsHandler as ChipsHandling
      */
-    public void startProgram(){
-        ChipsHandling chipsHandler = ChipsHandling.getInstance();
-        CardDealer cardDealer = CardDealer.getInstance();
-        WinEvaluation winEvaluation = WinEvaluation.getInstance();
+    public ChipsHandling getChipsHandler(){
+        return chipsHandler;
     }
 
     /**
-     * start the game with initializing the deck and adding the start amount of chips to each players count
+     * start the game with initializing the deck and adding the start getAmountBetThisRound of chips to each players count
      */
     public void startGame(){
         cardDealer.firstDeckOfTheGame();
@@ -86,6 +88,29 @@ public class StartHub {
         // for (CPlayer player: players){
         //    player.addChips(chipsStartAmount);
         //}
+    }
+    /**
+     * Durchlaufen einer Winevaluation ohne Vergleiche
+     * es wird für jeden Spieler eine Handstatistic erstellt und übergeben
+     * die Handstatistic wird für jeden Spieler befüllt und kann am Ende verglichen werden
+     * findWinner vergleicht die Handstatistics
+     */
+    public void handleWinEvaluation(){
+
+        ArrayList<HandStatistic> handStatisticList = new ArrayList<HandStatistic>();
+        for (IPlayer player : players){
+            HandStatistic handStatistic = new HandStatistic(player);
+            handStatisticList.add(handStatistic);
+            if (!player.checkfolded()){
+                Arrays.stream( EWinCheck.values() )
+                        .map (i -> i.apply( table ) )
+                        .forEach(i-> i.apply( handStatistic));
+            }
+
+        }
+        //gibt eine ArrayList von den Gewinnern wieder
+
+        chipsHandler.distributePotToWinner(findWinner.findWinner(handStatisticList));
     }
 
     /**
@@ -99,11 +124,11 @@ public class StartHub {
      */
     public void playRound(){
         // @todo das sollte man niemals machen, dazu bitte ein Nullobjekt im IPlayer definieren
-        CPlayer winner = null;
-        ChipsHandling.getInstance().resetHand();
+        /*
+        chipsHandler.resetHand();
         cardDealer.resetForNextRound();
-        ChipsHandling.getInstance().forceBlinds();
-
+        chipsHandler.forceBlinds();
+        */
         /**
          * @todo analog wie oben mittels Stream iterieren
          */
@@ -111,17 +136,18 @@ public class StartHub {
         //    player.getPlayerhand().takeCard(cardDealer.getDeck().removeTopCard());
         //    player.getPlayerhand().takeCard(cardDealer.getDeck().removeTopCard());
         //}
-
-        Arrays.stream( ERound.values() )
-              // hole aus dem enum das IRoundAction Object
-              .map( i -> i.get() )
-              // führe in dem IRoundAction Objectk get aus
-              .map( i -> i.get() )
+        /**
+         * Durchlaufen einer ganzen Runde, übergebe aus dem Tisch die Spielerliste
+         *
+         * das ist alles im Table drin
+        ERound.generate( players )  //.collect( Collectors.toCollection( new Stack ) )
+              // führe in dem IRoundAction Objekt get aus
+              .map( Supplier::get ) // äquivalent i -> i.get()
               // filtere IRoundAction Objekt, ob gestoppt werden muss
-              .filter( i -> i.stop() )
+              .filter( IRoundAction::stop )
               // wenn das erste IRoundAction Objekt stop == true sagt
               .findFirst();
-
+        */
         /*
         chipsHandler.checkForBets();
         if(chipsHandler.continuePlayingRound()){

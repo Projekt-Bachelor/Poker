@@ -1,7 +1,13 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.round;
 
+import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.table.CTable;
+
 import javax.annotation.Nonnull;
-import java.util.function.Supplier;
+import java.text.MessageFormat;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.stream.Stream;
 
 
 /**
@@ -11,44 +17,58 @@ import java.util.function.Supplier;
  *
  * @todo Gewinn-Ausführung muss noch implementiert werden
  */
-public enum ERound implements Supplier<IRoundAction>
+public enum ERound implements Iterator<ERound>
 {
-    // erste Runde ist ein "Flop" und über den Parameter wird das passende Rundenobjekt erzeugt
-    FLOP( new CFlop() ),
-    // zweite Runde ist eine Benachrichtungsrunde, wie der Tisch aussieht
-    TABLENOTIFY1( new CNotify() ),
-    // dritte Runde, ist die River-Runde
-    TRURN( new CRiver() ),
-    // vierte Runde ist werden wieder alle Spieler über die Änderung des Tisches benachrichtigt
-    TABLENOTIFY2( new CNotify() ),
-    // fünfte Runde ist die River-Runde
-    RIVER( new CRiver() );
-    // sechste ist die Gewinn Ausführung
+    BETTINGROUND1,
+    FLOP,
+    BETTINGROUND2,
+    TRURN,
+    BETTINGROUND3,
+    RIVER,
+    BETTINGROUND4,
+    WINEVALUATION;
+
 
     /**
-     * Rundenaktions Objekt, das pro Enum-Item definiert ist
-     */
-    private final IRoundAction m_action;
-
-    /**
-     * privater Konstruktor des Enum
+     * factory round objects
      *
-     * @param p_action Rundenobjekt
+     * @param p_player player list
+     * @return stream of objects
      */
-    ERound( @Nonnull final IRoundAction p_action )
+    public Stream<IRoundAction> factory( @Nonnull final Collection<IPlayer> p_player, CTable table )
     {
-        m_action = p_action;
+        switch ( this )
+        {
+            case BETTINGROUND1:
+            case BETTINGROUND2:
+            case BETTINGROUND3:
+            case BETTINGROUND4:
+                return p_player.stream().map( CBetRound::new );
+
+            case FLOP:
+                return Stream.of( new CFlop(table) );
+
+            case RIVER:
+                return Stream.of( new CRiver(table) );
+
+            case WINEVALUATION:
+                return Stream.of( new CWinEvaluation(table) );
+
+            default:
+                throw new RuntimeException( MessageFormat.format( "Runde [{0}] nicht bekannt", this ) );
+        }
     }
 
-    /**
-     * liefert zu dem aktuellen Enum-Item das Rundenobjekt
-     *
-     * @return Rundenobjekt
-     */
-    @Nonnull
+
     @Override
-    public IRoundAction get()
+    public boolean hasNext()
     {
-        return m_action;
+        return this.ordinal() < ERound.values().length;
+    }
+
+    @Override
+    public ERound next()
+    {
+        return ERound.values()[ this.ordinal() + 1 ];
     }
 }
