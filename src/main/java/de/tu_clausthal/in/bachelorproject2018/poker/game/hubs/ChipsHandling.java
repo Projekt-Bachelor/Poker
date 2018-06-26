@@ -225,17 +225,17 @@ public class ChipsHandling {
      * reset after every betting round
      * resets all nessessary variables to the needed default values
      */
-    public void resetRound(){
+    /*public void resetRound(){
         highestBidThisRound = 0;
         roundBettingFinished = false;
         newRound = true;
-        /*
+
         for (CPlayer player: gameHub.getPlayerList()){
             player.resetAmountBetThisRound();
             player.resetHasChecked();
         }
-        */
-    }
+
+    }*/
 
     /**
      * reset everything after a fully played hand

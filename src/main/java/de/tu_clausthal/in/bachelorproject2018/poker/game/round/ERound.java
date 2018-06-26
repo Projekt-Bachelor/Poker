@@ -22,7 +22,7 @@ public enum ERound implements Iterator<ERound>
     BETTINGROUND1,
     FLOP,
     BETTINGROUND2,
-    TRURN,
+    TURN,
     BETTINGROUND3,
     RIVER,
     BETTINGROUND4,
@@ -43,10 +43,13 @@ public enum ERound implements Iterator<ERound>
             case BETTINGROUND2:
             case BETTINGROUND3:
             case BETTINGROUND4:
-                return p_player.stream().map( CBetRound::new );
+               // return p_player.stream().map( CBetRound::new );
 
             case FLOP:
                 return Stream.of( new CFlop(table) );
+
+            case TURN:
+                return Stream.of( new CRiver(table) );
 
             case RIVER:
                 return Stream.of( new CRiver(table) );

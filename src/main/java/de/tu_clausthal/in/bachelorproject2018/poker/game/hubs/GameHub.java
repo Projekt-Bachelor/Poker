@@ -1,5 +1,6 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.hubs;
 
+import de.tu_clausthal.in.bachelorproject2018.poker.game.SimpleGamestate;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.CPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
@@ -18,12 +19,14 @@ public class GameHub {
     private int chipsStartAmount;
     private final DetermineWinner findWinner;
     private final ITable table;
+    private final SimpleGamestate testForGamestate;
 
     public GameHub( ITable Tisch){
         cardDealer = new CardDealer(this);
         chipsHandler = new ChipsHandling(this);
         findWinner = new DetermineWinner();
         this.table = Tisch;
+        testForGamestate = new SimpleGamestate(this);
     }
 
     /**
