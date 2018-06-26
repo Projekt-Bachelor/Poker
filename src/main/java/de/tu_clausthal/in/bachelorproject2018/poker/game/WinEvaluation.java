@@ -1,10 +1,10 @@
-package de.tu_clausthal.in.bachelorproject2018.poker;
+package de.tu_clausthal.in.bachelorproject2018.poker.game;
 
-import java.util.Arrays;
-import java.util.Collections;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.player.CPlayer;
+
 
 public class WinEvaluation {
-    private StartHub gameHub;
+    private GameHub gameHub;
     private int[] rankArray = new int[15];
      /**
      * Singleton
@@ -16,7 +16,7 @@ public class WinEvaluation {
      * 
      */
     private WinEvaluation(){
-        gameHub = StartHub.getInstance();
+        gameHub = GameHub.getInstance();
     }
 
     /**
@@ -32,7 +32,7 @@ public class WinEvaluation {
      * easier to process in the WinEvaluation process
      * @param player
      */
-    public void combineCards(Player player){
+    public void combineCards(CPlayer player){
         for (int i = 0; i<5; i++) {
             player.getPlayerhand().getHandCards().add(gameHub.getCardDealer().getTableCards().get(i));
         }
@@ -45,7 +45,7 @@ public class WinEvaluation {
      * @param player
      * @return RankArray as int[] of the player
      */
-    public int[] createRankArray(Player player){
+    public int[] createRankArray(CPlayer player){
         //set rankArray to 0
         for(int i = 0; i< rankArray.length; i++ ){
             rankArray[i]=0;
@@ -64,6 +64,7 @@ public class WinEvaluation {
      */
     public void evaluateHands(){
         //start handevaluation for every player
+        /*
         int sameCards;
         int sameCards2;
         int largeGroupRank;
@@ -82,7 +83,11 @@ public class WinEvaluation {
         int orderedFlushValuesIndex;
         boolean straightFlush;
         int straightFlushHighIndex;
-        for (Player player : gameHub.getPlayerList()) {
+
+
+            @todo viel zu lange loop
+
+        for (CPlayer player : gameHub.getPlayerList()) {
             if (!player.checkFolded()) {
                 combineCards(player);
                 createRankArray(player);
@@ -267,6 +272,7 @@ public class WinEvaluation {
                 }
             }
         }
+        */
         //all handEvaluations done
     }
 
@@ -275,8 +281,9 @@ public class WinEvaluation {
      * save potential winner, and compare him with each other player,
      * @return winner as Player
      */
-    public Player evaluateWinner(){
-        Player potentialWinner = gameHub.getPlayerList().get(0);
+    public CPlayer evaluateWinner(){
+        /*
+        CPlayer potentialWinner = gameHub.getPlayerList().get( 0);
         for (int i = 1; i< gameHub.getPlayerList().size(); i++){
             for (int j = 0; j < 6; j++){
                 if (potentialWinner.getPlayerhand().getHandEvaluation()[j]> gameHub.getPlayerList().get(i).getPlayerhand().getHandEvaluation()[j]){
@@ -290,6 +297,8 @@ public class WinEvaluation {
                 }
         }
         return potentialWinner;
+        */
+        return null;
     }
 
 }
