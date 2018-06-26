@@ -117,15 +117,24 @@ public class ChipsHandling {
 
     /**
      * update who to Ask, return player next in line
-     * @param previosWhoToAsk as integer
-     * @return updatedWhoToAsk as integer
+     * @param  player as Player
+     * @return nextPlayer as Player
      */
-    public int updateWhoToAsk(int previosWhoToAsk){
-        if (previosWhoToAsk == gameHub.getPlayerList().size()-1){
-            return 0;
-        } else {
-            return previosWhoToAsk + 1;
+    public IPlayer updateWhoToAsk(IPlayer player){
+        //find player in the playerlist
+        int index = 0;
+        for (int i = 0; i<gameHub.getPlayerList().size(); i++){
+            if (player == gameHub.getPlayerList().get(i)){
+                index = i;
+            }
         }
+        //count to next player
+        index++;
+        //if the player was the last player in the list, start with the first
+        if (index >= gameHub.getPlayerList().size()){
+            index = 0;
+        }
+        return gameHub.getPlayerList().get(index);
     }
 
     /**
