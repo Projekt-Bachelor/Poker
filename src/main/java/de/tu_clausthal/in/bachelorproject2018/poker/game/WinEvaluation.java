@@ -1,5 +1,7 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game;
 
+import de.tu_clausthal.in.bachelorproject2018.poker.game.cards.Card;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.hubs.GameHub;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.CPlayer;
 
 

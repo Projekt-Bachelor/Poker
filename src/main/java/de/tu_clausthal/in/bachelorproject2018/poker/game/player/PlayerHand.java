@@ -1,4 +1,6 @@
-package de.tu_clausthal.in.bachelorproject2018.poker.game;
+package de.tu_clausthal.in.bachelorproject2018.poker.game.player;
+
+import de.tu_clausthal.in.bachelorproject2018.poker.game.cards.Card;
 
 import java.util.ArrayList;
 

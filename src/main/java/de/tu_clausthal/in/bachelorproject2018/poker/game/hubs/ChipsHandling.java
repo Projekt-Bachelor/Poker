@@ -1,4 +1,4 @@
-package de.tu_clausthal.in.bachelorproject2018.poker.game;
+package de.tu_clausthal.in.bachelorproject2018.poker.game.hubs;
 
 
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.CPlayer;

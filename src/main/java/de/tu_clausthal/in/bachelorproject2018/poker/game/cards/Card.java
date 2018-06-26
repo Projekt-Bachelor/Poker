@@ -1,4 +1,4 @@
-package de.tu_clausthal.in.bachelorproject2018.poker.game;
+package de.tu_clausthal.in.bachelorproject2018.poker.game.cards;
 
 public class Card {
     //private value + suit of card

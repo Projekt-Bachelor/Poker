@@ -1,6 +1,6 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck;
 
-import de.tu_clausthal.in.bachelorproject2018.poker.game.Card;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.cards.Card;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
 
 public class CPrepareForWinCheck extends IBaseWinCheckAction {

@@ -1,4 +1,4 @@
-package de.tu_clausthal.in.bachelorproject2018.poker.game;
+package de.tu_clausthal.in.bachelorproject2018.poker.game.cards;
 
 import java.util.ArrayList;
 import java.util.Random;

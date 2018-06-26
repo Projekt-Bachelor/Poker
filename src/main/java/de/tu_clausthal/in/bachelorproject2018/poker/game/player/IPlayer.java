@@ -1,6 +1,5 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.player;
 
-import de.tu_clausthal.in.bachelorproject2018.poker.game.PlayerHand;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.action.IAction;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
 
