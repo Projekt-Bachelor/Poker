@@ -6,7 +6,7 @@ import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
 
 public class CFold extends IBaseAction{
 
-    protected CFold(ITable p_table) {
+    public CFold(ITable p_table) {
         super(p_table);
     }
 

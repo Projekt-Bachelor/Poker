@@ -1,6 +1,6 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.round;
 
-import de.tu_clausthal.in.bachelorproject2018.poker.game.table.IMessage;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.IMessage;
 
 import java.util.Queue;
 import java.util.function.BiConsumer;

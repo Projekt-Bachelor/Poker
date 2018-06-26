@@ -1,7 +1,7 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.round;
 
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
-import de.tu_clausthal.in.bachelorproject2018.poker.game.table.IMessage;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.IMessage;
 
 import java.util.Queue;
 
@@ -21,6 +21,10 @@ public final class CBetRound implements IRoundAction {
     @Override
     public void accept( final Queue<IRoundAction> p_roundactions, final IMessage p_message )
     {
+        if ( !m_player.equals( p_message.player() ) )
+            throw new RuntimeException( "Player passt nicht" );
+
+        p_message.get().accept( m_player );
     }
 
     @Override

@@ -1,7 +1,13 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.controller;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.sun.tools.javac.util.Name;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.action.CFold;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.action.IAction;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.CSessionRegistration;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.EActions;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.IMessage;
 import de.tu_clausthal.in.bachelorproject2018.poker.websocket.CSession;
 import de.tu_clausthal.in.bachelorproject2018.poker.websocket.ESessionManagement;
 import de.tu_clausthal.in.bachelorproject2018.poker.websocket.StompConnectEvent;
@@ -14,6 +20,10 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.stereotype.Controller;
 
+import java.util.Locale;
+import java.util.Objects;
+
+
 @Controller
 public class CGameActionController {
 
@@ -23,10 +33,15 @@ public class CGameActionController {
      * @param raise Raise Objekt mit dem Raise amount
      * @param headerAccessor
      */
-    @MessageMapping("/gameAction/raise")
-    public void raiseAction(final CRaise raise, SimpMessageHeaderAccessor headerAccessor) {
+    @MessageMapping("/game/action")
+    public void raiseAction(final CMessage p_messagee, SimpMessageHeaderAccessor headerAccessor) {
+        final ITable l_table = null; // Table aus Session
+        final IPlayer l_player = null; // Player aus Session
+        l_table.accept( p_messagee.setTable( l_table ).setPlayer( l_player ) );
 
-        raise.accept(ESessionManagement.INSTANCE.apply(headerAccessor.getSessionId()).getPlayer());
+
+
+        //raise.accept(ESessionManagement.INSTANCE.apply(headerAccessor.getSessionId()).getPlayer());
         //TODO - GameInformation erstellen
     }
 
@@ -58,5 +73,46 @@ public class CGameActionController {
                 headerAccessor.getSessionId(),
                 registration.getTable(),
                 player));
+    }
+
+
+    public static final class CMessage implements IMessage
+    {
+        @JsonProperty( "type" )
+        private String m_type;
+        @JsonProperty( "value" )
+        private Number m_value;
+        private ITable m_table;
+        private IPlayer m_player;
+
+        @Override
+        public IAction get()
+        {
+            switch ( m_type.toLowerCase( Locale.ROOT ) )
+            {
+                case "fold" :
+                    return new CFold( m_table );
+
+                default:
+            }
+        }
+
+        public CMessage setTable( final ITable p_table )
+        {
+            m_table = Objects.nonNull( m_table ) ? m_table : p_table;
+            return this;
+        }
+
+        public CMessage setPlayer( final IPlayer p_player )
+        {
+            m_player = p_player;
+            return this;
+        }
+
+        @Override
+        public IPlayer player()
+        {
+            return m_player;
+        }
     }
 }

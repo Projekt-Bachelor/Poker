@@ -5,6 +5,7 @@ import de.tu_clausthal.in.bachelorproject2018.poker.game.player.CPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.round.ERound;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.round.IRoundAction;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.IMessage;
 
 import javax.annotation.Nonnull;
 import java.text.MessageFormat;

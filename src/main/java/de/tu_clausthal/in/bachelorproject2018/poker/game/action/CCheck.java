@@ -4,7 +4,8 @@ import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
 
 public class CCheck extends IBaseAction {
-    protected CCheck(ITable p_table) {
+
+    public CCheck(ITable p_table) {
         super(p_table);
     }
 

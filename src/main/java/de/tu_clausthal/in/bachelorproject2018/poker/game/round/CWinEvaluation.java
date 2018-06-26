@@ -1,7 +1,7 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.round;
 
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
-import de.tu_clausthal.in.bachelorproject2018.poker.game.table.IMessage;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.IMessage;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.EWinCheck;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.HandStatistic;

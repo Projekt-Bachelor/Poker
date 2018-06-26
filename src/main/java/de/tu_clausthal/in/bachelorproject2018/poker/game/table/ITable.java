@@ -2,6 +2,7 @@ package de.tu_clausthal.in.bachelorproject2018.poker.game.table;
 
 import de.tu_clausthal.in.bachelorproject2018.poker.game.GameHub;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.IMessage;
 
 import javax.annotation.Nonnull;
 import java.util.Collection;
