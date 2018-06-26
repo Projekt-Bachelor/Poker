@@ -32,13 +32,14 @@ function disconnect() {
     console.log("Disconnected");
 }
 
-function sendRaise() {
+/*function sendRaise() {
     stompClient.send("/app/gameAction/raise", {},
         JSON.stringify({'value': $("#raise-amount").val()}));
-}
+}*/
 
-function sendAction() {
-
+function sendAction(type, value) {
+    stompClient.send("/app/game/action", {},
+        JSON.stringify({'type': type, 'value': value}));
 }
 
 function sendRegistration() {
@@ -54,12 +55,12 @@ $(function () {
     $("form").on('submit', function (e) {
         e.preventDefault();
     });
-    $( "#raise" ).click(function () { sendRaise(); });
     $( "#connect").click(function () { connect(); });
     $( "#disconnect").click(function () { disconnect(); });
 
-    $( "#call").click(function () { sendAction(); });
-    $( "#check").click(function () { sendAction(); });
-    $( "#fold").click(function () { sendAction(); });
-    $( "#allin").click(function () { sendAction(); });
+    $( "#call").click(function () { sendAction("call", 0); });
+    $( "#check").click(function () { sendAction("check", 0); });
+    $( "#fold").click(function () { sendAction("fold", 0); });
+    $( "#allin").click(function () { sendAction("all-in", 0); });
+    $( "#raise" ).click(function () { sendAction("raise", $("#raise-amount").val()); });
 });

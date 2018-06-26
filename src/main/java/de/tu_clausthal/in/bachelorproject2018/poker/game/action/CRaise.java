@@ -16,8 +16,9 @@ public final class CRaise extends IBaseAction
      */
     private int raiseValue;
 
-    protected CRaise(ITable p_table) {
+    public CRaise(ITable p_table, int p_raiseValue) {
         super(p_table);
+        raiseValue = p_raiseValue;
     }
 
     private String player;

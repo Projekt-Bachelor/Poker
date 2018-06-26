@@ -1,17 +1,13 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.controller;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.sun.tools.javac.util.Name;
-import de.tu_clausthal.in.bachelorproject2018.poker.game.action.CFold;
-import de.tu_clausthal.in.bachelorproject2018.poker.game.action.IAction;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.action.*;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.CSessionRegistration;
-import de.tu_clausthal.in.bachelorproject2018.poker.network.EActions;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.IMessage;
 import de.tu_clausthal.in.bachelorproject2018.poker.websocket.CSession;
 import de.tu_clausthal.in.bachelorproject2018.poker.websocket.ESessionManagement;
 import de.tu_clausthal.in.bachelorproject2018.poker.websocket.StompConnectEvent;
-import de.tu_clausthal.in.bachelorproject2018.poker.game.action.CRaise;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ETables;
 import org.apache.juli.logging.Log;
@@ -20,6 +16,7 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.stereotype.Controller;
 
+import java.text.MessageFormat;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -28,31 +25,30 @@ import java.util.Objects;
 public class CGameActionController {
 
     /**
-     * Erhält das Raise-Objekt vom Client und ruft die .accept Funktion mit dem anhand der SessionId abstrahierten
-     * Spiers auf
-     * @param raise Raise Objekt mit dem Raise amount
+     * Erhält ein Message-Objekt vom Client und reicht es an das Backend weiter
+     * @param p_message Message Objekt
      * @param headerAccessor
      */
     @MessageMapping("/game/action")
-    public void raiseAction(final CMessage p_messagee, SimpMessageHeaderAccessor headerAccessor) {
-        final ITable l_table = null; // Table aus Session
-        final IPlayer l_player = null; // Player aus Session
-        l_table.accept( p_messagee.setTable( l_table ).setPlayer( l_player ) );
+    public void raiseAction(final CMessage p_message, SimpMessageHeaderAccessor headerAccessor) {
+        // Table aus Session
+        final ITable l_table = ESessionManagement.INSTANCE.apply(headerAccessor.getSessionId()).getTable();
+        // Player aus Session
+        final IPlayer l_player = ESessionManagement.INSTANCE.apply(headerAccessor.getSessionId()).getPlayer();
+        //ruft entsprechendes Objekt auf
+        l_table.accept( p_message.setTable( l_table ).setPlayer( l_player ) );
 
-
-
-        //raise.accept(ESessionManagement.INSTANCE.apply(headerAccessor.getSessionId()).getPlayer());
         //TODO - GameInformation erstellen
     }
 
-    @MessageMapping("/gameAction/action")
+    /*@MessageMapping("/gameAction/action")
     public void action(final EActions action, SimpMessageHeaderAccessor headerAccessor) {
 
         IPlayer player = ESessionManagement.INSTANCE.apply(headerAccessor.getSessionId()).getPlayer();
 
         //action.actionFactory().accept(player);
         //TODO - Passende GameInformation erstellen
-    }
+    }*/
 
     /**
      * Diese Funktion verbindet die SessionId mit dem Spieler und Tisch
@@ -66,13 +62,15 @@ public class CGameActionController {
         logger.debug("Combine sessionId: " + headerAccessor.getSessionId() + " with table " + registration.getTable()
         + " and player " + registration.getPlayer());
 
-        IPlayer player = ETables.INSTANCE.apply(registration.getTable()).list()
+        IPlayer l_player = ETables.INSTANCE.apply(registration.getTable()).list()
                 .stream().filter(i -> i.getName().equalsIgnoreCase(registration.getPlayer())).findFirst().get();
+
+        ITable l_table = ETables.INSTANCE.apply(registration.getTable());
 
         ESessionManagement.INSTANCE.add(new CSession(
                 headerAccessor.getSessionId(),
-                registration.getTable(),
-                player));
+                l_table,
+                l_player));
     }
 
 
@@ -93,8 +91,22 @@ public class CGameActionController {
                 case "fold" :
                     return new CFold( m_table );
 
-                default:
+                case "call" :
+                    return new CCall(m_table);
+
+                case "check" :
+                    return new CCheck(m_table);
+
+                case "all-in" :
+                    return new CAllIn(m_table);
+
+                case "raise":
+                    return new CRaise(m_table, m_value.intValue());
+                /*default:
+                    return new RuntimeException(MessageFormat.format("Aktion: [{0}] nicht gefunden"), m_type);*/
             }
+
+            return null;
         }
 
         public CMessage setTable( final ITable p_table )
@@ -106,6 +118,11 @@ public class CGameActionController {
         public CMessage setPlayer( final IPlayer p_player )
         {
             m_player = p_player;
+            return this;
+        }
+
+        public CMessage setValue( final int p_value ){
+            m_value = p_value;
             return this;
         }
 

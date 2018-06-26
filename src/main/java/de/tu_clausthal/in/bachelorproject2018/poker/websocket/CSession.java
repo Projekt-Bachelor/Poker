@@ -1,6 +1,7 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.websocket;
 
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
 
 import javax.annotation.Nonnull;
 
@@ -18,7 +19,7 @@ public class CSession {
     /**
      * Tisch den der Spieler mit der jeweiligen SessionId bespielt
      */
-    private final String table;
+    private final ITable table;
 
     /**
      * Der zur SessionId gehöhrende Spieler
@@ -31,7 +32,7 @@ public class CSession {
      * @param table
      * @param player
      */
-    public CSession(@Nonnull String sessionId, @Nonnull String table, @Nonnull IPlayer player){
+    public CSession(@Nonnull String sessionId, @Nonnull ITable table, @Nonnull IPlayer player){
         this.sessionId = sessionId;
         this.table = table;
         this.player = player;
@@ -41,7 +42,7 @@ public class CSession {
         return sessionId;
     }
 
-    public String  getTable() {
+    public ITable  getTable() {
         return table;
     }
 

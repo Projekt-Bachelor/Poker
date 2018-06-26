@@ -57,7 +57,7 @@ public enum ETables implements ITables, Supplier<Set<String>>, Function<String, 
         // falls der Tisch nicht existiert, dann fliegt eine Exception
         final ITable l_table = m_tables.get( p_name );
         if ( Objects.isNull( l_table ) )
-            throw new RuntimeException( MessageFormat.format( "Tisch mit denm Namen [{0}] nicht gefunden", p_name ) );
+            throw new RuntimeException( MessageFormat.format( "Tisch mit dem Namen [{0}] nicht gefunden", p_name ) );
 
         return l_table;
     }

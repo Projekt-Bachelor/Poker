@@ -88,16 +88,6 @@ function disconnect() {
     console.log("Disconnected");
 }
 
-function sendName() {
-    stompClient.send("/app/createPlayer", {},
-        JSON.stringify({'name': $("#name").val()}));
-}
-
-function validateResponse(response){
-    //TODO - Abfrage auf Success-Meldung implementieren
-    getTables();
-}
-
 $(function () {
     $("form").on('submit', function (e) {
         e.preventDefault();
