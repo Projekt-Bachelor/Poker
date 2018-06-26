@@ -1,38 +1,43 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck;
 
+import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
+
 import javax.annotation.Nonnull;
+import java.text.MessageFormat;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
-public enum EWinCheck implements Supplier<IBaseWinCheckAction> {
-    PREPAREFORWINCHECK (new CPrepareForWinCheck()),
-    MULTIPLES (new CMultiples()),
-    STRAIGTH (new CStraight()),
-    FLUSH (new CFlush());
-
-    /**
-     * Wincheckaktions Objekt, das pro Enum-Item definiert ist
-     */
-    private final IWinCheckAction m_action;
-
-    /**
-     * privater Konstruktor des Enum
-     *
-     * @param p_action WincheckObjekt
-     */
-    EWinCheck( @Nonnull final IWinCheckAction p_action )
-    {
-        m_action = p_action;
-    }
+public enum EWinCheck implements Function<ITable, IWinCheckAction>
+{
+    PREPAREFORWINCHECK,
+    MULTIPLES,
+    STRAIGTH,
+    FLUSH;
 
     /**
      * liefert zu dem aktuellen Enum-Item das WincheckObjekt
      *
      * @return WincheckObjekt
      */
-    @Nonnull
     @Override
-    public IWinCheckAction get()
+    public IWinCheckAction apply( final ITable p_table )
     {
-        return m_action;
+        switch ( this )
+        {
+            case PREPAREFORWINCHECK:
+                return new CPrepareForWinCheck( p_table );
+
+            case MULTIPLES:
+                return new CMultiples( p_table );
+
+            case STRAIGTH:
+                return new CStraight( p_table );
+
+            case FLUSH:
+                return new CFlush( p_table );
+
+            default:
+                throw new RuntimeException( MessageFormat.format( "win check [{0}] existiert nicht", this ) );
+        }
     }
 }

@@ -39,8 +39,8 @@ public final class CWinEvaluation extends IBaseRoundAction {
             handStatisticList.add(handStatistic);
             if (!player.checkfolded()){
                 Arrays.stream( EWinCheck.values() )
-                        .map (i -> i.get())
-                        .map (i-> i.apply( handStatistic));
+                        .map( i -> i.apply( m_table ) )
+                        .forEach (i-> i.apply( handStatistic) );
             }
 
         }
