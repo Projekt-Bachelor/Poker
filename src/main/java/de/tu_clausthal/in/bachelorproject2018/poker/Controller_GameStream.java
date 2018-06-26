@@ -1,6 +1,6 @@
 package de.tu_clausthal.in.bachelorproject2018.poker;
 
-import de.tu_clausthal.in.bachelorproject2018.poker.Network_Objects.GameInformation;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.GameInformation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.codec.ServerSentEvent;
 import org.springframework.stereotype.Controller;

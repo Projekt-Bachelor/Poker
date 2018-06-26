@@ -1,4 +1,4 @@
-package de.tu_clausthal.in.bachelorproject2018.poker.Websocket;
+package de.tu_clausthal.in.bachelorproject2018.poker.websocket;
 
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 

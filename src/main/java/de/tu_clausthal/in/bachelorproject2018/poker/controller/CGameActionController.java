@@ -1,10 +1,10 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.controller;
 
-import de.tu_clausthal.in.bachelorproject2018.poker.Network_Objects.CSessionRegistration;
-import de.tu_clausthal.in.bachelorproject2018.poker.Network_Objects.EActions;
-import de.tu_clausthal.in.bachelorproject2018.poker.Websocket.CSession;
-import de.tu_clausthal.in.bachelorproject2018.poker.Websocket.ESessionManagement;
-import de.tu_clausthal.in.bachelorproject2018.poker.Websocket.StompConnectEvent;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.CSessionRegistration;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.EActions;
+import de.tu_clausthal.in.bachelorproject2018.poker.websocket.CSession;
+import de.tu_clausthal.in.bachelorproject2018.poker.websocket.ESessionManagement;
+import de.tu_clausthal.in.bachelorproject2018.poker.websocket.StompConnectEvent;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.action.CRaise;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ETables;

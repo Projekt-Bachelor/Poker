@@ -1,6 +1,6 @@
 package de.tu_clausthal.in.bachelorproject2018.poker;
 
-import de.tu_clausthal.in.bachelorproject2018.poker.Network_Objects.CSessionRegistration;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.CSessionRegistration;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ETables;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

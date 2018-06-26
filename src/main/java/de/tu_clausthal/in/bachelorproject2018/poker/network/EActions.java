@@ -1,10 +1,4 @@
-package de.tu_clausthal.in.bachelorproject2018.poker.Network_Objects;
-
-import de.tu_clausthal.in.bachelorproject2018.poker.game.action.CAllIn;
-import de.tu_clausthal.in.bachelorproject2018.poker.game.action.CCall;
-import de.tu_clausthal.in.bachelorproject2018.poker.game.action.IAction;
-
-import java.text.MessageFormat;
+package de.tu_clausthal.in.bachelorproject2018.poker.network;
 
 public enum EActions {
     CALL,

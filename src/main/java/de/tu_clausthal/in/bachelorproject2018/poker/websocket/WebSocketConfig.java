@@ -1,4 +1,4 @@
-package de.tu_clausthal.in.bachelorproject2018.poker.Websocket;
+package de.tu_clausthal.in.bachelorproject2018.poker.websocket;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
