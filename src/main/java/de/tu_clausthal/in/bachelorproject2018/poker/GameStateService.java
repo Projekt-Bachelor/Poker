@@ -1,6 +1,6 @@
 package de.tu_clausthal.in.bachelorproject2018.poker;
 
-import de.tu_clausthal.in.bachelorproject2018.poker.network.GameInformation;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.CGameInformation;
 import org.springframework.http.codec.ServerSentEvent;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -11,7 +11,7 @@ import reactor.core.publisher.Flux;
 @Component
 public class GameStateService {
 
-    private final EmitterProcessor<ServerSentEvent<GameInformation>> emitter;
+    private final EmitterProcessor<ServerSentEvent<CGameInformation>> emitter;
     private int currentListElement = -1;
 
     /**
@@ -21,12 +21,12 @@ public class GameStateService {
         emitter = EmitterProcessor.create();
     }
 
-    public Flux<ServerSentEvent<GameInformation>> getGameInformations(){
+    public Flux<ServerSentEvent<CGameInformation>> getGameInformations(){
         return emitter.log();
     }
 
     /**
-     *This function checks every second if a new GameInformation has been added to the GameState and then creates a
+     *This function checks every second if a new CGameInformation has been added to the GameState and then creates a
      *  message in this case. This will then be sent by the controller.
      */
     @Scheduled(fixedRate = 1000)

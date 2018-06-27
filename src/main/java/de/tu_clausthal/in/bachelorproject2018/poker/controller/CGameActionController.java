@@ -38,17 +38,8 @@ public class CGameActionController {
         //ruft entsprechendes Objekt auf
         l_table.accept( p_message.setTable( l_table ).setPlayer( l_player ) );
 
-        //TODO - GameInformation erstellen
+        //TODO - CGameInformation erstellen
     }
-
-    /*@MessageMapping("/gameAction/action")
-    public void action(final EActions action, SimpMessageHeaderAccessor headerAccessor) {
-
-        IPlayer player = ESessionManagement.INSTANCE.apply(headerAccessor.getSessionId()).getPlayer();
-
-        //action.actionFactory().accept(player);
-        //TODO - Passende GameInformation erstellen
-    }*/
 
     /**
      * Diese Funktion verbindet die SessionId mit dem Spieler und Tisch

@@ -11,7 +11,7 @@ import java.util.function.Supplier;
 
 
 /**
- * Singletone um alle Tische zu verwalten.
+ * Singleton um alle Tische zu verwalten.
  * Es ist einmal ein Supplier, der nur die Namen der Tische liefert und einmal eine Funktion,
  * bei der ich einen String (Name des Tisches) gebe und mir dann das Table-Objekt liefert
  */

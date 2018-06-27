@@ -1,5 +1,7 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.websocket;
 
+import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ETables;
+
 import javax.annotation.Nonnull;
 import java.text.MessageFormat;
 import java.util.Map;
@@ -31,7 +33,7 @@ public enum ESessionManagement implements ISessions, Function<String, CSession> 
     @Override
     public void remove(@Nonnull String sessionId) {
         //TODO - Verbindung mit der Spielelogik (PlayerObjekt aus der Session)
-        //ETables.INSTANCE.apply(sessions.get(sessionId).getTable()).leave();
+        ETables.INSTANCE.apply(sessions.get(sessionId).getTable().toString()).leave(sessions.get(sessionId).getPlayer());
         sessions.remove(sessionId);
     }
 
@@ -44,7 +46,8 @@ public enum ESessionManagement implements ISessions, Function<String, CSession> 
     public CSession apply(String sessionId) {
         final CSession session = sessions.get(sessionId);
         if (Objects.isNull(session)){
-            throw new RuntimeException(MessageFormat.format("Session mit der Id [{0}] nicht gefunden", sessionId));
+            throw new RuntimeException(MessageFormat.format(
+                    "Session mit der Id [{0}] nicht gefunden", sessionId));
         }
         return session;
     }
