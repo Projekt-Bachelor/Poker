@@ -1,6 +1,5 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.hubs;
 
-import de.tu_clausthal.in.bachelorproject2018.poker.game.SimpleGamestate;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.CPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
@@ -60,6 +59,7 @@ public class GameHub {
      * @return playerlist as ArrayList<CSessionRegistration>
      */
     public List<IPlayer> getPlayerList(){
+        updatePlayerlist();
         return players;
     }
 
@@ -121,7 +121,6 @@ public class GameHub {
 
         }
         //gibt eine ArrayList von den Gewinnern wieder
-
         chipsHandler.distributePotToWinner(findWinner.findWinner(handStatisticList));
     }
 
