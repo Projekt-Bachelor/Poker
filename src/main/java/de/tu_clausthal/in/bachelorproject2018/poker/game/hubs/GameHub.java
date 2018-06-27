@@ -10,23 +10,25 @@ import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.HandStatistic;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class GameHub {
-    private final ArrayList<IPlayer> players = new ArrayList<>();
+    private List<IPlayer> players = new ArrayList<>();
     private final CardDealer cardDealer;
     private final ChipsHandling chipsHandler;
     private int chipsStartAmount;
     private final DetermineWinner findWinner;
     private final ITable table;
-    private final SimpleGamestate testForGamestate;
+    //private final SimpleGamestate testForGamestate;
 
-    public GameHub( ITable Tisch){
+    public GameHub( ITable p_table){
         cardDealer = new CardDealer(this);
         chipsHandler = new ChipsHandling(this);
         findWinner = new DetermineWinner();
-        this.table = Tisch;
-        testForGamestate = new SimpleGamestate(this);
+        this.table = p_table;
+        //testForGamestate = new SimpleGamestate(this);
     }
 
     /**
@@ -57,8 +59,15 @@ public class GameHub {
      * getter for the playerlist
      * @return playerlist as ArrayList<CSessionRegistration>
      */
-    public ArrayList<IPlayer> getPlayerList(){
+    public List<IPlayer> getPlayerList(){
         return players;
+    }
+
+    /**
+     * zieht sich die aktuelle playerList vom Table
+     */
+    public void updatePlayerlist(){
+        players = table.list().stream().collect(Collectors.toList());
     }
 
 

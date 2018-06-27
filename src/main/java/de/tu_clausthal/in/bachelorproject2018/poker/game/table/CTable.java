@@ -34,7 +34,7 @@ public final class CTable implements ITable
      * festgelegt wird und gleichzeitig aber in einem Set auf Duplikate geprüft werden (jeder Spieler darf nur einmal am Tisch existieren),
      * und das ganze noch synchronized, weil wir in einer verteilten Anwendung arbeiten und ggf 2 Spieler gleichzeitig joinen können
      */
-    private final Map<String, IPlayer> m_players = Collections.synchronizedMap( new LinkedHashMap<>() );
+    private Map<String, IPlayer> m_players = Collections.synchronizedMap( new LinkedHashMap<>() );
     /**
      * Besitzer des Spiels, der das SPiel starten kann
      */

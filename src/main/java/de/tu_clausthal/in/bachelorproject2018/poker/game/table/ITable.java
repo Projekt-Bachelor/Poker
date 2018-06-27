@@ -6,6 +6,7 @@ import de.tu_clausthal.in.bachelorproject2018.poker.network.IMessage;
 
 import javax.annotation.Nonnull;
 import java.util.Collection;
+import java.util.Map;
 import java.util.function.Consumer;
 
 

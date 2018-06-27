@@ -59,9 +59,6 @@ public final class CPlayer implements IPlayer
         return this;
     }
 
-
-
-
     /**
      * to add chips to the players chipscount
      * @param add
