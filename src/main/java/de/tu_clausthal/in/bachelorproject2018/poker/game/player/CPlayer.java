@@ -22,7 +22,7 @@ public final class CPlayer implements IPlayer
     private boolean hasCheckedThisRound= false;
     private boolean isAllIn = false;
     private ITable table;
-
+    private String m_sessionId;
 
     /**
      * constructor
@@ -139,6 +139,16 @@ public final class CPlayer implements IPlayer
     @Override
     public ITable getTable() {
         return table;
+    }
+
+    @Override
+    public String getSessionId() {
+        return m_sessionId;
+    }
+
+    @Override
+    public void setSessionId(String p_sessionId) {
+        this.m_sessionId = p_sessionId;
     }
 
     @Override

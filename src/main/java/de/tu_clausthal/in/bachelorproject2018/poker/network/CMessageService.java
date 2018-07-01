@@ -1,14 +1,18 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.network;
 
+import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationListener;
 import org.springframework.messaging.MessageHeaders;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.messaging.simp.SimpMessageType;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
-public class CMessageService {
+import java.util.Collection;
+
+@Component
+public class CMessageService implements ApplicationListener<CGameInformationEvent> {
 
     @Autowired
     SimpMessageSendingOperations messagingTemplate;
@@ -33,5 +37,14 @@ public class CMessageService {
         headerAccessor.setSessionId(p_sessionId);
         headerAccessor.setLeaveMutable(true);
         return headerAccessor.getMessageHeaders();
+    }
+
+    @Override
+    public void onApplicationEvent(CGameInformationEvent gameInformationEvent) {
+        Collection<IPlayer> l_players = gameInformationEvent.getTable().list();
+        for (IPlayer player : l_players){
+            sendMessageToSession(player.getSessionId(), gameInformationEvent.getMessage());
+        }
+
     }
 }

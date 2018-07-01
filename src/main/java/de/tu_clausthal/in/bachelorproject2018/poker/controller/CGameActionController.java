@@ -2,27 +2,32 @@ package de.tu_clausthal.in.bachelorproject2018.poker.controller;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.action.*;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ETables;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.CGameInformationEvent;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.CSessionRegistration;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.IMessage;
 import de.tu_clausthal.in.bachelorproject2018.poker.websocket.CSession;
 import de.tu_clausthal.in.bachelorproject2018.poker.websocket.ESessionManagement;
 import de.tu_clausthal.in.bachelorproject2018.poker.websocket.StompConnectEvent;
-import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
-import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ETables;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.stereotype.Controller;
 
-import java.text.MessageFormat;
 import java.util.Locale;
 import java.util.Objects;
 
 
 @Controller
 public class CGameActionController {
+
+    @Autowired
+    private ApplicationEventPublisher applicationEventPublisher;
 
     /**
      * Erhält ein Message-Objekt vom Client und reicht es an das Backend weiter
@@ -39,6 +44,8 @@ public class CGameActionController {
         l_table.accept( p_message.setTable( l_table ).setPlayer( l_player ) );
 
         //TODO - CGameInformation erstellen
+        CGameInformationEvent gameInformationEvent = new CGameInformationEvent(
+                this, "ApplicationEvent", l_table);
     }
 
     /**

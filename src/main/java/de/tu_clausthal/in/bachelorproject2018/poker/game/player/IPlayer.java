@@ -56,6 +56,9 @@ public interface IPlayer extends Consumer<IAction>
 
     ITable getTable();
 
+    String getSessionId();
+    void setSessionId(String p_sessionId);
+
     void resetAmountBetThisRound();
 
     void resetHasChecked();
