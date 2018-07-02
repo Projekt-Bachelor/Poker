@@ -45,7 +45,7 @@ public class CGameActionController {
 
         //TODO - CGameInformation erstellen
         CGameInformationEvent gameInformationEvent = new CGameInformationEvent(
-                this, "ApplicationEvent", l_table);
+                this, "ApplicationEvent", l_table.name());
     }
 
     /**

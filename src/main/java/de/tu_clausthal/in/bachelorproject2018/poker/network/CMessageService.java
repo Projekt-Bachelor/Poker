@@ -1,6 +1,7 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.network;
 
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ETables;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.messaging.MessageHeaders;
@@ -41,7 +42,7 @@ public class CMessageService implements ApplicationListener<CGameInformationEven
 
     @Override
     public void onApplicationEvent(CGameInformationEvent gameInformationEvent) {
-        Collection<IPlayer> l_players = gameInformationEvent.getTable().list();
+        Collection<IPlayer> l_players = ETables.INSTANCE.apply(gameInformationEvent.getTable()).list();
         for (IPlayer player : l_players){
             sendMessageToSession(player.getSessionId(), gameInformationEvent.getMessage());
         }

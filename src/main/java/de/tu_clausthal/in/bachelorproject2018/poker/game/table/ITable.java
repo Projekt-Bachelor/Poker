@@ -6,7 +6,6 @@ import de.tu_clausthal.in.bachelorproject2018.poker.network.IMessage;
 
 import javax.annotation.Nonnull;
 import java.util.Collection;
-import java.util.Map;
 import java.util.function.Consumer;
 
 
@@ -62,6 +61,12 @@ public interface ITable extends Consumer<IMessage>
      * liefert alle Spieler des Tisches
      */
     Collection<IPlayer> list();
+
+    /**
+     * liefert den owner des Tisches zurück
+     * @return owner des Tisches
+     */
+    String owner();
 
     GameHub getGameHub();
 

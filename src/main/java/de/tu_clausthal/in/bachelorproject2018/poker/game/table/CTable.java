@@ -140,6 +140,11 @@ public final class CTable implements ITable
     }
 
     @Override
+    public String owner() {
+        return m_owner.getName();
+    }
+
+    @Override
     public GameHub getGameHub() {
         return gameHub;
     }
