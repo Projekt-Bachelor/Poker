@@ -13,13 +13,14 @@ import org.springframework.stereotype.Component;
 import java.util.Collection;
 
 @Component
-public class CMessageService implements ApplicationListener<CGameInformationEvent> {
+public class CNotificationService implements ApplicationListener<CGameInformationEvent> {
 
     @Autowired
     SimpMessageSendingOperations messagingTemplate;
 
     /**
      * Sendet eine Nachricht an eine bestimmte SessionId
+     *
      * @param p_sessionId Session Id
      * @param p_message Nachricht die gesendet werden soll
      */
@@ -30,6 +31,7 @@ public class CMessageService implements ApplicationListener<CGameInformationEven
 
     /**
      * Setzt die richtigen Header
+     *
      * @param p_sessionId
      * @return Headers
      */
@@ -40,6 +42,11 @@ public class CMessageService implements ApplicationListener<CGameInformationEven
         return headerAccessor.getMessageHeaders();
     }
 
+    /**
+     * Beim auftreten eines Events wird die Nachricht innerhalb des Events an alle User des Tisches geschickt
+     *
+     * @param gameInformationEvent Event-Objekt
+     */
     @Override
     public void onApplicationEvent(CGameInformationEvent gameInformationEvent) {
         Collection<IPlayer> l_players = ETables.INSTANCE.apply(gameInformationEvent.getTable()).list();

@@ -15,4 +15,8 @@ public interface IMessage extends Supplier<IAction>
 
     IPlayer player();
 
+    String type();
+
+    Number value();
+
 }

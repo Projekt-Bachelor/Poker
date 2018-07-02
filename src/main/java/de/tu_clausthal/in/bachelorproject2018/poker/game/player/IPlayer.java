@@ -2,6 +2,7 @@ package de.tu_clausthal.in.bachelorproject2018.poker.game.player;
 
 import de.tu_clausthal.in.bachelorproject2018.poker.game.action.IAction;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
+import reactor.util.annotation.NonNull;
 
 import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
@@ -56,9 +57,6 @@ public interface IPlayer extends Consumer<IAction>
 
     ITable getTable();
 
-    String getSessionId();
-    void setSessionId(String p_sessionId);
-
     void resetAmountBetThisRound();
 
     void resetHasChecked();
@@ -68,6 +66,11 @@ public interface IPlayer extends Consumer<IAction>
     //int getChipsCount();
 
     boolean getChecked();
+
+    void setSessionId(@Nonnull String p_sesionId);
+
+    @NonNull
+    String getSessionId();
 
 
     /**

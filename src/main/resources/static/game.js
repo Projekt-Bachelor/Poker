@@ -18,7 +18,7 @@ function connect() {
         setConnected(true);
         sendRegistration();
         console.log('Connected: ' + frame);
-        stompClient.subscribe('/topic/game', function (gameinformation) {
+        stompClient.subscribe('/app/queue/gamestate', function (gameinformation) {
             showGameInformation(JSON.parse(gameinformation.body));
         });
     });

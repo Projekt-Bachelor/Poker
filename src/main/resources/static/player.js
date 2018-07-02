@@ -1,8 +1,6 @@
 // erzwingnt sauberen JavaScript Code
 "use strict";
 
-let stompClient = null;
-
 // wenn HTML Dokument komplett geladen wurde
 $(function() {
 
@@ -51,48 +49,21 @@ $(function() {
                 })
                 .fail(function(i) {
                     console.log(i);
-                })
+                });
         });
 
 });
-
-function setConnected(connected) {
-    $("#connect").prop("disabled", connected);
-    $("#disconnect").prop("disabled", !connected);
-    if (connected) {
-        $("#tableContainer").show();
-    }
-    else {
-        $("#tableContainer").hide();
-    }
-    $("#greetings").html("");
-}
-
-function connect() {
-    var socket = new SockJS('/poker');
-    stompClient = Stomp.over(socket);
-    stompClient.connect({}, function (frame) {
-        setConnected(true);
-        console.log('Connected: ' + frame);
-        stompClient.subscribe('/topic/tables', function (response) {
-            validateResponse(JSON.parse(response.body));
-        });
-    });
-}
-
-function disconnect() {
-    if (stompClient !== null) {
-        stompClient.disconnect();
-    }
-    setConnected(false);
-    console.log("Disconnected");
-}
 
 $(function () {
-    $("form").on('submit', function (e) {
-        e.preventDefault();
+    $( "#createTable").click(function () {
+        jQuery.ajax("/table/create/" + $("#tablename").val() + "/" + $("#name").val() )
+            .done(function (i) {
+                console.log(i);
+            })
+            .fail(function (i) {
+                console.log(i);
+            });
     });
-    $( "#connect" ).click(function() { connect(); });
-    $( "#disconnect" ).click(function() { disconnect(); });
-    $( "#send" ).click(function() { sendName(); });
 });
+
+

@@ -1,23 +1,16 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.network;
 
+import java.util.UUID;
+
 public class CSessionRegistration {
 
-    private String table;
-    private String player;
+    private UUID m_uuid;
 
-    public String getTable() {
-        return table;
+    public UUID get(){
+        return this.m_uuid;
     }
 
-    public String getPlayer() {
-        return player;
-    }
-
-    public void setTable(String table) {
-        this.table = table;
-    }
-
-    public void setPlayer(String player) {
-        this.player = player;
+    public void set(UUID p_uuid){
+        m_uuid = p_uuid;
     }
 }

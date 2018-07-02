@@ -8,17 +8,17 @@ import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.CGameInformationEvent;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.CSessionRegistration;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.IMessage;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.Tokens.ETokens;
 import de.tu_clausthal.in.bachelorproject2018.poker.websocket.CSession;
 import de.tu_clausthal.in.bachelorproject2018.poker.websocket.ESessionManagement;
-import de.tu_clausthal.in.bachelorproject2018.poker.websocket.StompConnectEvent;
-import org.apache.juli.logging.Log;
-import org.apache.juli.logging.LogFactory;
+import org.javatuples.Triplet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.stereotype.Controller;
 
+import java.sql.Timestamp;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -50,20 +50,20 @@ public class CGameActionController {
 
     /**
      * Diese Funktion verbindet die SessionId mit dem Spieler und Tisch
-     * @param registration Enthält Tisch und Spieler
+     * @param p_registration Enthält Security (UUID)-Token
      * @param headerAccessor
      */
     @MessageMapping("/sessionConnect")
-    public void createUser(final CSessionRegistration registration, SimpMessageHeaderAccessor headerAccessor) {
+    public void createUser(final CSessionRegistration p_registration, SimpMessageHeaderAccessor headerAccessor) {
 
-        Log logger = LogFactory.getLog(StompConnectEvent.class);
-        logger.debug("Combine sessionId: " + headerAccessor.getSessionId() + " with table " + registration.getTable()
-        + " and player " + registration.getPlayer());
+        final Triplet<String, String, Timestamp> l_security = ETokens.INSTANCE.apply(p_registration.get());
+        /*if (Objects.isNull(l_security))
+            throw new RuntimeException(MessageFormat.format("Der Token [{0}] ist bereits abgelaufen"), p_registration.get());*/
 
-        IPlayer l_player = ETables.INSTANCE.apply(registration.getTable()).list()
-                .stream().filter(i -> i.getName().equalsIgnoreCase(registration.getPlayer())).findFirst().get();
+        IPlayer l_player = ETables.INSTANCE.apply(l_security.getValue0()).list()
+                .stream().filter(i -> i.getName().equalsIgnoreCase(l_security.getValue1())).findFirst().get();
 
-        ITable l_table = ETables.INSTANCE.apply(registration.getTable());
+        ITable l_table = ETables.INSTANCE.apply(l_security.getValue0());
 
         ESessionManagement.INSTANCE.add(new CSession(
                 headerAccessor.getSessionId(),
@@ -128,6 +128,16 @@ public class CGameActionController {
         public IPlayer player()
         {
             return m_player;
+        }
+
+        @Override
+        public String type() {
+            return m_type;
+        }
+
+        @Override
+        public Number value() {
+            return m_value;
         }
     }
 }
