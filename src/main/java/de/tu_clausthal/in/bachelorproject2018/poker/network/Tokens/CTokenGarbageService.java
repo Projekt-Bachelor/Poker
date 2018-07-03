@@ -17,7 +17,7 @@ public class CTokenGarbageService {
      * Geht alle gespeicherten Tokens durch und kuckt ob diese älter als 5 min sind. Ist das der Fall werden die Tokens
      * aus der Map entfernt!
      */
-    @Scheduled(fixedRate = 5000)
+    @Scheduled(fixedRate = 60000)
     public void removeOldTokens(){
         Set<UUID> l_activeTokens = ETokens.INSTANCE.get();
 
