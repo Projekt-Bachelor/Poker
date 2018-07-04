@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
@@ -72,8 +74,13 @@ public final class CTableController
      * @return Liste mit Spielerobjekten
      */
     @RequestMapping( value = "/{table}/players", produces = APPLICATION_JSON_VALUE )
-    public Collection<IPlayer> players( @PathVariable( "table" ) final String p_table )
+    public Collection<String> players( @PathVariable( "table" ) final String p_table )
     {
-        return ETables.INSTANCE.apply( p_table ).list();
+        List<String> playerNames = new ArrayList<>();
+        Collection<IPlayer> players = ETables.INSTANCE.apply( p_table ).list();
+        for (IPlayer player : players){
+            playerNames.add(player.getName());
+        }
+        return playerNames;
     }
 }

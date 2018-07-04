@@ -54,7 +54,12 @@ function sendAction(type, value) {
 
 function sendRegistration(uuid) {
     stompClient.send("/app/sessionConnect", {},
-        JSON.stringify({'m_uuid': uuid}));
+        JSON.stringify({'uuid': uuid}));
+}
+
+function startGame(type) {
+    stompClient.send("/app/game/startgame", {},
+        JSON.stringify({'type': type}));
 }
 
 function showGameInformation(gameinformation){
@@ -69,8 +74,7 @@ $(function () {
     $("form").on('submit', function (e) {
         e.preventDefault();
     });
-    $( "#connect").click(function () { connect(); });
-    $( "#disconnect").click(function () { disconnect(); });
+    $( "#startgame").click(function () { startGame("startgame"); });
 
     $( "#call").click(function () { sendAction("call", 0); });
     $( "#check").click(function () { sendAction("check", 0); });

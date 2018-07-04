@@ -5,6 +5,7 @@ import de.tu_clausthal.in.bachelorproject2018.poker.game.action.*;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ETables;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.CGameControl;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.CGameInformationEvent;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.CSessionRegistration;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.IMessage;
@@ -43,7 +44,6 @@ public class CGameActionController {
         //ruft entsprechendes Objekt auf
         l_table.accept( p_message.setTable( l_table ).setPlayer( l_player ) );
 
-        //TODO - CGameInformation erstellen
         CGameInformationEvent gameInformationEvent = new CGameInformationEvent(
                 this, "ApplicationEvent", l_table.name());
     }
@@ -69,6 +69,14 @@ public class CGameActionController {
                 headerAccessor.getSessionId(),
                 l_table,
                 l_player));
+    }
+
+    @MessageMapping("/game/startgame")
+    public void startGame(final CGameControl p_gameControl, SimpMessageHeaderAccessor headerAccessor) {
+        final CSession session = ESessionManagement.INSTANCE.apply(headerAccessor.getSessionId());
+        final ITable l_table = session.getTable();
+
+        l_table.start(session.getPlayer());
     }
 
 

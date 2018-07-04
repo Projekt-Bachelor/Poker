@@ -101,8 +101,8 @@ public final class CTable implements ITable
         if ( Objects.nonNull( m_currentround.get() ) )
             throw new RuntimeException( MessageFormat.format( "Spiel [{0}] wurde gestartet", m_name ) );
         // nur der Spielebesitzer kann es starten
-        if ( !m_owner.equals( p_owner ) )
-            throw new RuntimeException( "Nur der Besitzer des Spiels kann das Spiel starten" );
+        /*if ( !m_owner.equals( p_owner ) )
+            throw new RuntimeException( "Nur der Besitzer des Spiels kann das Spiel starten" );*/
 
         // startet Spiel
         this.generateround();
