@@ -16,33 +16,7 @@ import java.util.Collection;
 public class CNotificationService implements ApplicationListener<CGameInformationEvent> {
 
     @Autowired
-    SimpMessageSendingOperations messagingTemplate;
-
-    /**
-     * Sendet eine Nachricht an eine bestimmte SessionId
-     *
-     * @param p_sessionId Session Id
-     * @param p_message Nachricht die gesendet werden soll
-     */
-    public void sendMessageToSession(String p_sessionId, String p_message){
-        if (p_sessionId != null) {
-            messagingTemplate.convertAndSendToUser(
-                    p_sessionId, "/queue/gamestate", p_message, createHeaders(p_sessionId));
-        }
-    }
-
-    /**
-     * Setzt die richtigen Header
-     *
-     * @param p_sessionId
-     * @return Headers
-     */
-    private MessageHeaders createHeaders(String p_sessionId){
-        SimpMessageHeaderAccessor headerAccessor = SimpMessageHeaderAccessor.create(SimpMessageType.MESSAGE);
-        headerAccessor.setSessionId(p_sessionId);
-        headerAccessor.setLeaveMutable(true);
-        return headerAccessor.getMessageHeaders();
-    }
+    private SimpMessageSendingOperations messagingTemplate;
 
     /**
      * Beim auftreten eines Events wird die Nachricht innerhalb des Events an alle User des Tisches geschickt
@@ -51,9 +25,27 @@ public class CNotificationService implements ApplicationListener<CGameInformatio
      */
     @Override
     public void onApplicationEvent(CGameInformationEvent gameInformationEvent) {
-        Collection<IPlayer> l_players = ETables.INSTANCE.apply(gameInformationEvent.getTable()).list();
-        for (IPlayer player : l_players){
-            sendMessageToSession(player.getSessionId(), gameInformationEvent.getMessage());
-        }
+        ETables.INSTANCE.apply( gameInformationEvent.getTable() )
+                        .list()
+                        .forEach( i -> messagingTemplate.convertAndSendToUser(
+                            // @todo hier benötigst Du die WebSocket Session zum senden
+                            i.getSessionId(),
+                            "/queue/gamestate",
+                            gameInformationEvent.getMessage(),
+                            createHeaders( i.getSessionId() )
+                        ));
+    }
+
+    /**
+     * Setzt die richtigen Header
+     *
+     * @param p_sessionId
+     * @return Headers
+     */
+    private static MessageHeaders createHeaders(String p_sessionId){
+        final SimpMessageHeaderAccessor headerAccessor = SimpMessageHeaderAccessor.create(SimpMessageType.MESSAGE);
+        headerAccessor.setSessionId(p_sessionId);
+        headerAccessor.setLeaveMutable(true);
+        return headerAccessor.getMessageHeaders();
     }
 }
