@@ -18,9 +18,10 @@ public interface ITokens {
      * @param p_table Tisch an dem der User spielt
      * @param p_player Spieler
      * @param timestamp Timestamp
+     * @return UUID
      */
     @NonNull
-    void add(@Nonnull final UUID p_uuid, @Nonnull final String p_table, @Nonnull final String p_player,
+    UUID add(@Nonnull final UUID p_uuid, @Nonnull final String p_table, @Nonnull final String p_player,
              @Nonnull final Timestamp timestamp);
 
     /**

@@ -38,7 +38,7 @@ public enum ETokens implements ITokens, Supplier<Set<UUID>>, Function<UUID, Trip
     }
 
     @Override
-    public void add(@Nonnull UUID p_uuid, @Nonnull String p_table, @Nonnull String p_player,
+    public UUID add(@Nonnull UUID p_uuid, @Nonnull String p_table, @Nonnull String p_player,
                     @Nonnull Timestamp p_timestamp) {
 
         if (m_tokenMap.containsKey(p_uuid))
@@ -46,6 +46,7 @@ public enum ETokens implements ITokens, Supplier<Set<UUID>>, Function<UUID, Trip
 
         m_tokenMap.put(p_uuid, new Triplet<>(p_table, p_player, p_timestamp));
 
+        return p_uuid;
     }
 
     @Override

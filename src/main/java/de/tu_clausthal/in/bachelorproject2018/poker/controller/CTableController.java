@@ -42,11 +42,8 @@ public final class CTableController
     {
         // in dem Singleton der Tables wird nun ein neuer Tisch mit einem Namen und einem Besitzer erzeugt
         ETables.INSTANCE.add( new CTable(p_table, p_owner) );
+        return ETokens.INSTANCE.add( UUID.randomUUID(), p_table, p_owner, new Timestamp(System.currentTimeMillis()));
 
-        UUID l_uuid = UUID.randomUUID();
-        ETokens.INSTANCE.add(l_uuid, p_table, p_owner, new Timestamp(System.currentTimeMillis()));
-
-        return l_uuid;
     }
 
     /**

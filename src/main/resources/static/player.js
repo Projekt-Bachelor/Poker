@@ -53,9 +53,7 @@ $(function() {
                 });
         });
 
-});
 
-$(function () {
     $( "#createTable").click(function () {
         jQuery.ajax("/table/create/" + $("#tablename").val() + "/" + $("#name").val() )
             .done(function (i) {
