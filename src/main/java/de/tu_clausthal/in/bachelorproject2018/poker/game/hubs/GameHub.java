@@ -96,11 +96,12 @@ public class GameHub {
         /*
          * @todo IPlayer-Klasse muss das addChips bekommen
          */
-        //players.forEach( i -> i.addChips( chipsStartAmount ) );
-        // for (CPlayer player: players){
-        //    player.addChips(chipsStartAmount);
-        //}
+        players.forEach( i -> i.addChips( chipsStartAmount ) );
+        for (IPlayer player: players){
+            player.addChips(chipsStartAmount);
+        }
     }
+
     /**
      * Durchlaufen einer Winevaluation ohne Vergleiche
      * es wird für jeden Spieler eine Handstatistic erstellt und übergeben

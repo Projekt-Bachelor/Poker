@@ -41,11 +41,15 @@ public class CGameActionController {
         final ITable l_table = ESessionManagement.INSTANCE.apply(headerAccessor.getSessionId()).getTable();
         // Player aus Session
         final IPlayer l_player = ESessionManagement.INSTANCE.apply(headerAccessor.getSessionId()).getPlayer();
-        //ruft entsprechendes Objekt auf
-        l_table.accept( p_message.setTable( l_table ).setPlayer( l_player ) );
 
         CGameInformationEvent gameInformationEvent = new CGameInformationEvent(
                 this, "ApplicationEvent", l_table.name());
+        applicationEventPublisher.publishEvent(gameInformationEvent);
+
+        //ruft entsprechendes Objekt auf
+        //l_table.accept( p_message.setTable( l_table ).setPlayer( l_player ) );
+
+
     }
 
     /**
@@ -63,6 +67,8 @@ public class CGameActionController {
         IPlayer l_player = ETables.INSTANCE.apply(l_security.getValue0()).list()
                 .stream().filter(i -> i.getName().equalsIgnoreCase(l_security.getValue1())).findFirst().get();
 
+        l_player.setSessionId(headerAccessor.getSessionId());
+
         ITable l_table = ETables.INSTANCE.apply(l_security.getValue0());
 
         ESessionManagement.INSTANCE.add(new CSession(
@@ -76,6 +82,7 @@ public class CGameActionController {
         final CSession session = ESessionManagement.INSTANCE.apply(headerAccessor.getSessionId());
         final ITable l_table = session.getTable();
 
+        l_table.getGameHub().startGame();
         l_table.start(session.getPlayer());
     }
 

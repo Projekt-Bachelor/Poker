@@ -19,6 +19,7 @@ import java.util.stream.Stream;
  */
 public enum ERound implements Iterator<ERound>
 {
+    PREFLOP,
     BETTINGROUND1,
     FLOP,
     BETTINGROUND2,
@@ -50,6 +51,9 @@ public enum ERound implements Iterator<ERound>
 
             case FLOP:
                 return Stream.of( new CFlop(table) );
+
+            case PREFLOP:
+                return Stream.of( new CPreFlop(table) );
 
             case TURN:
                 return Stream.of( new CRiver(table) );

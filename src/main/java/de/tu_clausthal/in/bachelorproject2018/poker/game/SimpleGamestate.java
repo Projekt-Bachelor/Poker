@@ -16,6 +16,7 @@ public class SimpleGamestate {
         for (IPlayer player: gameHub.getPlayerList()){
             result += player.getName() + " hat " + player.getChipsCount() + " Chips. ";
             result += "Diese Runde hat er bisher " + player.getAmountBetThisRound() + " Chips gesetzt. ";
+            result += "Und er hat die Karten: " + player.getPlayerhand().showHand();
         }
 
         result += "Bisher liegen die folgenden Karten auf dem Tisch: ";

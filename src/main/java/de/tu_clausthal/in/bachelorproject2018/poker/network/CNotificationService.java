@@ -25,8 +25,10 @@ public class CNotificationService implements ApplicationListener<CGameInformatio
      * @param p_message Nachricht die gesendet werden soll
      */
     public void sendMessageToSession(String p_sessionId, String p_message){
-        messagingTemplate.convertAndSendToUser(
-                p_sessionId, "/queue/message", p_message, createHeaders(p_sessionId));
+        if (p_sessionId != null) {
+            messagingTemplate.convertAndSendToUser(
+                    p_sessionId, "/queue/gamestate", p_message, createHeaders(p_sessionId));
+        }
     }
 
     /**
@@ -53,6 +55,5 @@ public class CNotificationService implements ApplicationListener<CGameInformatio
         for (IPlayer player : l_players){
             sendMessageToSession(player.getSessionId(), gameInformationEvent.getMessage());
         }
-
     }
 }
