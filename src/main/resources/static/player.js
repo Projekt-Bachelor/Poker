@@ -46,6 +46,7 @@ $(function() {
             jQuery.ajax( "/table/join/" + jQuery(this).data("name") + "/" + $("#name").val()  )
                 .done(function(i) {
                     console.log(i);
+                    document.location.replace("/game?uuid=" + i);
                 })
                 .fail(function(i) {
                     console.log(i);
@@ -59,6 +60,7 @@ $(function () {
         jQuery.ajax("/table/create/" + $("#tablename").val() + "/" + $("#name").val() )
             .done(function (i) {
                 console.log(i);
+                document.location.replace("/game?uuid=" + i);
             })
             .fail(function (i) {
                 console.log(i);

@@ -9,7 +9,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.sql.Timestamp;
 import java.util.Collection;
@@ -30,15 +29,13 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RequestMapping( "/table" )
 public final class CTableController
 {
-
-
     /**
      * erzeugt einen neuen Tisch
      *
      * @param p_table Name des Tisches
      */
     @RequestMapping( value = "/create/{getName}/{owner}" )
-    public ModelAndView create(@PathVariable( "getName" ) final String p_table, @PathVariable( "owner" ) final String p_owner,
+    public UUID create(@PathVariable( "getName" ) final String p_table, @PathVariable( "owner" ) final String p_owner,
                                ModelMap model)
     {
         // in dem Singleton der Tables wird nun ein neuer Tisch mit einem Namen und einem Besitzer erzeugt
@@ -47,8 +44,7 @@ public final class CTableController
         UUID l_uuid = UUID.randomUUID();
         ETokens.INSTANCE.add(l_uuid, p_table, p_owner, new Timestamp(System.currentTimeMillis()));
 
-        model.addAttribute("uuid", l_uuid);
-        return new ModelAndView("redirect:/game1", model);
+        return l_uuid;
     }
 
     /**
@@ -58,7 +54,7 @@ public final class CTableController
      * @param p_player Spielername
      */
     @RequestMapping( value = "/join/{table}/{player}" )
-    public ModelAndView join( @PathVariable( "table" ) final String p_table, @PathVariable( "player" ) final String p_player,
+    public UUID join( @PathVariable( "table" ) final String p_table, @PathVariable( "player" ) final String p_player,
                               ModelMap model)
     {
         ETables.INSTANCE.apply( p_table ).join( p_player );
@@ -66,8 +62,7 @@ public final class CTableController
         UUID l_uuid = UUID.randomUUID();
         ETokens.INSTANCE.add(l_uuid, p_table, p_player, new Timestamp(System.currentTimeMillis()));
 
-        model.addAttribute("uuid", l_uuid);
-        return new ModelAndView("redirect:/game", model);
+        return l_uuid;
     }
 
     /**

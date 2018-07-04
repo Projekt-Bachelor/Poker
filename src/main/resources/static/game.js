@@ -1,3 +1,15 @@
+"use strict";
+
+$(function() {
+    var url_string = window.location.href;
+    console.log(url);
+    var url = new URL(url_string);
+    var uuid = url.searchParams.get("uuid");
+    console.log(uuid);
+
+    connect(uuid);
+});
+
 var stompClient = null;
 
 function setConnected(connected){
@@ -11,15 +23,18 @@ function setConnected(connected){
     $("#gamestate").html("");
 }
 
-function connect() {
+function connect(uuid) {
     var socket = new SockJS('/poker');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         setConnected(true);
-        sendRegistration();
+        sendRegistration(uuid);
         console.log('Connected: ' + frame);
         stompClient.subscribe('/app/queue/gamestate', function (gameinformation) {
             showGameInformation(JSON.parse(gameinformation.body));
+        });
+        stompClient.subscribe('/app/queue/error', function (error) {
+            showErrorMessage(JSON.parse(error.body));
         });
     });
 }
@@ -32,23 +47,22 @@ function disconnect() {
     console.log("Disconnected");
 }
 
-/*function sendRaise() {
-    stompClient.send("/app/gameAction/raise", {},
-        JSON.stringify({'value': $("#raise-amount").val()}));
-}*/
-
 function sendAction(type, value) {
     stompClient.send("/app/game/action", {},
         JSON.stringify({'type': type, 'value': value}));
 }
 
-function sendRegistration() {
+function sendRegistration(uuid) {
     stompClient.send("/app/sessionConnect", {},
-        JSON.stringify({'table': "foo", 'player': "test"}));
+        JSON.stringify({'m_uuid': uuid}));
 }
 
 function showGameInformation(gameinformation){
     $("#gamestate").append("<tr><td>" + gameinformation + "</td></tr>");
+}
+
+function showErrorMessage(error){
+
 }
 
 $(function () {
