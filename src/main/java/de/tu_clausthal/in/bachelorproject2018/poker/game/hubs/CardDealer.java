@@ -20,9 +20,7 @@ public class CardDealer {
      * clear the tablecards, to be able to lay a new Flop/Turn/River
      */
     public void resetForNextRound(){
-        playDeck.clearDeck();
-        playDeck.initDeck();
-        playDeck.shuffle();
+        playDeck = new Deck();
         tableCards.clear();
     }
 
@@ -31,8 +29,7 @@ public class CardDealer {
      * like resetForNextRound, except no clearing of tablecards or deck, because no deck/tablecards existed before
      */
     public void firstDeckOfTheGame(){
-        playDeck.initDeck();
-        playDeck.shuffle();
+        playDeck = new Deck();
     }
 
     /**

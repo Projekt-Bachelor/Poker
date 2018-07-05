@@ -1,18 +1,22 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.cards;
 
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.*;
+import java.util.stream.Collectors;
 
-public class Deck {
-    private ArrayList<Card> cards;
-    //to shuffle we need randomness
-    Random rand = new Random();
+public class Deck implements Iterator<Card>{
+    private Stack<Card> cards;
+
+
 
     /**
      * constructor
      */
     public Deck(){
-        cards = new ArrayList<Card>();
+
+        List<Card> cardList = Arrays.stream(CardSuit.values()).flatMap(i -> Arrays.stream(CardValue.values())
+                . map(j -> new Card(i, j))).collect(Collectors.toList());
+        Collections.shuffle(cardList);
+        cards.addAll(cardList);
     }
 
 
@@ -34,7 +38,7 @@ public class Deck {
      * getter
      * @return cards in the deck as ArrayList<Card>
      */
-    public ArrayList<Card> getCards(){
+    public List<Card> getCards(){
         return cards;
     }
 
@@ -46,23 +50,7 @@ public class Deck {
     }
 
 
-    /**
-     * shuffle the deck
-     */
-    public void shuffle(){
-        //maybe repeat this a couple of times, to shuffle even more
-        for (int i = cards.size()-1; i>0; i--){
-            //get a random number for pick between 0-i
-            int pick = rand.nextInt(i);
-            //pick random card
-            Card randomCard = cards.get(pick);
-            //pick card to switch with randCard
-            Card card = cards.get(i);
-            //switch positions of cards
-            cards.set(i, randomCard);
-            cards.set(pick, card);
-        }
-    }
+
 
     //deal the top card of the deck, and remove it from the deck. return card to give it to player/board
 
@@ -91,4 +79,13 @@ public class Deck {
             return output;
     }
 
+    @Override
+    public boolean hasNext() {
+        return false;
+    }
+
+    @Override
+    public Card next() {
+        return cards.pop();
+    }
 }
