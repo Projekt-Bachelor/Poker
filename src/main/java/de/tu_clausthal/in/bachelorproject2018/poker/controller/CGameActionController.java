@@ -6,7 +6,6 @@ import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ETables;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.CGameControl;
-import de.tu_clausthal.in.bachelorproject2018.poker.network.CGameInformationEvent;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.CSessionRegistration;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.IMessage;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.Tokens.ETokens;
@@ -17,8 +16,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 
+import java.security.Principal;
 import java.sql.Timestamp;
 import java.util.Locale;
 import java.util.Objects;
@@ -29,6 +30,7 @@ public class CGameActionController {
 
     @Autowired
     private ApplicationEventPublisher applicationEventPublisher;
+    private SimpMessagingTemplate template;
 
     /**
      * Erhält ein Message-Objekt vom Client und reicht es an das Backend weiter
@@ -36,15 +38,20 @@ public class CGameActionController {
      * @param headerAccessor
      */
     @MessageMapping("/game/action")
-    public void raiseAction(final CMessage p_message, SimpMessageHeaderAccessor headerAccessor) {
+    public String raiseAction(final CMessage p_message, SimpMessageHeaderAccessor headerAccessor, Principal principal) {
         // Table aus Session
         final ITable l_table = ESessionManagement.INSTANCE.apply(headerAccessor.getSessionId()).getTable();
         // Player aus Session
         final IPlayer l_player = ESessionManagement.INSTANCE.apply(headerAccessor.getSessionId()).getPlayer();
 
-        CGameInformationEvent gameInformationEvent = new CGameInformationEvent(
-                this, "ApplicationEvent", l_table.name());
-        applicationEventPublisher.publishEvent(gameInformationEvent);
+        /*CGameInformationEvent gameInformationEvent = new CGameInformationEvent(
+                this, "ApplicationEvent", l_table.name());*/
+
+
+        //applicationEventPublisher.publishEvent(gameInformationEvent);
+        //template.convertAndSend("/queue/gamestate", principal.getName());
+
+        return "Success";
 
         //ruft entsprechendes Objekt auf
         //l_table.accept( p_message.setTable( l_table ).setPlayer( l_player ) );

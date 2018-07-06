@@ -30,7 +30,7 @@ function connect(uuid) {
         setConnected(true);
         sendRegistration(uuid);
         console.log('Connected: ' + frame);
-        stompClient.subscribe('/app/queue/gamestate', function (gameinformation) {
+        stompClient.subscribe('/user/queue/gamestate', function (gameinformation) {
             showGameInformation(JSON.parse(gameinformation.body));
         });
         stompClient.subscribe('/app/queue/error', function (error) {
