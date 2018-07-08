@@ -14,25 +14,12 @@ public class Deck implements Iterator<Card>{
     public Deck(){
 
         List<Card> cardList = Arrays.stream(CardSuit.values()).flatMap(i -> Arrays.stream(CardValue.values())
-                . map(j -> new Card(i, j))).collect(Collectors.toList());
+                .map(j -> new Card(i, j))).collect(Collectors.toList());
         Collections.shuffle(cardList);
         cards.addAll(cardList);
     }
 
 
-    /**
-     * initialize deck, create one card for each value and suit
-     * add each card to the deck, the deck is sorted at this moment
-     */
-    public void initDeck(){
-        //double loop, run through suit and value to create every single card
-        for (CardSuit suit: CardSuit.values()){
-            for (CardValue value: CardValue.values()){
-                Card card = new Card(suit, value);
-                cards.add(card);
-            }
-        }
-    }
 
     /**
      * getter
@@ -42,12 +29,6 @@ public class Deck implements Iterator<Card>{
         return cards;
     }
 
-    /**
-     * clear the cards, deletes all cards in the deck
-     */
-    public void clearDeck(){
-        cards.clear();
-    }
 
 
 
@@ -59,10 +40,7 @@ public class Deck implements Iterator<Card>{
      * @return topcard of the deck as Card
      */
     public Card removeTopCard(){
-        Card dealtCard;
-        dealtCard = cards.get(cards.size()-1);
-        cards.remove(cards.size()-1);
-        return dealtCard;
+        return cards.pop();
     }
 
 
