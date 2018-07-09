@@ -1,22 +1,18 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.network;
 
-import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
-import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ETables;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.objects.CNotification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
-import org.springframework.messaging.MessageHeaders;
-import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
-import org.springframework.messaging.simp.SimpMessageSendingOperations;
-import org.springframework.messaging.simp.SimpMessageType;
-import org.springframework.stereotype.Component;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 
-@Component
+@Service
 public class CNotificationService implements ApplicationListener<CGameInformationEvent> {
 
     @Autowired
-    private SimpMessageSendingOperations messagingTemplate;
+    private SimpMessagingTemplate messagingTemplate;
+
 
     /**
      * Beim auftreten eines Events wird die Nachricht innerhalb des Events an alle User des Tisches geschickt
@@ -25,7 +21,12 @@ public class CNotificationService implements ApplicationListener<CGameInformatio
      */
     @Override
     public void onApplicationEvent(CGameInformationEvent gameInformationEvent) {
-        ETables.INSTANCE.apply( gameInformationEvent.getTable() )
+
+        CNotification l_notification = new CNotification(gameInformationEvent.getMessage());
+
+        messagingTemplate.convertAndSendToUser("user", "/queue/notify", l_notification);
+
+        /*ETables.INSTANCE.apply( gameInformationEvent.getTable() )
                         .list()
                         .forEach( i -> messagingTemplate.convertAndSendToUser(
                             // @todo hier benötigst Du die WebSocket Session zum senden
@@ -33,19 +34,8 @@ public class CNotificationService implements ApplicationListener<CGameInformatio
                             "/queue/gamestate",
                             gameInformationEvent.getMessage(),
                             createHeaders( i.getSessionId() )
-                        ));
+                        ));*/
     }
 
-    /**
-     * Setzt die richtigen Header
-     *
-     * @param p_sessionId
-     * @return Headers
-     */
-    private static MessageHeaders createHeaders(String p_sessionId){
-        final SimpMessageHeaderAccessor headerAccessor = SimpMessageHeaderAccessor.create(SimpMessageType.MESSAGE);
-        headerAccessor.setSessionId(p_sessionId);
-        headerAccessor.setLeaveMutable(true);
-        return headerAccessor.getMessageHeaders();
-    }
+
 }

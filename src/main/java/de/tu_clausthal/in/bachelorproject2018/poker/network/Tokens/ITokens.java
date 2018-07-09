@@ -1,7 +1,5 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.network.Tokens;
 
-import org.springframework.lang.NonNull;
-
 import javax.annotation.Nonnull;
 import java.sql.Timestamp;
 import java.util.UUID;
@@ -20,7 +18,8 @@ public interface ITokens {
      * @param timestamp Timestamp
      * @return UUID
      */
-    @NonNull
+
+    @Nonnull
     UUID add(@Nonnull final UUID p_uuid, @Nonnull final String p_table, @Nonnull final String p_player,
              @Nonnull final Timestamp timestamp);
 

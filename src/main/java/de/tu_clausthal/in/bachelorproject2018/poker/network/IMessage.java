@@ -2,6 +2,7 @@ package de.tu_clausthal.in.bachelorproject2018.poker.network;
 
 import de.tu_clausthal.in.bachelorproject2018.poker.game.action.IAction;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
 
 import java.util.function.Supplier;
 
@@ -13,10 +14,17 @@ import java.util.function.Supplier;
 public interface IMessage extends Supplier<IAction>
 {
 
-    IPlayer player();
-
     String type();
 
     Number value();
+
+    ITable table();
+
+    IPlayer player();
+
+
+
+
+
 
 }

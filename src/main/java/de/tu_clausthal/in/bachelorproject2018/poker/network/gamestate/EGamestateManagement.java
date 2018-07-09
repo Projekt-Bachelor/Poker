@@ -15,8 +15,6 @@ public enum EGamestateManagement implements IGamestates, Function<ITable, IGames
 
     private Map<String, IGamestate> m_gamestates = new ConcurrentHashMap<>();
 
-
-
     @Override
     public IGamestate apply(ITable iTable) {
         final IGamestate l_gamestate = m_gamestates.get(iTable.name());
@@ -41,4 +39,5 @@ public enum EGamestateManagement implements IGamestates, Function<ITable, IGames
         //TODO Verbindung zum Backend herstellen
         m_gamestates.remove(p_table);
     }
+
 }

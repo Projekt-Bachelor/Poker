@@ -1,6 +1,9 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.cards;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Stack;
 import java.util.stream.Collectors;
 
 public class Deck implements Iterator<Card>{
@@ -15,8 +18,6 @@ public class Deck implements Iterator<Card>{
 
         List<Card> cardList = Arrays.stream(CardSuit.values()).flatMap(i -> Arrays.stream(CardValue.values())
                 .map(j -> new Card(i, j))).collect(Collectors.toList());
-        Collections.shuffle(cardList);
-        cards.addAll(cardList);
     }
 
 

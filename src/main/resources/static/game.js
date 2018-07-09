@@ -1,5 +1,7 @@
 "use strict";
 
+var stompClient = null;
+
 $(function() {
     var url_string = window.location.href;
     console.log(url);
@@ -10,31 +12,21 @@ $(function() {
     connect(uuid);
 });
 
-var stompClient = null;
-
-function setConnected(connected){
+/*function setConnected(connected){
     $("#connect").prop("disabled", connected);
     $("#disconnect").prop("disabled", !connected);
-    if (connected) {
-        $("#gamestate").show();
-    } else {
-        $("#gamestate").hide();
-    }
-    $("#gamestate").html("");
-}
+}*/
 
 function connect(uuid) {
     var socket = new SockJS('/poker');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
-        setConnected(true);
-        sendRegistration(uuid);
+        //setConnected(true);
+        //sendRegistration(uuid);
         console.log('Connected: ' + frame);
-        stompClient.subscribe('/user/queue/gamestate', function (gameinformation) {
-            showGameInformation(JSON.parse(gameinformation.body));
-        });
-        stompClient.subscribe('/app/queue/error', function (error) {
-            showErrorMessage(JSON.parse(error.body));
+        stompClient.subscribe('/user/queue/notify', function (notification) {
+            console.log(gameinformation);
+            showGameInformation(JSON.parse(notification.body));
         });
     });
 }
@@ -43,7 +35,6 @@ function disconnect() {
     if (stompClient !== null){
         stompClient.disconnect();
     }
-    setConnected(false);
     console.log("Disconnected");
 }
 
