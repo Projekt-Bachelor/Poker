@@ -3,6 +3,7 @@
 !.gitignore
 !circle.yml
 !application.yml
+!application.properties
 !system.properties
 !pom.xml
 !*.java

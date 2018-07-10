@@ -3,6 +3,7 @@ package de.tu_clausthal.in.bachelorproject2018.poker.game.player;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.action.IAction;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
+import org.springframework.web.socket.WebSocketSession;
 
 import javax.annotation.Nonnull;
 
@@ -22,7 +23,7 @@ public final class CPlayer implements IPlayer
     private boolean hasCheckedThisRound= false;
     private boolean isAllIn = false;
     private ITable table;
-    private String m_sessionId;
+    private WebSocketSession m_session;
 
     /**
      * constructor
@@ -142,16 +143,6 @@ public final class CPlayer implements IPlayer
     }
 
     @Override
-    public String getSessionId() {
-        return m_sessionId;
-    }
-
-    @Override
-    public void setSessionId(String p_sessionId) {
-        this.m_sessionId = p_sessionId;
-    }
-
-    @Override
     public void resetAmountBetThisRound() {
         amountBetThisRound = 0;
     }
@@ -179,7 +170,16 @@ public final class CPlayer implements IPlayer
         return hasCheckedThisRound;
     }
 
+    @Override
+    public void setSession(@Nonnull WebSocketSession p_session) {
+        m_session = p_session;
+    }
 
+    @Nonnull
+    @Override
+    public WebSocketSession getSession() {
+        return m_session;
+    }
 
     /**
      * fold this round, count down the counter of players still in this round
@@ -189,11 +189,6 @@ public final class CPlayer implements IPlayer
         table.getGameHub().getChipsHandler().somebodyHasFolded();
         fold = true;
     }
-
-
-
-
-
 
     @Override
     public void accept( final IAction p_action )

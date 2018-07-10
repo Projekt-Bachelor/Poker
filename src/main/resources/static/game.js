@@ -1,6 +1,7 @@
 "use strict";
 
 var stompClient = null;
+var ws = null;
 
 $(function() {
     var url_string = window.location.href;
@@ -9,7 +10,8 @@ $(function() {
     var uuid = url.searchParams.get("uuid");
     console.log(uuid);
 
-    connect(uuid);
+    connectStomp();
+    connectWebsocket(uuid);
 });
 
 /*function setConnected(connected){
@@ -17,7 +19,7 @@ $(function() {
     $("#disconnect").prop("disabled", !connected);
 }*/
 
-function connect(uuid) {
+function connectStomp() {
     var socket = new SockJS('/poker');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
@@ -29,6 +31,15 @@ function connect(uuid) {
             showGameInformation(JSON.parse(notification.body));
         });
     });
+}
+
+function connectWebsocket(uuid) {
+    ws = new WebSocket('ws://localhost:8080/notification');
+    ws.onmessage = function (notification) {
+        console.log(notification);
+    };
+
+    ws.send(JSON.stringify({'message-type': "registration", 'token': uuid}));
 }
 
 function disconnect() {

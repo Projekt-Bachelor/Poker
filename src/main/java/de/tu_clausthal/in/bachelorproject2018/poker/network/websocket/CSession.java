@@ -2,6 +2,7 @@ package de.tu_clausthal.in.bachelorproject2018.poker.network.websocket;
 
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
+import org.springframework.web.socket.WebSocketSession;
 
 import javax.annotation.Nonnull;
 
@@ -14,7 +15,7 @@ public class CSession {
     /**
      * SessionId
      */
-    private final String m_session;
+    private final WebSocketSession m_session;
 
     /**
      * Tisch den der Spieler mit der jeweiligen SessionId bespielt
@@ -32,13 +33,13 @@ public class CSession {
      * @param table
      * @param player
      */
-    public CSession(@Nonnull String  p_session, @Nonnull ITable table, @Nonnull IPlayer player){
+    public CSession(@Nonnull WebSocketSession  p_session, @Nonnull ITable table, @Nonnull IPlayer player){
         this.m_session = p_session;
         this.table = table;
         this.player = player;
     }
 
-    public String getSessionId() {
+    public WebSocketSession getSession() {
         return m_session;
     }
 

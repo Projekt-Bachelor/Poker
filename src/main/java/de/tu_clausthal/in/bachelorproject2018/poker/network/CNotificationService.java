@@ -1,10 +1,15 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.network;
 
+import com.google.gson.Gson;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ETables;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.objects.CNotification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.web.socket.TextMessage;
+
+import java.io.IOException;
 
 
 @Service
@@ -24,7 +29,15 @@ public class CNotificationService implements ApplicationListener<CGameInformatio
 
         CNotification l_notification = new CNotification(gameInformationEvent.getMessage());
 
-        messagingTemplate.convertAndSendToUser("user", "/queue/notify", l_notification);
+        ETables.INSTANCE.apply(gameInformationEvent.getTable()).list()
+                    .forEach(i -> {
+                        try {
+                            i.getSession().sendMessage(new TextMessage(new Gson().toJson(l_notification)));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    });
+
 
         /*ETables.INSTANCE.apply( gameInformationEvent.getTable() )
                         .list()

@@ -24,10 +24,10 @@ public enum ESessionManagement implements ISessions, Function<String, CSession> 
     @Nonnull
     @Override
     public void add(@Nonnull CSession session) {
-        if (sessions.containsKey(session.getSessionId() ) )
+        if (sessions.containsKey(session.getSession().getId() ) )
             throw new RuntimeException(MessageFormat.format("Session [{0}] existiert schon", session) );
 
-        sessions.put(session.getSessionId(), session);
+        sessions.put(session.getSession().getId(), session);
     }
 
     @Override
