@@ -13,41 +13,54 @@ import javax.annotation.Nonnull;
 public class CSession {
 
     /**
-     * SessionId
+     * Session
      */
-    private final WebSocketSession m_session;
+    private WebSocketSession m_session;
+
+    /**
+     *
+     */
+    private final String m_sessionId;
 
     /**
      * Tisch den der Spieler mit der jeweiligen SessionId bespielt
      */
-    private final ITable table;
+    private final ITable m_table;
 
     /**
      * Der zur SessionId gehöhrende Spieler
      */
-    private final IPlayer player;
+    private final IPlayer m_player;
 
     /**
      * Konstruktor
-     * @param p_session
-     * @param table
-     * @param player
+     * @param p_sessionId
+     * @param p_table
+     * @param p_player
      */
-    public CSession(@Nonnull WebSocketSession  p_session, @Nonnull ITable table, @Nonnull IPlayer player){
-        this.m_session = p_session;
-        this.table = table;
-        this.player = player;
+    public CSession(@Nonnull String  p_sessionId, @Nonnull ITable p_table, @Nonnull IPlayer p_player){
+        m_sessionId = p_sessionId;
+        m_table = p_table;
+        m_player = p_player;
+    }
+
+    public String getSessionId(){
+        return m_sessionId;
+    }
+
+    public ITable  getTable() {
+        return m_table;
+    }
+
+    public IPlayer getPlayer() {
+        return m_player;
+    }
+
+    public void setSession(@Nonnull WebSocketSession p_session){
+        m_session = p_session;
     }
 
     public WebSocketSession getSession() {
         return m_session;
-    }
-
-    public ITable  getTable() {
-        return table;
-    }
-
-    public IPlayer getPlayer() {
-        return player;
     }
 }

@@ -2,6 +2,7 @@ package de.tu_clausthal.in.bachelorproject2018.poker.network;
 
 import com.google.gson.Gson;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ETables;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.objects.CGameInformationEvent;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.objects.CNotification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;

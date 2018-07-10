@@ -1,6 +1,6 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.network.websocket;
 
-import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ETables;
+
 
 import javax.annotation.Nonnull;
 import java.text.MessageFormat;
@@ -24,17 +24,16 @@ public enum ESessionManagement implements ISessions, Function<String, CSession> 
     @Nonnull
     @Override
     public void add(@Nonnull CSession session) {
-        if (sessions.containsKey(session.getSession().getId() ) )
+        if (sessions.containsKey(session.getSessionId() ) )
             throw new RuntimeException(MessageFormat.format("Session [{0}] existiert schon", session) );
 
-        sessions.put(session.getSession().getId(), session);
+        sessions.put(session.getSessionId(), session);
     }
 
     @Override
     public void remove(@Nonnull String sessionId) {
         //TODO - Verbindung mit der Spielelogik (PlayerObjekt aus der Session)
-        ETables.INSTANCE.apply(sessions.get(sessionId).getTable().toString()).leave(sessions.get(sessionId).getPlayer());
-        sessions.remove(sessionId);
+
     }
 
     /**

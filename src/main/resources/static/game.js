@@ -19,8 +19,6 @@ function connectStomp() {
     var socket = new SockJS('/poker');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
-        //setConnected(true);
-        //sendRegistration(uuid);
         console.log('Connected: ' + frame);
         stompClient.subscribe('/user/queue/notify', function (notification) {
             console.log(gameinformation);
@@ -44,14 +42,22 @@ function disconnect() {
     console.log("Disconnected");
 }
 
+function sendRegistration(uuid) {
+    console.log("Send Registration");
+    ws.send(JSON.stringify({'message-type': "registration", 'token': uuid}));
+}
+
+function sendStompRegistration(uuid) {
+    stompClient.send("/app/sessionConnect", {},
+        JSON.stringify({'token': uuid}));
+}
+
 function sendAction(type, value) {
     stompClient.send("/app/game/action", {},
         JSON.stringify({'type': type, 'value': value}));
 }
 
-function sendRegistration(uuid) {
-    ws.send(JSON.stringify({'message-type': "registration", 'token': uuid}));
-}
+
 
 function startGame(type) {
     stompClient.send("/app/game/startgame", {},
@@ -72,6 +78,7 @@ $(function () {
     });
     $( "#startgame").click(function () { startGame("startgame"); });
     $( "#connect").click(function () { sendRegistration(uuid); });
+    $( "#connectStomp").click(function () { sendStompRegistration(uuid); });
 
     $( "#call").click(function () { sendAction("call", 0); });
     $( "#check").click(function () { sendAction("check", 0); });

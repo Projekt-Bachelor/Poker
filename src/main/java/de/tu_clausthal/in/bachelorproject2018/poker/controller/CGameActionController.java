@@ -3,18 +3,24 @@ package de.tu_clausthal.in.bachelorproject2018.poker.controller;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.action.*;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ETables;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
-import de.tu_clausthal.in.bachelorproject2018.poker.network.CGameControl;
-import de.tu_clausthal.in.bachelorproject2018.poker.network.CGameInformationEvent;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.IMessage;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.Tokens.ETokenLinker;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.Tokens.ETokens;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.objects.CGameControl;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.objects.CGameInformationEvent;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.objects.CSessionRegistration;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.websocket.CSession;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.websocket.ESessionManagement;
+import org.javatuples.Triplet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.stereotype.Controller;
 
+import java.sql.Timestamp;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -47,25 +53,20 @@ public class CGameActionController {
 
     }
 
-    /*@MessageMapping("/sessionConnect")
+    @MessageMapping("/sessionConnect")
     public void createUser(final CSessionRegistration p_registration, SimpMessageHeaderAccessor headerAccessor) {
 
         final Triplet<String, String, Timestamp> l_security = ETokens.INSTANCE.apply(p_registration.get());
-        if (Objects.isNull(l_security))
-            throw new RuntimeException(MessageFormat.format("Der Token [{0}] ist bereits abgelaufen"), p_registration.get());
-
-        IPlayer l_player = ETables.INSTANCE.apply(l_security.getValue0()).list()
-                .stream().filter(i -> i.getName().equalsIgnoreCase(l_security.getValue1())).findFirst().get();
-
-        l_player.setSessionId(headerAccessor.getSessionId());
 
         ITable l_table = ETables.INSTANCE.apply(l_security.getValue0());
 
-        ESessionManagement.INSTANCE.add(new CSession(
-                headerAccessor.getSessionId(),
-                l_table,
-                l_player));
-    }*/
+        IPlayer l_player = l_table.list().stream()
+                .filter(i -> i.getName().equalsIgnoreCase(l_security.getValue1())).findFirst().get();
+
+        ESessionManagement.INSTANCE.add(new CSession(headerAccessor.getSessionId(), l_table, l_player));
+
+        ETokenLinker.INSTANCE.add(p_registration.get(), headerAccessor.getSessionId());
+    }
 
     @MessageMapping("/game/startgame")
     public void startGame(final CGameControl p_gameControl, SimpMessageHeaderAccessor headerAccessor) {

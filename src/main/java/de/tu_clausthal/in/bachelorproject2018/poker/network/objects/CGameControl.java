@@ -1,4 +1,4 @@
-package de.tu_clausthal.in.bachelorproject2018.poker.network;
+package de.tu_clausthal.in.bachelorproject2018.poker.network.objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
