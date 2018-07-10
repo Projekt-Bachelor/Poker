@@ -37,7 +37,8 @@ public class CSocketHandler extends TextWebSocketHandler {
 
         Map arguments = new Gson().fromJson(message.getPayload(), Map.class);
         if (arguments.get("message-type").equals("registration")) {
-            final Triplet<String, String, Timestamp> l_security = ETokens.INSTANCE.apply((UUID) arguments.get("token"));
+            final Triplet<String, String, Timestamp> l_security = ETokens.INSTANCE.apply(
+                    UUID.fromString(arguments.get("token").toString()));
 
             IPlayer l_player = ETables.INSTANCE.apply(l_security.getValue0()).list()
                     .stream().filter(i -> i.getName().equalsIgnoreCase(l_security.getValue1())).findFirst().get();

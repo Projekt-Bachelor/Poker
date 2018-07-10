@@ -11,6 +11,6 @@ public class CWebsocketConfig implements WebSocketConfigurer {
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(new CSocketHandler(), "/name");
+        registry.addHandler(new CSocketHandler(), "/notification");
     }
 }

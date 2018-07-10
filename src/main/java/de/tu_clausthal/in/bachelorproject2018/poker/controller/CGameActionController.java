@@ -33,9 +33,9 @@ public class CGameActionController {
     @MessageMapping("/game/action")
     public void gameAction(final CMessage p_message, SimpMessageHeaderAccessor headerAccessor) {
         // Table aus Session
-        final ITable l_table = ESessionManagement.INSTANCE.apply(headerAccessor.getSessionId()).getTable();
+        //final ITable l_table = ESessionManagement.INSTANCE.apply(headerAccessor.getSessionId()).getTable();
         // Player aus Session
-        final IPlayer l_player = ESessionManagement.INSTANCE.apply(headerAccessor.getSessionId()).getPlayer();
+        //final IPlayer l_player = ESessionManagement.INSTANCE.apply(headerAccessor.getSessionId()).getPlayer();
 
         CGameInformationEvent gameInformationEvent = new CGameInformationEvent(
                 this, "ApplicationEvent", "test");
