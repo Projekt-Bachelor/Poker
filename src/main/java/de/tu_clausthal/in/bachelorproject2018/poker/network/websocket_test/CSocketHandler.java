@@ -29,7 +29,8 @@ public class CSocketHandler extends TextWebSocketHandler {
     @Override
     public void handleTextMessage(WebSocketSession session, TextMessage message) throws InterruptedException, IOException {
 
-        Map arguments = new Gson().fromJson(message.getPayload(), Map.class);
+        @SuppressWarnings("unchecked")
+        Map<String, String> arguments = new Gson().fromJson(message.getPayload(), Map.class);
         if (arguments.get("message-type").equals("registration")) {
             String l_sessionId = ETokenLinker.INSTANCE.apply(UUID.fromString(arguments.get("token").toString()));
 
