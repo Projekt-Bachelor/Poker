@@ -1,10 +1,11 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.round;
 
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
-import de.tu_clausthal.in.bachelorproject2018.poker.network.IMessage;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.EWinCheck;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.HandStatistic;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.IMessage;
+import org.springframework.context.ApplicationEventPublisher;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,8 +14,8 @@ import java.util.Queue;
 
 public final class CWinEvaluation extends IBaseRoundAction {
 
-    protected CWinEvaluation(ITable p_table) {
-        super(p_table);
+    protected CWinEvaluation(ITable p_table, ApplicationEventPublisher m_eventPublisher) {
+        super(p_table, m_eventPublisher);
     }
 
     @Override

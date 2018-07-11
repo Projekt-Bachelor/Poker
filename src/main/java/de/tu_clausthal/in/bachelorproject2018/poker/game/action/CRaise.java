@@ -2,6 +2,7 @@ package de.tu_clausthal.in.bachelorproject2018.poker.game.action;
 
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
+import org.pmw.tinylog.Logger;
 
 import javax.annotation.Nonnull;
 
@@ -37,12 +38,14 @@ public final class CRaise extends IBaseAction
             throw new RuntimeException( "Raise ist zu hoch" );
 
         // Überprüfung, ob der Spieler überhaupt raisen kann
-        if ( p_player.getAmountBetThisRound() - m_table.getGameHub().getChipsHandler().getHighestBidThisRound() >= 0 )
-            throw new RuntimeException( "Spieler kannst nicht raisen" );
+        /*if ( p_player.getAmountBetThisRound() - m_table.getGameHub().getChipsHandler().getHighestBidThisRound() >= 0 )
+            throw new RuntimeException( "Spieler kannst nicht raisen" );*/
 
         //amountBetThisRound updaten
         p_player.addToAmountBetThisRound(raiseValue);
         p_player.substractChips(raiseValue);
+        Logger.info(p_player.getName() + " hat um folgenden Wert geraiset " + raiseValue);
+
         //Chips dem Pot hinzufügen
         m_table.getGameHub().getChipsHandler().addToPot(raiseValue, p_player.getAmountBetThisRound());
     }

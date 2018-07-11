@@ -4,6 +4,7 @@ package de.tu_clausthal.in.bachelorproject2018.poker.game.hubs;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.CPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.HandStatistic;
+import org.pmw.tinylog.Logger;
 
 import java.util.ArrayList;
 
@@ -108,11 +109,17 @@ public class ChipsHandling {
      * update the highestBidThisRound to the bigBlind
      */
     public void forceBlinds(){
-        /*
-        gameHub.getPlayerList().get(bigBlindIndex).raise(bigBlindAmount);
-        gameHub.getPlayerList().get(smallBlindIndex).raise(smallBlindAmount);
+        //TODO - Handle Blinds
+
+        gameHub.getPlayerList().get(bigBlindIndex).substractChips(bigBlindAmount);
+        Logger.info(gameHub.getPlayerList().get(bigBlindIndex).getName() + " hat folgendes gesetzt " + bigBlindAmount);
+        gameHub.getPlayerList().get(bigBlindIndex).addToAmountBetThisRound(bigBlindAmount);
+
+        gameHub.getPlayerList().get(smallBlindIndex).substractChips(smallBlindAmount);
+        Logger.info(gameHub.getPlayerList().get(smallBlindIndex).getName() + " hat folgendes gesetzt " + smallBlindAmount);
+        gameHub.getPlayerList().get(smallBlindIndex).addToAmountBetThisRound(smallBlindAmount);
+
         highestBidThisRound = bigBlindAmount;
-        */
     }
 
     /**
