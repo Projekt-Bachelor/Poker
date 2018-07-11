@@ -105,6 +105,7 @@ public final class CTable implements ITable
             throw new RuntimeException( "Nur der Besitzer des Spiels kann das Spiel starten" );*/
 
         // startet Spiel
+        this.gameHub.startGame();
         this.generateround();
 
         return this;

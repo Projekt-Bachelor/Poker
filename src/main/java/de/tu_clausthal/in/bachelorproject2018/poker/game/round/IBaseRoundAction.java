@@ -6,7 +6,7 @@ public abstract class IBaseRoundAction implements IRoundAction
 {
     protected final ITable m_table;
 
-    protected IBaseRoundAction( final ITable p_table )
+    protected IBaseRoundAction(final ITable p_table)
     {
         m_table = p_table;
     }

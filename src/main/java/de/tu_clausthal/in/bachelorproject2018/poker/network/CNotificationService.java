@@ -35,6 +35,7 @@ public class CNotificationService implements ApplicationListener<CGameInformatio
                         try {
                             i.getSession().sendMessage(new TextMessage(new Gson().toJson(l_notification)));
                         } catch (IOException e) {
+                            //TODO - throw Exception
                             e.printStackTrace();
                         }
                     });

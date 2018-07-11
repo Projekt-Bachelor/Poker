@@ -46,8 +46,6 @@ public class PlayerHand {
         return true;
     }
 
-
-
     /**
      * show handcards of the players
      * @return handcards as string

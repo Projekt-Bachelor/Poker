@@ -1,12 +1,13 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.round;
 
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
-import de.tu_clausthal.in.bachelorproject2018.poker.network.IMessage;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.IMessage;
 
 import java.util.Queue;
 
 public class CPreFlop extends IBaseRoundAction {
+
     protected CPreFlop(ITable p_table) {
         super(p_table);
     }
@@ -32,6 +33,10 @@ public class CPreFlop extends IBaseRoundAction {
         for (IPlayer player : m_table.getGameHub().getPlayerList()){
             player.getPlayerhand().takeCard(m_table.getGameHub().getCardDealer().getDeck().removeTopCard());
             player.getPlayerhand().takeCard(m_table.getGameHub().getCardDealer().getDeck().removeTopCard());
+
+            //m_publisher.publishEvent(new CNotifyPlayerEvent(this, player, player.getPlayerhand().showHand()));
+
+            //TODO - Send Card-Objects to Player!
         }
         return false;
     }

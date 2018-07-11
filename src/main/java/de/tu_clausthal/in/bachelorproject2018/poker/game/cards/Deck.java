@@ -1,15 +1,10 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.cards;
 
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Deck implements Iterator<Card>{
-    private Stack<Card> cards;
-
-
+    private Stack<Card> cards = new Stack<>();
 
     /**
      * constructor
@@ -18,9 +13,10 @@ public class Deck implements Iterator<Card>{
 
         List<Card> cardList = Arrays.stream(CardSuit.values()).flatMap(i -> Arrays.stream(CardValue.values())
                 .map(j -> new Card(i, j))).collect(Collectors.toList());
+
+        Collections.shuffle(cardList);
+        cards.addAll(cardList);
     }
-
-
 
     /**
      * getter
@@ -29,10 +25,6 @@ public class Deck implements Iterator<Card>{
     public List<Card> getCards(){
         return cards;
     }
-
-
-
-
 
     //deal the top card of the deck, and remove it from the deck. return card to give it to player/board
 
