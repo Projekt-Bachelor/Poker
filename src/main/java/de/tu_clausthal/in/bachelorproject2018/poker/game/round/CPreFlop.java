@@ -1,6 +1,7 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.round;
 
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.IMessage;
 import org.pmw.tinylog.Logger;
 import org.springframework.context.ApplicationEventPublisher;
