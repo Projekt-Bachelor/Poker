@@ -2,6 +2,7 @@ package de.tu_clausthal.in.bachelorproject2018.poker.game.round;
 
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.CTable;
+import org.springframework.context.ApplicationEventPublisher;
 
 import javax.annotation.Nonnull;
 import java.text.MessageFormat;
@@ -36,7 +37,8 @@ public enum ERound implements Iterator<ERound>
      * @param p_player player list
      * @return stream of objects
      */
-    public Stream<IRoundAction> factory( @Nonnull final Collection<IPlayer> p_player, CTable table )
+    public Stream<IRoundAction> factory(@Nonnull final Collection<IPlayer> p_player, CTable table,
+                                        ApplicationEventPublisher p_eventPublisher)
     {
         switch ( this )
         {
@@ -47,22 +49,22 @@ public enum ERound implements Iterator<ERound>
                 //erstelle das BetRoundObjekt für den Roundstarter
                 return Stream.of( new CBetRound(table, table.getGameHub().getPlayerList().get(
                         table.getGameHub().getChipsHandler().getRoundStarter()
-                )));
+                ), p_eventPublisher));
 
             case FLOP:
-                return Stream.of( new CFlop(table) );
+                return Stream.of( new CFlop(table, p_eventPublisher) );
 
             case PREFLOP:
-                return Stream.of( new CPreFlop(table) );
+                return Stream.of( new CPreFlop(table, p_eventPublisher) );
 
             case TURN:
-                return Stream.of( new CRiver(table) );
+                return Stream.of( new CRiver(table, p_eventPublisher) );
 
             case RIVER:
-                return Stream.of( new CRiver(table) );
+                return Stream.of( new CRiver(table, p_eventPublisher) );
 
             case WINEVALUATION:
-                return Stream.of( new CWinEvaluation(table) );
+                return Stream.of( new CWinEvaluation(table, p_eventPublisher) );
 
             default:
                 throw new RuntimeException( MessageFormat.format( "Runde [{0}] nicht bekannt", this ) );

@@ -2,6 +2,7 @@ package de.tu_clausthal.in.bachelorproject2018.poker.game.action;
 
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
+import org.pmw.tinylog.Logger;
 
 import javax.annotation.Nonnull;
 
@@ -34,6 +35,10 @@ public class CCall extends IBaseAction
         //AmountBetThisRound updaten
         p_player.addToAmountBetThisRound(callAmount);
         p_player.substractChips(callAmount);
+        Logger.info(p_player.getName() + " hat gecallt um folgenden Wert zu erreichen " +
+                m_table.getGameHub().getChipsHandler().getHighestBidThisRound() + "! Dabei musste er folgendes setzen: " +
+                callAmount);
+
         //callAmount zum Pot hinzufügen
         m_table.getGameHub().getChipsHandler().addToPot(callAmount, p_player.getAmountBetThisRound());
     }

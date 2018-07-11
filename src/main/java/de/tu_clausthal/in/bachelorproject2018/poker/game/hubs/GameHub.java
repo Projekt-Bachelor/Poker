@@ -6,6 +6,7 @@ import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.DetermineWinner;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.EWinCheck;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.HandStatistic;
+import org.pmw.tinylog.Logger;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,7 +18,7 @@ public class GameHub {
     private List<IPlayer> players = new ArrayList<>();
     private final CardDealer cardDealer;
     private final ChipsHandling chipsHandler;
-    private int chipsStartAmount;
+    private int chipsStartAmount = 1000;
     private final DetermineWinner findWinner;
     private final ITable table;
     //private final SimpleGamestate testForGamestate;
@@ -96,9 +97,10 @@ public class GameHub {
         /*
          * @todo IPlayer-Klasse muss das addChips bekommen
          */
-        players.forEach( i -> i.addChips( chipsStartAmount ) );
-        for (IPlayer player: players){
+        //players.forEach( i -> i.addChips( chipsStartAmount ) );
+        for (IPlayer player: getPlayerList()){
             player.addChips(chipsStartAmount);
+            Logger.info("Spieler: " + player.getName() + " hat folgende Chips erhalten: " + chipsStartAmount);
         }
     }
 
