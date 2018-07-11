@@ -1,4 +1,4 @@
-package de.tu_clausthal.in.bachelorproject2018.poker.websocket;
+package de.tu_clausthal.in.bachelorproject2018.poker.network.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
@@ -18,9 +18,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry){
-        registry.addEndpoint("/poker")
-                .addInterceptors(new CHandshakeInterceptor())
-                .withSockJS();
+        registry.addEndpoint("/poker").withSockJS();
     }
 
 }

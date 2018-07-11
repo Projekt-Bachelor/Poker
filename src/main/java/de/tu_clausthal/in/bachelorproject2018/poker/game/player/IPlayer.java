@@ -2,7 +2,7 @@ package de.tu_clausthal.in.bachelorproject2018.poker.game.player;
 
 import de.tu_clausthal.in.bachelorproject2018.poker.game.action.IAction;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
-import reactor.util.annotation.NonNull;
+import org.springframework.web.socket.WebSocketSession;
 
 import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
@@ -67,10 +67,10 @@ public interface IPlayer extends Consumer<IAction>
 
     boolean getChecked();
 
-    void setSessionId(@Nonnull String p_sesionId);
+    void setSession(@Nonnull WebSocketSession p_session);
 
-    @NonNull
-    String getSessionId();
+    @Nonnull
+    WebSocketSession getSession();
 
 
     /**

@@ -1,4 +1,4 @@
-package de.tu_clausthal.in.bachelorproject2018.poker.websocket;
+package de.tu_clausthal.in.bachelorproject2018.poker.network.websocket;
 
 import javax.annotation.Nonnull;
 

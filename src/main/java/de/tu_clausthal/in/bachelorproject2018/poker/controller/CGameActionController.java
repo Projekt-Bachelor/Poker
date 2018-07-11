@@ -5,21 +5,21 @@ import de.tu_clausthal.in.bachelorproject2018.poker.game.action.*;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ETables;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
-import de.tu_clausthal.in.bachelorproject2018.poker.network.CGameControl;
-import de.tu_clausthal.in.bachelorproject2018.poker.network.CSessionRegistration;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.IMessage;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.Tokens.ETokenLinker;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.Tokens.ETokens;
-import de.tu_clausthal.in.bachelorproject2018.poker.websocket.CSession;
-import de.tu_clausthal.in.bachelorproject2018.poker.websocket.ESessionManagement;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.objects.CGameControl;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.objects.CGameInformationEvent;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.objects.CSessionRegistration;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.websocket.CSession;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.websocket.ESessionManagement;
 import org.javatuples.Triplet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
-import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 
-import java.security.Principal;
 import java.sql.Timestamp;
 import java.util.Locale;
 import java.util.Objects;
@@ -30,7 +30,6 @@ public class CGameActionController {
 
     @Autowired
     private ApplicationEventPublisher applicationEventPublisher;
-    private SimpMessagingTemplate template;
 
     /**
      * Erhält ein Message-Objekt vom Client und reicht es an das Backend weiter
@@ -38,50 +37,34 @@ public class CGameActionController {
      * @param headerAccessor
      */
     @MessageMapping("/game/action")
-    public String raiseAction(final CMessage p_message, SimpMessageHeaderAccessor headerAccessor, Principal principal) {
+    public void gameAction(final CMessage p_message, SimpMessageHeaderAccessor headerAccessor) {
         // Table aus Session
-        final ITable l_table = ESessionManagement.INSTANCE.apply(headerAccessor.getSessionId()).getTable();
+        //final ITable l_table = ESessionManagement.INSTANCE.apply(headerAccessor.getSessionId()).getTable();
         // Player aus Session
-        final IPlayer l_player = ESessionManagement.INSTANCE.apply(headerAccessor.getSessionId()).getPlayer();
+        //final IPlayer l_player = ESessionManagement.INSTANCE.apply(headerAccessor.getSessionId()).getPlayer();
 
-        CGameInformationEvent gameInformationEvent = new CGameInformationEvent(
-                this, "ApplicationEvent", l_table.name());
+        CGameInformationEvent gameInformationEvent = new CGameInformationEvent(this, "ApplicationEvent", l_table.name());
 
-
-        //applicationEventPublisher.publishEvent(gameInformationEvent);
-        //template.convertAndSend("/queue/gamestate", principal.getName());
-
-        return "Success";
+        applicationEventPublisher.publishEvent(gameInformationEvent);
 
         //ruft entsprechendes Objekt auf
         l_table.accept( p_message.setTable( l_table ).setPlayer( l_player ) );
 
-
     }
 
-    /**
-     * Diese Funktion verbindet die SessionId mit dem Spieler und Tisch
-     * @param p_registration Enthält Security (UUID)-Token
-     * @param headerAccessor
-     */
     @MessageMapping("/sessionConnect")
     public void createUser(final CSessionRegistration p_registration, SimpMessageHeaderAccessor headerAccessor) {
 
         final Triplet<String, String, Timestamp> l_security = ETokens.INSTANCE.apply(p_registration.get());
-        /*if (Objects.isNull(l_security))
-            throw new RuntimeException(MessageFormat.format("Der Token [{0}] ist bereits abgelaufen"), p_registration.get());*/
-
-        IPlayer l_player = ETables.INSTANCE.apply(l_security.getValue0()).list()
-                .stream().filter(i -> i.getName().equalsIgnoreCase(l_security.getValue1())).findFirst().get();
-
-        l_player.setSessionId(headerAccessor.getSessionId());
 
         ITable l_table = ETables.INSTANCE.apply(l_security.getValue0());
 
-        ESessionManagement.INSTANCE.add(new CSession(
-                headerAccessor.getSessionId(),
-                l_table,
-                l_player));
+        IPlayer l_player = l_table.list().stream()
+                .filter(i -> i.getName().equalsIgnoreCase(l_security.getValue1())).findFirst().get();
+
+        ESessionManagement.INSTANCE.add(new CSession(headerAccessor.getSessionId(), l_table, l_player));
+
+        ETokenLinker.INSTANCE.add(p_registration.get(), headerAccessor.getSessionId());
     }
 
     @MessageMapping("/game/startgame")
@@ -146,12 +129,6 @@ public class CGameActionController {
         }
 
         @Override
-        public IPlayer player()
-        {
-            return m_player;
-        }
-
-        @Override
         public String type() {
             return m_type;
         }
@@ -159,6 +136,17 @@ public class CGameActionController {
         @Override
         public Number value() {
             return m_value;
+        }
+
+        @Override
+        public ITable table() {
+            return m_table;
+        }
+
+        @Override
+        public IPlayer player()
+        {
+            return m_player;
         }
     }
 }

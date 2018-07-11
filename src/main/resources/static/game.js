@@ -1,50 +1,55 @@
 "use strict";
 
+var stompClient = null;
+var ws = null;
+var uuid= null;
+
 $(function() {
     var url_string = window.location.href;
     console.log(url);
     var url = new URL(url_string);
-    var uuid = url.searchParams.get("uuid");
+    uuid = url.searchParams.get("uuid");
     console.log(uuid);
 
-    connect(uuid);
+    connectStomp();
+    connectWebsocket();
 });
 
-var stompClient = null;
-
-function setConnected(connected){
-    $("#connect").prop("disabled", connected);
-    $("#disconnect").prop("disabled", !connected);
-    if (connected) {
-        $("#gamestate").show();
-    } else {
-        $("#gamestate").hide();
-    }
-    $("#gamestate").html("");
-}
-
-function connect(uuid) {
+function connectStomp() {
     var socket = new SockJS('/poker');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
-        setConnected(true);
-        sendRegistration(uuid);
         console.log('Connected: ' + frame);
-        stompClient.subscribe('/user/queue/gamestate', function (gameinformation) {
-            showGameInformation(JSON.parse(gameinformation.body));
-        });
-        stompClient.subscribe('/app/queue/error', function (error) {
-            showErrorMessage(JSON.parse(error.body));
+        stompClient.subscribe('/user/queue/notify', function (notification) {
+            console.log(gameinformation);
+            showGameInformation(JSON.parse(notification.body));
         });
     });
+}
+
+function connectWebsocket() {
+    ws = new WebSocket('ws://localhost:8080/notification');
+    console.log("Connection created");
+    ws.onmessage = function (notification) {
+        console.log(JSON.parse(notification.data));
+    };
 }
 
 function disconnect() {
     if (stompClient !== null){
         stompClient.disconnect();
     }
-    setConnected(false);
     console.log("Disconnected");
+}
+
+function sendRegistration(uuid) {
+    console.log("Send Registration");
+    ws.send(JSON.stringify({'message-type': "registration", 'token': uuid}));
+}
+
+function sendStompRegistration(uuid) {
+    stompClient.send("/app/sessionConnect", {},
+        JSON.stringify({'token': uuid}));
 }
 
 function sendAction(type, value) {
@@ -52,10 +57,7 @@ function sendAction(type, value) {
         JSON.stringify({'type': type, 'value': value}));
 }
 
-function sendRegistration(uuid) {
-    stompClient.send("/app/sessionConnect", {},
-        JSON.stringify({'uuid': uuid}));
-}
+
 
 function startGame(type) {
     stompClient.send("/app/game/startgame", {},
@@ -75,6 +77,8 @@ $(function () {
         e.preventDefault();
     });
     $( "#startgame").click(function () { startGame("startgame"); });
+    $( "#connect").click(function () { sendRegistration(uuid); });
+    $( "#connectStomp").click(function () { sendStompRegistration(uuid); });
 
     $( "#call").click(function () { sendAction("call", 0); });
     $( "#check").click(function () { sendAction("check", 0); });

@@ -1,6 +1,6 @@
-package de.tu_clausthal.in.bachelorproject2018.poker.websocket;
+package de.tu_clausthal.in.bachelorproject2018.poker.network.websocket;
 
-import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ETables;
+
 
 import javax.annotation.Nonnull;
 import java.text.MessageFormat;
@@ -33,8 +33,7 @@ public enum ESessionManagement implements ISessions, Function<String, CSession> 
     @Override
     public void remove(@Nonnull String sessionId) {
         //TODO - Verbindung mit der Spielelogik (PlayerObjekt aus der Session)
-        ETables.INSTANCE.apply(sessions.get(sessionId).getTable().toString()).leave(sessions.get(sessionId).getPlayer());
-        sessions.remove(sessionId);
+
     }
 
     /**
