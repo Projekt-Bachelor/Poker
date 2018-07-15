@@ -2,6 +2,7 @@ package de.tu_clausthal.in.bachelorproject2018.poker.game.action;
 
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
+import org.pmw.tinylog.Logger;
 
 import javax.annotation.Nonnull;
 
@@ -31,6 +32,7 @@ public final class CAllIn extends IBaseAction
         p_player.substractChips(allInAmount);
         //Chips dem Pot hinzufügen
         m_table.getGameHub().getChipsHandler().addToPot(allInAmount, p_player.getAmountBetThisRound());
+        Logger.info(p_player.getName() + " ist AllIn!");
 
     }
 }

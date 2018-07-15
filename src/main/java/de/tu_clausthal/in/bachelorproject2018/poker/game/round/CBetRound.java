@@ -50,6 +50,12 @@ public final class CBetRound extends IBaseRoundAction {
     @Override
     public Boolean apply( final Queue<IRoundAction> p_roundactions )
     {
+        //wenn der Spieler allin ist, brauch er keine weitere Aktion ausführen
+        if (m_player.getAllIn()){
+            Logger.info(m_player.getName() + "ist allin und muss damit nichts mehr machen");
+            p_roundactions.add(new CBetRound(m_table, m_table.getGameHub().getChipsHandler().updateWhoToAsk(m_player)));
+            return false;
+        }
         //wenn der Spieler der einzige Spieler noch in der Runde ist
         if(!m_player.checkfolded() && !m_table.getGameHub().getChipsHandler().continuePlayingRound()){
             Logger.info("Es ist nur noch ein Spieler in der Runde. Damit hat " +
