@@ -31,7 +31,7 @@ function connectWebsocket() {
     ws = new WebSocket('ws://localhost:8080/notification');
     console.log("Connection created");
     ws.onmessage = function (notification) {
-        console.log(JSON.parse(notification.data));
+        console.log(notification);
     };
 }
 
@@ -56,8 +56,6 @@ function sendAction(type, value) {
     stompClient.send("/app/game/action", {},
         JSON.stringify({'type': type, 'value': value}));
 }
-
-
 
 function startGame(type) {
     stompClient.send("/app/game/startgame", {},

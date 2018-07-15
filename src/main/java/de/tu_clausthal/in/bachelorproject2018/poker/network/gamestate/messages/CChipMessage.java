@@ -25,4 +25,8 @@ public class CChipMessage implements IGamestateMessage{
     public IPlayer getPlayer(){
         return m_player;
     }
+
+    public ITable getTable(){
+        return m_table;
+    }
 }

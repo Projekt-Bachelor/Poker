@@ -26,7 +26,11 @@ public class CCardMessage implements IGamestateMessage{
         return m_card;
     }
 
-    public String getSource(){
-        return m_destination;
+    public ITable getTable(){
+        return m_table;
+    }
+
+    public IPlayer getPlayer(){
+        return m_player;
     }
 }

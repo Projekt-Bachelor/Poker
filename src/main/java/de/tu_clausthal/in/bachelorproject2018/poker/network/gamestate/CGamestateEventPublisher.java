@@ -24,27 +24,29 @@ public class CGamestateEventPublisher {
 
     @Scheduled(fixedRate = 5000)
     public void publishEvent(){
-        for (String table : messagesSend.keySet()){
-            if (!EGamestateManagement.INSTANCE.apply(table).getActualIndex().equals(messagesSend.get(table))){
-                IGamestate l_gamestate = EGamestateManagement.INSTANCE.apply(table);
+        for (String l_table : messagesSend.keySet()){
+            if (!EGamestateManagement.INSTANCE.apply(l_table).getActualIndex().equals(messagesSend.get(l_table))){
+                IGamestate l_gamestate = EGamestateManagement.INSTANCE.apply(l_table);
 
                 int messagesAll = l_gamestate.getActualIndex().intValue();
-                int messagesToSend = messagesAll - messagesSend.get(table).intValue();
+                int messagesToSend = messagesAll - messagesSend.get(l_table).intValue();
 
 
                 for (int i = 0 ; i < messagesToSend ; i++){
-                    int l_index = messagesSend.get(table).incrementAndGet();
-                    IGamestateMessage l_message = l_gamestate.getSpecificMessage(l_index);
-                    eventPublisher.publishEvent(new CMessageEvent(this, l_message, ETables.INSTANCE.apply(table)));
+                    AtomicInteger l_index = messagesSend.get(l_table);
+                    IGamestateMessage l_message = l_gamestate.getSpecificMessage(l_index.incrementAndGet());
+                    eventPublisher.publishEvent(new CMessageEvent(this, l_message, ETables.INSTANCE.apply(l_table)));
                 }
             }
         }
     }
 
-    @Scheduled(fixedRate = 5000)
+    @Scheduled(fixedRate = 10000)
     public void getGamestates(){
         for (IGamestate l_gamestate : EGamestateManagement.INSTANCE.getGamestates()){
-            messagesSend.put(l_gamestate.getTable().name(), new AtomicInteger());
+            if (!messagesSend.containsKey(l_gamestate.getTable().name())){
+                messagesSend.put(l_gamestate.getTable().name(), new AtomicInteger());
+            }
         }
     }
 }
