@@ -253,6 +253,7 @@ public class ChipsHandling {
         highestBidThisRound = 0;
         newRound = false;
         pot = 0;
+        playersInThisRound = gameHub.getPlayerList().size();
 
         for (IPlayer player: gameHub.getPlayerList()){
             player.resetAmountBetThisRound();

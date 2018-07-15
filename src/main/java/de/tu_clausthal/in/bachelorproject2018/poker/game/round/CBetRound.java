@@ -50,6 +50,12 @@ public final class CBetRound extends IBaseRoundAction {
     @Override
     public Boolean apply( final Queue<IRoundAction> p_roundactions )
     {
+        //wenn der Spieler der einzige Spieler noch in der Runde ist
+        if(!m_player.checkfolded() && !m_table.getGameHub().getChipsHandler().continuePlayingRound()){
+            Logger.info("Es ist nur noch ein Spieler in der Runde. Damit hat " +
+            m_player.getName() + " automatisch gewonnen!");
+            return false;
+        }
         //wenn true, dann bleibt das Objekt liegen und wartet aus eine Nachricht, bei false wird es nach der Ausführung aus der Queue genommen
         //wenn der Spieler nicht gefoldet hat, frag ihn und warte auf eine Antwort
         if (!m_player.checkfolded()){
