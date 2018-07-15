@@ -1,4 +1,4 @@
-package de.tu_clausthal.in.bachelorproject2018.poker.network.Tokens;
+package de.tu_clausthal.in.bachelorproject2018.poker.network.tokens;
 
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -8,13 +8,13 @@ import java.util.Set;
 import java.util.UUID;
 
 /**
- * Diese Klasse entfernt ungenutzte Tokens (Tokens die älter als 5 min sind)
+ * Diese Klasse entfernt ungenutzte tokens (tokens die älter als 5 min sind)
  */
 @Component
 public class CTokenGarbageService {
 
     /**
-     * Geht alle gespeicherten Tokens durch und kuckt ob diese älter als 5 min sind. Ist das der Fall werden die Tokens
+     * Geht alle gespeicherten tokens durch und kuckt ob diese älter als 5 min sind. Ist das der Fall werden die tokens
      * aus der Map entfernt!
      */
     @Scheduled(fixedRate = 60000)

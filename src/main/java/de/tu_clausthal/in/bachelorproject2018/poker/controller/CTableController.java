@@ -3,7 +3,7 @@ package de.tu_clausthal.in.bachelorproject2018.poker.controller;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.CTable;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ETables;
-import de.tu_clausthal.in.bachelorproject2018.poker.network.Tokens.ETokens;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.tokens.ETokens;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;

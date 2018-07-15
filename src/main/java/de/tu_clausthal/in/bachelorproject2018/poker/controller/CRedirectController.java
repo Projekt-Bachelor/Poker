@@ -13,9 +13,4 @@ public class CRedirectController {
     public String sendGameHtml(){
         return "game";
     }
-
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public String sendTestHtml(){
-        return "test";
-    }
 }

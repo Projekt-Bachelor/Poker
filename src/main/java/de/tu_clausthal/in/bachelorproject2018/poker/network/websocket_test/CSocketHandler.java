@@ -1,7 +1,7 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.network.websocket_test;
 
 import com.google.gson.Gson;
-import de.tu_clausthal.in.bachelorproject2018.poker.network.Tokens.ETokenLinker;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.tokens.ETokenLinker;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.websocket.ESessionManagement;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.TextMessage;

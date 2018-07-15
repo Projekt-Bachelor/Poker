@@ -6,8 +6,10 @@ import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.round.ERound;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.round.IRoundAction;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.IMessage;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.CGamestate;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.EGamestateManagement;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.messages.CGameMessage;
 import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.context.ApplicationEventPublisherAware;
 
 import javax.annotation.Nonnull;
 import java.text.MessageFormat;
@@ -21,7 +23,7 @@ import java.util.concurrent.atomic.AtomicReference;
  * Jeder Tisch hat einen eindeutigen Namne, über den er definiert wird,
  * darum muss sowohl hashCode, wie auch equals überladen werden
  */
-public final class CTable implements ITable, ApplicationEventPublisherAware
+public final class CTable implements ITable
 {
     /**
      * Zuordnung des Gamehubs
@@ -67,7 +69,7 @@ public final class CTable implements ITable, ApplicationEventPublisherAware
         m_players.put( m_owner.getName(), m_owner );
         gameHub = new GameHub(this);
 
-
+        EGamestateManagement.INSTANCE.add(new CGamestate(this));
     }
 
     @Override
@@ -109,12 +111,15 @@ public final class CTable implements ITable, ApplicationEventPublisherAware
         if ( Objects.nonNull( m_currentround.get() ) )
             throw new RuntimeException( MessageFormat.format( "Spiel [{0}] wurde gestartet", m_name ) );
         // nur der Spielebesitzer kann es starten
-        /*if ( !m_owner.equals( p_owner ) )
-            throw new RuntimeException( "Nur der Besitzer des Spiels kann das Spiel starten" );*/
+        if ( !m_owner.equals( p_owner ) )
+            throw new RuntimeException( "Nur der Besitzer des Spiels kann das Spiel starten" );
 
         // startet Spiel
         this.gameHub.startGame();
         this.generateround();
+
+        EGamestateManagement.INSTANCE.apply(m_name).addGameMessage(
+                new CGameMessage( MessageFormat.format("Spiel wurde von [{0}] gestartet", p_owner.getName())));
 
         return this;
     }
@@ -179,7 +184,7 @@ public final class CTable implements ITable, ApplicationEventPublisherAware
         final ERound l_round = m_currentround.updateAndGet( i -> Objects.isNull( i ) ? ERound.values()[0] : i );
 
         // Runden-Daten erzeugen
-        l_round.factory( m_players.values(), this, m_eventPublisher).forEach( m_execution::add );
+        l_round.factory( m_players.values(), this).forEach( m_execution::add );
 
         // Ausführung der Runde beginnen
         this.executestep();
@@ -214,10 +219,5 @@ public final class CTable implements ITable, ApplicationEventPublisherAware
         // wenn Queue leer ist, dann prüfen, ob es noch eine nächste Runde gibt
         if ( m_currentround.getAndUpdate( i -> i.hasNext() ? i.next() : null ).hasNext() )
             this.generateround();
-    }
-
-    @Override
-    public void setApplicationEventPublisher(ApplicationEventPublisher eventPublisher) {
-        this.m_eventPublisher = eventPublisher;
     }
 }

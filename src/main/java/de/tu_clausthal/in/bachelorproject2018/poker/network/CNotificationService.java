@@ -1,44 +1,33 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.network;
 
-import com.google.gson.Gson;
-import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ETables;
-import de.tu_clausthal.in.bachelorproject2018.poker.network.objects.CGameInformationEvent;
-import de.tu_clausthal.in.bachelorproject2018.poker.network.objects.CNotification;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.objects.CMessageEvent;
+import org.pmw.tinylog.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
-import org.springframework.web.socket.TextMessage;
-
-import java.io.IOException;
 
 
 @Service
-public class CNotificationService implements ApplicationListener<CGameInformationEvent> {
+public class CNotificationService implements ApplicationListener<CMessageEvent> {
 
     @Autowired
     private SimpMessagingTemplate messagingTemplate;
 
 
     /**
-     * Beim auftreten eines Events wird die Nachricht innerhalb des Events an alle User des Tisches geschickt
      *
-     * @param gameInformationEvent Event-Objekt
+     * @param event
      */
     @Override
-    public void onApplicationEvent(CGameInformationEvent gameInformationEvent) {
+    public void onApplicationEvent(CMessageEvent event) {
 
-        CNotification l_notification = new CNotification(gameInformationEvent.getMessage());
+        Logger.info("Event with " + event.getMessage().getClass().getSimpleName());
 
-        ETables.INSTANCE.apply(gameInformationEvent.getTable()).list()
-                    .forEach(i -> {
-                        try {
-                            i.getSession().sendMessage(new TextMessage(new Gson().toJson(l_notification)));
-                        } catch (IOException e) {
-                            //TODO - throw Exception
-                            e.printStackTrace();
-                        }
-                    });
+        switch (event.getMessage().getClass().getSimpleName()){
+            case "CGameMessage":
+                //TODO - Add Sending Operations
+        }
 
 
         /*ETables.INSTANCE.apply( gameInformationEvent.getTable() )

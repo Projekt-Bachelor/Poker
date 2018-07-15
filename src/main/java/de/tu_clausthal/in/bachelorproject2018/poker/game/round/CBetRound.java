@@ -4,7 +4,6 @@ import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.IMessage;
 import org.pmw.tinylog.Logger;
-import org.springframework.context.ApplicationEventPublisher;
 
 import java.util.Queue;
 
@@ -15,8 +14,8 @@ public final class CBetRound extends IBaseRoundAction {
      */
     private final IPlayer m_player;
 
-    protected CBetRound(ITable p_table, IPlayer p_player, ApplicationEventPublisher m_eventPublisher) {
-        super(p_table, m_eventPublisher);
+    protected CBetRound(ITable p_table, IPlayer p_player) {
+        super(p_table);
         m_player = p_player;
     }
 
@@ -43,7 +42,7 @@ public final class CBetRound extends IBaseRoundAction {
                     || ( m_table.getGameHub().getChipsHandler().getNewRound() &&
                         !m_table.getGameHub().getChipsHandler().updateWhoToAsk(m_player).getChecked())
                     ){
-                p_roundactions.add(new CBetRound(m_table, m_table.getGameHub().getChipsHandler().updateWhoToAsk(m_player), m_eventPublisher));
+                p_roundactions.add(new CBetRound(m_table, m_table.getGameHub().getChipsHandler().updateWhoToAsk(m_player)));
             }
         }
     }
@@ -61,7 +60,7 @@ public final class CBetRound extends IBaseRoundAction {
 
         Logger.info(m_player.getName() + " hat gefoldet!");
         //wenn der Spieler gefoldet hat, erzeug ein neues BetRoundObjekt, sende keine Nachricht und warte nicht
-        p_roundactions.add(new CBetRound(m_table, m_table.getGameHub().getChipsHandler().updateWhoToAsk(m_player), m_eventPublisher));
+        p_roundactions.add(new CBetRound(m_table, m_table.getGameHub().getChipsHandler().updateWhoToAsk(m_player)));
         return false;
     }
 }

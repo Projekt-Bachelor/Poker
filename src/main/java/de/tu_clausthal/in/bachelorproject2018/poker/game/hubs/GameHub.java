@@ -21,14 +21,12 @@ public class GameHub {
     private int chipsStartAmount = 1000;
     private final DetermineWinner findWinner;
     private final ITable table;
-    //private final SimpleGamestate testForGamestate;
 
     public GameHub( ITable p_table){
         cardDealer = new CardDealer(this);
         chipsHandler = new ChipsHandling(this);
         findWinner = new DetermineWinner();
         this.table = p_table;
-        //testForGamestate = new SimpleGamestate(this);
     }
 
     /**

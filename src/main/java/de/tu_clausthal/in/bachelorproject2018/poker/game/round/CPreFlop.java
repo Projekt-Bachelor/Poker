@@ -4,14 +4,13 @@ import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.IMessage;
 import org.pmw.tinylog.Logger;
-import org.springframework.context.ApplicationEventPublisher;
 
 import java.util.Queue;
 
 public class CPreFlop extends IBaseRoundAction {
 
-    protected CPreFlop(ITable p_table, ApplicationEventPublisher m_eventPublisher) {
-        super(p_table, m_eventPublisher);
+    protected CPreFlop(ITable p_table) {
+        super(p_table);
     }
 
     @Override

@@ -6,16 +6,13 @@ import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ETables;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.IMessage;
-import de.tu_clausthal.in.bachelorproject2018.poker.network.Tokens.ETokenLinker;
-import de.tu_clausthal.in.bachelorproject2018.poker.network.Tokens.ETokens;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.objects.CGameControl;
-import de.tu_clausthal.in.bachelorproject2018.poker.network.objects.CGameInformationEvent;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.objects.CSessionRegistration;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.tokens.ETokenLinker;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.tokens.ETokens;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.websocket.CSession;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.websocket.ESessionManagement;
 import org.javatuples.Triplet;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.stereotype.Controller;
@@ -28,9 +25,6 @@ import java.util.Objects;
 @Controller
 public class CGameActionController {
 
-    @Autowired
-    private ApplicationEventPublisher applicationEventPublisher;
-
     /**
      * Erhält ein Message-Objekt vom Client und reicht es an das Backend weiter
      * @param p_message Message Objekt
@@ -42,10 +36,6 @@ public class CGameActionController {
         final ITable l_table = ESessionManagement.INSTANCE.apply(headerAccessor.getSessionId()).getTable();
         // Player aus Session
         final IPlayer l_player = ESessionManagement.INSTANCE.apply(headerAccessor.getSessionId()).getPlayer();
-
-        CGameInformationEvent gameInformationEvent = new CGameInformationEvent(this, "ApplicationEvent", l_table.name());
-
-        applicationEventPublisher.publishEvent(gameInformationEvent);
 
         //ruft entsprechendes Objekt auf
         l_table.accept( p_message.setTable( l_table ).setPlayer( l_player ) );

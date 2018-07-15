@@ -1,11 +1,11 @@
-package de.tu_clausthal.in.bachelorproject2018.poker.network.Tokens;
+package de.tu_clausthal.in.bachelorproject2018.poker.network.tokens;
 
 import javax.annotation.Nonnull;
 import java.sql.Timestamp;
 import java.util.UUID;
 
 /**
- * Interface um die Tokens zu verwalten
+ * Interface um die tokens zu verwalten
  */
 public interface ITokens {
 

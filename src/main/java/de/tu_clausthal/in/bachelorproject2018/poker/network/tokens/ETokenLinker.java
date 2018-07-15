@@ -1,4 +1,4 @@
-package de.tu_clausthal.in.bachelorproject2018.poker.network.Tokens;
+package de.tu_clausthal.in.bachelorproject2018.poker.network.tokens;
 
 import javax.annotation.Nonnull;
 import java.text.MessageFormat;

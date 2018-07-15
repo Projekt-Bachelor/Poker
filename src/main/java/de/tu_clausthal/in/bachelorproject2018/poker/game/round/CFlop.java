@@ -3,7 +3,6 @@ package de.tu_clausthal.in.bachelorproject2018.poker.game.round;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.IMessage;
 import org.pmw.tinylog.Logger;
-import org.springframework.context.ApplicationEventPublisher;
 
 import java.util.Queue;
 
@@ -12,11 +11,13 @@ import java.util.Queue;
  * Flop Ausführung
  *
  *
- */
+ *
+ * */
+
 public final class CFlop extends IBaseRoundAction
 {
-    public CFlop(ITable p_table, ApplicationEventPublisher m_eventPublisher) {
-        super(p_table, m_eventPublisher);
+    public CFlop(ITable p_table) {
+        super(p_table);
     }
 
     @Override

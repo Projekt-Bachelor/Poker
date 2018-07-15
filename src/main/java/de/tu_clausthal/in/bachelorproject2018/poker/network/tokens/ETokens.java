@@ -1,4 +1,4 @@
-package de.tu_clausthal.in.bachelorproject2018.poker.network.Tokens;
+package de.tu_clausthal.in.bachelorproject2018.poker.network.tokens;
 
 import org.javatuples.Triplet;
 
