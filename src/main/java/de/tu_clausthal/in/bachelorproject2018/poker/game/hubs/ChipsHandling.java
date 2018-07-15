@@ -16,7 +16,6 @@ public class ChipsHandling {
     private int bigBlindAmount = 100;
     private int smallBlindAmount = 50;
     private int highestBidThisRound = 0;
-    private boolean roundBettingFinished = false;
     private boolean newRound = false;
     private int playersInThisRound;
     private GameHub gameHub;
@@ -233,7 +232,6 @@ public class ChipsHandling {
      * resets all nessessary variables to the needed default values
      */
     public void resetRound(){
-        roundBettingFinished = false;
         newRound = true;
         for (IPlayer player: gameHub.getPlayerList()){
             player.resetHasChecked();
@@ -253,10 +251,8 @@ public class ChipsHandling {
     public void resetHand(){
         nextBlind();
         highestBidThisRound = 0;
-        roundBettingFinished = false;
         newRound = false;
         pot = 0;
-        playersInThisRound = gameHub.getPlayerList().size();
 
         for (IPlayer player: gameHub.getPlayerList()){
             player.resetAmountBetThisRound();

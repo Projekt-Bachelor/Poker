@@ -6,6 +6,7 @@ import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.DetermineWinner;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.EWinCheck;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.HandStatistic;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.WinnerHand;
 import org.pmw.tinylog.Logger;
 
 import java.util.ArrayList;
@@ -21,11 +22,13 @@ public class GameHub {
     private int chipsStartAmount = 1000;
     private final DetermineWinner findWinner;
     private final ITable table;
+    private final WinnerHand winnerHand;
 
     public GameHub( ITable p_table){
         cardDealer = new CardDealer(this);
         chipsHandler = new ChipsHandling(this);
         findWinner = new DetermineWinner();
+        winnerHand = new WinnerHand();
         this.table = p_table;
     }
 
@@ -43,6 +46,14 @@ public class GameHub {
      */
     public DetermineWinner getDetermineWinner(){
         return findWinner;
+    }
+
+    /**
+     * getter für winnerhand
+     * @return winnerhand as Winnerhand
+     */
+    public WinnerHand getWinnerHand(){
+        return winnerHand;
     }
 
     /**

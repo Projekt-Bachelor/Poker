@@ -10,6 +10,7 @@ public class HandStatistic {
     private boolean flush;
     private boolean straight;
     private int flushIndex;
+    private String flushSuit;
 
     /**
      * Handevaluation[0] indicates the kind of hand you have at the end:
@@ -110,5 +111,20 @@ public class HandStatistic {
 
     public void setFlushIndex(int flushIndex) {
         this.flushIndex = flushIndex;
+    }
+
+    public String getFlushSuit(){
+        switch (flushIndex){
+            case 0:
+                return "Kreuz";
+            case 1:
+                return "Pik";
+            case 2:
+                return "Herz";
+            case 3:
+                return "Karo";
+            default:
+                return "Fehler";
+        }
     }
 }

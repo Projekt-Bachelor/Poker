@@ -5,6 +5,7 @@ import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.EWinCheck;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.HandStatistic;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.IMessage;
+import org.pmw.tinylog.Logger;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -46,8 +47,15 @@ public final class CWinEvaluation extends IBaseRoundAction {
         }
         //gibt eine ArrayList von den Gewinnern wieder
         //verteilt die chips an all gewinner
+        ArrayList<HandStatistic> winner = m_table.getGameHub().getDetermineWinner().findWinner(handStatisticList);
         m_table.getGameHub().getChipsHandler().distributePotToWinner(
-                m_table.getGameHub().getDetermineWinner().findWinner(handStatisticList));
+                winner);
+        String winnerNamesAsString = "";
+        for (HandStatistic statistic : winner){
+            winnerNamesAsString += statistic.getPlayer().getName() + " ";
+        }
+        Logger.info("Der Gewinner der Runde ist: "+ winnerNamesAsString);
+        Logger.info(m_table.getGameHub().getWinnerHand().getWinnerHandAsString(handStatisticList.get(0)));
         return false;
     }
 
