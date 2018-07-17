@@ -7,6 +7,7 @@ import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.messages.C
 import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.messages.CGameMessage;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.messages.CNotifyMessage;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.objects.CCardJson;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.objects.CChipJson;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.objects.CMessageEvent;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.objects.CNotifyJson;
 import org.pmw.tinylog.Logger;
@@ -27,7 +28,6 @@ public class CNotificationService implements ApplicationListener<CMessageEvent> 
     @Override
     public void onApplicationEvent(CMessageEvent event) {
 
-        Logger.info("Event with " + event.getMessage().getClass().getSimpleName());
         Gson gson = new Gson();
 
         try {
@@ -56,13 +56,14 @@ public class CNotificationService implements ApplicationListener<CMessageEvent> 
                 case "CChipMessage":
                     CChipMessage l_chipMessage = (CChipMessage) event.getMessage();
                     l_chipMessage.getPlayer().getSession().sendMessage(
-                            new TextMessage(gson.toJson( l_chipMessage )));
+                            new TextMessage(gson.toJson( new CChipJson(l_chipMessage.getAmount()))));
                     return;
 
                 case "CNotifyMessage":
                     CNotifyMessage l_notifyMessage = (CNotifyMessage) event.getMessage();
                     l_notifyMessage.getPlayer().getSession().sendMessage(
                             new TextMessage(gson.toJson( new CNotifyJson(l_notifyMessage.getText()))));
+                    return;
             }
 
         } catch (IOException e){

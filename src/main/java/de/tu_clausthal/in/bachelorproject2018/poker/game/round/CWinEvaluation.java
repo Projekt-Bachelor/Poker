@@ -60,9 +60,9 @@ public final class CWinEvaluation extends IBaseRoundAction {
         EGamestateManagement.INSTANCE.apply(m_table.name()).addGameMessage(
                 new CGameMessage("Der Gewinner der Runde ist: " + winnerNamesAsString, m_table));
 
-        Logger.info(m_table.getGameHub().getWinnerHand().getWinnerHandAsString(handStatisticList.get(0)));
+        Logger.info(m_table.getGameHub().getWinnerHand().getWinnerHandAsString(winner.get(0)));
         EGamestateManagement.INSTANCE.apply(m_table.name()).addGameMessage(
-                new CGameMessage(m_table.getGameHub().getWinnerHand().getWinnerHandAsString(handStatisticList.get(0)), m_table));
+                new CGameMessage(m_table.getGameHub().getWinnerHand().getWinnerHandAsString(winner.get(0)), m_table));
 
         return false;
     }

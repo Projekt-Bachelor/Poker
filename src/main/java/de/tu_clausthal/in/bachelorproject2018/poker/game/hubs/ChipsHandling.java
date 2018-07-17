@@ -119,6 +119,8 @@ public class ChipsHandling {
         gameHub.getPlayerList().get(smallBlindIndex).addToAmountBetThisRound(smallBlindAmount);
 
         highestBidThisRound = bigBlindAmount;
+
+        pot += bigBlindAmount + smallBlindAmount;
     }
 
     /**

@@ -8,8 +8,8 @@ public class CCardJson {
 
     private final String m_destination;
 
-    public CCardJson(Card m_card, String m_destination) {
-        this.m_card = m_card;
-        this.m_destination = m_destination;
+    public CCardJson(Card p_card, String p_destination) {
+        this.m_card = p_card;
+        this.m_destination = p_destination;
     }
 }

@@ -3,6 +3,8 @@ package de.tu_clausthal.in.bachelorproject2018.poker.game.player;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.action.IAction;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.EGamestateManagement;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.messages.CChipMessage;
 import org.springframework.web.socket.WebSocketSession;
 
 import javax.annotation.Nonnull;
@@ -67,6 +69,9 @@ public final class CPlayer implements IPlayer
     @Override
     public void addChips(int add){
         chipsCount += add;
+
+        EGamestateManagement.INSTANCE.apply(table.name()).addChipMessage(
+                new CChipMessage(add, this, table));
     }
 
     /**
@@ -78,6 +83,10 @@ public final class CPlayer implements IPlayer
     public boolean substractChips(int substract){
         if (chipsCount >= substract){
             chipsCount = chipsCount - substract;
+
+            EGamestateManagement.INSTANCE.apply(table.name()).addChipMessage(
+                    new CChipMessage(-substract, this, table));
+
             return true;
         }
         else{
