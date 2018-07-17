@@ -3,6 +3,8 @@ package de.tu_clausthal.in.bachelorproject2018.poker.game.round;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.IMessage;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.EGamestateManagement;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.messages.CNotifyMessage;
 import org.pmw.tinylog.Logger;
 
 import java.util.Queue;
@@ -66,6 +68,9 @@ public final class CBetRound extends IBaseRoundAction {
         //wenn der Spieler nicht gefoldet hat, frag ihn und warte auf eine Antwort
         if (!m_player.checkfolded()){
             Logger.info(m_player.getName() + " hat noch nicht gefoldet! Und ist dran!");
+            EGamestateManagement.INSTANCE.apply(m_table.name()).addNotifyMessage(
+                    new CNotifyMessage("Du bist dran!", m_table, m_player));
+
             //send message to player
             return true;
         }

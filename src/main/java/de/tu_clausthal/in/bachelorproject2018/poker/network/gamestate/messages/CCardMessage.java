@@ -15,15 +15,19 @@ public class CCardMessage implements IGamestateMessage{
 
     private final IPlayer m_player;
 
-    public CCardMessage(@NonNull Card p_card, @NonNull String p_source, @NonNull ITable p_table, @NonNull IPlayer p_player) {
+    public CCardMessage(@NonNull Card p_card, @NonNull String p_destination, @NonNull ITable p_table, @NonNull IPlayer p_player) {
         this.m_card = p_card;
-        this.m_destination = p_source;
+        this.m_destination = p_destination;
         this.m_table = p_table;
         this.m_player = p_player;
     }
 
     public Card getCard(){
         return m_card;
+    }
+
+    public String getDestination() {
+        return m_destination;
     }
 
     public ITable getTable(){

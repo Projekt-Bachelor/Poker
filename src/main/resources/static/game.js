@@ -22,7 +22,6 @@ function connectStomp() {
         console.log('Connected: ' + frame);
         stompClient.subscribe('/user/queue/notify', function (notification) {
             console.log(gameinformation);
-            showGameInformation(JSON.parse(notification.body));
         });
     });
 }

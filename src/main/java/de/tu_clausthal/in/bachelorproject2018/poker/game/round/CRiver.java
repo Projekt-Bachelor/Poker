@@ -1,7 +1,10 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.round;
 
+import de.tu_clausthal.in.bachelorproject2018.poker.game.cards.Card;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.IMessage;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.EGamestateManagement;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.messages.CCardMessage;
 import org.pmw.tinylog.Logger;
 
 import java.util.Queue;
@@ -29,8 +32,11 @@ public final class CRiver extends IBaseRoundAction
      */
     public Boolean apply( final Queue<IRoundAction> p_p_roundactions )
     {
-        m_table.getGameHub().getCardDealer().getTableCards().add(
-                m_table.getGameHub().getCardDealer().getDeck().removeTopCard());
+
+        Card l_card1 = m_table.getGameHub().getCardDealer().getDeck().removeTopCard();
+        m_table.getGameHub().getCardDealer().getTableCards().add(l_card1);
+        EGamestateManagement.INSTANCE.apply(m_table.name()).addCardMessage( new CCardMessage(l_card1, "table", m_table, null));
+
         m_table.getGameHub().getChipsHandler().resetRound();
 
         Logger.info("River ausgeführt");

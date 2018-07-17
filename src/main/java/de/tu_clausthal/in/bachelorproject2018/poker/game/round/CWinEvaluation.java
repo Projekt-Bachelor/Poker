@@ -5,6 +5,8 @@ import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.EWinCheck;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.HandStatistic;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.IMessage;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.EGamestateManagement;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.messages.CGameMessage;
 import org.pmw.tinylog.Logger;
 
 import java.util.ArrayList;
@@ -55,7 +57,13 @@ public final class CWinEvaluation extends IBaseRoundAction {
             winnerNamesAsString += statistic.getPlayer().getName() + " ";
         }
         Logger.info("Der Gewinner der Runde ist: "+ winnerNamesAsString);
+        EGamestateManagement.INSTANCE.apply(m_table.name()).addGameMessage(
+                new CGameMessage("Der Gewinner der Runde ist: " + winnerNamesAsString, m_table));
+
         Logger.info(m_table.getGameHub().getWinnerHand().getWinnerHandAsString(handStatisticList.get(0)));
+        EGamestateManagement.INSTANCE.apply(m_table.name()).addGameMessage(
+                new CGameMessage(m_table.getGameHub().getWinnerHand().getWinnerHandAsString(handStatisticList.get(0)), m_table));
+
         return false;
     }
 

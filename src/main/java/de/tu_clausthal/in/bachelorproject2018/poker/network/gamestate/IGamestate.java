@@ -1,28 +1,25 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate;
 
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
-import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.messages.CCardMessage;
-import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.messages.CChipMessage;
-import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.messages.CGameMessage;
-import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.messages.IGamestateMessage;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.messages.*;
 import org.springframework.lang.NonNull;
-
-import javax.annotation.Nonnull;
 
 public interface IGamestate {
 
-    @Nonnull
+    @NonNull
     ITable getTable();
 
-    void addGameMessage(@Nonnull CGameMessage p_gameMessage);
+    void addGameMessage(@NonNull CGameMessage p_gameMessage);
 
     void addCardMessage(@NonNull CCardMessage p_cardMessage);
 
     void addChipMessage(@NonNull CChipMessage p_chipMessage);
 
-    @Nonnull
-    IGamestateMessage getSpecificMessage(@Nonnull final int index);
+    void addNotifyMessage(@NonNull CNotifyMessage p_notifyMessage);
 
-    @Nonnull
+    @NonNull
+    IGamestateMessage getSpecificMessage(@NonNull final int index);
+
+    @NonNull
     Number getActualIndex();
 }

@@ -115,12 +115,15 @@ public final class CTable implements ITable
             throw new RuntimeException( "Nur der Besitzer des Spiels kann das Spiel starten" );
 
         // startet Spiel
-        this.gameHub.startGame();
-        this.generateround();
 
         EGamestateManagement.INSTANCE.apply(m_name).addGameMessage(
                 new CGameMessage( MessageFormat.format("Spiel wurde von [{0}] gestartet", p_owner.getName())
-                , this));
+                        , this));
+
+        this.gameHub.startGame();
+        this.generateround();
+
+
 
         return this;
     }
