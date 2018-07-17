@@ -22,7 +22,7 @@ public class CGamestateEventPublisher {
         this.eventPublisher = eventPublisher;
     }
 
-    @Scheduled(fixedRate = 5000)
+    @Scheduled(fixedRate = 2000)
     public void publishEvent(){
         for (String l_table : messagesSend.keySet()){
             if (!EGamestateManagement.INSTANCE.apply(l_table).getActualIndex().equals(messagesSend.get(l_table))){

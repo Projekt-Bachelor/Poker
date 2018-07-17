@@ -29,6 +29,7 @@ public final class CAllIn extends IBaseAction
         int allInAmount = p_player.getChipsCount();
         //set allIn to true
         p_player.playerAllIn();
+        p_player.check();
         //amountBetThisRound updaten
         p_player.addToAmountBetThisRound(allInAmount);
         p_player.substractChips(allInAmount);

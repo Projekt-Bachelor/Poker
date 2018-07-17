@@ -1,4 +1,4 @@
-package de.tu_clausthal.in.bachelorproject2018.poker.network;
+package de.tu_clausthal.in.bachelorproject2018.poker.network.websocket;
 
 import com.google.gson.Gson;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;

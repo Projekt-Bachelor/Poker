@@ -55,6 +55,7 @@ public final class CBetRound extends IBaseRoundAction {
         //wenn der Spieler allin ist, brauch er keine weitere Aktion ausführen
         if (m_player.getAllIn()){
             Logger.info(m_player.getName() + "ist allin und muss damit nichts mehr machen");
+            m_player.check();
             p_roundactions.add(new CBetRound(m_table, m_table.getGameHub().getChipsHandler().updateWhoToAsk(m_player)));
             return false;
         }

@@ -179,6 +179,7 @@ public final class CTable implements ITable
         this.postaction();
     }
 
+
     /**
      * Methode um eine neue Runde zu bauen
      */
