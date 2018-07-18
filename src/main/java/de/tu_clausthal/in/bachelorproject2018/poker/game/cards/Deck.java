@@ -8,6 +8,8 @@ public class Deck implements Iterator<Card>{
 
     /**
      * constructor
+     * erstellt ein Deck und mischt es
+     * fügt das Deck dem Stack hinzu
      */
     public Deck(){
 

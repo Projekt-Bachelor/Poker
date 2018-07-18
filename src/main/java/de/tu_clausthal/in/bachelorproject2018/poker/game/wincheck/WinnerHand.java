@@ -2,6 +2,12 @@ package de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck;
 
 public class WinnerHand {
 
+    /**
+     * WinnerHand gibt zu der Handstatistic einen String zurück, den man dem Spieler ausgeben kann
+     * Hierbei wird die Handevaluation in der Handstatisctic aufgeschlüsselt
+     * @param handStatistic
+     * @return HandString as String
+     */
     public String getWinnerHandAsString( HandStatistic handStatistic){
         String result = "";
         switch (handStatistic.getHandEvaluation()[0]){

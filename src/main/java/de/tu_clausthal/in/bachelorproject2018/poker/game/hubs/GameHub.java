@@ -56,13 +56,7 @@ public class GameHub {
         return winnerHand;
     }
 
-    /**
-     * add a player to the list of players
-     * @param newPlayer as CSessionRegistration
-     */
-    public void addPlayer(CPlayer newPlayer){
-        players.add(newPlayer);
-    }
+
 
     /**
      * getter for the playerlist
@@ -103,103 +97,11 @@ public class GameHub {
     public void startGame(){
         cardDealer.firstDeckOfTheGame();
 
-        /*
-         * @todo IPlayer-Klasse muss das addChips bekommen
-         */
-        //players.forEach( i -> i.addChips( chipsStartAmount ) );
         for (IPlayer player: getPlayerList()){
             player.addChips(chipsStartAmount);
             Logger.info("Spieler: " + player.getName() + " hat folgende Chips erhalten: " + chipsStartAmount);
         }
     }
 
-    /**
-     * Durchlaufen einer Winevaluation ohne Vergleiche
-     * es wird für jeden Spieler eine Handstatistic erstellt und übergeben
-     * die Handstatistic wird für jeden Spieler befüllt und kann am Ende verglichen werden
-     * findWinner vergleicht die Handstatistics
-     */
-    public void handleWinEvaluation(){
-
-        ArrayList<HandStatistic> handStatisticList = new ArrayList<HandStatistic>();
-        for (IPlayer player : players){
-            HandStatistic handStatistic = new HandStatistic(player);
-            handStatisticList.add(handStatistic);
-            if (!player.checkfolded()){
-                Arrays.stream( EWinCheck.values() )
-                        .map (i -> i.apply( table ) )
-                        .forEach(i-> i.apply( handStatistic));
-            }
-
-        }
-        //gibt eine ArrayList von den Gewinnern wieder
-        chipsHandler.distributePotToWinner(findWinner.findWinner(handStatisticList));
-    }
-
-    /**
-     * play a hand of poker, this includes:
-     * reseting the winner, the hands of the players and the deck
-     * force bet the small blind and big blind
-     * deal 2 cards to each player
-     * alternating between checking for bets and dealing the cards for the tablecards,
-     * reset all nessessary attributes after each betting round, stop if only 1 player is left
-     * if more than 1 player is in the final round, check who won and distribute pot to winner
-     */
-    public void playRound(){
-        // @todo das sollte man niemals machen, dazu bitte ein Nullobjekt im IPlayer definieren
-        /*
-        chipsHandler.resetHand();
-        cardDealer.resetForNextRound();
-        chipsHandler.forceBlinds();
-        */
-        /**
-         * @todo analog wie oben mittels Stream iterieren
-         */
-        //for(CPlayer player: players){
-        //    player.getPlayerhand().takeCard(cardDealer.getDeck().removeTopCard());
-        //    player.getPlayerhand().takeCard(cardDealer.getDeck().removeTopCard());
-        //}
-        /**
-         * Durchlaufen einer ganzen Runde, übergebe aus dem Tisch die Spielerliste
-         *
-         * das ist alles im Table drin
-        ERound.generate( players )  //.collect( Collectors.toCollection( new Stack ) )
-              // führe in dem IRoundAction Objekt get aus
-              .map( Supplier::get ) // äquivalent i -> i.get()
-              // filtere IRoundAction Objekt, ob gestoppt werden muss
-              .filter( IRoundAction::stop )
-              // wenn das erste IRoundAction Objekt stop == true sagt
-              .findFirst();
-        */
-        /*
-        chipsHandler.checkForBets();
-        if(chipsHandler.continuePlayingRound()){
-            chipsHandler.resetRound();
-            cardDealer.layFlop();
-            chipsHandler.checkForBets();
-            if(chipsHandler.continuePlayingRound()){
-                chipsHandler.resetRound();
-                cardDealer.layTurn();
-                chipsHandler.checkForBets();
-                if(chipsHandler.continuePlayingRound()){
-                    chipsHandler.resetRound();
-                    cardDealer.layRiver();
-                    chipsHandler.checkForBets();
-                    if(chipsHandler.continuePlayingRound()){
-                        winEvaluation.evaluateHands();
-                        winner = winEvaluation.evaluateWinner();
-                    }
-                } else {
-                    winner = chipsHandler.declareWinnerByFolding();
-                }
-            } else {
-                winner = chipsHandler.declareWinnerByFolding();
-            }
-        } else {
-            winner = chipsHandler.declareWinnerByFolding();
-        }
-        chipsHandler.distributePotToWinner(winner);
-        */
-    }
 
 }

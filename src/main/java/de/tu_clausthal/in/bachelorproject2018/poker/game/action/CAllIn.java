@@ -23,6 +23,7 @@ public final class CAllIn extends IBaseAction
     /**
      * setzt den Spieler AllIn
      * setzt die Chips in den Pot
+     * checkt außerdem
      */
     public void accept( @Nonnull final IPlayer p_player )
     {

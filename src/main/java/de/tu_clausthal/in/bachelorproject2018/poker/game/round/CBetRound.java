@@ -16,17 +16,23 @@ public final class CBetRound extends IBaseRoundAction {
      */
     private final IPlayer m_player;
 
+    /**
+     * Constructor
+     * @param p_table
+     * @param p_player
+     */
     protected CBetRound(ITable p_table, IPlayer p_player) {
         super(p_table);
         m_player = p_player;
     }
 
-    /*public CBetRound( final IPlayer p_player )
-    {
-        m_player = p_player;
-    }
-    */
 
+    /**
+     * Accept wird nach der Aktion des Spielers ausgeführt
+     * Falls nötig werden hier neue BetRound-Objekte erzeugt, damit weitere Spieler Aktionen dürchführen können
+     * @param p_roundactions
+     * @param p_message
+     */
     @Override
     public void accept( final Queue<IRoundAction> p_roundactions, final IMessage p_message )
     {
@@ -49,6 +55,14 @@ public final class CBetRound extends IBaseRoundAction {
         }
     }
 
+    /**
+     * wird vor der Aktion des Spielers ausgeführt
+     * entscheidet, ob der Spieler überhaupt eine Aktion ausführen brauch/kann
+     * return false, wenn der Spieler keine Aktion ausführen brauch
+     * return true, wenn das Betround-Objekt auf die Spieleraktion warten soll
+     * @param p_roundactions
+     * @return
+     */
     @Override
     public Boolean apply( final Queue<IRoundAction> p_roundactions )
     {

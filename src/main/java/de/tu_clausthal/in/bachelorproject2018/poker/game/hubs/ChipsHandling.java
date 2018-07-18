@@ -106,9 +106,9 @@ public class ChipsHandling {
     /**
      * force bet the blinds of the player with the relevant indexes
      * update the highestBidThisRound to the bigBlind
+     * fügt die Blinds dem Pot hinzu
      */
     public void forceBlinds(){
-        //TODO - Handle Blinds
 
         gameHub.getPlayerList().get(bigBlindIndex).substractChips(bigBlindAmount);
         Logger.info(gameHub.getPlayerList().get(bigBlindIndex).getName() + " hat folgendes gesetzt " + bigBlindAmount);
@@ -153,39 +153,8 @@ public class ChipsHandling {
         playersInThisRound--;
     }
 
-    /**
-     * go through a whole round of betting
-     * asks each player (if they have not folded alrady) what action they want to take
-     * continues until everybody has folded or bet the same getAmountBetThisRound
-     */
-    public void checkForBets(){
-        int whoToAsk = getRoundStarter();
-        /*
-         * while loop to check for each player, until everybody has either folded or payed the highestBid
-         * newRound is set to false, when the first players adds anything to the pot
-         * newRound is there to enable checking, but only if nobody has bet anything this round
-         */
 
-        /*
-        while(!roundBettingFinished){
-                if (gameHub.getPlayerList().get(whoToAsk).getAmountBetThisRound() < highestBidThisRound || newRound) {
-                    if (newRound && gameHub.getPlayerList().get(whoToAsk).getHasCheckedThisRound()) {
-                        //only happens when everybody checks
-                        roundBettingFinished = true;
-                    } else {
-                        //asks the right player for action
-                        if (!gameHub.getPlayerList().get(whoToAsk).checkFolded()) {
-                            gameHub.getPlayerList().get(whoToAsk).checkAction();
-                        }
-                    }
-                } else {
-                    //everybody has called the highest bet or folded
-                    roundBettingFinished = true;
-                }
-            whoToAsk = updateWhoToAsk(whoToAsk);
-        }
-        */
-    }
+
 
     /**
      * check if there are at least 2 players in the round
@@ -199,22 +168,7 @@ public class ChipsHandling {
         }
     }
 
-    /**
-     * if everybody but one has folded, return the player who didnt fold
-     * @return winner as CSessionRegistration
-     */
-    public CPlayer declareWinnerByFolding(){
-        /*
-        int winnerIndex = 0;
-        for (int i= 0; i < gameHub.getPlayerList().size(); i++){
-            if (!gameHub.getPlayerList().get(i).checkFolded()){
-                winnerIndex = i;
-            }
-        }
-        return gameHub.getPlayerList().get(winnerIndex);
-        */
-        return null;
-    }
+
 
     /**
      * divide pot by winners, and add the amount to the winners
@@ -241,6 +195,10 @@ public class ChipsHandling {
 
     }
 
+    /**
+     * getter für newRound
+     * @return newRound as boolean
+     */
     public boolean getNewRound(){
         return newRound;
     }

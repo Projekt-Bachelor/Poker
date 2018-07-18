@@ -48,7 +48,7 @@ public final class CWinEvaluation extends IBaseRoundAction {
 
         }
         //gibt eine ArrayList von den Gewinnern wieder
-        //verteilt die chips an all gewinner
+        //verteilt die chips an alle gewinner
         ArrayList<HandStatistic> winner = m_table.getGameHub().getDetermineWinner().findWinner(handStatisticList);
         m_table.getGameHub().getChipsHandler().distributePotToWinner(
                 winner);

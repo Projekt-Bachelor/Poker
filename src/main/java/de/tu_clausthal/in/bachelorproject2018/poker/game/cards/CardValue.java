@@ -7,12 +7,18 @@ public enum CardValue {
 
     private final int value;
 
-    //Constructor
+    /**
+     * Constructor
+     * @param value
+     */
     CardValue(int value){
         this.value = value;
     }
 
-    // to read value
+    /**
+     * getter für value
+     * @return value as int
+     */
     public int getValue(){
         return value;
     }

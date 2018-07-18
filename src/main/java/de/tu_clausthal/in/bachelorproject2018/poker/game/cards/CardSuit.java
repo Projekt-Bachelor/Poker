@@ -9,6 +9,9 @@ public enum CardSuit {
     heart(2),
     diamond(3);
 
+    /**
+     * Suit als Int
+     */
     private final int suitIndex;
 
     /**

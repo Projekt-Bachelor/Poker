@@ -50,6 +50,10 @@ public final class CPlayer implements IPlayer
         return amountBetThisRound;
     }
 
+    /**
+     * Fügt AmountBetThisRound den Wert hinzu
+     * @param amount as int
+     */
     @Override
     public void addToAmountBetThisRound(int amount) {
         amountBetThisRound = amountBetThisRound + amount;
@@ -199,6 +203,10 @@ public final class CPlayer implements IPlayer
         fold = true;
     }
 
+    /**
+     * akzeptiert die IAction und ruft accept in den IAction-Objekt auf
+     * @param p_action
+     */
     @Override
     public void accept( final IAction p_action )
     {
