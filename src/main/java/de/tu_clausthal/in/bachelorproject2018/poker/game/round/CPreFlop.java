@@ -38,11 +38,13 @@ public class CPreFlop extends IBaseRoundAction {
 
             Card l_card1 = m_table.getGameHub().getCardDealer().getDeck().removeTopCard();
             player.getPlayerhand().takeCard(l_card1);
-            EGamestateManagement.INSTANCE.apply(m_table.name()).addCardMessage(new CCardMessage(l_card1, player.getName(), m_table, player));
+            EGamestateManagement.INSTANCE.apply(m_table.name()).addCardMessage(
+                    new CCardMessage(l_card1, player.getName(), null, m_table, player));
 
             Card l_card2 = m_table.getGameHub().getCardDealer().getDeck().removeTopCard();
             player.getPlayerhand().takeCard(l_card2);
-            EGamestateManagement.INSTANCE.apply(m_table.name()).addCardMessage(new CCardMessage(l_card2, player.getName(), m_table, player));
+            EGamestateManagement.INSTANCE.apply(m_table.name()).addCardMessage(
+                    new CCardMessage(l_card2, player.getName(), null, m_table, player));
 
             //m_eventPublisher.publishEvent(new CNotifyPlayerEvent(this, player, player.getPlayerhand().showHand()));
             Logger.info(player.getPlayerhand().showHand());

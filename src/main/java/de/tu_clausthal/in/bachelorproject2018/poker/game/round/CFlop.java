@@ -36,15 +36,18 @@ public final class CFlop extends IBaseRoundAction
     {
         Card l_card1 = m_table.getGameHub().getCardDealer().getDeck().removeTopCard();
         m_table.getGameHub().getCardDealer().getTableCards().add(l_card1);
-        EGamestateManagement.INSTANCE.apply(m_table.name()).addCardMessage( new CCardMessage(l_card1, "table", m_table, null));
+        EGamestateManagement.INSTANCE.apply(m_table.name()).addCardMessage(
+                new CCardMessage(l_card1, "table", "flop", m_table, null));
 
         Card l_card2 = m_table.getGameHub().getCardDealer().getDeck().removeTopCard();
         m_table.getGameHub().getCardDealer().getTableCards().add(l_card2);
-        EGamestateManagement.INSTANCE.apply(m_table.name()).addCardMessage( new CCardMessage(l_card2, "table", m_table, null));
+        EGamestateManagement.INSTANCE.apply(m_table.name()).addCardMessage(
+                new CCardMessage(l_card2, "table", "flop",  m_table, null));
 
         Card l_card3 = m_table.getGameHub().getCardDealer().getDeck().removeTopCard();
         m_table.getGameHub().getCardDealer().getTableCards().add(l_card3);
-        EGamestateManagement.INSTANCE.apply(m_table.name()).addCardMessage( new CCardMessage(l_card3, "table", m_table, null));
+        EGamestateManagement.INSTANCE.apply(m_table.name()).addCardMessage(
+                new CCardMessage(l_card3, "table", "flop",  m_table, null));
 
         m_table.getGameHub().getChipsHandler().resetRound();
 

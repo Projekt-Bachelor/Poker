@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Game</title>
 
+
+
     <script src="/webjars/jquery/jquery.min.js"></script>
     <script src="/webjars/sockjs-client/sockjs.min.js"></script>
     <script src="/webjars/stomp-websocket/stomp.min.js"></script>
@@ -28,25 +30,66 @@
        </div>
    </div>
     <div id="gameactions" class="container">
-        <div class="col-md-6">
-            <div class="form-inline">
-                <div class="form-group">
-                    <button id="raise" class="btn btn-default" type="submit">Raise</button>
-                    <input type="text" id="raise-amount" class="form-control" placeholder="Raise - Amount"/>
-                </div>
-                <div class="button">
-                    <button id="call" class="btn btn-default" type="submit">Call</button>
-                </div>
-                <div class="button">
-                    <button id="check" class="btn btn-default" type="submit">Check</button>
-                </div>
-                <div class="button">
-                    <button id="fold" class="btn btn-default" type="submit">Fold</button>
-                </div>
-                <div class="button">
-                    <button id="allin" class="btn btn-default" type="submit">All-In</button>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-inline">
+                    <div class="form-group">
+                        <button id="raise" class="btn btn-default" type="submit">Raise</button>
+                        <input type="text" id="raise-amount" class="form-control" placeholder="Raise - Amount"/>
+                    </div>
+                    <div class="button">
+                        <button id="call" class="btn btn-default" type="submit">Call</button>
+                    </div>
+                    <div class="button">
+                        <button id="check" class="btn btn-default" type="submit">Check</button>
+                    </div>
+                    <div class="button">
+                        <button id="fold" class="btn btn-default" type="submit">Fold</button>
+                    </div>
+                    <div class="button">
+                        <button id="allin" class="btn btn-default" type="submit">All-In</button>
+                    </div>
                 </div>
             </div>
+
+            <div class="col-md-6">
+                <div>
+                    <label for="chipCount">Your current Chip Count:</label>
+                    <textarea id="chipCount" name="chipCount">
+                    </textarea>
+                </div>
+                <div>
+                    <h4>Your Handcards:</h4>
+                    <label for="firstHandCard">1. Handcard</label>
+                    <textarea id="firstHandCard" name="firstHandCard"></textarea>
+                    <label for="secondHandCard">2. Handcard</label>
+                    <textarea id="secondHandCard" name="secondHandCard"></textarea>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div>
+                    <h4>Table Cards:</h4>
+                    <h5>Flop:</h5>
+                    <textarea id="flopCard" name="firstFlopCards" placeholder="Flop ist noch nicht gelegt!"></textarea>
+                    <h5>Turn:</h5>
+                    <textarea id="turnCard" name="turnCard" placeholder="Turn ist noch nicht gelegt!"></textarea>
+                    <h5>River:</h5>
+                    <textarea id="riverCard" name="riverCard" placeholder="River ist noch nicht gelegt!"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="col-md-12">
+            <table id="game" class="table table-striped">
+                <thead>
+                <tr><h2>Gamestate</h2></tr>
+                </thead>
+                <tbody id="gamestate">
+                </tbody>
+            </table>
         </div>
     </div>
 

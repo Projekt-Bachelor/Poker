@@ -11,13 +11,17 @@ public class CCardMessage implements IGamestateMessage{
 
     private final String m_destination;
 
+    private final String m_type;
+
     private final ITable m_table;
 
     private final IPlayer m_player;
 
-    public CCardMessage(@NonNull Card p_card, @NonNull String p_destination, @NonNull ITable p_table, @NonNull IPlayer p_player) {
+    public CCardMessage(@NonNull Card p_card, @NonNull String p_destination, @NonNull String p_type,
+                        @NonNull ITable p_table, @NonNull IPlayer p_player) {
         this.m_card = p_card;
         this.m_destination = p_destination;
+        this.m_type = p_type;
         this.m_table = p_table;
         this.m_player = p_player;
     }
@@ -28,6 +32,10 @@ public class CCardMessage implements IGamestateMessage{
 
     public String getDestination() {
         return m_destination;
+    }
+
+    public String getType(){
+        return m_type;
     }
 
     public ITable getTable(){

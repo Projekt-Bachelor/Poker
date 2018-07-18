@@ -9,39 +9,36 @@ import org.pmw.tinylog.Logger;
 
 import java.util.Queue;
 
-
 /**
- * River-Ausführung
+ * Turn ausführung
  */
-public final class CRiver extends IBaseRoundAction
-{
-    protected CRiver(ITable p_table) {
+public class CTurn extends IBaseRoundAction {
+
+    protected CTurn(ITable p_table){
         super(p_table);
     }
 
     @Override
-    public void accept( final Queue<IRoundAction> p_roundactions, final IMessage p_message )
-    {
+    public void accept(Queue<IRoundAction> iRoundActions, IMessage iMessage) {
     }
 
     /**
      * Legt eine Karte vom Deck auf den Tisch
-     * @param p_p_roundactions
+     * @param iRoundActions
      * @return
      */
     @Override
-    public Boolean apply( final Queue<IRoundAction> p_p_roundactions )
-    {
+    public Boolean apply(Queue<IRoundAction> iRoundActions) {
 
         Card l_card = m_table.getGameHub().getCardDealer().getDeck().removeTopCard();
         m_table.getGameHub().getCardDealer().getTableCards().add(l_card);
 
         EGamestateManagement.INSTANCE.apply(m_table.name()).addCardMessage(
-                new CCardMessage(l_card, "table", "river",  m_table, null));
+                new CCardMessage(l_card, "table", "turn", m_table, null));
 
         m_table.getGameHub().getChipsHandler().resetRound();
 
-        Logger.info("River ausgeführt");
+        Logger.info("Turn ausgeführt");
         Logger.info(m_table.getGameHub().getCardDealer().getTableCards());
 
         return false;

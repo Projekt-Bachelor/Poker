@@ -45,11 +45,13 @@ public class CNotificationService implements ApplicationListener<CMessageEvent> 
                     if (l_cardMessage.getDestination().equalsIgnoreCase("table")){
                         for (IPlayer l_player : event.getTable().list()) {
                             l_player.getSession().sendMessage(
-                                    new TextMessage(gson.toJson( new CCardJson(l_cardMessage.getCard(), l_cardMessage.getDestination()))));
+                                    new TextMessage(gson.toJson(
+                                            new CCardJson(l_cardMessage.getCard(), l_cardMessage.getDestination(), l_cardMessage.getType()))));
                         }
                     } else {
                         l_cardMessage.getPlayer().getSession().sendMessage(
-                                new TextMessage(gson.toJson(new CCardJson(l_cardMessage.getCard(), l_cardMessage.getDestination()))));
+                                new TextMessage(gson.toJson(
+                                        new CCardJson(l_cardMessage.getCard(), l_cardMessage.getDestination(), l_cardMessage.getType()))));
                     }
                     return;
 

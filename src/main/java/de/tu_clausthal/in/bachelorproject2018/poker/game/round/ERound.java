@@ -56,7 +56,7 @@ public enum ERound implements Iterator<ERound>
                 return Stream.of( new CPreFlop(table) );
 
             case TURN:
-                return Stream.of( new CRiver(table) );
+                return Stream.of( new CTurn(table) );
 
             case RIVER:
                 return Stream.of( new CRiver(table) );

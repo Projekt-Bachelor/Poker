@@ -117,7 +117,7 @@ public final class CTable implements ITable
         // startet Spiel
 
         EGamestateManagement.INSTANCE.apply(m_name).addGameMessage(
-                new CGameMessage( MessageFormat.format("Spiel wurde von [{0}] gestartet", p_owner.getName())
+                new CGameMessage( MessageFormat.format("Spiel wurde von {0} gestartet", p_owner.getName())
                         , this));
 
         this.gameHub.startGame();

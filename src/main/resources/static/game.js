@@ -21,9 +21,10 @@ function connectStomp() {
     stompClient.connect({}, function (frame) {
         console.log('Connected: ' + frame);
         stompClient.subscribe('/user/queue/notify', function (notification) {
-            console.log(gameinformation);
+            console.log();
         });
     });
+
 }
 
 function connectWebsocket() {
@@ -31,6 +32,7 @@ function connectWebsocket() {
     console.log("Connection created");
     ws.onmessage = function (notification) {
         console.log(notification);
+        showGamestate(notification);
     };
 }
 
@@ -61,8 +63,46 @@ function startGame(type) {
         JSON.stringify({'type': type}));
 }
 
-function showGameInformation(gameinformation){
-    $("#gamestate").append("<tr><td>" + gameinformation + "</td></tr>");
+function showGamestate(gameinformation){
+    var json = JSON.parse(gameinformation.data);
+    if (json.hasOwnProperty("m_amount")){
+        var currentChipCount = $("#chipCount").val();
+        var updatedChipCount = currentChipCount - json.m_amount;
+        console.log(updatedChipCount);
+        $("#chipCount").val(updatedChipCount);
+    }
+
+    else if (json.hasOwnProperty("m_card") && json.hasOwnProperty("m_destination")){
+        var card = json.m_card;
+        var cardString = card.m_value + " of " + card.m_suit;
+
+        if (json.m_destination === "table" && json.hasOwnProperty("m_type")){
+            if (json.m_type === "flop"){
+                var flopCards = $("#flopCard").val();
+                $("#flopCard").val(flopCards + cardString);
+            }  else if (json.m_type === "turn"){
+                $("#turnCard").val(cardString);
+            } else if (json.m_type === "river"){
+                $("#riverCard").val(cardString);
+            }
+        } else {
+            if ($("#firstHandCard").val() === ""){
+                $("#firstHandCard").val(cardString);
+            } else if ($("#secondHandCard").val() === ""){
+                $("#secondHandCard").val(cardString);3
+            }
+        }
+    }
+
+    else if (json.hasOwnProperty("m_text")){
+        alert(json.m_text);
+    }
+
+    else {
+        $("#gamestate").append("<tr><td>" + json + "</td></tr>");
+    }
+
+
 }
 
 function showErrorMessage(error){

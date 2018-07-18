@@ -2,18 +2,18 @@ package de.tu_clausthal.in.bachelorproject2018.poker.game.cards;
 
 public class Card {
     //private value + suit of card
-    private CardSuit suit;
-    private CardValue value;
+    private CardSuit m_suit;
+    private CardValue m_value;
 
 
     /**
      * Constructor for Cards
-     * @param suit
-     * @param value
+     * @param p_suit
+     * @param p_value
      */
-    public Card(CardSuit suit, CardValue value){
-        this.suit = suit;
-        this.value = value;
+    public Card(CardSuit p_suit, CardValue p_value){
+        this.m_suit = p_suit;
+        this.m_value = p_value;
     }
 
 
@@ -22,7 +22,7 @@ public class Card {
      * @return integer of suit of card
      */
     public int getSuitIndex(){
-        return suit.getSuitIndex();
+        return m_suit.getSuitIndex();
     }
 
     /**
@@ -30,7 +30,7 @@ public class Card {
      * @return string of suit of card
      */
     public String getStringSuit(){
-        return suit.getStringSuit();
+        return m_suit.getStringSuit();
     }
 
     /**
@@ -38,7 +38,7 @@ public class Card {
      * @return integer value of card
      */
     public int getValue(){
-        return value.getValue();
+        return m_value.getValue();
     }
 
     /**
@@ -46,6 +46,6 @@ public class Card {
      * @return String of card with all relevant information
      */
     public String toString(){
-        return value.getValue() + " of " + suit.getStringSuit();
+        return m_value.getValue() + " of " + m_suit.getStringSuit();
     }
 }
