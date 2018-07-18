@@ -65,11 +65,15 @@ function startGame(type) {
 
 function showGamestate(gameinformation){
     var json = JSON.parse(gameinformation.data);
+
     if (json.hasOwnProperty("m_amount")){
-        var currentChipCount = $("#chipCount").val();
-        var updatedChipCount = currentChipCount - json.m_amount;
-        console.log(updatedChipCount);
-        $("#chipCount").val(updatedChipCount);
+        var currentChipCount = parseInt($("#chipCount").val());
+        if (isNaN(currentChipCount)){
+            $("#chipCount").val(json.m_amount);
+        } else {
+            var updatedChipCount = currentChipCount + json.m_amount;
+            $("#chipCount").val(updatedChipCount);
+        }
     }
 
     else if (json.hasOwnProperty("m_card") && json.hasOwnProperty("m_destination")){
