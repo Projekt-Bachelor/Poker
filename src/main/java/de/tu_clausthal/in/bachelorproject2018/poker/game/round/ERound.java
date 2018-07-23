@@ -73,7 +73,7 @@ public enum ERound implements Iterator<ERound>
     @Override
     public boolean hasNext()
     {
-        return this.ordinal() < ERound.values().length;
+        return this.ordinal() < ERound.values().length - 1;
     }
 
     @Override
