@@ -1,6 +1,7 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.network.objects;
 
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.messages.IGamestateMessage;
 import org.springframework.context.ApplicationEvent;
 
 public class CMessageEvent extends ApplicationEvent {
@@ -20,5 +21,11 @@ public class CMessageEvent extends ApplicationEvent {
 
     public ITable getTable(){
         return m_table;
+    }
+
+    @SuppressWarnings( "unchecked" )
+    public <N extends IGamestateMessage> N raw()
+    {
+        return (N) m_message;
     }
 }

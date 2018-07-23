@@ -1,7 +1,10 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.network.objects;
 
-public class CNotifyJson {
+import com.fasterxml.jackson.annotation.JsonProperty;
 
+
+public class CNotifyJson {
+    @JsonProperty( "text" )
     private final String m_text;
 
 

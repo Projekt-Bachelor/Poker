@@ -67,10 +67,13 @@ public interface IPlayer extends Consumer<IAction>
 
     boolean getChecked();
 
-    void setSession(@Nonnull WebSocketSession p_session);
-
-    @Nonnull
-    WebSocketSession getSession();
+    /**
+     * sends data
+     *
+     * @param p_to target location
+     * @param p_data data objects
+     */
+    void sendto( @Nonnull final String p_to, @Nonnull final Object... p_data );
 
 
     /**

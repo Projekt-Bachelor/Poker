@@ -1,10 +1,12 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.player;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import de.tu_clausthal.in.bachelorproject2018.poker.CApplication;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.action.IAction;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.EGamestateManagement;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.messages.CChipMessage;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.websocket.CMessage;
 import org.springframework.web.socket.WebSocketSession;
 
 import javax.annotation.Nonnull;
@@ -25,7 +27,6 @@ public final class CPlayer implements IPlayer
     private boolean hasCheckedThisRound= false;
     private boolean isAllIn = false;
     private ITable table;
-    private WebSocketSession m_session;
 
     /**
      * constructor
@@ -184,14 +185,12 @@ public final class CPlayer implements IPlayer
     }
 
     @Override
-    public void setSession(@Nonnull WebSocketSession p_session) {
-        m_session = p_session;
-    }
-
-    @Nonnull
-    @Override
-    public WebSocketSession getSession() {
-        return m_session;
+    public void sendto( @Nonnull final String p_to, @Nonnull final Object... p_data )
+    {
+        CApplication.CGlobal.instance()
+                            .context()
+                            .getBean( CMessage.class )
+                            .sendto( p_to, p_data );
     }
 
     /**

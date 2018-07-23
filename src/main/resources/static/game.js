@@ -20,8 +20,8 @@ function connectStomp() {
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         console.log('Connected: ' + frame);
-        stompClient.subscribe('/user/queue/notify', function (notification) {
-            console.log();
+        stompClient.subscribe('/message', function (notification) {
+            console.log(notification);
         });
     });
 
