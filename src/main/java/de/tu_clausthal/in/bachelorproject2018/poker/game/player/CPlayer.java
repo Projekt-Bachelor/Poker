@@ -4,10 +4,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import de.tu_clausthal.in.bachelorproject2018.poker.CApplication;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.action.IAction;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.config.WebSocketConfig;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.EGamestateManagement;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.messages.CChipMessage;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.websocket.CMessage;
-import org.springframework.web.socket.WebSocketSession;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.websocket.CNotificationService;
 
 import javax.annotation.Nonnull;
 
@@ -185,12 +186,13 @@ public final class CPlayer implements IPlayer
     }
 
     @Override
-    public void sendto( @Nonnull final String p_to, @Nonnull final Object... p_data )
+    public IPlayer message( @Nonnull final Object... p_data )
     {
         CApplication.CGlobal.instance()
                             .context()
                             .getBean( CMessage.class )
-                            .sendto( p_to, p_data );
+                            .sendto( WebSocketConfig.MESSAGE, p_data );
+        return this;
     }
 
     /**

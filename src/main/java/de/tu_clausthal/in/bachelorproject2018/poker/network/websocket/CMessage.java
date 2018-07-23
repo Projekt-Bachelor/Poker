@@ -1,5 +1,8 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.network.websocket;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.pmw.tinylog.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
@@ -14,6 +17,10 @@ import java.util.Arrays;
 @Service
 public final class CMessage
 {
+    /**
+     * JSON serializer
+     */
+    private static final ObjectMapper JSONMAPPER = new ObjectMapper();
     /**
      * socket
      */
@@ -35,13 +42,20 @@ public final class CMessage
      *
      * @param p_to target location
      * @param p_data data objects
-     * @todo print muss entfernt werden
      */
     public final void sendto( @Nonnull final String p_to, @Nonnull final Object... p_data )
     {
-        System.out.println( m_websocket + "    " + Arrays.toString( p_data ) );
         Arrays.stream( p_data )
-              .forEach( i -> m_websocket.convertAndSend( p_to, i ) );
+              .forEach( i -> {
+                  try
+                  {
+                      m_websocket.convertAndSend( p_to, JSONMAPPER.writeValueAsString( i ) );
+                  }
+                  catch ( final JsonProcessingException l_exception )
+                  {
+                      Logger.error( l_exception );
+                  }
+              } );
     }
 
 

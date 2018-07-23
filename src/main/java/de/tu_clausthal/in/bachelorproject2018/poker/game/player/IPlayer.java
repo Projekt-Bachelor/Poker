@@ -2,7 +2,6 @@ package de.tu_clausthal.in.bachelorproject2018.poker.game.player;
 
 import de.tu_clausthal.in.bachelorproject2018.poker.game.action.IAction;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
-import org.springframework.web.socket.WebSocketSession;
 
 import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
@@ -70,10 +69,10 @@ public interface IPlayer extends Consumer<IAction>
     /**
      * sends data
      *
-     * @param p_to target location
      * @param p_data data objects
+     * @return self-reference
      */
-    void sendto( @Nonnull final String p_to, @Nonnull final Object... p_data );
+    IPlayer message( @Nonnull final Object... p_data );
 
 
     /**

@@ -6,14 +6,20 @@ import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBr
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 
+import java.util.stream.Stream;
+
+
 @Configuration
 @EnableWebSocketMessageBroker
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
+    public static final String TOPIC = "/topic";
+    public static final String QUEUE = "/queue";
+    public static final String MESSAGE = "/message";
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config){
-        config.enableSimpleBroker("/topic", "/queue", "/message");
+        config.enableSimpleBroker(TOPIC, QUEUE, MESSAGE );
         config.setApplicationDestinationPrefixes("/app");
     }
 
