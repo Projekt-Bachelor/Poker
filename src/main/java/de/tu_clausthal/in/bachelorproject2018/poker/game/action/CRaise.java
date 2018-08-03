@@ -47,8 +47,12 @@ public final class CRaise extends IBaseAction
         EGamestateManagement.INSTANCE.apply(m_table.name()).addGameMessage(
                 new CGameMessage("Spieler: " + p_player.getName() + " hat um folgenden Wert geraiset " + raiseValue, m_table));
 
+
         //Chips dem Pot hinzufügen
         m_table.getGameHub().getChipsHandler().addToPot(raiseValue, p_player.getAmountBetThisRound());
+
+        EGamestateManagement.INSTANCE.apply(m_table.name()).addGameMessage(
+                new CGameMessage("Der Pot beträgt jetzt " + m_table.getGameHub().getChipsHandler().getPot() , m_table));
     }
 
     public int getValue() {

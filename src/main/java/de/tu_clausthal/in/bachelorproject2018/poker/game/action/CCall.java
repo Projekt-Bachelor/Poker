@@ -49,5 +49,8 @@ public class CCall extends IBaseAction
                 new CGameMessage(p_player.getName() + " hat gecallt um folgenden Wert zu erreichen " +
                         m_table.getGameHub().getChipsHandler().getHighestBidThisRound() + "! Dabei musste er folgendes setzen: " +
                         callAmount , m_table));
+
+        EGamestateManagement.INSTANCE.apply(m_table.name()).addGameMessage(
+                new CGameMessage("Der Pot beträgt jetzt " + m_table.getGameHub().getChipsHandler().getPot() , m_table));
     }
 }
