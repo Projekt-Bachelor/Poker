@@ -222,7 +222,7 @@ public final class CTable implements ITable
         }
 
         // wenn Queue leer ist, dann prüfen, ob es noch eine nächste Runde gibt
-        if ( m_currentround.getAndUpdate( i -> i.hasNext() ? i.next() : null ).hasNext() )
-            this.generateround();
+        m_currentround.getAndUpdate( i -> i.hasNext() ? i.next() : null ).hasNext();
+        this.generateround();
     }
 }
