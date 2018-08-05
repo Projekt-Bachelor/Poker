@@ -69,15 +69,19 @@ public class ChipsHandling {
      * if any index is at the last index of the playerlist, start again at 0
      */
     public void nextBlind(){
-        if (smallBlindIndex == gameHub.getPlayerList().size()-1){
+        if (smallBlindIndex >= gameHub.getPlayerList().size()-1){
             smallBlindIndex = 0;
         }
         else {
             smallBlindIndex++;
         }
-        if (bigBlindIndex == gameHub.getPlayerList().size() -1 ){
+        if (bigBlindIndex >= gameHub.getPlayerList().size() -1 ){
             bigBlindIndex = 0;
         } else {
+            bigBlindIndex++;
+        }
+
+        if (bigBlindIndex == smallBlindIndex){
             bigBlindIndex++;
         }
     }

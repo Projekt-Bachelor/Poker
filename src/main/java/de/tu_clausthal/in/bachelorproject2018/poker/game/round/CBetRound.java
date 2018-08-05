@@ -86,7 +86,7 @@ public final class CBetRound extends IBaseRoundAction {
             m_player.getName() + " automatisch gewonnen!");
             return false;
         }
-        //wenn true, dann bleibt das Objekt liegen und wartet aus eine Nachricht, bei false wird es nach der Ausführung aus der Queue genommen
+        //wenn true, dann bleibt das Objekt liegen und wartet auf eine Nachricht, bei false wird es nach der Ausführung aus der Queue genommen
         //wenn der Spieler nicht gefoldet hat, frag ihn und warte auf eine Antwort
         if (!m_player.checkfolded()){
             Logger.info(m_player.getName() + " hat noch nicht gefoldet! Und ist dran!");
