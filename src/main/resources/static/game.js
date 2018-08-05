@@ -35,11 +35,6 @@ function disconnect() {
     console.log("Disconnected");
 }
 
-/*function sendRegistration(uuid) {
-    console.log("Send Registration");
-    ws.send(JSON.stringify({'message-type': "registration", 'token': uuid}));
-}*/
-
 function sendStompRegistration(uuid) {
     stompClient.send("/app/sessionConnect", {},
         JSON.stringify({'token': uuid}));
@@ -50,9 +45,14 @@ function sendAction(type, value) {
         JSON.stringify({'type': type, 'value': value}));
 }
 
-function startGame(type) {
-    stompClient.send("/app/game/startgame", {},
+function sendGameControls(type) {
+    stompClient.send("/app/game/controls", {},
         JSON.stringify({'type': type}));
+}
+
+function leave() {
+    console.log("redirect!");
+    document.location.replace("/hub")
 }
 
 function showGamestate(gameinformation){
@@ -109,7 +109,8 @@ $(function () {
     $("form").on('submit', function (e) {
         e.preventDefault();
     });
-    $( "#startgame").click(function () { startGame("startgame"); });
+    $( "#startgame").click(function () { sendGameControls("startgame"); });
+    $( "#leave").click(function () { sendGameControls("leave"); leave(); });
     $( "#connectStomp").click(function () { sendStompRegistration(uuid); });
 
     $( "#call").click(function () { sendAction("call", 0); });

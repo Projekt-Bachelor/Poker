@@ -56,12 +56,20 @@ public class CGameActionController {
         ESessionManagement.INSTANCE.add(new CSession(headerAccessor.getSessionId(), l_table, l_player));
     }
 
-    @MessageMapping("/game/startgame")
+    @MessageMapping("/game/controls")
     public void startGame(final CGameControl p_gameControl, SimpMessageHeaderAccessor headerAccessor) {
         final CSession session = ESessionManagement.INSTANCE.apply(headerAccessor.getSessionId());
         final ITable l_table = session.getTable();
 
-        l_table.start(session.getPlayer());
+        switch (p_gameControl.getAction()) {
+            case "startgame":
+                l_table.start(session.getPlayer());
+                return;
+
+            case "leave":
+                l_table.leave(session.getPlayer());
+                return;
+        }
     }
 
 
