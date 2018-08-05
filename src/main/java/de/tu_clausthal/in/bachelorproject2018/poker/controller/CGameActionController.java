@@ -8,7 +8,6 @@ import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.IMessage;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.objects.CGameControl;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.objects.CSessionRegistration;
-import de.tu_clausthal.in.bachelorproject2018.poker.network.tokens.ETokenLinker;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.tokens.ETokens;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.websocket.CSession;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.websocket.ESessionManagement;
@@ -52,9 +51,9 @@ public class CGameActionController {
         IPlayer l_player = l_table.list().stream()
                 .filter(i -> i.getName().equalsIgnoreCase(l_security.getValue1())).findFirst().get();
 
-        ESessionManagement.INSTANCE.add(new CSession(headerAccessor.getSessionId(), l_table, l_player));
+        l_player.setMessagingEndpoint(p_registration.get());
 
-        ETokenLinker.INSTANCE.add(p_registration.get(), headerAccessor.getSessionId());
+        ESessionManagement.INSTANCE.add(new CSession(headerAccessor.getSessionId(), l_table, l_player));
     }
 
     @MessageMapping("/game/startgame")

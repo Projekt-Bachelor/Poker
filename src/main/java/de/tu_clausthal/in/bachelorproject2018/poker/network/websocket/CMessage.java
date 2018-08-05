@@ -49,6 +49,7 @@ public final class CMessage
               .forEach( i -> {
                   try
                   {
+                      Logger.info("Sending message: " + JSONMAPPER.writeValueAsString( i ) + " to Endpoint: " + p_to);
                       m_websocket.convertAndSend( p_to, JSONMAPPER.writeValueAsString( i ) );
                   }
                   catch ( final JsonProcessingException l_exception )

@@ -2,10 +2,12 @@ package de.tu_clausthal.in.bachelorproject2018.poker.game.player;
 
 import de.tu_clausthal.in.bachelorproject2018.poker.game.action.IAction;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
+import org.springframework.lang.NonNull;
 
 import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
 import javax.validation.constraints.NotNull;
+import java.util.UUID;
 import java.util.function.Consumer;
 
 
@@ -65,6 +67,11 @@ public interface IPlayer extends Consumer<IAction>
     //int getChipsCount();
 
     boolean getChecked();
+
+    /**
+     * sets the custom Messaging Endpoint for each player!
+     */
+    void setMessagingEndpoint(@NonNull final UUID pUUID);
 
     /**
      * sends data

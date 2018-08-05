@@ -8,9 +8,10 @@ import de.tu_clausthal.in.bachelorproject2018.poker.network.config.WebSocketConf
 import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.EGamestateManagement;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.messages.CChipMessage;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.websocket.CMessage;
-import de.tu_clausthal.in.bachelorproject2018.poker.network.websocket.CNotificationService;
+import org.springframework.lang.NonNull;
 
 import javax.annotation.Nonnull;
+import java.util.UUID;
 
 
 public final class CPlayer implements IPlayer
@@ -28,6 +29,7 @@ public final class CPlayer implements IPlayer
     private boolean hasCheckedThisRound= false;
     private boolean isAllIn = false;
     private ITable table;
+    private String messagingEndoint;
 
     /**
      * constructor
@@ -186,12 +188,23 @@ public final class CPlayer implements IPlayer
     }
 
     @Override
+    public void setMessagingEndpoint(@NonNull final UUID pUUID) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(WebSocketConfig.MESSAGE);
+        sb.append("/");
+        sb.append(pUUID.toString());
+
+        this.messagingEndoint = sb.toString();
+    }
+
+
+    @Override
     public IPlayer message( @Nonnull final Object... p_data )
     {
         CApplication.CGlobal.instance()
                             .context()
                             .getBean( CMessage.class )
-                            .sendto( WebSocketConfig.MESSAGE, p_data );
+                            .sendto( messagingEndoint, p_data );
         return this;
     }
 

@@ -1,8 +1,7 @@
 "use strict";
 
 var stompClient = null;
-var ws = null;
-var uuid= null;
+var uuid = null;
 
 $(function() {
     var url_string = window.location.href;
@@ -11,29 +10,22 @@ $(function() {
     uuid = url.searchParams.get("uuid");
     console.log(uuid);
 
-    connectStomp();
-    connectWebsocket();
+    connectStomp(uuid);
 });
 
-function connectStomp() {
+function connectStomp(uuid) {
+    var endpoint = '/message/' + uuid.toString();
+    console.log(endpoint);
+
     var socket = new SockJS('/poker');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         console.log('Connected: ' + frame);
-        stompClient.subscribe('/message', function (notification) {
+        stompClient.subscribe(endpoint, function (notification) {
             console.log(notification);
+            showGamestate(notification);
         });
     });
-
-}
-
-function connectWebsocket() {
-    ws = new WebSocket('ws://localhost:8080/notification');
-    console.log("Connection created");
-    ws.onmessage = function (notification) {
-        console.log(notification);
-        showGamestate(notification);
-    };
 }
 
 function disconnect() {
@@ -43,10 +35,10 @@ function disconnect() {
     console.log("Disconnected");
 }
 
-function sendRegistration(uuid) {
+/*function sendRegistration(uuid) {
     console.log("Send Registration");
     ws.send(JSON.stringify({'message-type': "registration", 'token': uuid}));
-}
+}*/
 
 function sendStompRegistration(uuid) {
     stompClient.send("/app/sessionConnect", {},
@@ -64,46 +56,46 @@ function startGame(type) {
 }
 
 function showGamestate(gameinformation){
-    var json = JSON.parse(gameinformation.data);
+    var json = JSON.parse(gameinformation.body);
 
-    if (json.hasOwnProperty("m_amount")){
+    if (json.hasOwnProperty("amount")){
         var currentChipCount = parseInt($("#chipCount").val());
         if (isNaN(currentChipCount)){
-            $("#chipCount").val(json.m_amount);
+            $("#chipCount").val(json.amount);
         } else {
-            var updatedChipCount = currentChipCount + json.m_amount;
+            var updatedChipCount = currentChipCount + json.amount;
             $("#chipCount").val(updatedChipCount);
         }
     }
 
-    else if (json.hasOwnProperty("m_card") && json.hasOwnProperty("m_destination")){
-        var card = json.m_card;
-        var cardString = card.m_value + " of " + card.m_suit;
+    else if (json.hasOwnProperty("card") && json.hasOwnProperty("destination")){
+        var card = json.card;
+        var cardString = card.value + " of " + card.stringSuit;
 
-        if (json.m_destination === "table" && json.hasOwnProperty("m_type")){
-            if (json.m_type === "flop"){
+        if (json.m_destination === "table" && json.hasOwnProperty("type")){
+            if (json.type === "flop"){
                 var flopCards = $("#flopCard").val();
                 $("#flopCard").val(flopCards + cardString);
-            }  else if (json.m_type === "turn"){
+            }  else if (json.type === "turn"){
                 $("#turnCard").val(cardString);
-            } else if (json.m_type === "river"){
+            } else if (json.type === "river"){
                 $("#riverCard").val(cardString);
             }
         } else {
             if ($("#firstHandCard").val() === ""){
                 $("#firstHandCard").val(cardString);
             } else if ($("#secondHandCard").val() === ""){
-                $("#secondHandCard").val(cardString);3
+                $("#secondHandCard").val(cardString);
             }
         }
     }
 
-    else if (json.hasOwnProperty("m_text")){
-        alert(json.m_text);
+    else if (json.hasOwnProperty("notification")){
+        alert(json.notification);
     }
 
-    else {
-        $("#gamestate").append("<tr><td>" + json + "</td></tr>");
+    else if (json.hasOwnProperty("text")){
+        $("#gamestate").append("<tr><td>" + json.text + "</td></tr>");
     }
 
 
@@ -118,7 +110,6 @@ $(function () {
         e.preventDefault();
     });
     $( "#startgame").click(function () { startGame("startgame"); });
-    $( "#connect").click(function () { sendRegistration(uuid); });
     $( "#connectStomp").click(function () { sendStompRegistration(uuid); });
 
     $( "#call").click(function () { sendAction("call", 0); });

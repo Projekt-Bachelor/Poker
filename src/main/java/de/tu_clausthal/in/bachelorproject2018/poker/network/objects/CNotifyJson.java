@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 public class CNotifyJson {
-    @JsonProperty( "text" )
+    @JsonProperty( "notification" )
     private final String m_text;
 
 
