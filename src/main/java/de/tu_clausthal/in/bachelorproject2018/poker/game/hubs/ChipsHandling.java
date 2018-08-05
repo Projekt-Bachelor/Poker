@@ -1,9 +1,10 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.hubs;
 
 
-import de.tu_clausthal.in.bachelorproject2018.poker.game.player.CPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.HandStatistic;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.EGamestateManagement;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.messages.CGameMessage;
 import org.pmw.tinylog.Logger;
 
 import java.util.ArrayList;
@@ -90,6 +91,10 @@ public class ChipsHandling {
         bigBlindAmount = 2 * bigBlindAmount;
     }
 
+    public int getPot(){
+        return pot;
+    }
+
     /**
      * check who starts the round
      * should be the player next to bigBlind, but if bigBlind is highest index of the array, start at 0
@@ -121,6 +126,12 @@ public class ChipsHandling {
         highestBidThisRound = bigBlindAmount;
 
         pot += bigBlindAmount + smallBlindAmount;
+        EGamestateManagement.INSTANCE.apply(gameHub.getTable().name()).addGameMessage(
+                new CGameMessage("Neue Runde! Die Blinds wurden gesetzt! Dabei hat " +
+                        gameHub.getPlayerList().get(smallBlindIndex).getName() + " " + getSmallBlindAmount() +" Chips als Smallblind gesetzt. "
+                        + gameHub.getPlayerList().get(bigBlindIndex).getName() + " hat " + getBigBlindAmount() + " Chips als Bigblind gesetzt." , gameHub.getTable()));
+        EGamestateManagement.INSTANCE.apply(gameHub.getTable().name()).addGameMessage(
+                new CGameMessage("Der Pot beträgt jetzt " + getPot() , gameHub.getTable()));
     }
 
     /**
@@ -216,6 +227,7 @@ public class ChipsHandling {
         playersInThisRound = gameHub.getPlayerList().size();
 
         for (IPlayer player: gameHub.getPlayerList()){
+            player.resetAllIn();
             player.resetAmountBetThisRound();
             player.resetHasChecked();
             player.getPlayerhand().resethandCards();

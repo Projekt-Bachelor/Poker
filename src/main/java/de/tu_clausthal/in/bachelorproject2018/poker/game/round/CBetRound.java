@@ -21,7 +21,7 @@ public final class CBetRound extends IBaseRoundAction {
      * @param p_table
      * @param p_player
      */
-    protected CBetRound(ITable p_table, IPlayer p_player) {
+    public CBetRound(ITable p_table, IPlayer p_player) {
         super(p_table);
         m_player = p_player;
     }
@@ -36,22 +36,29 @@ public final class CBetRound extends IBaseRoundAction {
     @Override
     public void accept( final Queue<IRoundAction> p_roundactions, final IMessage p_message )
     {
-        Logger.info("Spieler: " + p_message.player().getName() + " hat folgende Aktion ausgeführt: " + p_message.type());
-        if ( !m_player.equals( p_message.player() ) )
-            throw new RuntimeException( "Player passt nicht" );
+        try {
+            Logger.info("Spieler: " + p_message.player().getName() + " hat folgende Aktion ausgeführt: " + p_message.type());
+            if (!m_player.equals(p_message.player()))
+                throw new RuntimeException("Player passt nicht");
 
-        p_message.get().accept( m_player );
-        //wenn die queue leer ist
-        if (p_roundactions.isEmpty()){
-            //wenn der nachfolgende Spieler weniger gesetzt hat, als das maximum, muss ein neues BetRoundObjekt erzeugt werden
-            if (m_table.getGameHub().getChipsHandler().updateWhoToAsk(m_player).getAmountBetThisRound() <
-                    m_table.getGameHub().getChipsHandler().getHighestBidThisRound()
-                    //oder wenn bisher nur gecheckt wurde, aber noch nicht alle gecheckt haben
-                    || ( m_table.getGameHub().getChipsHandler().getNewRound() &&
+            p_message.get().accept(m_player);
+            //wenn die queue leer ist
+            if (p_roundactions.isEmpty()) {
+                //wenn der nachfolgende Spieler weniger gesetzt hat, als das maximum, muss ein neues BetRoundObjekt erzeugt werden
+                if (m_table.getGameHub().getChipsHandler().updateWhoToAsk(m_player).getAmountBetThisRound() <
+                        m_table.getGameHub().getChipsHandler().getHighestBidThisRound()
+                        //oder wenn bisher nur gecheckt wurde, aber noch nicht alle gecheckt haben
+                        || (m_table.getGameHub().getChipsHandler().getNewRound() &&
                         !m_table.getGameHub().getChipsHandler().updateWhoToAsk(m_player).getChecked())
-                    ){
-                p_roundactions.add(new CBetRound(m_table, m_table.getGameHub().getChipsHandler().updateWhoToAsk(m_player)));
+                ) {
+                    p_roundactions.add(new CBetRound(m_table, m_table.getGameHub().getChipsHandler().updateWhoToAsk(m_player)));
+                }
             }
+            //falls der falsche Spieler antwortet erstellen wir eine neue Betround
+        } catch (RuntimeException e){
+            EGamestateManagement.INSTANCE.apply(m_table.name()).addNotifyMessage(
+                    new CNotifyMessage("Bitte nur etwas machen, wenn du auch dran bist.", m_table, p_message.player()));
+            p_roundactions.add(new CBetRound(m_table, m_player));
         }
     }
 

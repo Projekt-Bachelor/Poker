@@ -1,9 +1,11 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.action;
 
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.round.CBetRound;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.EGamestateManagement;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.messages.CGameMessage;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.messages.CNotifyMessage;
 import org.pmw.tinylog.Logger;
 
 import javax.annotation.Nonnull;
@@ -29,25 +31,34 @@ public class CCall extends IBaseAction
     public void accept( @Nonnull final IPlayer p_player )
     {
         int callAmount;
-        // Überprüfung, ob der Spieler überhaupt callen kann
-        if ( p_player.getAmountBetThisRound() - m_table.getGameHub().getChipsHandler().getHighestBidThisRound() > 0 )
-            throw new RuntimeException( "Spieler kannst nicht callen" );
-        //Wert berechnen, wie viel der Spieler noch zum Callen bezahlen muss
-        callAmount = m_table.getGameHub().getChipsHandler().getHighestBidThisRound()-p_player.getAmountBetThisRound();
-        //AmountBetThisRound updaten
-        p_player.addToAmountBetThisRound(callAmount);
-        p_player.substractChips(callAmount);
+        try {
+            // Überprüfung, ob der Spieler überhaupt callen kann
+            if (p_player.getAmountBetThisRound() - m_table.getGameHub().getChipsHandler().getHighestBidThisRound() > 0)
+                throw new RuntimeException("Spieler kannst nicht callen");
+            //Wert berechnen, wie viel der Spieler noch zum Callen bezahlen muss
+            callAmount = m_table.getGameHub().getChipsHandler().getHighestBidThisRound() - p_player.getAmountBetThisRound();
+            //AmountBetThisRound updaten
+            p_player.addToAmountBetThisRound(callAmount);
+            p_player.substractChips(callAmount);
 
-        //callAmount zum Pot hinzufügen
-        m_table.getGameHub().getChipsHandler().addToPot(callAmount, p_player.getAmountBetThisRound());
+            //callAmount zum Pot hinzufügen
+            m_table.getGameHub().getChipsHandler().addToPot(callAmount, p_player.getAmountBetThisRound());
 
-        Logger.info(p_player.getName() + " hat gecallt um folgenden Wert zu erreichen " +
-                m_table.getGameHub().getChipsHandler().getHighestBidThisRound() + "! Dabei musste er folgendes setzen: " +
-                callAmount);
+            Logger.info(p_player.getName() + " hat gecallt um folgenden Wert zu erreichen " +
+                    m_table.getGameHub().getChipsHandler().getHighestBidThisRound() + "! Dabei musste er folgendes setzen: " +
+                    callAmount);
 
-        EGamestateManagement.INSTANCE.apply(m_table.name()).addGameMessage(
-                new CGameMessage(p_player.getName() + " hat gecallt um folgenden Wert zu erreichen " +
-                        m_table.getGameHub().getChipsHandler().getHighestBidThisRound() + "! Dabei musste er folgendes setzen: " +
-                        callAmount , m_table));
+            EGamestateManagement.INSTANCE.apply(m_table.name()).addGameMessage(
+                    new CGameMessage(p_player.getName() + " hat gecallt um folgenden Wert zu erreichen " +
+                            m_table.getGameHub().getChipsHandler().getHighestBidThisRound() + "! Dabei musste er folgendes setzen: " +
+                            callAmount, m_table));
+
+            EGamestateManagement.INSTANCE.apply(m_table.name()).addGameMessage(
+                    new CGameMessage("Der Pot beträgt jetzt " + m_table.getGameHub().getChipsHandler().getPot(), m_table));
+        } catch (RuntimeException e){
+            EGamestateManagement.INSTANCE.apply(m_table.name()).addNotifyMessage(
+                    new CNotifyMessage("Du kannst nicht callen. Vielleicht musst du Allin gehen, um den Wert zu erreichen", m_table, p_player));
+            m_table.getQueue().add(new CBetRound(m_table, p_player));
+        }
     }
 }
