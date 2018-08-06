@@ -36,6 +36,7 @@ public final class CBetRound extends IBaseRoundAction {
     @Override
     public void accept( final Queue<IRoundAction> p_roundactions, final IMessage p_message )
     {
+        boolean nextRoundNeeded;
         try {
             Logger.info("Spieler: " + p_message.player().getName() + " hat folgende Aktion ausgeführt: " + p_message.type());
             if (!m_player.equals(p_message.player()))
@@ -44,13 +45,16 @@ public final class CBetRound extends IBaseRoundAction {
             p_message.get().accept(m_player);
             //wenn die queue leer ist
             if (p_roundactions.isEmpty()) {
+                nextRoundNeeded = false;
+                for (IPlayer player : m_table.getGameHub().getPlayerList()){
+                    if ((!player.getAllIn() && !player.checkfolded() && player.getAmountBetThisRound() < m_table.getGameHub().getChipsHandler().getHighestBidThisRound()) ||
+                            (m_table.getGameHub().getChipsHandler().getNewRound() && !m_table.getGameHub().getChipsHandler().updateWhoToAsk(m_player).getChecked())){
+                        nextRoundNeeded = true;
+                    }
+                }
                 //wenn der nachfolgende Spieler weniger gesetzt hat, als das maximum, muss ein neues BetRoundObjekt erzeugt werden
-                if (m_table.getGameHub().getChipsHandler().updateWhoToAsk(m_player).getAmountBetThisRound() <
-                        m_table.getGameHub().getChipsHandler().getHighestBidThisRound()
-                        //oder wenn bisher nur gecheckt wurde, aber noch nicht alle gecheckt haben
-                        || (m_table.getGameHub().getChipsHandler().getNewRound() &&
-                        !m_table.getGameHub().getChipsHandler().updateWhoToAsk(m_player).getChecked())
-                ) {
+                if (nextRoundNeeded)
+                {
                     p_roundactions.add(new CBetRound(m_table, m_table.getGameHub().getChipsHandler().updateWhoToAsk(m_player)));
                 }
             }

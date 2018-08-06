@@ -191,8 +191,9 @@ public class ChipsHandling {
      */
     public void distributePotToWinner(ArrayList<HandStatistic> winners)
     {
+        int amount = pot/winners.size();
         for (HandStatistic handStatistic : winners){
-            handStatistic.getPlayer().addChips(pot/winners.size());
+            handStatistic.getPlayer().addChips(amount);
         }
         pot = 0;
     }
