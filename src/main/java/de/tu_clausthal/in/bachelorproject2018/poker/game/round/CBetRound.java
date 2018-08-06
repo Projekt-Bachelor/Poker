@@ -81,7 +81,18 @@ public final class CBetRound extends IBaseRoundAction {
         if (m_player.getAllIn()){
             Logger.info(m_player.getName() + "ist allin und muss damit nichts mehr machen");
             m_player.check();
-            p_roundactions.add(new CBetRound(m_table, m_table.getGameHub().getChipsHandler().updateWhoToAsk(m_player)));
+            boolean nextRoundNeeded = false;
+            for (IPlayer player : m_table.getGameHub().getPlayerList()){
+                if ((!player.getAllIn() && !player.checkfolded() && player.getAmountBetThisRound() < m_table.getGameHub().getChipsHandler().getHighestBidThisRound()) ||
+                        (m_table.getGameHub().getChipsHandler().getNewRound() && !m_table.getGameHub().getChipsHandler().updateWhoToAsk(m_player).getChecked())){
+                    nextRoundNeeded = true;
+                }
+            }
+
+            if (nextRoundNeeded)
+            {
+                p_roundactions.add(new CBetRound(m_table, m_table.getGameHub().getChipsHandler().updateWhoToAsk(m_player)));
+            }
             return false;
         }
         //wenn der Spieler der einzige Spieler noch in der Runde ist
@@ -103,7 +114,18 @@ public final class CBetRound extends IBaseRoundAction {
 
         Logger.info(m_player.getName() + " hat gefoldet!");
         //wenn der Spieler gefoldet hat, erzeug ein neues BetRoundObjekt, sende keine Nachricht und warte nicht
-        p_roundactions.add(new CBetRound(m_table, m_table.getGameHub().getChipsHandler().updateWhoToAsk(m_player)));
+        boolean nextRoundNeeded = false;
+        for (IPlayer player : m_table.getGameHub().getPlayerList()){
+            if ((!player.getAllIn() && !player.checkfolded() && player.getAmountBetThisRound() < m_table.getGameHub().getChipsHandler().getHighestBidThisRound()) ||
+                    (m_table.getGameHub().getChipsHandler().getNewRound() && !m_table.getGameHub().getChipsHandler().updateWhoToAsk(m_player).getChecked())){
+                nextRoundNeeded = true;
+            }
+        }
+
+        if (nextRoundNeeded)
+        {
+            p_roundactions.add(new CBetRound(m_table, m_table.getGameHub().getChipsHandler().updateWhoToAsk(m_player)));
+        }
         return false;
     }
 }
