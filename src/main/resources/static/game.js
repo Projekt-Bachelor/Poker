@@ -72,10 +72,10 @@ function showGamestate(gameinformation){
         var card = json.card;
         var cardString = card.value + " of " + card.stringSuit;
 
-        if (json.m_destination === "table" && json.hasOwnProperty("type")){
+        if (json.destination === "table" && json.hasOwnProperty("type")){
             if (json.type === "flop"){
                 var flopCards = $("#flopCard").val();
-                $("#flopCard").val(flopCards + cardString);
+                $("#flopCard").val(flopCards + cardString + '\n');
             }  else if (json.type === "turn"){
                 $("#turnCard").val(cardString);
             } else if (json.type === "river"){
