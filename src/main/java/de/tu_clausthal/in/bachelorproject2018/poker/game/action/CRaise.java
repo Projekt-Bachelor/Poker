@@ -39,8 +39,9 @@ public final class CRaise extends IBaseAction
     {
         try {
             // Überprüfung, ob der Spieler sich den Raise überhaupt leisten kann
-            if (p_player.getChipsCount() - raiseValue < 0)
+            if ((p_player.getChipsCount() - raiseValue < 0) || (raiseValue<= 0) || (p_player.getAmountBetThisRound() + raiseValue <= m_table.getGameHub().getChipsHandler().getHighestBidThisRound())) {
                 throw new RuntimeException("Raise ist zu hoch");
+            }
 
             //amountBetThisRound updaten
             p_player.addToAmountBetThisRound(raiseValue);
@@ -57,7 +58,7 @@ public final class CRaise extends IBaseAction
                     new CGameMessage("Der Pot beträgt jetzt " + m_table.getGameHub().getChipsHandler().getPot(), m_table));
         } catch (RuntimeException e){
             EGamestateManagement.INSTANCE.apply(m_table.name()).addNotifyMessage(
-                    new CNotifyMessage("So kannst du nicht raisen. Kann es sein, dass du etwas zu viel setzen wolltest?", m_table, p_player));
+                    new CNotifyMessage("So kannst du nicht raisen. Es kann sein, dass du zu viel oder zu wenig setzen wolltest", m_table, p_player));
             m_table.getQueue().add(new CBetRound(m_table, p_player));
         }
     }
