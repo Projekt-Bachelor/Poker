@@ -41,5 +41,7 @@ public final class CAllIn extends IBaseAction
 
         EGamestateManagement.INSTANCE.apply(m_table.name()).addGameMessage(
                 new CGameMessage("Spieler: " + p_player.getName() + " ist AllIn!", m_table));
+        EGamestateManagement.INSTANCE.apply(m_table.name()).addGameMessage(
+                new CGameMessage("Der Pot beträgt jetzt " + m_table.getGameHub().getChipsHandler().getPot() , m_table));
     }
 }

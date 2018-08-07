@@ -47,6 +47,10 @@ public final class CTable implements ITable
      * Queue für die Spielelogik Ausführung (Queue mit IRoundAction-Objekten)
      */
     private final Queue<IRoundAction> m_execution = new ConcurrentLinkedQueue<>();
+
+    public Queue<IRoundAction> getQueue(){
+        return m_execution;
+    }
     /**
      *
      */
@@ -222,7 +226,7 @@ public final class CTable implements ITable
         }
 
         // wenn Queue leer ist, dann prüfen, ob es noch eine nächste Runde gibt
-        if ( m_currentround.getAndUpdate( i -> i.hasNext() ? i.next() : null ).hasNext() )
-            this.generateround();
+        m_currentround.getAndUpdate( i -> i.hasNext() ? i.next() : null ).hasNext();
+        this.generateround();
     }
 }

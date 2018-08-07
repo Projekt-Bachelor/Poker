@@ -2,10 +2,12 @@ package de.tu_clausthal.in.bachelorproject2018.poker.game.table;
 
 import de.tu_clausthal.in.bachelorproject2018.poker.game.hubs.GameHub;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
+import de.tu_clausthal.in.bachelorproject2018.poker.game.round.IRoundAction;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.IMessage;
 
 import javax.annotation.Nonnull;
 import java.util.Collection;
+import java.util.Queue;
 import java.util.function.Consumer;
 
 
@@ -69,5 +71,7 @@ public interface ITable extends Consumer<IMessage>
     String owner();
 
     GameHub getGameHub();
+
+    Queue<IRoundAction> getQueue();
 
 }

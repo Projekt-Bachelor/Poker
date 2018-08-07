@@ -1,9 +1,10 @@
 package de.tu_clausthal.in.bachelorproject2018.poker.game.hubs;
 
 
-import de.tu_clausthal.in.bachelorproject2018.poker.game.player.CPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer;
 import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.HandStatistic;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.EGamestateManagement;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.messages.CGameMessage;
 import org.pmw.tinylog.Logger;
 
 import java.util.ArrayList;
@@ -68,15 +69,19 @@ public class ChipsHandling {
      * if any index is at the last index of the playerlist, start again at 0
      */
     public void nextBlind(){
-        if (smallBlindIndex == gameHub.getPlayerList().size()-1){
+        if (smallBlindIndex >= gameHub.getPlayerList().size()-1){
             smallBlindIndex = 0;
         }
         else {
             smallBlindIndex++;
         }
-        if (bigBlindIndex == gameHub.getPlayerList().size() -1 ){
+        if (bigBlindIndex >= gameHub.getPlayerList().size() -1 ){
             bigBlindIndex = 0;
         } else {
+            bigBlindIndex++;
+        }
+
+        if (bigBlindIndex == smallBlindIndex){
             bigBlindIndex++;
         }
     }
@@ -88,6 +93,10 @@ public class ChipsHandling {
     public void doubleBlinds(){
         smallBlindAmount = bigBlindAmount;
         bigBlindAmount = 2 * bigBlindAmount;
+    }
+
+    public int getPot(){
+        return pot;
     }
 
     /**
@@ -121,6 +130,12 @@ public class ChipsHandling {
         highestBidThisRound = bigBlindAmount;
 
         pot += bigBlindAmount + smallBlindAmount;
+        EGamestateManagement.INSTANCE.apply(gameHub.getTable().name()).addGameMessage(
+                new CGameMessage("Neue Runde! Die Blinds wurden gesetzt! Dabei hat " +
+                        gameHub.getPlayerList().get(smallBlindIndex).getName() + " " + getSmallBlindAmount() +" Chips als Smallblind gesetzt. "
+                        + gameHub.getPlayerList().get(bigBlindIndex).getName() + " hat " + getBigBlindAmount() + " Chips als Bigblind gesetzt." , gameHub.getTable()));
+        EGamestateManagement.INSTANCE.apply(gameHub.getTable().name()).addGameMessage(
+                new CGameMessage("Der Pot beträgt jetzt " + getPot() , gameHub.getTable()));
     }
 
     /**
@@ -176,8 +191,9 @@ public class ChipsHandling {
      */
     public void distributePotToWinner(ArrayList<HandStatistic> winners)
     {
+        int amount = pot/winners.size();
         for (HandStatistic handStatistic : winners){
-            handStatistic.getPlayer().addChips(pot/winners.size());
+            handStatistic.getPlayer().addChips(amount);
         }
         pot = 0;
     }
@@ -216,6 +232,7 @@ public class ChipsHandling {
         playersInThisRound = gameHub.getPlayerList().size();
 
         for (IPlayer player: gameHub.getPlayerList()){
+            player.resetAllIn();
             player.resetAmountBetThisRound();
             player.resetHasChecked();
             player.getPlayerhand().resethandCards();

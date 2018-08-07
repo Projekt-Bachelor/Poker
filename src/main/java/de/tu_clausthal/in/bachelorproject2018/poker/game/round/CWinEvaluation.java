@@ -7,6 +7,7 @@ import de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.HandStatistic;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.IMessage;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.EGamestateManagement;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.messages.CGameMessage;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.messages.CNotifyMessage;
 import org.pmw.tinylog.Logger;
 
 import java.util.ArrayList;
@@ -64,6 +65,19 @@ public final class CWinEvaluation extends IBaseRoundAction {
         EGamestateManagement.INSTANCE.apply(m_table.name()).addGameMessage(
                 new CGameMessage(m_table.getGameHub().getWinnerHand().getWinnerHandAsString(winner.get(0)), m_table));
 
+
+        //check, ob jemand pleite ist
+        for(IPlayer player: m_table.getGameHub().getPlayerList()){
+            if (player.getChipsCount()<= 0){
+                EGamestateManagement.INSTANCE.apply(m_table.name()).addNotifyMessage(
+                        new CNotifyMessage("Leider bist du ausgeschieden :(", m_table, player));
+                m_table.leave(player);
+                EGamestateManagement.INSTANCE.apply(m_table.name()).addGameMessage(
+                        new CGameMessage(player.getName() + " ist ausgeschieden. Es sind noch " + m_table.getGameHub().getPlayerList().size() + " Spieler im Spiel!", m_table));
+
+            }
+        }
+        m_table.getGameHub().getChipsHandler().nextBlind();
         return false;
     }
 
