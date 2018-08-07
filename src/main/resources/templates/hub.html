@@ -1,11 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>GameHub</title>
-</head>
-<body>
-    <H>This is the Game-Hub!</H>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bachelor-Projekt 2018 - Poker</title>
 
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="/player.js"></script>
+
+    <link href="/webjars/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet"/>
+
+</head>
+
+<body>
+<h1>Game-Hub</h1>
+
+<noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
+    enabled. Please enable
+    Javascript and reload this page!</h2></noscript>
+<div id="main-content" class="container">
+    <div class="form-group">
+        <label for="name">What is your name?</label>
+        <input type="text" id="name" class="form-control" placeholder="Your name here...">
+    </div>
+    <div class="form-group">
+        <label for="tablename">The name of the table you want to create.</label>
+        <input type="text" id="tablename" class="form-control" placeholder="Table name here...">
+    </div>
+    <button id="createTable" class="btn btn-primary" type="button">Tisch erstellen</button>
+    </form>
+    <div id="tableContainer">
+        <div class="col-md-12">
+            <ul id="spiele"></ul>
+        </div>
+    </div>
+</div>
 </body>
 </html>
