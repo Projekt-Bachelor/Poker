@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bachelor-Projekt 2018 - Poker: ITable.java Quellcode</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+<link href="../../layout.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bachelor-Projekt 2018 - Poker
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Erzeugt von Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'Suchen');
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('../../',true,false,'search.php','Suchen');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('d2/d5e/ITable_8java_source.htm','../../');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">ITable.java</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d2/d5e/ITable_8java.htm">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">package </span>de.tu_clausthal.in.bachelorproject2018.poker.game.table;</div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">import</span> <a class="code" href="../../d9/d1e/namespacede.htm">de</a>.<a class="code" href="../../d7/dcf/namespacede_1_1tu__clausthal.htm">tu_clausthal</a>.<a class="code" href="../../de/dbd/namespacede_1_1tu__clausthal_1_1in.htm">in</a>.<a class="code" href="../../dd/df9/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018.htm">bachelorproject2018</a>.<a class="code" href="../../d5/d8a/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker.htm">poker</a>.<a class="code" href="../../d0/d3f/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game.htm">game</a>.<a class="code" href="../../de/dc7/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1hubs.htm">hubs</a>.<a class="code" href="../../da/d48/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1hubs_1_1GameHub.htm">GameHub</a>;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">import</span> <a class="code" href="../../d9/d1e/namespacede.htm">de</a>.<a class="code" href="../../d7/dcf/namespacede_1_1tu__clausthal.htm">tu_clausthal</a>.<a class="code" href="../../de/dbd/namespacede_1_1tu__clausthal_1_1in.htm">in</a>.<a class="code" href="../../dd/df9/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018.htm">bachelorproject2018</a>.<a class="code" href="../../d5/d8a/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker.htm">poker</a>.<a class="code" href="../../d0/d3f/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game.htm">game</a>.<a class="code" href="../../dd/dfa/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1player.htm">player</a>.<a class="code" href="../../d2/d11/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1player_1_1IPlayer.htm">IPlayer</a>;</div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">import</span> <a class="code" href="../../d9/d1e/namespacede.htm">de</a>.<a class="code" href="../../d7/dcf/namespacede_1_1tu__clausthal.htm">tu_clausthal</a>.<a class="code" href="../../de/dbd/namespacede_1_1tu__clausthal_1_1in.htm">in</a>.<a class="code" href="../../dd/df9/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018.htm">bachelorproject2018</a>.<a class="code" href="../../d5/d8a/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker.htm">poker</a>.<a class="code" href="../../d0/d3f/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game.htm">game</a>.<a class="code" href="../../dd/d64/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1round.htm">round</a>.<a class="code" href="../../dc/db4/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1round_1_1IRoundAction.htm">IRoundAction</a>;</div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">import</span> <a class="code" href="../../d9/d1e/namespacede.htm">de</a>.<a class="code" href="../../d7/dcf/namespacede_1_1tu__clausthal.htm">tu_clausthal</a>.<a class="code" href="../../de/dbd/namespacede_1_1tu__clausthal_1_1in.htm">in</a>.<a class="code" href="../../dd/df9/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018.htm">bachelorproject2018</a>.<a class="code" href="../../d5/d8a/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker.htm">poker</a>.<a class="code" href="../../d8/d58/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network.htm">network</a>.<a class="code" href="../../db/d6f/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1IMessage.htm">IMessage</a>;</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">import</span> javax.annotation.Nonnull;</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">import</span> java.util.Collection;</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">import</span> java.util.Queue;</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">import</span> java.util.function.Consumer;</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div><div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="../../d5/d36/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable.htm">   18</a></span>&#160;<span class="keyword">public</span> <span class="keyword">interface </span><a class="code" href="../../d5/d36/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable.htm">ITable</a> <span class="keyword">extends</span> Consumer&lt;IMessage&gt;</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    @Nonnull</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    String <a class="code" href="../../d5/d36/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable.htm#a442079183a6b0e75a07ee8549947f929">name</a>();</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">boolean</span> <a class="code" href="../../d5/d36/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable.htm#a87899927f527c88e087ba20659d6d9fc">isplaying</a>();</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    @Nonnull</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="../../d5/d36/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable.htm">ITable</a> <a class="code" href="../../d5/d36/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable.htm#afe05bcc129de0d9ace27270c45c9b4e2">start</a>( @Nonnull <a class="code" href="../../d2/d11/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1player_1_1IPlayer.htm">IPlayer</a> p_owner );</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    @Nonnull</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="../../d5/d36/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable.htm">ITable</a> <a class="code" href="../../d5/d36/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable.htm#a12e7d833ce4fde26543c2aec692bfcba">leave</a>( @Nonnull <span class="keyword">final</span> <a class="code" href="../../d2/d11/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1player_1_1IPlayer.htm">IPlayer</a> p_player );</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    @Nonnull</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="../../d5/d36/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable.htm">ITable</a> <a class="code" href="../../d5/d36/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable.htm#a3d615537e55f2c861b58c62204d297dc">join</a>( @Nonnull <span class="keyword">final</span> String p_player );</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    Collection&lt;IPlayer&gt; <a class="code" href="../../d5/d36/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable.htm#a6e42c7daa9c258015750347f2a5542fe">list</a>();</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    String <a class="code" href="../../d5/d36/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable.htm#a6c250ebc6ea6a76c303bee66cbafe883">owner</a>();</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <a class="code" href="../../da/d48/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1hubs_1_1GameHub.htm">GameHub</a> <a class="code" href="../../d5/d36/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable.htm#ad5910542f67b66837a7e3c326d22a671">getGameHub</a>();</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    Queue&lt;IRoundAction&gt; <a class="code" href="../../d5/d36/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable.htm#aea3baa21f8e4e6c85f09e355851c5d9f">getQueue</a>();</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;}</div><div class="ttc" id="interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable_htm_a442079183a6b0e75a07ee8549947f929"><div class="ttname"><a href="../../d5/d36/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable.htm#a442079183a6b0e75a07ee8549947f929">de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable.name</a></div><div class="ttdeci">String name()</div><div class="ttdoc">Name des Tisches. </div></div>
+<div class="ttc" id="interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable_htm_afe05bcc129de0d9ace27270c45c9b4e2"><div class="ttname"><a href="../../d5/d36/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable.htm#afe05bcc129de0d9ace27270c45c9b4e2">de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable.start</a></div><div class="ttdeci">ITable start( @Nonnull IPlayer p_owner)</div><div class="ttdoc">startet das Spiel </div></div>
+<div class="ttc" id="namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1hubs_htm"><div class="ttname"><a href="../../de/dc7/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1hubs.htm">de.tu_clausthal.in.bachelorproject2018.poker.game.hubs</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dd/dec/CardDealer_8java_source.htm#l00001">CardDealer.java:1</a></div></div>
+<div class="ttc" id="namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_htm"><div class="ttname"><a href="../../d5/d8a/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker.htm">de.tu_clausthal.in.bachelorproject2018.poker</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6b/CApplication_8java_source.htm#l00001">CApplication.java:1</a></div></div>
+<div class="ttc" id="namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_htm"><div class="ttname"><a href="../../d8/d58/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network.htm">de.tu_clausthal.in.bachelorproject2018.poker.network</a></div></div>
+<div class="ttc" id="classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1hubs_1_1GameHub_htm"><div class="ttname"><a href="../../da/d48/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1hubs_1_1GameHub.htm">de.tu_clausthal.in.bachelorproject2018.poker.game.hubs.GameHub</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d78/GameHub_8java_source.htm#l00018">GameHub.java:18</a></div></div>
+<div class="ttc" id="interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1round_1_1IRoundAction_htm"><div class="ttname"><a href="../../dc/db4/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1round_1_1IRoundAction.htm">de.tu_clausthal.in.bachelorproject2018.poker.game.round.IRoundAction</a></div><div class="ttdoc">Interface, um die einzelnen Aktionen in einer Runde zu definieren. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3f/IRoundAction_8java_source.htm#l00015">IRoundAction.java:15</a></div></div>
+<div class="ttc" id="interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable_htm_ad5910542f67b66837a7e3c326d22a671"><div class="ttname"><a href="../../d5/d36/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable.htm#ad5910542f67b66837a7e3c326d22a671">de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable.getGameHub</a></div><div class="ttdeci">GameHub getGameHub()</div></div>
+<div class="ttc" id="interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable_htm_a6e42c7daa9c258015750347f2a5542fe"><div class="ttname"><a href="../../d5/d36/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable.htm#a6e42c7daa9c258015750347f2a5542fe">de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable.list</a></div><div class="ttdeci">Collection&lt; IPlayer &gt; list()</div><div class="ttdoc">liefert alle Spieler des Tisches </div></div>
+<div class="ttc" id="interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1player_1_1IPlayer_htm"><div class="ttname"><a href="../../d2/d11/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1player_1_1IPlayer.htm">de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer</a></div><div class="ttdoc">Spieler Interface. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/d45/IPlayer_8java_source.htm#l00018">IPlayer.java:18</a></div></div>
+<div class="ttc" id="namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_htm"><div class="ttname"><a href="../../d0/d3f/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game.htm">de.tu_clausthal.in.bachelorproject2018.poker.game</a></div></div>
+<div class="ttc" id="interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable_htm_aea3baa21f8e4e6c85f09e355851c5d9f"><div class="ttname"><a href="../../d5/d36/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable.htm#aea3baa21f8e4e6c85f09e355851c5d9f">de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable.getQueue</a></div><div class="ttdeci">Queue&lt; IRoundAction &gt; getQueue()</div></div>
+<div class="ttc" id="interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable_htm_a6c250ebc6ea6a76c303bee66cbafe883"><div class="ttname"><a href="../../d5/d36/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable.htm#a6c250ebc6ea6a76c303bee66cbafe883">de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable.owner</a></div><div class="ttdeci">String owner()</div><div class="ttdoc">liefert den owner des Tisches zurück </div></div>
+<div class="ttc" id="interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable_htm_a12e7d833ce4fde26543c2aec692bfcba"><div class="ttname"><a href="../../d5/d36/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable.htm#a12e7d833ce4fde26543c2aec692bfcba">de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable.leave</a></div><div class="ttdeci">ITable leave( @Nonnull final IPlayer p_player)</div><div class="ttdoc">entfernt einen Spieler vom Tisch </div></div>
+<div class="ttc" id="namespacede_1_1tu__clausthal_htm"><div class="ttname"><a href="../../d7/dcf/namespacede_1_1tu__clausthal.htm">de.tu_clausthal</a></div></div>
+<div class="ttc" id="namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1round_htm"><div class="ttname"><a href="../../dd/d64/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1round.htm">de.tu_clausthal.in.bachelorproject2018.poker.game.round</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d5d/CBetRound_8java_source.htm#l00001">CBetRound.java:1</a></div></div>
+<div class="ttc" id="namespacede_htm"><div class="ttname"><a href="../../d9/d1e/namespacede.htm">de</a></div></div>
+<div class="ttc" id="interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable_htm_a3d615537e55f2c861b58c62204d297dc"><div class="ttname"><a href="../../d5/d36/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable.htm#a3d615537e55f2c861b58c62204d297dc">de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable.join</a></div><div class="ttdeci">ITable join( @Nonnull final String p_player)</div><div class="ttdoc">ein Spieler joint dem Spiel, wenn es noch nicht läuft </div></div>
+<div class="ttc" id="interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable_htm"><div class="ttname"><a href="../../d5/d36/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable.htm">de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable</a></div><div class="ttdoc">Interface um einen Spieletisch darzustellen. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d5e/ITable_8java_source.htm#l00018">ITable.java:18</a></div></div>
+<div class="ttc" id="namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1player_htm"><div class="ttname"><a href="../../dd/dfa/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1player.htm">de.tu_clausthal.in.bachelorproject2018.poker.game.player</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/CPlayer_8java_source.htm#l00001">CPlayer.java:1</a></div></div>
+<div class="ttc" id="namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_htm"><div class="ttname"><a href="../../dd/df9/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018.htm">de.tu_clausthal.in.bachelorproject2018</a></div></div>
+<div class="ttc" id="namespacede_1_1tu__clausthal_1_1in_htm"><div class="ttname"><a href="../../de/dbd/namespacede_1_1tu__clausthal_1_1in.htm">de.tu_clausthal.in</a></div></div>
+<div class="ttc" id="interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable_htm_a87899927f527c88e087ba20659d6d9fc"><div class="ttname"><a href="../../d5/d36/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable.htm#a87899927f527c88e087ba20659d6d9fc">de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable.isplaying</a></div><div class="ttdeci">boolean isplaying()</div><div class="ttdoc">flag ob das Spiel gestartet wurde </div></div>
+<div class="ttc" id="interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1IMessage_htm"><div class="ttname"><a href="../../db/d6f/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1IMessage.htm">de.tu_clausthal.in.bachelorproject2018.poker.network.IMessage</a></div><div class="ttdoc">Interface für ein Nachrichtenobjekt das von außen über den Websocket kommt. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/dbf/IMessage_8java_source.htm#l00014">IMessage.java:14</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.htm">src</a></li><li class="navelem"><a class="el" href="../../dir_5eb159725f84c66aafd839904a4acdd0.htm">main</a></li><li class="navelem"><a class="el" href="../../dir_fd3f6763802dee1ad875f6c80eac0bda.htm">java</a></li><li class="navelem"><a class="el" href="../../dir_d0b2643dbe59e2c16d00acf3fde99ae0.htm">de</a></li><li class="navelem"><a class="el" href="../../dir_b5735dbb26bbd0edfaeb5dc944d0a236.htm">tu_clausthal</a></li><li class="navelem"><a class="el" href="../../dir_d5020d8050913c88fd7e370a66f1f0da.htm">in</a></li><li class="navelem"><a class="el" href="../../dir_be85876bde3bd070af67989bb4a75e11.htm">bachelorproject2018</a></li><li class="navelem"><a class="el" href="../../dir_d20a41732b188f3b9f3d5aa05d3ca842.htm">poker</a></li><li class="navelem"><a class="el" href="../../dir_f3b562671af28d2dd26f9866ce4638d8.htm">game</a></li><li class="navelem"><a class="el" href="../../dir_fe42922da4ccf8d62517ba2fa896f92f.htm">table</a></li><li class="navelem"><a class="el" href="../../d2/d5e/ITable_8java.htm">ITable.java</a></li>
+    <li class="footer">Erzeugt von
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
+</body>
+</html>

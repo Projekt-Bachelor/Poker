@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bachelor-Projekt 2018 - Poker: CMessage.java Quellcode</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+<link href="../../layout.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bachelor-Projekt 2018 - Poker
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Erzeugt von Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'Suchen');
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('../../',true,false,'search.php','Suchen');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('de/dd6/CMessage_8java_source.htm','../../');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">CMessage.java</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../de/dd6/CMessage_8java.htm">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="../../da/dfd/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket.htm">    1</a></span>&#160;<span class="keyword">package </span>de.tu_clausthal.in.bachelorproject2018.poker.network.websocket;</div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">import</span> com.fasterxml.jackson.core.JsonProcessingException;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">import</span> com.fasterxml.jackson.databind.ObjectMapper;</div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">import</span> org.pmw.tinylog.Logger;</div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">import</span> org.springframework.messaging.simp.SimpMessagingTemplate;</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">import</span> org.springframework.stereotype.Service;</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">import</span> javax.annotation.Nonnull;</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">import</span> java.util.Arrays;</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;@Service</div><div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="../../df/de9/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1CMessage.htm">   18</a></span>&#160;<span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">class </span><a class="code" href="../../df/de9/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1CMessage.htm">CMessage</a></div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div><div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="../../df/de9/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1CMessage.htm#a5b04502bc2d60c57e90ce6be4e404e8e">   23</a></span>&#160;    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> ObjectMapper <a class="code" href="../../df/de9/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1CMessage.htm#a5b04502bc2d60c57e90ce6be4e404e8e">JSONMAPPER</a> = <span class="keyword">new</span> ObjectMapper();</div><div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="../../df/de9/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1CMessage.htm#afc6600990f3c4d663bdc2691523bad60">   27</a></span>&#160;    <span class="keyword">private</span> <span class="keyword">final</span> SimpMessagingTemplate <a class="code" href="../../df/de9/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1CMessage.htm#afc6600990f3c4d663bdc2691523bad60">m_websocket</a>;</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    @Autowired</div><div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="../../df/de9/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1CMessage.htm#a42ea0bf52796d4ad819f02248a9e3549">   35</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="../../df/de9/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1CMessage.htm#a42ea0bf52796d4ad819f02248a9e3549">CMessage</a>( <span class="keyword">final</span> SimpMessagingTemplate p_websocket )</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    {</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        this.m_websocket = p_websocket;</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    }</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div><div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="../../df/de9/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1CMessage.htm#abf6708f232ac1e74893ff0aad8663d6f">   46</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">final</span> <span class="keywordtype">void</span> <a class="code" href="../../df/de9/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1CMessage.htm#abf6708f232ac1e74893ff0aad8663d6f">sendto</a>( @Nonnull <span class="keyword">final</span> String p_to, @Nonnull <span class="keyword">final</span> Object... p_data )</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    {</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        Arrays.stream( p_data )</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;              .forEach( i -&gt; {</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                  <span class="keywordflow">try</span></div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                  {</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                      Logger.info(<span class="stringliteral">&quot;Sending message: &quot;</span> + JSONMAPPER.writeValueAsString( i ) + <span class="stringliteral">&quot; to Endpoint: &quot;</span> + p_to);</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                      m_websocket.convertAndSend( p_to, JSONMAPPER.writeValueAsString( i ) );</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                  }</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                  <span class="keywordflow">catch</span> ( <span class="keyword">final</span> JsonProcessingException l_exception )</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                  {</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                      Logger.error( l_exception );</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                  }</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;              } );</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div><div class="ttc" id="classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1CMessage_htm_a5b04502bc2d60c57e90ce6be4e404e8e"><div class="ttname"><a href="../../df/de9/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1CMessage.htm#a5b04502bc2d60c57e90ce6be4e404e8e">de.tu_clausthal.in.bachelorproject2018.poker.network.websocket.CMessage.JSONMAPPER</a></div><div class="ttdeci">static final ObjectMapper JSONMAPPER</div><div class="ttdoc">JSON serializer. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/dd6/CMessage_8java_source.htm#l00023">CMessage.java:23</a></div></div>
+<div class="ttc" id="classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1CMessage_htm_afc6600990f3c4d663bdc2691523bad60"><div class="ttname"><a href="../../df/de9/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1CMessage.htm#afc6600990f3c4d663bdc2691523bad60">de.tu_clausthal.in.bachelorproject2018.poker.network.websocket.CMessage.m_websocket</a></div><div class="ttdeci">final SimpMessagingTemplate m_websocket</div><div class="ttdoc">socket </div><div class="ttdef"><b>Definition:</b> <a href="../../de/dd6/CMessage_8java_source.htm#l00027">CMessage.java:27</a></div></div>
+<div class="ttc" id="classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1CMessage_htm"><div class="ttname"><a href="../../df/de9/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1CMessage.htm">de.tu_clausthal.in.bachelorproject2018.poker.network.websocket.CMessage</a></div><div class="ttdoc">test socket </div><div class="ttdef"><b>Definition:</b> <a href="../../de/dd6/CMessage_8java_source.htm#l00018">CMessage.java:18</a></div></div>
+<div class="ttc" id="classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1CMessage_htm_abf6708f232ac1e74893ff0aad8663d6f"><div class="ttname"><a href="../../df/de9/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1CMessage.htm#abf6708f232ac1e74893ff0aad8663d6f">de.tu_clausthal.in.bachelorproject2018.poker.network.websocket.CMessage.sendto</a></div><div class="ttdeci">final void sendto( @Nonnull final String p_to, @Nonnull final Object... p_data)</div><div class="ttdoc">sends data </div><div class="ttdef"><b>Definition:</b> <a href="../../de/dd6/CMessage_8java_source.htm#l00046">CMessage.java:46</a></div></div>
+<div class="ttc" id="classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1CMessage_htm_a42ea0bf52796d4ad819f02248a9e3549"><div class="ttname"><a href="../../df/de9/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1CMessage.htm#a42ea0bf52796d4ad819f02248a9e3549">de.tu_clausthal.in.bachelorproject2018.poker.network.websocket.CMessage.CMessage</a></div><div class="ttdeci">CMessage(final SimpMessagingTemplate p_websocket)</div><div class="ttdoc">ctor </div><div class="ttdef"><b>Definition:</b> <a href="../../de/dd6/CMessage_8java_source.htm#l00035">CMessage.java:35</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.htm">src</a></li><li class="navelem"><a class="el" href="../../dir_5eb159725f84c66aafd839904a4acdd0.htm">main</a></li><li class="navelem"><a class="el" href="../../dir_fd3f6763802dee1ad875f6c80eac0bda.htm">java</a></li><li class="navelem"><a class="el" href="../../dir_d0b2643dbe59e2c16d00acf3fde99ae0.htm">de</a></li><li class="navelem"><a class="el" href="../../dir_b5735dbb26bbd0edfaeb5dc944d0a236.htm">tu_clausthal</a></li><li class="navelem"><a class="el" href="../../dir_d5020d8050913c88fd7e370a66f1f0da.htm">in</a></li><li class="navelem"><a class="el" href="../../dir_be85876bde3bd070af67989bb4a75e11.htm">bachelorproject2018</a></li><li class="navelem"><a class="el" href="../../dir_d20a41732b188f3b9f3d5aa05d3ca842.htm">poker</a></li><li class="navelem"><a class="el" href="../../dir_9977ec6b353616422d2fa3f78cfedade.htm">network</a></li><li class="navelem"><a class="el" href="../../dir_df585341c2310c8650e9ea804c9da48b.htm">websocket</a></li><li class="navelem"><a class="el" href="../../de/dd6/CMessage_8java.htm">CMessage.java</a></li>
+    <li class="footer">Erzeugt von
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+var namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck =
+[
+    [ "CFlush", "d4/d87/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1CFlush.htm", "d4/d87/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1CFlush" ],
+    [ "CMultiples", "d2/d29/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1CMultiples.htm", "d2/d29/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1CMultiples" ],
+    [ "CPrepareForWinCheck", "d9/d59/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1CPrepareForWinCheck.htm", "d9/d59/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1CPrepareForWinCheck" ],
+    [ "CStraight", "de/df3/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1CStraight.htm", "de/df3/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1CStraight" ],
+    [ "DetermineWinner", "dc/dda/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1DetermineWinner.htm", "dc/dda/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1DetermineWinner" ],
+    [ "EWinCheck", "d6/db7/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1EWinCheck.htm", "d6/db7/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1EWinCheck" ],
+    [ "HandStatistic", "d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm", "d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic" ],
+    [ "IBaseWinCheckAction", "d6/d63/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1IBaseWinCheckAction.htm", "d6/d63/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1IBaseWinCheckAction" ],
+    [ "IWinCheckAction", "d4/dae/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1IWinCheckAction.htm", "d4/dae/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1IWinCheckAction" ],
+    [ "WinnerHand", "d7/dba/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1WinnerHand.htm", "d7/dba/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1WinnerHand" ]
+];

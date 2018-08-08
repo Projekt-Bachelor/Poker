@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bachelor-Projekt 2018 - Poker: EWinCheck.java Quellcode</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+<link href="../../layout.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bachelor-Projekt 2018 - Poker
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Erzeugt von Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'Suchen');
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('../../',true,false,'search.php','Suchen');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('db/d63/EWinCheck_8java_source.htm','../../');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">EWinCheck.java</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../db/d63/EWinCheck_8java.htm">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">package </span>de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck;</div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">import</span> <a class="code" href="../../d9/d1e/namespacede.htm">de</a>.<a class="code" href="../../d7/dcf/namespacede_1_1tu__clausthal.htm">tu_clausthal</a>.<a class="code" href="../../de/dbd/namespacede_1_1tu__clausthal_1_1in.htm">in</a>.<a class="code" href="../../dd/df9/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018.htm">bachelorproject2018</a>.<a class="code" href="../../d5/d8a/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker.htm">poker</a>.<a class="code" href="../../d0/d3f/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game.htm">game</a>.<a class="code" href="../../df/db8/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table.htm">table</a>.<a class="code" href="../../d5/d36/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable.htm">ITable</a>;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">import</span> javax.annotation.Nonnull;</div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">import</span> java.text.MessageFormat;</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">import</span> java.util.function.Function;</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">import</span> java.util.function.Supplier;</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div><div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="../../d6/db7/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1EWinCheck.htm">   10</a></span>&#160;<span class="keyword">public</span> <span class="keyword">enum</span> <a class="code" href="../../d6/db7/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1EWinCheck.htm">EWinCheck</a> implements Function&lt;ITable, IWinCheckAction&gt;</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div><div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="../../d6/db7/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1EWinCheck.htm#a6bfe535270199ff608d41ddff5501c74">   12</a></span>&#160;    <a class="code" href="../../d6/db7/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1EWinCheck.htm#a6bfe535270199ff608d41ddff5501c74">PREPAREFORWINCHECK</a>,</div><div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="../../d6/db7/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1EWinCheck.htm#a9c40c7707eeaf85e3a50e3202f057d9e">   13</a></span>&#160;    <a class="code" href="../../d6/db7/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1EWinCheck.htm#a9c40c7707eeaf85e3a50e3202f057d9e">MULTIPLES</a>,</div><div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="../../d6/db7/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1EWinCheck.htm#a14a4574a25a623239df706d6b6d77123">   14</a></span>&#160;    <a class="code" href="../../d6/db7/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1EWinCheck.htm#a14a4574a25a623239df706d6b6d77123">STRAIGTH</a>,</div><div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="../../d6/db7/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1EWinCheck.htm#a48cc8f14e9aff7ba57180e21dcc8df17">   15</a></span>&#160;    <a class="code" href="../../d6/db7/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1EWinCheck.htm#a48cc8f14e9aff7ba57180e21dcc8df17">FLUSH</a>;</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    @Override</div><div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="../../d6/db7/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1EWinCheck.htm#aedbbfb64240a46b805514b2c558905ac">   23</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="../../d4/dae/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1IWinCheckAction.htm">IWinCheckAction</a> <a class="code" href="../../d6/db7/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1EWinCheck.htm#aedbbfb64240a46b805514b2c558905ac">apply</a>( <span class="keyword">final</span> <a class="code" href="../../d5/d36/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable.htm">ITable</a> p_table )</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    {</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordflow">switch</span> ( <span class="keyword">this</span> )</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        {</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            <span class="keywordflow">case</span> PREPAREFORWINCHECK:</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="../../d9/d59/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1CPrepareForWinCheck.htm">CPrepareForWinCheck</a>( p_table );</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="keywordflow">case</span> MULTIPLES:</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="../../d2/d29/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1CMultiples.htm">CMultiples</a>( p_table );</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <span class="keywordflow">case</span> STRAIGTH:</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="../../de/df3/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1CStraight.htm">CStraight</a>( p_table );</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            <span class="keywordflow">case</span> FLUSH:</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="../../d4/d87/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1CFlush.htm">CFlush</a>( p_table );</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="keywordflow">default</span>:</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> RuntimeException( MessageFormat.format( <span class="stringliteral">&quot;win check [{0}] existiert nicht&quot;</span>, <span class="keyword">this</span> ) );</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        }</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    }</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div><div class="ttc" id="classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1CMultiples_htm"><div class="ttname"><a href="../../d2/d29/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1CMultiples.htm">de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.CMultiples</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d8/def/CMultiples_8java_source.htm#l00005">CMultiples.java:5</a></div></div>
+<div class="ttc" id="classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1CStraight_htm"><div class="ttname"><a href="../../de/df3/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1CStraight.htm">de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.CStraight</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d33/CStraight_8java_source.htm#l00005">CStraight.java:5</a></div></div>
+<div class="ttc" id="namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_htm"><div class="ttname"><a href="../../d5/d8a/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker.htm">de.tu_clausthal.in.bachelorproject2018.poker</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6b/CApplication_8java_source.htm#l00001">CApplication.java:1</a></div></div>
+<div class="ttc" id="enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1EWinCheck_htm"><div class="ttname"><a href="../../d6/db7/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1EWinCheck.htm">de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.EWinCheck</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/d63/EWinCheck_8java_source.htm#l00010">EWinCheck.java:10</a></div></div>
+<div class="ttc" id="enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1EWinCheck_htm_aedbbfb64240a46b805514b2c558905ac"><div class="ttname"><a href="../../d6/db7/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1EWinCheck.htm#aedbbfb64240a46b805514b2c558905ac">de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.EWinCheck.apply</a></div><div class="ttdeci">IWinCheckAction apply(final ITable p_table)</div><div class="ttdoc">liefert zu dem aktuellen Enum-Item das WincheckObjekt </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d63/EWinCheck_8java_source.htm#l00023">EWinCheck.java:23</a></div></div>
+<div class="ttc" id="enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1EWinCheck_htm_a6bfe535270199ff608d41ddff5501c74"><div class="ttname"><a href="../../d6/db7/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1EWinCheck.htm#a6bfe535270199ff608d41ddff5501c74">de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.EWinCheck.PREPAREFORWINCHECK</a></div><div class="ttdeci">PREPAREFORWINCHECK</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d63/EWinCheck_8java_source.htm#l00012">EWinCheck.java:12</a></div></div>
+<div class="ttc" id="namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_htm"><div class="ttname"><a href="../../df/db8/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table.htm">de.tu_clausthal.in.bachelorproject2018.poker.game.table</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d3/db7/CTable_8java_source.htm#l00001">CTable.java:1</a></div></div>
+<div class="ttc" id="interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1IWinCheckAction_htm"><div class="ttname"><a href="../../d4/dae/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1IWinCheckAction.htm">de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.IWinCheckAction</a></div><div class="ttdoc">Interface, um die einzelnen Teile der WinEvaluation zu definieren Die Aktion ist ein Supplier...</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d36/IWinCheckAction_8java_source.htm#l00007">IWinCheckAction.java:7</a></div></div>
+<div class="ttc" id="namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_htm"><div class="ttname"><a href="../../d0/d3f/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game.htm">de.tu_clausthal.in.bachelorproject2018.poker.game</a></div></div>
+<div class="ttc" id="namespacede_1_1tu__clausthal_htm"><div class="ttname"><a href="../../d7/dcf/namespacede_1_1tu__clausthal.htm">de.tu_clausthal</a></div></div>
+<div class="ttc" id="namespacede_htm"><div class="ttname"><a href="../../d9/d1e/namespacede.htm">de</a></div></div>
+<div class="ttc" id="interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable_htm"><div class="ttname"><a href="../../d5/d36/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable.htm">de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable</a></div><div class="ttdoc">Interface um einen Spieletisch darzustellen. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d5e/ITable_8java_source.htm#l00018">ITable.java:18</a></div></div>
+<div class="ttc" id="classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1CFlush_htm"><div class="ttname"><a href="../../d4/d87/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1CFlush.htm">de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.CFlush</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/d44/CFlush_8java_source.htm#l00008">CFlush.java:8</a></div></div>
+<div class="ttc" id="classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1CPrepareForWinCheck_htm"><div class="ttname"><a href="../../d9/d59/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1CPrepareForWinCheck.htm">de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.CPrepareForWinCheck</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d78/CPrepareForWinCheck_8java_source.htm#l00006">CPrepareForWinCheck.java:6</a></div></div>
+<div class="ttc" id="enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1EWinCheck_htm_a14a4574a25a623239df706d6b6d77123"><div class="ttname"><a href="../../d6/db7/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1EWinCheck.htm#a14a4574a25a623239df706d6b6d77123">de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.EWinCheck.STRAIGTH</a></div><div class="ttdeci">STRAIGTH</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d63/EWinCheck_8java_source.htm#l00014">EWinCheck.java:14</a></div></div>
+<div class="ttc" id="namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_htm"><div class="ttname"><a href="../../dd/df9/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018.htm">de.tu_clausthal.in.bachelorproject2018</a></div></div>
+<div class="ttc" id="namespacede_1_1tu__clausthal_1_1in_htm"><div class="ttname"><a href="../../de/dbd/namespacede_1_1tu__clausthal_1_1in.htm">de.tu_clausthal.in</a></div></div>
+<div class="ttc" id="enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1EWinCheck_htm_a48cc8f14e9aff7ba57180e21dcc8df17"><div class="ttname"><a href="../../d6/db7/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1EWinCheck.htm#a48cc8f14e9aff7ba57180e21dcc8df17">de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.EWinCheck.FLUSH</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/d63/EWinCheck_8java_source.htm#l00015">EWinCheck.java:15</a></div></div>
+<div class="ttc" id="enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1EWinCheck_htm_a9c40c7707eeaf85e3a50e3202f057d9e"><div class="ttname"><a href="../../d6/db7/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1EWinCheck.htm#a9c40c7707eeaf85e3a50e3202f057d9e">de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.EWinCheck.MULTIPLES</a></div><div class="ttdeci">MULTIPLES</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d63/EWinCheck_8java_source.htm#l00013">EWinCheck.java:13</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.htm">src</a></li><li class="navelem"><a class="el" href="../../dir_5eb159725f84c66aafd839904a4acdd0.htm">main</a></li><li class="navelem"><a class="el" href="../../dir_fd3f6763802dee1ad875f6c80eac0bda.htm">java</a></li><li class="navelem"><a class="el" href="../../dir_d0b2643dbe59e2c16d00acf3fde99ae0.htm">de</a></li><li class="navelem"><a class="el" href="../../dir_b5735dbb26bbd0edfaeb5dc944d0a236.htm">tu_clausthal</a></li><li class="navelem"><a class="el" href="../../dir_d5020d8050913c88fd7e370a66f1f0da.htm">in</a></li><li class="navelem"><a class="el" href="../../dir_be85876bde3bd070af67989bb4a75e11.htm">bachelorproject2018</a></li><li class="navelem"><a class="el" href="../../dir_d20a41732b188f3b9f3d5aa05d3ca842.htm">poker</a></li><li class="navelem"><a class="el" href="../../dir_f3b562671af28d2dd26f9866ce4638d8.htm">game</a></li><li class="navelem"><a class="el" href="../../dir_638e68e9bd9c0f80408661901bd14131.htm">wincheck</a></li><li class="navelem"><a class="el" href="../../db/d63/EWinCheck_8java.htm">EWinCheck.java</a></li>
+    <li class="footer">Erzeugt von
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
+</body>
+</html>

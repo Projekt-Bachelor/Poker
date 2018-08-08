@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bachelor-Projekt 2018 - Poker: CStraight.java Quellcode</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+<link href="../../layout.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bachelor-Projekt 2018 - Poker
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Erzeugt von Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'Suchen');
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('../../',true,false,'search.php','Suchen');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('d3/d33/CStraight_8java_source.htm','../../');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">CStraight.java</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d3/d33/CStraight_8java.htm">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">package </span>de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck;</div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">import</span> <a class="code" href="../../d9/d1e/namespacede.htm">de</a>.<a class="code" href="../../d7/dcf/namespacede_1_1tu__clausthal.htm">tu_clausthal</a>.<a class="code" href="../../de/dbd/namespacede_1_1tu__clausthal_1_1in.htm">in</a>.<a class="code" href="../../dd/df9/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018.htm">bachelorproject2018</a>.<a class="code" href="../../d5/d8a/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker.htm">poker</a>.<a class="code" href="../../d0/d3f/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game.htm">game</a>.<a class="code" href="../../df/db8/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table.htm">table</a>.<a class="code" href="../../d5/d36/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable.htm">ITable</a>;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div><div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="../../de/df3/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1CStraight.htm">    5</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="../../de/df3/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1CStraight.htm">CStraight</a> <span class="keyword">extends</span> <a class="code" href="../../d6/d63/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1IBaseWinCheckAction.htm">IBaseWinCheckAction</a> {</div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div><div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="../../de/df3/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1CStraight.htm#a91dbe03d9d52d4af590cd2ab61af1162">    7</a></span>&#160;    <span class="keyword">protected</span> <a class="code" href="../../de/df3/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1CStraight.htm#a91dbe03d9d52d4af590cd2ab61af1162">CStraight</a>(<a class="code" href="../../d5/d36/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable.htm">ITable</a> p_table) {</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        super(p_table);</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    }</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    @Override</div><div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="../../de/df3/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1CStraight.htm#ae667076f5771dee007298f364030df59">   16</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="../../d4/dae/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1IWinCheckAction.htm">IWinCheckAction</a> <a class="code" href="../../de/df3/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1CStraight.htm#ae667076f5771dee007298f364030df59">apply</a>(<span class="keyword">final</span> <a class="code" href="../../d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm">HandStatistic</a> handStatistic) {</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="comment">//have to initialize with values</span></div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordtype">boolean</span> straight = <span class="keyword">false</span>;</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordtype">int</span> straightHigh = 0;</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="comment">//check for straight with ace as 1</span></div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordflow">if</span> (handStatistic.<a class="code" href="../../d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#aca4ebd19df8d4b6506d13a529d582e59">getRankArray</a>()[14] &gt;= 1 &amp;&amp; handStatistic.<a class="code" href="../../d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#aca4ebd19df8d4b6506d13a529d582e59">getRankArray</a>()[2] &gt;= 1 &amp;&amp; handStatistic.<a class="code" href="../../d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#aca4ebd19df8d4b6506d13a529d582e59">getRankArray</a>()[3] &gt;= 1 &amp;&amp; handStatistic.<a class="code" href="../../d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#aca4ebd19df8d4b6506d13a529d582e59">getRankArray</a>()[4] &gt;= 1 &amp;&amp; handStatistic.<a class="code" href="../../d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#aca4ebd19df8d4b6506d13a529d582e59">getRankArray</a>()[5] &gt;= 1) {</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            straight = <span class="keyword">true</span>;</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            straightHigh = 5;</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        }</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 2; i &lt; 11; i++) {</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="comment">//check fpr normal straight</span></div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            <span class="keywordflow">if</span> (handStatistic.<a class="code" href="../../d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#aca4ebd19df8d4b6506d13a529d582e59">getRankArray</a>()[i] &gt;= 1 &amp;&amp; handStatistic.<a class="code" href="../../d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#aca4ebd19df8d4b6506d13a529d582e59">getRankArray</a>()[i + 1] &gt;= 1 &amp;&amp; handStatistic.<a class="code" href="../../d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#aca4ebd19df8d4b6506d13a529d582e59">getRankArray</a>()[i + 2] &gt;= 1 &amp;&amp; handStatistic.<a class="code" href="../../d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#aca4ebd19df8d4b6506d13a529d582e59">getRankArray</a>()[i + 3] &gt;= 1 &amp;&amp;</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                    handStatistic.<a class="code" href="../../d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#aca4ebd19df8d4b6506d13a529d582e59">getRankArray</a>()[i + 4] &gt;= 1) {</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                straight = <span class="keyword">true</span>;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                handStatistic.<a class="code" href="../../d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#a999503a53f17173e62572437bd73c31a">straightFound</a>();</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                <span class="comment">//save highest element of straight</span></div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                straightHigh = i + 4;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            }</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        }</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordflow">if</span> (straight &amp;&amp; 4 &gt; handStatistic.<a class="code" href="../../d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#a944fb2841e119c5b86a58c9e7499e24f">getHandEvaluation</a>()[0]) {</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            handStatistic.<a class="code" href="../../d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#a95c386b245a125664f9d2f82b412fcb0">setHandEvaluation</a>(0, 4);</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            handStatistic.<a class="code" href="../../d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#a95c386b245a125664f9d2f82b412fcb0">setHandEvaluation</a>(1, straightHigh);</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        }</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">this</span>;</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div><div class="ttc" id="classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic_htm_aca4ebd19df8d4b6506d13a529d582e59"><div class="ttname"><a href="../../d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#aca4ebd19df8d4b6506d13a529d582e59">de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.HandStatistic.getRankArray</a></div><div class="ttdeci">int [] getRankArray()</div><div class="ttdoc">getter for Rankarray </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/dbe/HandStatistic_8java_source.htm#l00088">HandStatistic.java:88</a></div></div>
+<div class="ttc" id="classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1CStraight_htm"><div class="ttname"><a href="../../de/df3/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1CStraight.htm">de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.CStraight</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d33/CStraight_8java_source.htm#l00005">CStraight.java:5</a></div></div>
+<div class="ttc" id="namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_htm"><div class="ttname"><a href="../../d5/d8a/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker.htm">de.tu_clausthal.in.bachelorproject2018.poker</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6b/CApplication_8java_source.htm#l00001">CApplication.java:1</a></div></div>
+<div class="ttc" id="classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1CStraight_htm_a91dbe03d9d52d4af590cd2ab61af1162"><div class="ttname"><a href="../../de/df3/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1CStraight.htm#a91dbe03d9d52d4af590cd2ab61af1162">de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.CStraight.CStraight</a></div><div class="ttdeci">CStraight(ITable p_table)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d33/CStraight_8java_source.htm#l00007">CStraight.java:7</a></div></div>
+<div class="ttc" id="classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic_htm_a95c386b245a125664f9d2f82b412fcb0"><div class="ttname"><a href="../../d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#a95c386b245a125664f9d2f82b412fcb0">de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.HandStatistic.setHandEvaluation</a></div><div class="ttdeci">void setHandEvaluation(int index, int value)</div><div class="ttdoc">set the handevaluation elements to a certain value, used by winevaluation </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/dbe/HandStatistic_8java_source.htm#l00050">HandStatistic.java:50</a></div></div>
+<div class="ttc" id="classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1IBaseWinCheckAction_htm"><div class="ttname"><a href="../../d6/d63/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1IBaseWinCheckAction.htm">de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.IBaseWinCheckAction</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d9a/IBaseWinCheckAction_8java_source.htm#l00005">IBaseWinCheckAction.java:5</a></div></div>
+<div class="ttc" id="classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic_htm_a999503a53f17173e62572437bd73c31a"><div class="ttname"><a href="../../d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#a999503a53f17173e62572437bd73c31a">de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.HandStatistic.straightFound</a></div><div class="ttdeci">void straightFound()</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/dbe/HandStatistic_8java_source.htm#l00104">HandStatistic.java:104</a></div></div>
+<div class="ttc" id="namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_htm"><div class="ttname"><a href="../../df/db8/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table.htm">de.tu_clausthal.in.bachelorproject2018.poker.game.table</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d3/db7/CTable_8java_source.htm#l00001">CTable.java:1</a></div></div>
+<div class="ttc" id="interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1IWinCheckAction_htm"><div class="ttname"><a href="../../d4/dae/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1IWinCheckAction.htm">de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.IWinCheckAction</a></div><div class="ttdoc">Interface, um die einzelnen Teile der WinEvaluation zu definieren Die Aktion ist ein Supplier...</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d36/IWinCheckAction_8java_source.htm#l00007">IWinCheckAction.java:7</a></div></div>
+<div class="ttc" id="classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic_htm"><div class="ttname"><a href="../../d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm">de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.HandStatistic</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d7/dbe/HandStatistic_8java_source.htm#l00005">HandStatistic.java:5</a></div></div>
+<div class="ttc" id="namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_htm"><div class="ttname"><a href="../../d0/d3f/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game.htm">de.tu_clausthal.in.bachelorproject2018.poker.game</a></div></div>
+<div class="ttc" id="classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic_htm_a944fb2841e119c5b86a58c9e7499e24f"><div class="ttname"><a href="../../d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#a944fb2841e119c5b86a58c9e7499e24f">de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.HandStatistic.getHandEvaluation</a></div><div class="ttdeci">int [] getHandEvaluation()</div><div class="ttdoc">getter for handevaluation </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/dbe/HandStatistic_8java_source.htm#l00041">HandStatistic.java:41</a></div></div>
+<div class="ttc" id="namespacede_1_1tu__clausthal_htm"><div class="ttname"><a href="../../d7/dcf/namespacede_1_1tu__clausthal.htm">de.tu_clausthal</a></div></div>
+<div class="ttc" id="namespacede_htm"><div class="ttname"><a href="../../d9/d1e/namespacede.htm">de</a></div></div>
+<div class="ttc" id="interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable_htm"><div class="ttname"><a href="../../d5/d36/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable.htm">de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable</a></div><div class="ttdoc">Interface um einen Spieletisch darzustellen. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d5e/ITable_8java_source.htm#l00018">ITable.java:18</a></div></div>
+<div class="ttc" id="classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1CStraight_htm_ae667076f5771dee007298f364030df59"><div class="ttname"><a href="../../de/df3/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1CStraight.htm#ae667076f5771dee007298f364030df59">de.tu_clausthal.in.bachelorproject2018.poker.game.wincheck.CStraight.apply</a></div><div class="ttdeci">IWinCheckAction apply(final HandStatistic handStatistic)</div><div class="ttdoc">Kontrolliert auf Straßen trägt die möglicherweise ein. </div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d33/CStraight_8java_source.htm#l00016">CStraight.java:16</a></div></div>
+<div class="ttc" id="namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_htm"><div class="ttname"><a href="../../dd/df9/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018.htm">de.tu_clausthal.in.bachelorproject2018</a></div></div>
+<div class="ttc" id="namespacede_1_1tu__clausthal_1_1in_htm"><div class="ttname"><a href="../../de/dbd/namespacede_1_1tu__clausthal_1_1in.htm">de.tu_clausthal.in</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.htm">src</a></li><li class="navelem"><a class="el" href="../../dir_5eb159725f84c66aafd839904a4acdd0.htm">main</a></li><li class="navelem"><a class="el" href="../../dir_fd3f6763802dee1ad875f6c80eac0bda.htm">java</a></li><li class="navelem"><a class="el" href="../../dir_d0b2643dbe59e2c16d00acf3fde99ae0.htm">de</a></li><li class="navelem"><a class="el" href="../../dir_b5735dbb26bbd0edfaeb5dc944d0a236.htm">tu_clausthal</a></li><li class="navelem"><a class="el" href="../../dir_d5020d8050913c88fd7e370a66f1f0da.htm">in</a></li><li class="navelem"><a class="el" href="../../dir_be85876bde3bd070af67989bb4a75e11.htm">bachelorproject2018</a></li><li class="navelem"><a class="el" href="../../dir_d20a41732b188f3b9f3d5aa05d3ca842.htm">poker</a></li><li class="navelem"><a class="el" href="../../dir_f3b562671af28d2dd26f9866ce4638d8.htm">game</a></li><li class="navelem"><a class="el" href="../../dir_638e68e9bd9c0f80408661901bd14131.htm">wincheck</a></li><li class="navelem"><a class="el" href="../../d3/d33/CStraight_8java.htm">CStraight.java</a></li>
+    <li class="footer">Erzeugt von
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
+</body>
+</html>

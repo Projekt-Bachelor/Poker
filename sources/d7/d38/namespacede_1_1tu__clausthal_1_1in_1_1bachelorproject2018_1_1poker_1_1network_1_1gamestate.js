@@ -1,0 +1,9 @@
+var namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1gamestate =
+[
+    [ "messages", "dc/d17/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1gamestate_1_1messages.htm", "dc/d17/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1gamestate_1_1messages" ],
+    [ "CGamestate", "d3/d24/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1gamestate_1_1CGamestate.htm", "d3/d24/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1gamestate_1_1CGamestate" ],
+    [ "CGamestateEventPublisher", "d7/dc3/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1gamestate_1_1CGamestateEventPublisher.htm", "d7/dc3/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1gamestate_1_1CGamestateEventPublisher" ],
+    [ "EGamestateManagement", "d6/d13/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1gamestate_1_1EGamestateManagement.htm", "d6/d13/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1gamestate_1_1EGamestateManagement" ],
+    [ "IGamestate", "d6/d7b/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1gamestate_1_1IGamestate.htm", "d6/d7b/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1gamestate_1_1IGamestate" ],
+    [ "IGamestates", "d4/dbc/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1gamestate_1_1IGamestates.htm", "d4/dbc/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1gamestate_1_1IGamestates" ]
+];

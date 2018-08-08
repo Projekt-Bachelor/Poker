@@ -1,0 +1,25 @@
+var classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic =
+[
+    [ "HandStatistic", "d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#a616eef56a2ec43a4f06b866ae716eef6", null ],
+    [ "addRankArray", "d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#a260e5cb7e9291801b4c9ac8660074d7a", null ],
+    [ "flushFound", "d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#ab9012717cd5694c2f553b753e5173a29", null ],
+    [ "getFlushIndex", "d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#a76d65844d3e36f6db3cb5be9e38c7ecf", null ],
+    [ "getFlushSuit", "d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#a7c39f17f178f7dc10f19460154b8c94f", null ],
+    [ "getHandEvaluation", "d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#a944fb2841e119c5b86a58c9e7499e24f", null ],
+    [ "getPlayer", "d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#a783929e94fdd7e98ac8efdaf5ca6f46d", null ],
+    [ "getRankArray", "d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#aca4ebd19df8d4b6506d13a529d582e59", null ],
+    [ "isFlush", "d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#ab787ae69e6f6e0f3de486552c11d1ce0", null ],
+    [ "isStraight", "d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#acb866eb9bdd48b75aac15d8de9918ea4", null ],
+    [ "resetHandEvaluation", "d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#a5b03de04a2e435162bd39aa54e2fadf1", null ],
+    [ "resetRankArray", "d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#a875ee9cf3a4f3f855f1061f6d9dfe1cc", null ],
+    [ "setFlushIndex", "d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#a4ac625e7d65a95912d77a846b5ba55e3", null ],
+    [ "setHandEvaluation", "d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#a95c386b245a125664f9d2f82b412fcb0", null ],
+    [ "straightFound", "d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#a999503a53f17173e62572437bd73c31a", null ],
+    [ "flush", "d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#a5f23996f32702a99e2b812c8848138f6", null ],
+    [ "flushIndex", "d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#adeacc88973fc023544364b9ee78ca8eb", null ],
+    [ "flushSuit", "d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#ae943afa09d086d5d85a420d7bd0b05ac", null ],
+    [ "handEvaluation", "d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#a1906967b956b57e3524bca225b94f2d1", null ],
+    [ "player", "d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#aff1029c1664a5b7ad5b7d70549e6baad", null ],
+    [ "rankArray", "d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#ae4faa782c2f9f340217baa70f237315c", null ],
+    [ "straight", "d3/ddc/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1HandStatistic.htm#a7d3ae8eb2957e71b869d3bcfcc624b89", null ]
+];

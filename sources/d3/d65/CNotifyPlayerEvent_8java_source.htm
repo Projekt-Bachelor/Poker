@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bachelor-Projekt 2018 - Poker: CNotifyPlayerEvent.java Quellcode</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+<link href="../../layout.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bachelor-Projekt 2018 - Poker
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Erzeugt von Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'Suchen');
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('../../',true,false,'search.php','Suchen');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('d3/d65/CNotifyPlayerEvent_8java_source.htm','../../');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">CNotifyPlayerEvent.java</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d3/d65/CNotifyPlayerEvent_8java.htm">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">package </span>de.tu_clausthal.in.bachelorproject2018.poker.network.objects;</div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">import</span> <a class="code" href="../../d9/d1e/namespacede.htm">de</a>.<a class="code" href="../../d7/dcf/namespacede_1_1tu__clausthal.htm">tu_clausthal</a>.<a class="code" href="../../de/dbd/namespacede_1_1tu__clausthal_1_1in.htm">in</a>.<a class="code" href="../../dd/df9/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018.htm">bachelorproject2018</a>.<a class="code" href="../../d5/d8a/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker.htm">poker</a>.<a class="code" href="../../d0/d3f/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game.htm">game</a>.<a class="code" href="../../dd/dfa/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1player.htm">player</a>.<a class="code" href="../../d2/d11/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1player_1_1IPlayer.htm">IPlayer</a>;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">import</span> org.springframework.context.ApplicationEvent;</div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">import</span> javax.annotation.Nonnull;</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div><div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="../../df/dd7/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1objects_1_1CNotifyPlayerEvent.htm">    8</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="../../df/dd7/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1objects_1_1CNotifyPlayerEvent.htm">CNotifyPlayerEvent</a> <span class="keyword">extends</span> ApplicationEvent {</div><div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="../../df/dd7/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1objects_1_1CNotifyPlayerEvent.htm#acc06bfbb991abd00d64a18a9c6445fd4">    9</a></span>&#160;    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keywordtype">long</span> <a class="code" href="../../df/dd7/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1objects_1_1CNotifyPlayerEvent.htm#acc06bfbb991abd00d64a18a9c6445fd4">serialVersionUID</a> = -46265939151948879L;</div><div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="../../df/dd7/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1objects_1_1CNotifyPlayerEvent.htm#a907eb51b2cb1805857c013b430d5321d">   10</a></span>&#160;    <span class="keyword">private</span> <span class="keyword">final</span> <a class="code" href="../../d2/d11/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1player_1_1IPlayer.htm">IPlayer</a> <a class="code" href="../../df/dd7/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1objects_1_1CNotifyPlayerEvent.htm#a907eb51b2cb1805857c013b430d5321d">m_player</a>;</div><div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="../../df/dd7/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1objects_1_1CNotifyPlayerEvent.htm#a7996e1f1406005e74a31146004e250ed">   11</a></span>&#160;    <span class="keyword">private</span> <span class="keyword">final</span> String <a class="code" href="../../df/dd7/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1objects_1_1CNotifyPlayerEvent.htm#a7996e1f1406005e74a31146004e250ed">m_message</a>;</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div><div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="../../df/dd7/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1objects_1_1CNotifyPlayerEvent.htm#a122e8e6b11a3b94f1a537c50c115ea5e">   13</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="../../df/dd7/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1objects_1_1CNotifyPlayerEvent.htm#a122e8e6b11a3b94f1a537c50c115ea5e">CNotifyPlayerEvent</a>(Object source, @Nonnull <a class="code" href="../../d2/d11/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1player_1_1IPlayer.htm">IPlayer</a> p_player, @Nonnull String p_message) {</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        super(source);</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        m_player = p_player;</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        m_message = p_message;</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    }</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div><div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="../../df/dd7/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1objects_1_1CNotifyPlayerEvent.htm#a8d241fb8981b8a934c087ddcc40ffb70">   19</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="../../d2/d11/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1player_1_1IPlayer.htm">IPlayer</a> <a class="code" href="../../df/dd7/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1objects_1_1CNotifyPlayerEvent.htm#a8d241fb8981b8a934c087ddcc40ffb70">getPlayer</a>() {</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../df/dd7/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1objects_1_1CNotifyPlayerEvent.htm#a907eb51b2cb1805857c013b430d5321d">m_player</a>;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    }</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div><div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="../../df/dd7/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1objects_1_1CNotifyPlayerEvent.htm#a6ad66d02b15edcef41c9465e2d042dab">   23</a></span>&#160;    <span class="keyword">public</span> String <a class="code" href="../../df/dd7/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1objects_1_1CNotifyPlayerEvent.htm#a6ad66d02b15edcef41c9465e2d042dab">getMessage</a>() {</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../df/dd7/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1objects_1_1CNotifyPlayerEvent.htm#a7996e1f1406005e74a31146004e250ed">m_message</a>;</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    }</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div><div class="ttc" id="namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_htm"><div class="ttname"><a href="../../d5/d8a/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker.htm">de.tu_clausthal.in.bachelorproject2018.poker</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6b/CApplication_8java_source.htm#l00001">CApplication.java:1</a></div></div>
+<div class="ttc" id="classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1objects_1_1CNotifyPlayerEvent_htm_a122e8e6b11a3b94f1a537c50c115ea5e"><div class="ttname"><a href="../../df/dd7/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1objects_1_1CNotifyPlayerEvent.htm#a122e8e6b11a3b94f1a537c50c115ea5e">de.tu_clausthal.in.bachelorproject2018.poker.network.objects.CNotifyPlayerEvent.CNotifyPlayerEvent</a></div><div class="ttdeci">CNotifyPlayerEvent(Object source, @Nonnull IPlayer p_player, @Nonnull String p_message)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d65/CNotifyPlayerEvent_8java_source.htm#l00013">CNotifyPlayerEvent.java:13</a></div></div>
+<div class="ttc" id="classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1objects_1_1CNotifyPlayerEvent_htm_a907eb51b2cb1805857c013b430d5321d"><div class="ttname"><a href="../../df/dd7/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1objects_1_1CNotifyPlayerEvent.htm#a907eb51b2cb1805857c013b430d5321d">de.tu_clausthal.in.bachelorproject2018.poker.network.objects.CNotifyPlayerEvent.m_player</a></div><div class="ttdeci">final IPlayer m_player</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d65/CNotifyPlayerEvent_8java_source.htm#l00010">CNotifyPlayerEvent.java:10</a></div></div>
+<div class="ttc" id="interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1player_1_1IPlayer_htm"><div class="ttname"><a href="../../d2/d11/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1player_1_1IPlayer.htm">de.tu_clausthal.in.bachelorproject2018.poker.game.player.IPlayer</a></div><div class="ttdoc">Spieler Interface. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/d45/IPlayer_8java_source.htm#l00018">IPlayer.java:18</a></div></div>
+<div class="ttc" id="namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_htm"><div class="ttname"><a href="../../d0/d3f/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game.htm">de.tu_clausthal.in.bachelorproject2018.poker.game</a></div></div>
+<div class="ttc" id="classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1objects_1_1CNotifyPlayerEvent_htm_a8d241fb8981b8a934c087ddcc40ffb70"><div class="ttname"><a href="../../df/dd7/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1objects_1_1CNotifyPlayerEvent.htm#a8d241fb8981b8a934c087ddcc40ffb70">de.tu_clausthal.in.bachelorproject2018.poker.network.objects.CNotifyPlayerEvent.getPlayer</a></div><div class="ttdeci">IPlayer getPlayer()</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d65/CNotifyPlayerEvent_8java_source.htm#l00019">CNotifyPlayerEvent.java:19</a></div></div>
+<div class="ttc" id="classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1objects_1_1CNotifyPlayerEvent_htm_a6ad66d02b15edcef41c9465e2d042dab"><div class="ttname"><a href="../../df/dd7/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1objects_1_1CNotifyPlayerEvent.htm#a6ad66d02b15edcef41c9465e2d042dab">de.tu_clausthal.in.bachelorproject2018.poker.network.objects.CNotifyPlayerEvent.getMessage</a></div><div class="ttdeci">String getMessage()</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d65/CNotifyPlayerEvent_8java_source.htm#l00023">CNotifyPlayerEvent.java:23</a></div></div>
+<div class="ttc" id="namespacede_1_1tu__clausthal_htm"><div class="ttname"><a href="../../d7/dcf/namespacede_1_1tu__clausthal.htm">de.tu_clausthal</a></div></div>
+<div class="ttc" id="namespacede_htm"><div class="ttname"><a href="../../d9/d1e/namespacede.htm">de</a></div></div>
+<div class="ttc" id="classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1objects_1_1CNotifyPlayerEvent_htm_acc06bfbb991abd00d64a18a9c6445fd4"><div class="ttname"><a href="../../df/dd7/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1objects_1_1CNotifyPlayerEvent.htm#acc06bfbb991abd00d64a18a9c6445fd4">de.tu_clausthal.in.bachelorproject2018.poker.network.objects.CNotifyPlayerEvent.serialVersionUID</a></div><div class="ttdeci">static final long serialVersionUID</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d65/CNotifyPlayerEvent_8java_source.htm#l00009">CNotifyPlayerEvent.java:9</a></div></div>
+<div class="ttc" id="namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1player_htm"><div class="ttname"><a href="../../dd/dfa/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1player.htm">de.tu_clausthal.in.bachelorproject2018.poker.game.player</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d3a/CPlayer_8java_source.htm#l00001">CPlayer.java:1</a></div></div>
+<div class="ttc" id="namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_htm"><div class="ttname"><a href="../../dd/df9/namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018.htm">de.tu_clausthal.in.bachelorproject2018</a></div></div>
+<div class="ttc" id="namespacede_1_1tu__clausthal_1_1in_htm"><div class="ttname"><a href="../../de/dbd/namespacede_1_1tu__clausthal_1_1in.htm">de.tu_clausthal.in</a></div></div>
+<div class="ttc" id="classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1objects_1_1CNotifyPlayerEvent_htm_a7996e1f1406005e74a31146004e250ed"><div class="ttname"><a href="../../df/dd7/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1objects_1_1CNotifyPlayerEvent.htm#a7996e1f1406005e74a31146004e250ed">de.tu_clausthal.in.bachelorproject2018.poker.network.objects.CNotifyPlayerEvent.m_message</a></div><div class="ttdeci">final String m_message</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d65/CNotifyPlayerEvent_8java_source.htm#l00011">CNotifyPlayerEvent.java:11</a></div></div>
+<div class="ttc" id="classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1objects_1_1CNotifyPlayerEvent_htm"><div class="ttname"><a href="../../df/dd7/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1objects_1_1CNotifyPlayerEvent.htm">de.tu_clausthal.in.bachelorproject2018.poker.network.objects.CNotifyPlayerEvent</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d65/CNotifyPlayerEvent_8java_source.htm#l00008">CNotifyPlayerEvent.java:8</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.htm">src</a></li><li class="navelem"><a class="el" href="../../dir_5eb159725f84c66aafd839904a4acdd0.htm">main</a></li><li class="navelem"><a class="el" href="../../dir_fd3f6763802dee1ad875f6c80eac0bda.htm">java</a></li><li class="navelem"><a class="el" href="../../dir_d0b2643dbe59e2c16d00acf3fde99ae0.htm">de</a></li><li class="navelem"><a class="el" href="../../dir_b5735dbb26bbd0edfaeb5dc944d0a236.htm">tu_clausthal</a></li><li class="navelem"><a class="el" href="../../dir_d5020d8050913c88fd7e370a66f1f0da.htm">in</a></li><li class="navelem"><a class="el" href="../../dir_be85876bde3bd070af67989bb4a75e11.htm">bachelorproject2018</a></li><li class="navelem"><a class="el" href="../../dir_d20a41732b188f3b9f3d5aa05d3ca842.htm">poker</a></li><li class="navelem"><a class="el" href="../../dir_9977ec6b353616422d2fa3f78cfedade.htm">network</a></li><li class="navelem"><a class="el" href="../../dir_de81297dabdb049527729e49a3ab29b3.htm">objects</a></li><li class="navelem"><a class="el" href="../../d3/d65/CNotifyPlayerEvent_8java.htm">CNotifyPlayerEvent.java</a></li>
+    <li class="footer">Erzeugt von
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
+</body>
+</html>

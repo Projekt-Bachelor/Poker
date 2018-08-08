@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bachelor-Projekt 2018 - Poker: ETables.java Quellcode</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+<link href="../../layout.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bachelor-Projekt 2018 - Poker
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Erzeugt von Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'Suchen');
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('../../',true,false,'search.php','Suchen');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('d6/df2/ETables_8java_source.htm','../../');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">ETables.java</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d6/df2/ETables_8java.htm">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">package </span>de.tu_clausthal.in.bachelorproject2018.poker.game.table;</div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">import</span> javax.annotation.Nonnull;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">import</span> java.text.MessageFormat;</div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">import</span> java.util.Map;</div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">import</span> java.util.Objects;</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">import</span> java.util.Set;</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">import</span> java.util.concurrent.ConcurrentHashMap;</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">import</span> java.util.function.Function;</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">import</span> java.util.function.Supplier;</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div><div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="../../da/dcc/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ETables.htm">   18</a></span>&#160;<span class="keyword">public</span> <span class="keyword">enum</span> <a class="code" href="../../da/dcc/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ETables.htm">ETables</a> implements <a class="code" href="../../d9/d9f/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITables.htm">ITables</a>, Supplier&lt;Set&lt;String&gt;&gt;, Function&lt;String, ITable&gt;</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div><div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="../../da/dcc/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ETables.htm#ab663a50bb79f7332a6959f12983ae9ee">   20</a></span>&#160;    <a class="code" href="../../da/dcc/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ETables.htm#ab663a50bb79f7332a6959f12983ae9ee">INSTANCE</a>;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div><div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="../../da/dcc/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ETables.htm#a3bb96baed24a26e729424353b049507f">   25</a></span>&#160;    <span class="keyword">private</span> <span class="keyword">final</span> Map&lt;String, ITable&gt; m_tables = <span class="keyword">new</span> ConcurrentHashMap&lt;&gt;();</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    @Nonnull</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    @Override</div><div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="../../da/dcc/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ETables.htm#aabe84fda0410cd5631229f2bcbe40765">   29</a></span>&#160;    <span class="keyword">public</span> ITables <a class="code" href="../../da/dcc/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ETables.htm#aabe84fda0410cd5631229f2bcbe40765">add</a>( @Nonnull <span class="keyword">final</span> <a class="code" href="../../d5/d36/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable.htm">ITable</a> p_table )</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    {</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="comment">// überprüfe, ob Tisch schon existiert</span></div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordflow">if</span> ( m_tables.containsKey( p_table.name() ) )</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <span class="keywordflow">throw</span> <span class="keyword">new</span> RuntimeException( MessageFormat.format( <span class="stringliteral">&quot;Tisch [{0}] existiert schon&quot;</span>, p_table ) );</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="comment">// wenn nicht, dann füge ihn hinzu</span></div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        m_tables.put( p_table.name(), p_table );</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">this</span>;</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    }</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    @Override</div><div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="../../da/dcc/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ETables.htm#a0c38168c4c7c4707fb3a0b0d902a9413">   42</a></span>&#160;    <span class="keyword">public</span> ITables <span class="keyword">remove</span>( @Nonnull <span class="keyword">final</span> <a class="code" href="../../d5/d36/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable.htm">ITable</a> p_table )</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    {</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        m_tables.<a class="code" href="../../d9/d9f/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITables.htm#a2ff100ff3fa7dc8b463bb8c4855b2dd1">remove</a>( p_table.name() );</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">this</span>;</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    @Override</div><div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="../../da/dcc/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ETables.htm#a2d6053960a4f97fcfed91ba9157abe10">   49</a></span>&#160;    <span class="keyword">public</span> Set&lt;String&gt; <span class="keyword">get</span>()</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    {</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">return</span> m_tables.keySet();</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    @Override</div><div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="../../da/dcc/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ETables.htm#a9498ea51fe0aa8da1c0cf1fc30c42ccc">   55</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="../../d5/d36/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable.htm">ITable</a> <a class="code" href="../../da/dcc/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ETables.htm#a9498ea51fe0aa8da1c0cf1fc30c42ccc">apply</a>( <span class="keyword">final</span> String p_name )</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    {</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="comment">// falls der Tisch nicht existiert, dann fliegt eine Exception</span></div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keyword">final</span> <a class="code" href="../../d5/d36/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable.htm">ITable</a> l_table = m_tables.get( p_name );</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordflow">if</span> ( Objects.isNull( l_table ) )</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <span class="keywordflow">throw</span> <span class="keyword">new</span> RuntimeException( MessageFormat.format( <span class="stringliteral">&quot;Tisch mit dem Namen [{0}] nicht gefunden&quot;</span>, p_name ) );</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">return</span> l_table;</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div><div class="ttc" id="enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ETables_htm_aabe84fda0410cd5631229f2bcbe40765"><div class="ttname"><a href="../../da/dcc/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ETables.htm#aabe84fda0410cd5631229f2bcbe40765">de.tu_clausthal.in.bachelorproject2018.poker.game.table.ETables.add</a></div><div class="ttdeci">ITables add( @Nonnull final ITable p_table)</div><div class="ttdoc">fügt einen neuen Tisch hinzu </div><div class="ttdef"><b>Definition:</b> <a href="../../d6/df2/ETables_8java_source.htm#l00029">ETables.java:29</a></div></div>
+<div class="ttc" id="interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITables_htm_a2ff100ff3fa7dc8b463bb8c4855b2dd1"><div class="ttname"><a href="../../d9/d9f/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITables.htm#a2ff100ff3fa7dc8b463bb8c4855b2dd1">de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITables.remove</a></div><div class="ttdeci">ITables remove( @Nonnull final ITable p_table)</div><div class="ttdoc">entfernt einen Tisch </div></div>
+<div class="ttc" id="interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable_htm"><div class="ttname"><a href="../../d5/d36/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITable.htm">de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable</a></div><div class="ttdoc">Interface um einen Spieletisch darzustellen. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d5e/ITable_8java_source.htm#l00018">ITable.java:18</a></div></div>
+<div class="ttc" id="interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITables_htm"><div class="ttname"><a href="../../d9/d9f/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ITables.htm">de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITables</a></div><div class="ttdoc">Interface um die Tische zu verwalten. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d3e/ITables_8java_source.htm#l00009">ITables.java:9</a></div></div>
+<div class="ttc" id="enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ETables_htm_ab663a50bb79f7332a6959f12983ae9ee"><div class="ttname"><a href="../../da/dcc/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ETables.htm#ab663a50bb79f7332a6959f12983ae9ee">de.tu_clausthal.in.bachelorproject2018.poker.game.table.ETables.INSTANCE</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/df2/ETables_8java_source.htm#l00020">ETables.java:20</a></div></div>
+<div class="ttc" id="enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ETables_htm"><div class="ttname"><a href="../../da/dcc/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ETables.htm">de.tu_clausthal.in.bachelorproject2018.poker.game.table.ETables</a></div><div class="ttdoc">Singleton um alle Tische zu verwalten. </div><div class="ttdef"><b>Definition:</b> <a href="../../d6/df2/ETables_8java_source.htm#l00018">ETables.java:18</a></div></div>
+<div class="ttc" id="enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ETables_htm_a9498ea51fe0aa8da1c0cf1fc30c42ccc"><div class="ttname"><a href="../../da/dcc/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1table_1_1ETables.htm#a9498ea51fe0aa8da1c0cf1fc30c42ccc">de.tu_clausthal.in.bachelorproject2018.poker.game.table.ETables.apply</a></div><div class="ttdeci">ITable apply(final String p_name)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/df2/ETables_8java_source.htm#l00055">ETables.java:55</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.htm">src</a></li><li class="navelem"><a class="el" href="../../dir_5eb159725f84c66aafd839904a4acdd0.htm">main</a></li><li class="navelem"><a class="el" href="../../dir_fd3f6763802dee1ad875f6c80eac0bda.htm">java</a></li><li class="navelem"><a class="el" href="../../dir_d0b2643dbe59e2c16d00acf3fde99ae0.htm">de</a></li><li class="navelem"><a class="el" href="../../dir_b5735dbb26bbd0edfaeb5dc944d0a236.htm">tu_clausthal</a></li><li class="navelem"><a class="el" href="../../dir_d5020d8050913c88fd7e370a66f1f0da.htm">in</a></li><li class="navelem"><a class="el" href="../../dir_be85876bde3bd070af67989bb4a75e11.htm">bachelorproject2018</a></li><li class="navelem"><a class="el" href="../../dir_d20a41732b188f3b9f3d5aa05d3ca842.htm">poker</a></li><li class="navelem"><a class="el" href="../../dir_f3b562671af28d2dd26f9866ce4638d8.htm">game</a></li><li class="navelem"><a class="el" href="../../dir_fe42922da4ccf8d62517ba2fa896f92f.htm">table</a></li><li class="navelem"><a class="el" href="../../d6/df2/ETables_8java.htm">ETables.java</a></li>
+    <li class="footer">Erzeugt von
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
+</body>
+</html>

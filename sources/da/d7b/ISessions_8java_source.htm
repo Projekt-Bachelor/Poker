@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bachelor-Projekt 2018 - Poker: ISessions.java Quellcode</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+<link href="../../layout.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bachelor-Projekt 2018 - Poker
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Erzeugt von Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'Suchen');
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('../../',true,false,'search.php','Suchen');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('da/d7b/ISessions_8java_source.htm','../../');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">ISessions.java</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../da/d7b/ISessions_8java.htm">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">package </span>de.tu_clausthal.in.bachelorproject2018.poker.network.websocket;</div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">import</span> javax.annotation.Nonnull;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div><div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="../../d9/dbf/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1ISessions.htm">    8</a></span>&#160;<span class="keyword">public</span> <span class="keyword">interface </span><a class="code" href="../../d9/dbf/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1ISessions.htm">ISessions</a> {</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    @Nonnull</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d9/dbf/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1ISessions.htm#a7e6f073f28fb4e3cc9eacbf986a15407">add</a>( @Nonnull <span class="keyword">final</span> <a class="code" href="../../d3/def/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1CSession.htm">CSession</a> session);</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">void</span> <span class="keyword">remove</span>( @Nonnull <span class="keyword">final</span> String sessionId);</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div><div class="ttc" id="interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1ISessions_htm_a7e6f073f28fb4e3cc9eacbf986a15407"><div class="ttname"><a href="../../d9/dbf/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1ISessions.htm#a7e6f073f28fb4e3cc9eacbf986a15407">de.tu_clausthal.in.bachelorproject2018.poker.network.websocket.ISessions.add</a></div><div class="ttdeci">void add( @Nonnull final CSession session)</div><div class="ttdoc">Add a new session. </div></div>
+<div class="ttc" id="interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1ISessions_htm"><div class="ttname"><a href="../../d9/dbf/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1ISessions.htm">de.tu_clausthal.in.bachelorproject2018.poker.network.websocket.ISessions</a></div><div class="ttdoc">Interface to manage all websocket sessions. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/d7b/ISessions_8java_source.htm#l00008">ISessions.java:8</a></div></div>
+<div class="ttc" id="classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1CSession_htm"><div class="ttname"><a href="../../d3/def/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1CSession.htm">de.tu_clausthal.in.bachelorproject2018.poker.network.websocket.CSession</a></div><div class="ttdoc">This object holds all important information to differentiate a session. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d0f/CSession_8java_source.htm#l00013">CSession.java:13</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.htm">src</a></li><li class="navelem"><a class="el" href="../../dir_5eb159725f84c66aafd839904a4acdd0.htm">main</a></li><li class="navelem"><a class="el" href="../../dir_fd3f6763802dee1ad875f6c80eac0bda.htm">java</a></li><li class="navelem"><a class="el" href="../../dir_d0b2643dbe59e2c16d00acf3fde99ae0.htm">de</a></li><li class="navelem"><a class="el" href="../../dir_b5735dbb26bbd0edfaeb5dc944d0a236.htm">tu_clausthal</a></li><li class="navelem"><a class="el" href="../../dir_d5020d8050913c88fd7e370a66f1f0da.htm">in</a></li><li class="navelem"><a class="el" href="../../dir_be85876bde3bd070af67989bb4a75e11.htm">bachelorproject2018</a></li><li class="navelem"><a class="el" href="../../dir_d20a41732b188f3b9f3d5aa05d3ca842.htm">poker</a></li><li class="navelem"><a class="el" href="../../dir_9977ec6b353616422d2fa3f78cfedade.htm">network</a></li><li class="navelem"><a class="el" href="../../dir_df585341c2310c8650e9ea804c9da48b.htm">websocket</a></li><li class="navelem"><a class="el" href="../../da/d7b/ISessions_8java.htm">ISessions.java</a></li>
+    <li class="footer">Erzeugt von
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
+</body>
+</html>

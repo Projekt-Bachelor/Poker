@@ -1,0 +1,8 @@
+var namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1gamestate_1_1messages =
+[
+    [ "CCardMessage", "db/d26/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1gamestate_1_1messages_1_1CCardMessage.htm", "db/d26/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1gamestate_1_1messages_1_1CCardMessage" ],
+    [ "CChipMessage", "dc/dbb/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1gamestate_1_1messages_1_1CChipMessage.htm", "dc/dbb/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1gamestate_1_1messages_1_1CChipMessage" ],
+    [ "CGameMessage", "d0/d01/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1gamestate_1_1messages_1_1CGameMessage.htm", "d0/d01/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1gamestate_1_1messages_1_1CGameMessage" ],
+    [ "CNotifyMessage", "d2/d3b/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1gamestate_1_1messages_1_1CNotifyMessage.htm", "d2/d3b/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1gamestate_1_1messages_1_1CNotifyMessage" ],
+    [ "IGamestateMessage", "d9/d5d/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1gamestate_1_1messages_1_1IGamestateMessage.htm", null ]
+];

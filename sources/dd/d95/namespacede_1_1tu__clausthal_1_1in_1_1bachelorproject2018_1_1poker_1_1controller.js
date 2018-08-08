@@ -1,0 +1,7 @@
+var namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1controller =
+[
+    [ "CGameActionController", "da/d71/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1controller_1_1CGameActionController.htm", "da/d71/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1controller_1_1CGameActionController" ],
+    [ "CRedirectController", "d8/da5/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1controller_1_1CRedirectController.htm", "d8/da5/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1controller_1_1CRedirectController" ],
+    [ "CTableController", "db/df1/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1controller_1_1CTableController.htm", "db/df1/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1controller_1_1CTableController" ],
+    [ "CTablesController", "d8/d8b/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1controller_1_1CTablesController.htm", "d8/d8b/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1controller_1_1CTablesController" ]
+];

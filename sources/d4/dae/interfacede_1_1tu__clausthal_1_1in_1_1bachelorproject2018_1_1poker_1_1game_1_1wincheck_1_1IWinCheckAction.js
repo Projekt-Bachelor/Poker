@@ -1,0 +1,4 @@
+var interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1IWinCheckAction =
+[
+    [ "apply", "d4/dae/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1IWinCheckAction.htm#a35abc27a6f10c610041233c67c56c4c6", null ]
+];

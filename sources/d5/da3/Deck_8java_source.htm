@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bachelor-Projekt 2018 - Poker: Deck.java Quellcode</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+<link href="../../layout.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bachelor-Projekt 2018 - Poker
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Erzeugt von Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'Suchen');
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('../../',true,false,'search.php','Suchen');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('d5/da3/Deck_8java_source.htm','../../');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Deck.java</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d5/da3/Deck_8java.htm">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">package </span>de.tu_clausthal.in.bachelorproject2018.poker.game.cards;</div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">import</span> java.util.*;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">import</span> java.util.stream.Collectors;</div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div><div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="../../d5/d01/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Deck.htm">    6</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="../../d5/d01/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Deck.htm">Deck</a> <span class="keyword">implements</span> Iterator&lt;Card&gt;{</div><div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="../../d5/d01/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Deck.htm#acff9b753fa7b35d998dba9a833485345">    7</a></span>&#160;    <span class="keyword">private</span> Stack&lt;Card&gt; <a class="code" href="../../d5/d01/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Deck.htm#acff9b753fa7b35d998dba9a833485345">cards</a> = <span class="keyword">new</span> Stack&lt;&gt;();</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div><div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="../../d5/d01/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Deck.htm#a4926553d7e8e12435ecd6635b18038ba">   14</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="../../d5/d01/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Deck.htm#a4926553d7e8e12435ecd6635b18038ba">Deck</a>(){</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        List&lt;Card&gt; cardList = Arrays.stream(<a class="code" href="../../dc/df8/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1CardSuit.htm">CardSuit</a>.values()).flatMap(i -&gt; Arrays.stream(<a class="code" href="../../d2/d81/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1CardValue.htm">CardValue</a>.values())</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                .map(j -&gt; <span class="keyword">new</span> <a class="code" href="../../db/da1/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Card.htm">Card</a>(i, j))).collect(Collectors.toList());</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        Collections.shuffle(cardList);</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        cards.addAll(cardList);</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    }</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div><div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="../../d5/d01/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Deck.htm#ae033c54af356819ffbdf74e74cb5de9d">   27</a></span>&#160;    <span class="keyword">public</span> List&lt;Card&gt; <a class="code" href="../../d5/d01/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Deck.htm#ae033c54af356819ffbdf74e74cb5de9d">getCards</a>(){</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d5/d01/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Deck.htm#acff9b753fa7b35d998dba9a833485345">cards</a>;</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    }</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="comment">//deal the top card of the deck, and remove it from the deck. return card to give it to player/board</span></div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div><div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="../../d5/d01/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Deck.htm#a5f96a379252ee68e21459caf7805be86">   37</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="../../db/da1/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Card.htm">Card</a> <a class="code" href="../../d5/d01/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Deck.htm#a5f96a379252ee68e21459caf7805be86">removeTopCard</a>(){</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordflow">return</span> cards.pop();</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    }</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div><div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="../../d5/d01/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Deck.htm#a27c2b552bd1d09504afedf64a7f57fc6">   47</a></span>&#160;    <span class="keyword">public</span> String <a class="code" href="../../d5/d01/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Deck.htm#a27c2b552bd1d09504afedf64a7f57fc6">showDeck</a>(){</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            String output = <span class="stringliteral">&quot;&quot;</span>;</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="keywordflow">for</span> (<a class="code" href="../../db/da1/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Card.htm">Card</a> c: cards){</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                output += c.toString() + <span class="stringliteral">&quot;, &quot;</span>;</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            }</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keywordflow">return</span> output;</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    }</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    @Override</div><div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="../../d5/d01/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Deck.htm#af04675bd79420ad261b74145dca1c6ff">   56</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">boolean</span> <a class="code" href="../../d5/d01/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Deck.htm#af04675bd79420ad261b74145dca1c6ff">hasNext</a>() {</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    @Override</div><div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="../../d5/d01/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Deck.htm#af4dc9ebffd08875f75c4a5fbe3f36c5b">   61</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="../../db/da1/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Card.htm">Card</a> <a class="code" href="../../d5/d01/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Deck.htm#af4dc9ebffd08875f75c4a5fbe3f36c5b">next</a>() {</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">return</span> cards.pop();</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div><div class="ttc" id="classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Deck_htm_a5f96a379252ee68e21459caf7805be86"><div class="ttname"><a href="../../d5/d01/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Deck.htm#a5f96a379252ee68e21459caf7805be86">de.tu_clausthal.in.bachelorproject2018.poker.game.cards.Deck.removeTopCard</a></div><div class="ttdeci">Card removeTopCard()</div><div class="ttdoc">remove the topcard of the deck, return the card and delete the element of the deck ...</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/da3/Deck_8java_source.htm#l00037">Deck.java:37</a></div></div>
+<div class="ttc" id="classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Deck_htm_af4dc9ebffd08875f75c4a5fbe3f36c5b"><div class="ttname"><a href="../../d5/d01/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Deck.htm#af4dc9ebffd08875f75c4a5fbe3f36c5b">de.tu_clausthal.in.bachelorproject2018.poker.game.cards.Deck.next</a></div><div class="ttdeci">Card next()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/da3/Deck_8java_source.htm#l00061">Deck.java:61</a></div></div>
+<div class="ttc" id="classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Deck_htm"><div class="ttname"><a href="../../d5/d01/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Deck.htm">de.tu_clausthal.in.bachelorproject2018.poker.game.cards.Deck</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d5/da3/Deck_8java_source.htm#l00006">Deck.java:6</a></div></div>
+<div class="ttc" id="classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Deck_htm_a4926553d7e8e12435ecd6635b18038ba"><div class="ttname"><a href="../../d5/d01/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Deck.htm#a4926553d7e8e12435ecd6635b18038ba">de.tu_clausthal.in.bachelorproject2018.poker.game.cards.Deck.Deck</a></div><div class="ttdeci">Deck()</div><div class="ttdoc">constructor erstellt ein Deck und mischt es fügt das Deck dem Stack hinzu </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/da3/Deck_8java_source.htm#l00014">Deck.java:14</a></div></div>
+<div class="ttc" id="classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Deck_htm_ae033c54af356819ffbdf74e74cb5de9d"><div class="ttname"><a href="../../d5/d01/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Deck.htm#ae033c54af356819ffbdf74e74cb5de9d">de.tu_clausthal.in.bachelorproject2018.poker.game.cards.Deck.getCards</a></div><div class="ttdeci">List&lt; Card &gt; getCards()</div><div class="ttdoc">getter </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/da3/Deck_8java_source.htm#l00027">Deck.java:27</a></div></div>
+<div class="ttc" id="enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1CardValue_htm"><div class="ttname"><a href="../../d2/d81/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1CardValue.htm">de.tu_clausthal.in.bachelorproject2018.poker.game.cards.CardValue</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d7a/CardValue_8java_source.htm#l00003">CardValue.java:3</a></div></div>
+<div class="ttc" id="classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Card_htm"><div class="ttname"><a href="../../db/da1/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Card.htm">de.tu_clausthal.in.bachelorproject2018.poker.game.cards.Card</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d8c/Card_8java_source.htm#l00003">Card.java:3</a></div></div>
+<div class="ttc" id="classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Deck_htm_acff9b753fa7b35d998dba9a833485345"><div class="ttname"><a href="../../d5/d01/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Deck.htm#acff9b753fa7b35d998dba9a833485345">de.tu_clausthal.in.bachelorproject2018.poker.game.cards.Deck.cards</a></div><div class="ttdeci">Stack&lt; Card &gt; cards</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/da3/Deck_8java_source.htm#l00007">Deck.java:7</a></div></div>
+<div class="ttc" id="classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Deck_htm_af04675bd79420ad261b74145dca1c6ff"><div class="ttname"><a href="../../d5/d01/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Deck.htm#af04675bd79420ad261b74145dca1c6ff">de.tu_clausthal.in.bachelorproject2018.poker.game.cards.Deck.hasNext</a></div><div class="ttdeci">boolean hasNext()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/da3/Deck_8java_source.htm#l00056">Deck.java:56</a></div></div>
+<div class="ttc" id="classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Deck_htm_a27c2b552bd1d09504afedf64a7f57fc6"><div class="ttname"><a href="../../d5/d01/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1Deck.htm#a27c2b552bd1d09504afedf64a7f57fc6">de.tu_clausthal.in.bachelorproject2018.poker.game.cards.Deck.showDeck</a></div><div class="ttdeci">String showDeck()</div><div class="ttdoc">show the remaining cards in the deck for testing purposes </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/da3/Deck_8java_source.htm#l00047">Deck.java:47</a></div></div>
+<div class="ttc" id="enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1CardSuit_htm"><div class="ttname"><a href="../../dc/df8/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1cards_1_1CardSuit.htm">de.tu_clausthal.in.bachelorproject2018.poker.game.cards.CardSuit</a></div><div class="ttdoc">CardSuit Class, to be able to identify the 4 different suits of cards. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/de2/CardSuit_8java_source.htm#l00006">CardSuit.java:6</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.htm">src</a></li><li class="navelem"><a class="el" href="../../dir_5eb159725f84c66aafd839904a4acdd0.htm">main</a></li><li class="navelem"><a class="el" href="../../dir_fd3f6763802dee1ad875f6c80eac0bda.htm">java</a></li><li class="navelem"><a class="el" href="../../dir_d0b2643dbe59e2c16d00acf3fde99ae0.htm">de</a></li><li class="navelem"><a class="el" href="../../dir_b5735dbb26bbd0edfaeb5dc944d0a236.htm">tu_clausthal</a></li><li class="navelem"><a class="el" href="../../dir_d5020d8050913c88fd7e370a66f1f0da.htm">in</a></li><li class="navelem"><a class="el" href="../../dir_be85876bde3bd070af67989bb4a75e11.htm">bachelorproject2018</a></li><li class="navelem"><a class="el" href="../../dir_d20a41732b188f3b9f3d5aa05d3ca842.htm">poker</a></li><li class="navelem"><a class="el" href="../../dir_f3b562671af28d2dd26f9866ce4638d8.htm">game</a></li><li class="navelem"><a class="el" href="../../dir_052352fb9b17e482a8d6b851287d3ee9.htm">cards</a></li><li class="navelem"><a class="el" href="../../d5/da3/Deck_8java.htm">Deck.java</a></li>
+    <li class="footer">Erzeugt von
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
+</body>
+</html>

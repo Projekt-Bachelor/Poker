@@ -1,0 +1,4 @@
+var classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1DetermineWinner =
+[
+    [ "findWinner", "dc/dda/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1game_1_1wincheck_1_1DetermineWinner.htm#a36160309685d023b164f75ec28f53380", null ]
+];

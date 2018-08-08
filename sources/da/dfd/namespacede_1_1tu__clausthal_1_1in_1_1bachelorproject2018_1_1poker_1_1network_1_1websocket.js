@@ -1,0 +1,8 @@
+var namespacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket =
+[
+    [ "CMessage", "df/de9/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1CMessage.htm", "df/de9/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1CMessage" ],
+    [ "CNotificationService", "da/d00/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1CNotificationService.htm", "da/d00/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1CNotificationService" ],
+    [ "CSession", "d3/def/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1CSession.htm", "d3/def/classde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1CSession" ],
+    [ "ESessionManagement", "d6/d67/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1ESessionManagement.htm", "d6/d67/enumde_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1ESessionManagement" ],
+    [ "ISessions", "d9/dbf/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1ISessions.htm", "d9/dbf/interfacede_1_1tu__clausthal_1_1in_1_1bachelorproject2018_1_1poker_1_1network_1_1websocket_1_1ISessions" ]
+];
