@@ -68,3 +68,38 @@ Kartenkombinationen sind absteigend sortiert:
 - **Zwei Paare**: 2 Karten eines Ranges und zwei weiteren Karten eines anderen Ranges. (z.B. zwei Buben und zwei Achten)
 - **Ein Paar**: 2 Karten desselben Ranges. (z.B. zwei Damen)
 - **Hohe Karte**: Das Blatt mit der höchsten Karte gewinnt
+
+## Allgemeiner Programmablauf:
+Der user landet zunächst auf der *index.html* Seite. Dort hat er zunächst die Möglichkeit einen Spielernamem und einen Namen des Spieltisches einzugeben und somit einen neuen Spieltisch mit sich als *owner* zu erstellen.
+
+Gleichzeitig wird bei jedem **refresh** ein Rest-Call an den Server geschickt, der daraufhin eine Liste aller erstellten Tische zurückgibt. Mit der Eingabe eines Usernames, kann der user auf einen der verfügbaren Tischnamen klicken und joint dann automatisch diesem Tisch.
+
+Anschließend wird man bei beiden Möglichkeiten auf die *game.html* umgeleitet. Gleichzeitig wird bei diesem Vorgang eine einzigartige UUID als URL-Parameter übermittelt.
+Sobald die HTML-Seite fertig geladen ist, wird zunächst eine Websocketverbindung (mit Stomp) zum Server hergestellt. Bei diesem Vorgang wird außerdem der einzigartige Endpoint (*/message/ + UUID*) eingerichtet (Subsribtion).
+
+Innerhalb des UIs hat man zunächst die Auswahl zwischen zwei Buttons **Start Game** und **Leave Game**. Bei beiden Möglichkeiten wird ein *CGameControl*-Objekt mittels Stomp-Message an den Server übermittelt. Beide Nachrichten unterscheiden sich nur im Attribut *type* des *CGameControl*-Objektes (**startgame** bei Start Game und **leave** bei Leave Game). Bei der **Leave Game** Aktion wird zusetzlich noch der redirect auf die *hub.html* durchgeführt.
+
+```javascript
+$(function () {
+    $("form").on('submit', function (e) {
+        e.preventDefault();
+    });
+    $( "#startgame").click(function () { sendGameControls("startgame"); });
+    $( "#leave").click(function () { sendGameControls("leave"); leave(); });
+});
+
+function sendGameControls(type) {
+    stompClient.send("/app/game/controls", {},
+        JSON.stringify({'type': type}));
+}
+
+function leave() {
+    document.location.replace("/hub")
+}
+```
+
+
+
+## Package-Erklärungen:
+### Tokens:
+Die Klasse **ETokens** kümmert sich um die Verwaltung der Tokens. Ein Token besteht aus einer einmaligen UUID, dem Spieltisch, dem Spielernamen und einem Timestamp, der auf die Erzeugung des Tokens zeigt (wird benötigt um nichtbenutzte Token nach einer gewissen Zeit wieder zu löschen).

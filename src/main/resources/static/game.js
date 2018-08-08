@@ -99,6 +99,11 @@ function showGamestate(gameinformation){
             $("#riverCard").val(defaultValue);
             $("#firstHandCard").val(defaultValue);
             $("#secondHandCard").val(defaultValue);
+        } else if (json.notification === "tofewplayers") {
+            alert("Es sind zu wenig Spieler im Spiel. Du wirst automatisch umgeleitet!");
+            setTimeout(function () {
+                leave();
+            }, 5000);
         } else {
             alert(json.notification);
         }

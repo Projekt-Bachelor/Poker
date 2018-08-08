@@ -9,6 +9,7 @@ import de.tu_clausthal.in.bachelorproject2018.poker.network.IMessage;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.CGamestate;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.EGamestateManagement;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.messages.CGameMessage;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.messages.CNotifyMessage;
 import org.springframework.context.ApplicationEventPublisher;
 
 import javax.annotation.Nonnull;
@@ -138,6 +139,30 @@ public final class CTable implements ITable
     {
         // Spieler muss immer aus dem Set entfernt werden
         m_players.remove( p_player.getName(), p_player );
+
+        if (m_players.size() >= 2) {
+            StringBuilder remainingPlayers = new StringBuilder();
+            for (IPlayer player : list()) {
+                remainingPlayers.append(player.getName() + ", ");
+            }
+
+            EGamestateManagement.INSTANCE.apply(m_name).addGameMessage(
+                    new CGameMessage("Spieler: " + p_player.getName() +
+                            " hat das Spiel verlassen es sind nur noch folgende Spieler im Spiel: " +
+                            remainingPlayers.toString(), this));
+        } else {
+            for (IPlayer player : list()) {
+                EGamestateManagement.INSTANCE.apply(m_name).addGameMessage(
+                        new CGameMessage("Spieler: " + p_player.getName() +
+                                "hat das Spiel verlassen! Da nun weniger als zwei Spieler im Spiel sind, wird das Spiel beendet!",
+                                this));
+
+                EGamestateManagement.INSTANCE.apply(m_name).addNotifyMessage(
+                        new CNotifyMessage("tofewplayers", this, player));
+            }
+        }
+
+
         return this;
     }
 
