@@ -6,6 +6,7 @@ import de.tu_clausthal.in.bachelorproject2018.poker.game.table.ITable;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.IMessage;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.EGamestateManagement;
 import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.messages.CCardMessage;
+import de.tu_clausthal.in.bachelorproject2018.poker.network.gamestate.messages.CNotifyMessage;
 import org.pmw.tinylog.Logger;
 
 import java.util.Queue;
@@ -35,6 +36,9 @@ public class CPreFlop extends IBaseRoundAction {
 
         //deal cards to players
         for (IPlayer player : m_table.getGameHub().getPlayerList()){
+
+            EGamestateManagement.INSTANCE.apply(m_table.name()).addNotifyMessage(
+                    new CNotifyMessage("newround", m_table, player));
 
             Card l_card1 = m_table.getGameHub().getCardDealer().getDeck().removeTopCard();
             player.getPlayerhand().takeCard(l_card1);

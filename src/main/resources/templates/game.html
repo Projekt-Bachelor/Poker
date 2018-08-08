@@ -11,6 +11,8 @@
     <script src="/game.js"></script>
 
     <link href="/webjars/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/css/game.css" rel="stylesheet"/>
+
 </head>
 <body>
 <noscript><h2 style="color: #FF0000">Seems your browser doesn't support
@@ -18,77 +20,82 @@
     Please enable Javascript and reload this page!</h2>
 </noscript>
 
-<div id="gamecontrol" class="container">
-    <form>
-        <div class="form-group">
-            <label for="connectStomp">Websocket connection:</label>
-            <button id="connectStomp" class="btn btn-primary" type="submit">Open Stomp Connection</button>
+<div id="hole-game" class="container-fluid">
+    <div id="gamecontrol" class="container-fluid">
+        <form>
+            <div class="form-group">
+                <label for="connectStomp" class="col-form-label">Websocket connection:</label>
+                <button id="connectStomp" class="btn btn-primary" type="submit">Open Stomp Connection</button>
+            </div>
+        </form>
+
+        <h4> Game Controls:</h4>
+        <div class="col-xl-4">
+            <div class="btn-group" role="group">
+                <button id="startgame" class="btn btn-primary" type="submit">Start Game</button>
+                <button id="leave" class="btn btn-primary" type="submit">Leave Game</button>
+            </div>
         </div>
-    </form>
-
-    <h5> Game Controls</h5>
-    <div class="btn-group" role="group">
-        <button id="startgame" class="btn btn-primary" type="submit">Start Game</button>
-        <button id="leave" class="btn btn-primary" type="submit">Leave Game</button>
-    </div>
-</div>
-
-<div id="gameactions" class="container">
-    <div class="input-group">
-        <div class="input-group-prepend"></div>
-        <button id="raise" class="btn btn-primary" type="submit">Raise</button>
-        <input type="text" id="raise-amount" class="form-control" placeholder="Raise - Amount" maxlength="10"/>
     </div>
 
-    <div class="btn-group-vertical" role="group">
-        <button id="call" class="btn btn-primary" type="submit">Call</button>
-        <button id="check" class="btn btn-primary" type="submit">Check</button>
-        <button id="fold" class="btn btn-primary" type="submit">Fold</button>
-        <button id="allin" class="btn btn-primary" type="submit">All-In</button>
+    <div id="gameactions" class="container-fluid">
+        <h4>Game Actions:</h4>
+        <div id="raise-group" class="col-xl-2">
+            <div class="input-group">
+                <div class="input-group-prepend"></div>
+                <button id="raise" class="btn btn-primary" type="submit">Raise</button>
+                <input type="text" id="raise-amount" class="form-control" placeholder="Raise - Amount" maxlength="10"/>
+            </div>
+        </div>
+
+        <div class="col-xl-4">
+            <div class="btn-group" role="group">
+                <button id="call" class="btn btn-primary" type="submit">Call</button>
+                <button id="check" class="btn btn-primary" type="submit">Check</button>
+                <button id="fold" class="btn btn-primary" type="submit">Fold</button>
+                <button id="allin" class="btn btn-primary" type="submit">All-In</button>
+            </div>
+        </div>
     </div>
-</div>
 
-<div id="informations" class="container">
-    <div class="row">
-        <div class="col-xl-6">
-            <label for="chipCount">Your current Chip Count:</label>
-            <textarea rows="1" cols="10" id="chipCount" name="chipCount"></textarea>
-        </div>
-        <div class="col-xl-8">
-            <h4>Your Handcards:</h4>
-            <h5>1. Handcard</h5>
-            <textarea rows="2" cols="25" id="firstHandCard" name="firstHandCard"></textarea>
-            <h5>2. Handcard</h5>
-            <textarea rows="2" cols="25" id="secondHandCard" name="secondHandCard"></textarea>
-        </div>
+    <div id="information" class="container-fluid">
+        <div class="row">
+            <div class="col-xl-4">
+                <h4>Your Current Chip Count:</h4>
+                <textarea class="form-control" rows="1" cols="10" id="chipCount" name="chipCount"></textarea>
 
-        <div class="col-xl-8">
-            <div>
+                <h4>Your Handcards:</h4>
+                <h5>1. Handcard</h5>
+                <textarea class="form-control" rows="1" cols="25" id="firstHandCard" name="firstHandCard"></textarea>
+                <h5>2. Handcard</h5>
+                <textarea class="form-control" rows="1" cols="25" id="secondHandCard" name="secondHandCard"></textarea>
+            </div>
+
+            <div class="col-xl-4">
                 <h4>Table Cards:</h4>
                 <h5>Flop:</h5>
-                <textarea rows="4" cols="25" id="flopCard" name="firstFlopCards"
+                <textarea class="form-control" rows="3" cols="25" id="flopCard" name="firstFlopCards"
                           placeholder="Flop ist noch nicht gelegt!"></textarea>
                 <h5>Turn:</h5>
-                <textarea rows="2" cols="25" id="turnCard" name="turnCard"
+                <textarea class="form-control" rows="1" cols="25" id="turnCard" name="turnCard"
                           placeholder="Turn ist noch nicht gelegt!"></textarea>
                 <h5>River:</h5>
-                <textarea rows="2" cols="25" id="riverCard" name="riverCard"
+                <textarea class="form-control" rows="1" cols="25" id="riverCard" name="riverCard"
                           placeholder="River ist noch nicht gelegt!"></textarea>
+            </div>
+
+            <div class="col-xl-4">
+                <table id="game" class="table">
+                    <thead>
+                    <tr><h4>Gamestate:</h4></tr>
+                    </thead>
+                    <tbody id="gamestate">
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 </div>
 
-<div class="container">
-    <div class="col-xl-12">
-        <table id="game" class="table">
-            <thead>
-            <tr><h2>Gamestate</h2></tr>
-            </thead>
-            <tbody id="gamestate">
-            </tbody>
-        </table>
-    </div>
-</div>
 </body>
 </html>

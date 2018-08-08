@@ -3,6 +3,8 @@
 var stompClient = null;
 var uuid = null;
 
+var defaultValue = "";
+
 $(function() {
     var url_string = window.location.href;
     console.log(url);
@@ -91,7 +93,15 @@ function showGamestate(gameinformation){
     }
 
     else if (json.hasOwnProperty("notification")){
-        alert(json.notification);
+        if (json.notification === "newround") {
+            $("#flopCard").val(defaultValue);
+            $("#turnCard").val(defaultValue);
+            $("#riverCard").val(defaultValue);
+            $("#firstHandCard").val(defaultValue);
+            $("#secondHandCard").val(defaultValue);
+        } else {
+            alert(json.notification);
+        }
     }
 
     else if (json.hasOwnProperty("text")){
